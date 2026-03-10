@@ -1,4 +1,4 @@
-# 🚀 Project Name: [Insert Name Here]
+# 🚀 Project Name: [1000 Songs, 10 Songs a Year]
 
 A brief, one-sentence description of what this website does (e.g., "A personal portfolio showcasing my web design work").
 
