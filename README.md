@@ -2,7 +2,7 @@
 a personal project to document 1000 songs 10 songs a year I like. ongoing, but withbthe belief I can find them given my fairly picky parameters 
 ## 🔗 Live Demo
 Check out the live site here: **https://farnhamancestry-ux.github.io/1000songs/**
-
+or here: https://bit.ly/1000_songs
 ---
 
 ## 🛠️ Built With
