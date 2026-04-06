@@ -1,0 +1,7093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BMRR0XZXPN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BMRR0XZXPN');
+</script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Songs | A 100-Year Music Curated Timeline (1930 - 2030)</title>
+<meta name="title" content="1000 Songs | 10 Songs a Year | Explore A 100-Year Music Timeline (1930 - 2030) | The Songs the Year You Were Born">
+<meta name="description" content="Explore a 100 years of music through 1,000 curated songs, selecting 10 iconic tracks for every year from 1930 to 2030. Find the best alternative songs from the year you were born. Use our radio music time machine to travel sonically through time.">
+<meta name="author" content="Listener">
+<meta name="keywords" content="music history, 1000 songs, 100 years, 10 best songs by year, music timeline, 1930-2030 music, music time machine, curated playlist, 1000 greatest songs, top songs, music the year I was born">
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "1000 Songs | 10 Songs a Year",
+      "url": "https://farnhamancestry-ux.github.io/1000songs/"
+    }
+    </script>
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://farnhamancestry-ux.github.io/1000songs/"> <meta property="og:title" content="1000 Songs | 10 Songs a Year | 1930 - 2030">
+<meta property="og:description" content="100 years of music through 1,000 personal song choices, 10 songs a year.">
+<meta property="og:image" content="https://farnhamancestry-ux.github.io/1000songs/preview-image.jpg"> <meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://farnhamancestry-ux.github.io/1000songs/">
+<meta property="twitter:title" content="1000 Songs | 100 Years of Music">
+<meta property="twitter:description" content="100 years of music in 1000 songs. Explore the evolution of sound from 1930 to 2030.">
+
+
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --subtle: #888888;
+            --line: #eeeeee;
+            --accent: #0066ff;
+            --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --subtle: #999999;
+            --line: #222222;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            line-height: 1.5;
+            -webkit-font-smoothing: grayscale;
+            transition: background-color 0.3s ease;
+        }
+
+        header {
+    padding: 1.5rem 5%; /* Reduced from 4rem to 5% */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 1px solid var(--text);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 1000;
+}
+
+main { 
+    padding: 0 5% 10rem 5%; /* Reduced horizontal padding from 4rem to 5% */
+}
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            cursor: pointer;
+        }
+
+        /* Subtle Search Overlay */
+        #search-overlay {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--bg);
+        }
+        #search-overlay.open {
+            height: 60px;
+            border-top: 1px solid var(--line);
+        }
+        .search-input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text);
+            outline: none;
+            padding: 0 10px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .header-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text);
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+        .header-btn:hover { opacity: 1; }
+
+        .year-horizon {
+            display: none;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .year-horizon.visible { display: flex; }
+
+        .horizon-link {
+            font-size: 0.7rem;
+            font-family: monospace;
+            cursor: pointer;
+            color: var(--subtle);
+        }
+
+        nav.decades-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav.decades-nav button {
+            background: none; border: none; cursor: pointer;
+            font-size: 0.65rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--subtle); padding: 0;
+        }
+
+        main { padding: 0 4rem 10rem 4rem; }
+
+        /* Genre Tags */
+        .genre-tag {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--subtle);
+            cursor: pointer;
+            margin-left: 12px;
+            padding: 2px 6px;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+        .genre-tag:hover { border-color: var(--text); color: var(--text); }
+
+        /* Year/Song Layout */
+        .year-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            border-bottom: 1px solid var(--line);
+        }
+        .year-heading { position: sticky; top: 12rem; height: fit-content; padding: 4rem 0; }
+        .year-heading h2 { font-size: 4rem; font-weight: 800; letter-spacing: -0.04em; }
+        
+
+.year-content { 
+    padding: 4rem 0 6rem 2rem; /* Reduced left padding from 4rem to 2rem */
+    max-width: 700px; 
+    border-left: 1px solid var(--line); 
+}
+
+        .song-list { display: flex; flex-direction: column; gap: 4rem; }
+        .song-entry { position: relative; }
+        .song-title { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; }
+/* New style for the song title specifically */
+.track-name {
+    color: var(--subtle);    /* Makes it grey */
+    font-size: 0.9rem;       /* Makes it smaller than the artist */
+    font-weight: 400;        /* Makes it less bold than the artist */
+    margin-left: 8px;        /* Adds space since the hyphen is gone */
+}
+        .song-note {
+    font-family: "Courier New", Courier, monospace; /* Classic typewriter font */
+    font-size: 0.75rem; /* Slightly larger for readability */
+    color: #333; /* Darker ink color */
+    margin-top: 0.8rem;
+    line-height: 1.5;
+    letter-spacing: 0.05em; /* Spreads letters like a manual typewriter */
+    text-shadow: 0.3px 0.3px 0.5px rgba(0,0,0,0.2); /* Subtle ink bleed effect */
+    opacity: 0.9;
+    padding-left: 5px;
+    border-left: 1px solid var(--line); /* Optional: visual guide like a margin line */
+}
+
+/* Radio Dial Styles */
+#radio-dial {
+    -webkit-appearance: none;
+    width: 100%;
+    max-width: 500px;
+    height: 2px;
+    background: var(--line);
+    outline: none;
+    margin: 3rem 0;
+}
+
+#radio-dial::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 40px;
+    background: var(--text);
+    cursor: ew-resize;
+    border-radius: 2px;
+}
+
+#radio-dial::-moz-range-thumb {
+    width: 20px;
+    height: 40px;
+    background: var(--text);
+    cursor: ew-resize;
+    border: none;
+    border-radius: 2px;
+}
+
+/* For Dark Mode support */
+[data-theme="dark"] .song-note {
+    color: #ccc;
+    text-shadow: 0.3px 0.3px 0.5px rgba(255,255,255,0.1);
+}
+        .song-artist-link { cursor: pointer; border-bottom: 1px solid transparent; }
+        .song-artist-link:hover { border-bottom: 1px solid var(--text); }
+
+        .page-view { display: none; }
+        .active { display: block; }
+
+        /* Genre Card Grid */
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1px;
+            background: var(--line);
+            margin-top: 4rem;
+            border: 1px solid var(--line);
+        }
+        .genre-card {
+            background: var(--bg);
+            padding: 2.5rem 2rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .genre-card:hover { background: var(--line); }
+        .genre-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; font-weight: 700; }
+        .genre-card p { font-size: 0.65rem; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.1em; }
+
+.wiki-link {
+    color: var(--subtle);
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.wiki-link:hover {
+    opacity: 1;
+    color: var(--accent); /* Highlights blue when hovered */
+    text-decoration: underline;
+}
+.spotify-link {
+    color: var(--subtle);
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.spotify-link:hover {
+    opacity: 1;
+    color: #1DB954; /* Spotify Green */
+    text-decoration: underline;
+}
+/* Discogs Link Styling */
+.discogs-link {
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: var(--subtle);
+    text-decoration: none;
+    margin-left: 8px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.discogs-link:hover {
+    opacity: 1;
+    color: var(--text);
+}
+
+/* iTunes/Apple Music Link Styling */
+.itunes-link {
+    font-family: monospace;
+    font-size: 0.5rem; 
+    color: var(--subtle);
+    text-decoration: none;
+    margin-left: 10px;
+    opacity: 0.6;
+    transition: opacity 0.2s, color 0.2s;
+    vertical-align: middle;
+    display: inline-block;
+    text-transform: lowercase;
+}
+
+.itunes-link:hover {
+    opacity: 1;
+    color: #fa243c; /* Apple Music Red/Pink */
+    text-decoration: underline;
+}
+
+/* iTunes Preview Dot */
+.preview-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--subtle);
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+}
+.preview-dot:hover { background-color: var(--text); transform: scale(1.4); }
+.preview-dot.loading { background-color: var(--accent); opacity: 0.5; animation: pulse 1s infinite; }
+.preview-dot.playing { background-color: var(--accent); transform: scale(1.4); }
+
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+        /* Hide mobile toggle on desktop */
+.mobile-menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    header { padding: 1rem 15px; } 
+    main { padding: 0 15px 10rem 15px; }
+
+    .header-top {
+        flex-wrap: wrap;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        border: 1px solid var(--line);
+        padding: 6px 10px;
+    }
+
+    /* Mobile Actions Overlay */
+    .actions {
+        position: absolute;
+        top: 100%; /* Anchors it to the very bottom of the sticky header */
+        left: 0;
+        width: 100%;
+        background-color: var(--bg); /* Matches the current theme's background */
+        max-height: 0;
+        overflow: hidden;
+        flex-direction: column;
+        transition: max-height 0.4s ease, opacity 0.3s, padding 0.3s;
+        opacity: 0;
+        z-index: 1000;
+        padding: 0 15px; /* Aligns items with the rest of the layout */
+        border-bottom: 0px solid transparent;
+    }
+
+    .actions.open {
+        max-height: 400px;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        opacity: 1;
+        border-bottom: 1px solid var(--text); /* Clean border to separate it from page content */
+        box-shadow: 0 15px 15px -10px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+    }
+
+    /* Layout cleanup for mobile */
+    .year-row { grid-template-columns: 1fr; }
+    .year-content { 
+        border-left: none; 
+        padding: 2rem 0; 
+        max-width: 100%; 
+    }
+    .year-heading { position: relative; top: 0; padding: 1rem 0; }
+    .year-heading h2 { font-size: 3rem; }
+
+    /* Fix for grid cutting off on the right */
+    .genre-grid {
+        grid-template-columns: 1fr; /* Force one column on mobile */
+    }
+}
+/* Playlist Specific Styles */
+.playlist-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-right: 15px;
+}
+
+.sort-btn {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    transition: all 0.2s;
+}
+
+.sort-btn:hover {
+    background: var(--text);
+    color: var(--bg);
+}
+
+.song-entry {
+    -webkit-user-select: none; /* Prevents text selection during long-press */
+    user-select: none;
+    cursor: pointer;
+}
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+    <div class="title" onclick="showPage('index')">1000 SONGS.</div>
+    
+    <button class="mobile-menu-toggle header-btn" onclick="toggleNav()">MENU</button>
+    
+    <div class="actions" id="nav-actions">
+        <button class="header-btn" onclick="toggleSearch()">Find</button>
+        <button class="header-btn" onclick="showRadio()">Radio</button>
+        <button class="header-btn" onclick="showPlaylist()">Playlist</button>
+        <button class="header-btn" onclick="showAgeView()">YourAge</button>
+        <button class="header-btn" onclick="showPage('your-10')">Your10</button>
+        <button class="header-btn" onclick="showPage('appendix')">Appendix</button>
+        <button class="header-btn" onclick="renderArtistIndex()">Registry</button>
+        <button class="header-btn" onclick="showPage('genres')">Genres</button>
+        <button class="header-btn" onclick="toggleTheme()">Theme</button>
+    </div>
+</div>
+    <div id="search-overlay">
+        <input type="text" id="global-search" class="search-input" placeholder="Type artist, track, or genre..." oninput="handleSearch(this.value)">
+    </div>
+    <div class="year-horizon" id="year-horizon"></div>
+    <nav class="decades-nav" id="nav-decades"></nav>
+</header>
+
+<main>
+
+<div id="radio-view" class="page-view">
+    <div style="margin-top: 6rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 50vh;">
+        
+        <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.2em; margin-bottom: 1rem;">Time Machine Dial</p>
+        
+        <h1 id="radio-year" style="font-size: 6rem; font-weight: 800; letter-spacing: -0.05em; margin: 0; line-height: 1;">1930</h1>
+        
+        <input type="range" id="radio-dial" min="1930" max="2025" value="1930" oninput="handleDialScrub(this.value)">
+        
+        <div id="radio-track-info" style="min-height: 80px; margin-top: 1rem; font-family: monospace; font-size: 0.9rem; color: var(--subtle);">
+            Radio Off
+        </div>
+
+        <button id="radio-power-btn" class="header-btn" style="border: 1px solid var(--text); padding: 10px 30px; margin-top: 2rem; font-size: 0.8rem;" onclick="toggleRadio()">
+            Power: OFF
+        </button>
+
+    </div>
+</div>
+
+
+<div id="age-view" class="page-view">
+    <div style="margin-top: 6rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Your Age in Songs</h1>
+        <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 1.5rem;">The Soundtrack of Your Lifetime</p>
+
+<p style="font-size: 1.1rem; font-weight: 400; line-height: 1.5; max-width: 600px;">
+           Find out how old you are in songs! Enter the year you were born below and get the <strong>10 songs each year</strong> since you were born. 
+        </p>
+        
+        <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem; flex-wrap: wrap;">
+            <input type="number" id="birth-year-input" placeholder="Your Birth Year (e.g. 1985)" 
+                style="background: none; border: none; border-bottom: 1px solid var(--line); font-family: inherit; font-size: 1.1rem; padding: 10px 0; color: var(--text); outline: none; width: 220px;">
+            <button class="header-btn" style="border: 1px solid var(--text); padding: 10px 20px;" onclick="calculateAgeSongs()">Calculate</button>
+        </div>
+        
+        <div id="age-summary" style="font-size: 1.1rem; font-weight: 400; line-height: 1.5; max-width: 600px;"></div>
+    </div>
+
+    <div id="age-results" style="margin-top: 2rem;">
+        </div>
+</div>
+
+
+<div id="your-10-view" class="page-view">
+    <div style="margin-top: 6rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Your 10</h1>
+        <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 1.5rem;">Community Archives</p>
+        
+        <p style="font-size: 1.1rem; font-weight: 400; line-height: 1.5; max-width: 600px;">
+            If you'd like to feature your own version of this project here, <strong>send me your top ten per year</strong> using the contact form at the bottom of this page.
+        </p>
+    </div>
+
+    <div class="genre-grid">
+        
+        <a href="#" target="_blank" class="genre-card" style="text-decoration: none; color: inherit;">
+            <h3>User Name</h3>
+            <p>View Archive ↗</p>
+        </a>
+        <a href="#" class="genre-card" style="text-decoration: none; color: inherit;">
+            <h3>Sample Contributor</h3>
+            <p>Archive Pending ↗</p>
+        </a>
+
+    </div>
+</div>
+
+
+    <!-- Index Grid (Decades) -->
+    <div id="index-view" class="page-view active">
+        <div style="margin-top: 6rem; max-width: 600px; margin-bottom: 4rem;">
+            <p style="font-size: 2.5rem; font-weight: 300; line-height: 1.4;">
+
+<span style="font-weight: 600">100</span> years. <br>           
+<span style="font-weight: 600">1000</span> songs.<br>
+<span style="font-weight: 600">10</span> songs a year.</p>
+<br>
+<p style="font-size: 1.1rem; font-weight: 300; line-height: 1.4;">An alternative, ear-crafted, selection of the best songs from 1930s-2030s.
+<br>
+<br>
+<span style="font-weight: 600"> A Reminder</span> of time and self in sound.</p>
+
+<p style="font-size: 1.0rem; font-weight: 300; line-height: 1.0;"><span style="font-weight: 600"></p>
+
+
+<br>
+<p style="font-size: 0.9rem; font-weight: 300; line-height: 1.4;">Click the dot next to each song to hear a preview. <br> 
+<br>
+
+<span style="text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--subtle); text-decoration-style: dotted; cursor: pointer;" onclick="showAgeView()">What were the songs the year you were born?</span>
+
+<br>
+<span style="text-decoration: underline; text-underline-offset: 4px; text-decoration-style: dotted;  text-decoration-color: var(--subtle);  cursor: pointer;" onclick="showRadio()">Use the Radio Music Time Machine</span>
+<br><span style="text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--subtle); text-decoration-style: dotted;  cursor: pointer;" onclick="showPage('your-10')">What are your 10 songs a year? Add your curation.</span>
+
+
+</p>
+
+            
+        </div>
+        <div id="index-grid" class="genre-grid"></div>
+    </div>
+    <!-- Genres Journey -->
+    <div id="genres-view" class="page-view">
+        <div style="margin-top: 6rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Genres & Movements</h1>
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">The Journey of Change</p>
+        </div>
+        <div class="genre-grid" id="genre-list"></div>
+    </div>
+
+    <!-- Decade/Year/Search Result View -->
+    <div id="decade-view" class="page-view">
+        <div id="decade-content"></div>
+    </div>
+
+    <!-- Artist Timeline -->
+    <div id="artist-profile-view" class="page-view">
+        <div id="artist-profile-content"></div>
+    </div>
+
+    <!-- Appendix (Definitions) -->
+    <div id="appendix-view" class="page-view">
+    <div style="margin-top: 6rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Appendix & Methodology</h1>
+        <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">The Journey of Sound: 1930 – 2030</p>
+    </div>
+
+    <div id="appendix-list" style="margin-top:4rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 4rem;">
+        
+        <section style="border-bottom: 1px solid var(--line); padding-bottom: 2rem;">
+            <h2 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Archival Methodology</h2>
+            <p style="font-size: 0.9rem; color: var(--subtle); line-height: 1.6;">
+                This 100-year music timeline is a curated ear-crafted digital archive. It follows a strict <strong>10 songs per year</strong> rule. You could say it's a digital data art project to map the story of sound from of 1930s to 2030s. Or you could not. But it's much more fun to measure time in songs than hours, minutes, seconds etc! It came about as a way of orientating myself in the present. I thought a good way of doing that was making lists while listening to Monkey Magic.
+            </p>
+        </section>
+
+        <section style="border-bottom: 1px solid var(--line); padding-bottom: 2rem;">
+            <h2 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Primary Sources</h2>
+            <p style="font-size: 0.9rem; color: var(--subtle); line-height: 1.6;">
+                I check stuff against Wikipedia but keep coming across <strong>Library of Congress</strong>, the <strong>Alan Lomax Archive</strong>, and historical catalogs from seminal record labels including <strong>Decca, Columbia, Polydor, and Blue Note</strong>.
+            </p>
+        </section>
+
+        <section style="border-bottom: 1px solid var(--line); padding-bottom: 2rem;">
+            <h2 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Selection Logic</h2>
+            <p style="font-size: 0.9rem; color: var(--subtle); line-height: 1.6;">
+                Songs are selected based on ones I like. If I hear a song I like more than another on the list. I'll take it out and add the new one. 
+            </p>
+        </section>
+    </div>
+
+    <div style="margin-top: 6rem; max-width: 800px;">
+        <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+        
+        <div style="margin-bottom: 2.5rem;">
+            <h3 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem;">How was this music timeline created?</h3>
+            <p style="font-size: 0.9rem; color: var(--subtle); line-height: 1.6;">
+                This project was built by listening to songs. You could say it as serves as a visual and auditory map of the 20th and 21st centuries, tracking genres from Delta Blues and Jazz to Electronic and beyond. But it's just songs I like. 10 a year for 100 years. 
+            </p>
+        </div>
+
+        <div style="margin-bottom: 2.5rem;">
+            <h3 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem;">What are the most influential music genres featured?</h3>
+            <p style="font-size: 0.9rem; color: var(--subtle); line-height: 1.6;">
+                Do you like the Beatles? Great. There will be something for your here. But basically this is my attempt at trying to work out my taste. And the story about how that came about through movements, including the birth of Rock & Roll, the evolution of Folk, and the global spread of Jazz. You can explore these specifically in my <span style="text-decoration: underline; cursor: pointer;" onclick="showPage('genres')">Genres Journey</span> section. It's all about interconnected links and anchor points. Something like that.
+            </p>
+        </div>
+
+        <div style="margin-bottom: 2.5rem;">
+            <h3 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem;">Is this a complete history of recorded music?</h3>
+            <p style="font-size: 0.9rem; color: var(--subtle); line-height: 1.6;">
+             No. It's songs I like ordered by year.  But start at 1996. You'll find that from that point all of these songs interconnect forwards and backwards. They all interelate and hope to tell that story with this selection! I heavily rely on friends, family and radio. Particularly John Peel, John Kennedy, Nick Grimshaw (who kindly spoke to me about the initial incarnation of this idea on 6 Music), Lauren Laverne, Steve Lamaq, Deb Grant, Mark Radcliffe and Marc Riley. 
+            </p>
+</div>
+<div style="margin-bottom: 2.5rem;">
+            <h3 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem;">
+Why isn't there much pop, classical, or hip hop?</h3>
+            <p style="font-size: 0.9rem; color: var(--subtle); line-height: 1.6;">
+                You won't find much classical, mainstream pop, or hip hop in my curation. This is just what I like 10 songs a year! I'd listen to these styles outside of this project. Same with bands I am missing a lot of the greats. Sometimes you hear songs too many times! Also it is my taste so even when I thought new music had passed me by I scratched the surface and found stuff I liked. I am hoping to add others cutations to the site.
+            </p>
+        </div>
+
+        <div style="margin-bottom: 2.5rem;">
+            <h3 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem;">How do I export my playlist to Spotify?</h3>
+            <p style="font-size: 0.9rem; color: var(--subtle); line-height: 1.6;">
+                Once you've built a playlist, click the <strong>Export CSV</strong> button. To easily move these tracks to Spotify, I recommend using <a href="https://www.tunemymusic.com/transfer/csv-to-spotify" target="_blank" style="color: var(--text); text-decoration: underline; transition: color 0.2s;">TuneMyMusic's CSV to Spotify tool</a>. Just upload your downloaded CSV file, connect your streaming account, and it will generate the playlist for you automatically.
+            </p>
+<div style="margin-top: 6rem; max-width: 800px; border-top: 1px solid var(--line); padding-top: 4rem;">
+    <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 2rem;">External Archives & Discovery</h2>
+    
+    <div style="font-size: 0.9rem; color: var(--subtle); line-height: 2;">
+        <p style="margin-bottom: 1.5rem;">
+            <a href="https://www.bbc.co.uk/6music" target="_blank" style="color: var(--text); text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color 0.2s;">BBC Radio 6 Music</a>
+            <br>
+            <span style="font-size: 0.8rem; opacity: 0.8;">Good ol 6 Music.</span>
+        </p>
+
+        <p style="margin-bottom: 1.5rem;">
+            <a href="http://www.davesmusicdatabase.com/" target="_blank" style="color: var(--text); text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color 0.2s;">Dave's Music Database</a>
+            <br>
+            <span style="font-size: 0.8rem; opacity: 0.8;">Dave makes lists.</span>
+        </p>
+
+        <p style="margin-bottom: 1.5rem;">
+            <a href="https://archive.culturalequity.org/" target="_blank" style="color: var(--text); text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color 0.2s;">The Alan Lomax Archive</a>
+            <br>
+            <span style="font-size: 0.8rem; opacity: 0.8;">A bespoke digital collection of field recordings that preserved the roots of the 20th century.</span>
+        </p>
+    </div>
+</div>
+
+
+        </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Registry -->
+    <div id="registry-view" class="page-view">
+    <div style="margin-top: 6rem; margin-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Registry</h1>
+        <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">The Archive of Contributors</p>
+    </div>
+
+    <div id="registry-stats" style="display: flex; gap: 3rem; margin-bottom: 3rem; border-bottom: 1px solid var(--line); padding-bottom: 2.5rem; flex-wrap: wrap;">
+        </div>
+
+    <div id="registry-controls" style="margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div style="display: flex; gap: 1.5rem; align-items: center;">
+            <span style="font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--subtle);">Sort By</span>
+            <button class="header-btn" onclick="renderArtistIndex('alpha')">Alphabetical</button>
+            <button class="header-btn" onclick="renderArtistIndex('count')">Most Tracks</button>
+        </div>
+        <div>
+            <input type="text" id="registry-local-filter" placeholder="Filter artist name..." 
+                style="background: none; border: none; border-bottom: 1px solid var(--line); font-family: inherit; font-size: 0.8rem; padding: 5px; color: var(--text); outline: none; width: 200px;"
+                oninput="renderArtistIndex()">
+        </div>
+    </div>
+
+    <div id="registry-content" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line);"></div>
+</div>
+
+<div id="playlist-view" class="page-view">
+    <div style="margin-top: 6rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+        <div>
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Your Playlist</h1>
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Long-press (Mobile) or Double-click (Desktop) songs to add them. You can download the csv and use <a href="https://www.tunemymusic.com/transfer/csv-to-spotify" target="_blank" style="color: var(--text); text-decoration: underline; transition: color 0.2s;">TuneMyMusic's CSV to Spotify tool</a></p>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="header-btn" style="border: 1px solid var(--accent); color: var(--accent); padding: 5px 15px;" onclick="startSimplePlaylist()">Play All ▶</button>
+            <button class="header-btn" style="border: 1px solid var(--text); padding: 5px 15px;" onclick="stopSimplePlaylist()">Stop ◼</button>
+            <button class="header-btn" style="border: 1px solid var(--text); padding: 5px 15px;" onclick="exportPlaylist()">Export CSV</button>
+            <button class="header-btn" style="border: 1px solid var(--text); padding: 5px 15px;" onclick="clearPlaylist()">Clear All</button>
+        </div>
+    </div>
+    <div id="playlist-content" style="margin-top: 4rem;"></div>
+</div>
+        <div style="display: flex; gap: 10px;">
+            
+        </div>
+    </div>
+    <div id="playlist-content" style="margin-top: 4rem;"></div>
+</div>
+
+<div style="margin-top: 8rem; border-top: 1px solid var(--text); padding-top: 4rem; max-width: 600px;">
+    <h2 style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem;">Contact</h2>
+    <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.1em; margin-bottom: 3rem;">Inquiries & Feedback</p>
+    
+    <form action="https://formspree.io/f/maqpnpyq" method="POST" style="display: flex; flex-direction: column; gap: 2.5rem;">
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Your email</label>
+            <input type="email" name="email" required 
+                style="background: none; border: none; border-bottom: 1px solid var(--line); font-family: inherit; font-size: 1.1rem; padding: 10px 0; color: var(--text); outline: none;">
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Your message</label>
+            <textarea name="message" required 
+                style="background: none; border: 1px solid var(--line); font-family: inherit; font-size: 1rem; padding: 10px; color: var(--text); outline: none; min-height: 120px; resize: vertical;"></textarea>
+        </div>
+        
+        <button type="submit" class="header-btn" 
+            style="align-self: flex-start; opacity: 1; border: 1px solid var(--text); padding: 0.8rem 2.5rem; font-size: 0.7rem;">
+            Send Message
+        </button>
+    </form>
+</div>
+
+
+</main>
+
+<script>
+
+function renderYear(year) {
+    const container = document.getElementById('decade-content');
+    const horizon = document.getElementById('year-horizon');
+    
+    // Clear out any existing content
+    container.innerHTML = ''; 
+    horizon.innerHTML = ''; 
+    horizon.classList.remove('visible'); 
+
+    // Fetch the songs for that specific year and render them
+    const songs = songData[year.toString()] || [];
+    container.appendChild(createYearRow(year, songs));
+    
+    // Show the page
+    showPage('decade');
+}
+
+let playlistAudio = new Audio();
+let currentPlaylistIndex = -1;
+
+async function startSimplePlaylist(startIndex = 0) {
+    if (userPlaylist.length === 0) return;
+    
+    // Stop any previews playing from the main archive
+    if (typeof currentAudio !== 'undefined' && currentAudio) {
+        currentAudio.pause();
+    }
+
+    // End of playlist
+    if (startIndex >= userPlaylist.length) {
+        stopSimplePlaylist();
+        showToast("Playlist finished.");
+        return;
+    }
+
+    currentPlaylistIndex = startIndex;
+    renderPlaylist(); // Re-render to show the "PLAYING" highlight
+
+    const song = userPlaylist[startIndex];
+    const query = encodeURIComponent(`${song.artist} ${song.track}`);
+    
+    try {
+        const response = await fetch(`https://itunes.apple.com/search?term=${query}&limit=1&entity=song`);
+        const data = await response.json();
+
+        if (data.results[0] && data.results[0].previewUrl) {
+            playlistAudio.src = data.results[0].previewUrl;
+            playlistAudio.play();
+            
+            // When song ends, play the next one
+            playlistAudio.onended = () => {
+                startSimplePlaylist(startIndex + 1);
+            };
+        } else {
+            // If no preview is available, just skip to the next track
+            startSimplePlaylist(startIndex + 1);
+        }
+    } catch (err) {
+        console.error("Playback error:", err);
+        startSimplePlaylist(startIndex + 1); // Skip on error
+    }
+}
+
+function stopSimplePlaylist() {
+    playlistAudio.pause();
+    currentPlaylistIndex = -1;
+    renderPlaylist(); // Remove highlights
+}
+
+let userPlaylist = JSON.parse(localStorage.getItem('my1000SongsPlaylist')) || [];
+let pressTimer;
+
+function handleTouchStart(artist, track) {
+    pressTimer = window.setTimeout(() => {
+        addToPlaylist(artist, track);
+    }, 600); // 600ms hold triggers the add
+}
+
+function handleTouchEnd() {
+    clearTimeout(pressTimer);
+}
+
+function addToPlaylist(artist, track) {
+    if (userPlaylist.some(s => s.artist === artist && s.track === track)) {
+        showToast("Already in playlist");
+        return;
+    }
+    userPlaylist.push({ artist, track });
+    saveAndRefresh();
+    showToast(`Added: ${track}`);
+}
+
+function saveAndRefresh() {
+    localStorage.setItem('my1000SongsPlaylist', JSON.stringify(userPlaylist));
+    if (document.getElementById('playlist-view').style.display !== 'none') {
+        renderPlaylist();
+    }
+}
+
+function showToast(msg) {
+    const toast = document.createElement('div');
+    toast.style = "position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:var(--text); color:var(--bg); padding:10px 20px; font-size:0.7rem; z-index:9999; border-radius:2px; font-family:monospace;";
+    toast.innerText = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2000);
+}
+
+// Sorting Logic
+function moveSong(index, direction) {
+    const newIndex = index + direction;
+    if (newIndex < 0 || newIndex >= userPlaylist.length) return;
+    
+    const temp = userPlaylist[index];
+    userPlaylist[index] = userPlaylist[newIndex];
+    userPlaylist[newIndex] = temp;
+    saveAndRefresh();
+}
+
+function removeFromPlaylist(index) {
+    userPlaylist.splice(index, 1);
+    saveAndRefresh();
+}
+
+function clearPlaylist() {
+    if(confirm("Clear your entire playlist?")) {
+        userPlaylist = [];
+        saveAndRefresh();
+    }
+}
+
+function showPlaylist() {
+    renderPlaylist();
+    showPage('playlist');
+}
+
+function renderPlaylist() {
+    const container = document.getElementById('playlist-content');
+    if (userPlaylist.length === 0) {
+        container.innerHTML = `<p style="color:var(--subtle); font-family:monospace; font-size:0.8rem;">Your playlist is empty.</p>`;
+        return;
+    }
+
+    let html = '';
+    userPlaylist.forEach((s, i) => {
+        
+
+const itunesQuery = encodeURIComponent(s.artist.split(/ feat| ft| &| with/i)[0] + " " + s.track);
+        
+        // Highlight the currently playing track
+        const isPlaying = i === currentPlaylistIndex;
+        const rowStyle = isPlaying 
+            ? "border-left: 3px solid var(--accent); padding-left: 10px; opacity: 1;" 
+            : (currentPlaylistIndex !== -1 ? "opacity: 0.4;" : "opacity: 1;");
+        const playingIndicator = isPlaying ? `<span style="color:var(--accent); font-size:0.6rem; margin-right:10px;">▶ PLAYING</span>` : '';
+
+        html += `
+            <div class="song-entry" style="display:flex; align-items:center; margin-bottom:1.5rem; border-bottom:1px solid var(--line); padding-bottom:1rem; transition: all 0.3s; ${rowStyle}">
+                <div class="playlist-controls">
+                    <button class="sort-btn" onclick="moveSong(${i}, -1)">▲</button>
+                    <button class="sort-btn" onclick="moveSong(${i}, 1)">▼</button>
+                </div>
+                <div style="flex-grow:1; display:flex; align-items:center;" onclick="startSimplePlaylist(${i})" title="Click to start playing from here">
+                    ${playingIndicator}
+                    <span class="song-artist-link">${s.artist}</span>
+                    <span class="track-name">${s.track}</span>
+                </div>
+                <div style="display:flex; gap:15px; align-items:center;">
+                    <a href="https://music.apple.com/search?term=${itunesQuery}" target="_blank" class="itunes-link">itunes</a>
+                    <button onclick="removeFromPlaylist(${i})" style="background:none; border:none; color:red; font-size:0.6rem; cursor:pointer;">[x]</button>
+                </div>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+
+    const songData = {
+    "1930": [
+{
+            "artist": "Garfield Akers",
+            "track": "Dough Roller Blues",
+            "genre": "Blues",
+            "note": "See Robert Johnson Fun Loving Criminals"
+        },
+{
+            "artist": "Blind Willie Johnson",
+            "track": "John the Revelator",
+            "genre": "Blues",
+            "note": ""
+        },
+
+{
+            "artist": "Son House",
+            "track": "The Pony Blues",
+            "genre": "Blues",
+            "note": ""
+        },
+
+        {
+            "artist": "Fred Astaire",
+            "track": "Putting on the Ritz",
+            "genre": "Musical",
+            "note": ""
+        },
+{
+            "artist": "Silver Leaf Quartette of Norfolk ",
+            "track": "Saviour Let Me Press Thy Hand",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Mississippi John Hurt",
+            "track": "Avalon Blues",
+            "genre": "Blues",
+            "note": "Spike Driver Blues released in 1929"
+        },
+{
+            "artist": "Charley Patton",
+            "track": "High Water Everywhere",
+            "genre": "Blues",
+            "note": ""
+        },
+
+
+{
+            "artist": "Kansas Joe and Memphis Minnie",
+            "track": "Don't Want No Woman",
+            "genre": "Blues",
+            "note": ""
+        },
+        {
+            "artist": "Blind Willie Johnson",
+            "track": "God Moves on the Water",
+            "genre": "Blues",
+            "note": ""
+        }
+    ],
+    "1931": [
+{
+            "artist": "Cab Calloway",
+            "track": "Minnie the Moocher",
+            "genre": "Jazz",
+            "note": "So upbeat and quite popular considering 1931."
+        },
+        {
+            "artist": "Skip James",
+            "track": "Devil Got My Woman",
+            "genre": "Blues",
+            "note": ""
+        },
+{
+            "artist": "Skip James",
+            "track": "I'm So Glad",
+            "genre": "Blues",
+            "note": ""
+        },
+{
+            "artist": "Satan, Your Kingdom Must Come Down",
+            "track": "Blind Joe Taggart",
+            "genre": "Blues",
+            "note": "Well said Joe."
+        }
+    ],
+
+"1932": [
+        {
+            "artist": "Lew Stone and the Monseigneur Band",
+            "track": "My Woman",
+            "genre": "Jazz",
+            "note": "See white town your woman"
+        },
+{
+            "artist": "Louis Armstrong",
+            "track": "Georgia on my Mind",
+            "genre": "Jazz",
+            "note": ""
+        },
+
+{
+            "artist": "Cab Calloway",
+            "track": "Reefer Man",
+            "genre": "Jazz",
+            "note": ""
+        },
+
+{
+            "artist": "Hot Shot Willie",
+            "track": "Searching the Desert for the Blues",
+            "genre": "Blues",
+            "note": "Blind Willie McTell"
+        },
+{
+            "artist": "Ray Noble",
+            "track": "Midnight, the stars and you",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Cab Calloway",
+            "track": "Stack O' Lee Blues",
+            "genre": "",
+            "note": "See Stagger Lee Nick acave "
+        },
+{
+            "artist": "Noel Coward",
+            "track": "Mad Dogs and Englishmen",
+            "genre": "",
+            "note": "See Stagger Lee Nick acave "
+        }
+
+        
+    ],
+
+"1933": [
+        {
+            "artist": "Blind Willie",
+            "track": "Death Cell Blues",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Ethel Waters",
+            "track": "HeatWave",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Cab Calloway",
+            "track": "The Man From Harlem",
+            "genre": "",
+            "note": ""
+        }
+        
+    ],
+
+
+"1934": [
+        {
+            "artist": "Jimmie Lunceford",
+            "track": "Jazznocracy",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Jimmie Lunceford",
+            "track": "Stratosphere",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Duke Ellington",
+            "track": "Solitude",
+            "genre": "",
+            "note": ""
+        }
+        
+    ],
+
+
+    "1935": [
+        {
+            "artist": "Joe Williams Washboard Singers",
+            "track": "Baby, Please Don't Go",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Duke Ellington",
+            "track": "In a Sentimental Mood",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Cleo Brown",
+            "track": "Boogie Woogie",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Charley Patton",
+            "track": "Oh Death",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Carter Family",
+            "track": "Can The Circle Be Unbroken",
+            "genre": "",
+            "note": ""
+        }
+
+
+    ],
+    "1936": [
+        {
+            "artist": "Washboard Sam",
+            "track": "Don't Tear My Clothes",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Robert Johnson",
+            "track": "Preaching Blues",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Jimmie Lunceford",
+            "track": "Organ Grinder's Swing",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Billie Holiday",
+            "track": "Summertime",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1937": [
+        {
+            "artist": "Benny Goodman",
+            "track": "Sing, Sing, Sing",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Sonny Boy Williamson",
+            "track": "Got the Bottle Up and Gone",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Golden Gate Quartet",
+            "track": "Golden Gate Gospel Train",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Duke Ellington",
+            "track": "Caravan",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Bukka White",
+            "track": "Shake em on Down",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Fats Waller",
+            "track": "This Joint is Jumpin",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Robert Johnson",
+            "track": "32-20 Blues",
+            "genre": "",
+            "note": ""
+        }
+    ],
+
+"1938": [
+        {
+            "artist": "Artie Shaw",
+            "track": "Nightmare",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Sonny Boy Williamson",
+            "track": "Project Highway",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Sister Rosetta Tharpe",
+            "track": "My Man and I",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Golden Gate Quartet",
+            "track": "Rock My Soul",
+            "genre": "",
+            "note": ""
+        }
+        
+    ],
+
+
+    "1939": [
+        {
+            "artist": "Lead Belly",
+            "track": "Black Betty",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Flanagan And Allen",
+            "track": "Run, Rabbit, Run",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Solomon Linda’s Original Evening Birds",
+            "track": "Mbube",
+            "genre": "",
+            "note": ""
+        },
+
+        
+        {
+            "artist": "Lead Belly",
+            "track": "Gallis Pole",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Sister Rosetta Tharpe",
+            "track": "God Don't Like It",
+            "genre": "",
+            "note": ""
+        },
+        
+{
+            "artist": "Big Joe Turner & Pete Johnson",
+            "track": "Roll em Pete",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Golden Gate Quartet",
+            "track": "Jonah",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Glen Miller and His Orchestra",
+            "track": "In the Mood",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Billie Holiday",
+            "track": "Strange Fruit",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Maxine Sullivan",
+            "track": "It Ain't Necessarily So",
+            "genre": "",
+            "note": ""
+        }
+    ],
+
+"1940": [
+        {
+            "artist": "Josh White",
+            "track": "Jerry",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Lead Belly",
+            "track": "Alabama Bound",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Roy Acuff",
+            "track": "Ida Red",
+            "genre": "",
+            "note": "Label: Conqueror – 9404. Label stopped releasing after '41"
+        },
+{
+            "artist": "Woody Guthrie",
+            "track": "I Ain't Got No Home In This World Anymore",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Ink Spots",
+            "track": "Java Jive",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Bukka White",
+            "track": "Fixing to Die Blues",
+            "genre": "",
+            "note": ""
+        }
+
+],
+
+"1941": [
+        {
+            "artist": "The Almanac Singers",
+            "track": "Ground Hog",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Robert Petway",
+            "track": "Catfish Blues",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Sister Rosetta Tharpe",
+            "track": "Stand By Me",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Billie Holiday",
+            "track": "Gloomy Sunday",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Golden Gate Quartet",
+            "track": "Job",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Sonny Boy Williamson",
+            "track": "Sloppy Drunk Blues",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Sister Rosetta Tharpe",
+            "track": "Rock Daniel",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "T-Bone Walker",
+            "track": "T-Bone Blues",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Almanac Singers",
+            "track": "Get Thee Behind",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Count Basie",
+            "track": "The Jitters",
+            "genre": "",
+            "note": "Most interesting others a bit predictable"
+        }
+],
+"1942": [
+{
+            "artist": "Vera Hall",
+            "track": "Another Man Done Gone",
+            "genre": "",
+            "note": "National Library of Congress, Lomax recordings"
+        },
+
+
+
+        {
+            "artist": "The Almanac Singers",
+            "track": "Round and Round Hitlers Grave",
+            "genre": "",
+            "note": "From the album Dear Mr. President"
+        },
+{
+            "artist": "Lucky Millinder",
+            "track": "Apollo Jump",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Washboard Sam",
+            "track": "Let Me Play Your Vendor",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Tommy McClennan",
+            "track": "Deep Sea Blues",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Jim Henry",
+            "track": "I Don't Mind the Weather",
+            "genre": "",
+            "note": "National Library of Congress recordings"
+        },
+{
+            "artist": "Estill Ball",
+            "track": "Pretty Polly",
+            "genre": "",
+            "note": "Shelton. National Library of Congress, Lomax recordings."
+        },
+{
+            "artist": "Big Maceo",
+            "track": "It's all up to You",
+            "genre": "",
+            "note": ""
+        }
+
+
+],
+
+"1943": [
+        {
+            "artist": "The Andrews Sisters",
+            "track": "Shoo-Shoo Baby",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Ernesto Lecuona",
+            "track": "Rumba Tambah",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Harry James and His Orchestra",
+            "track": "Flight of the Bumblebee",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Benny Goodman & His Orchestra",
+            "track": "Pound Ridge",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Xavier Cugat and His Orchestra",
+            "track": "Babalu",
+            "genre": "",
+            "note": ""
+        }
+
+
+
+],
+
+"1944": [
+        {
+            "artist": "The Almanac Singers",
+            "track": "All You Facists Are Bound To Lose",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Auld",
+            "track": "Salt Peanuts",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Burl Ives",
+            "track": "Wayfairing Stranger",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Burl Ives",
+            "track": "Buckeye Jim",
+            "genre": "",
+            "note": ""
+        }
+],
+
+"1945": [
+        {
+            "artist": "Johnny Criner",
+            "track": "Sugar Mama Blues",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Dizzie Gillespie",
+            "track": "Salt Peanuts",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Sister Rosetta Tharpe",
+            "track": "Strange Things Are Happening Everyday",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Lesley Sarony",
+            "track": "Ain’t It Grand to Be Bloomin’ Well Dead",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Lead Belly",
+            "track": "Rock Island Line",
+            "genre": "",
+            "note": "See Lonnie"
+        }
+],
+
+    "1946": [
+        {
+            "artist": "Lead Belly",
+            "track": "Where Did You Sleep Last Night",
+            "genre": "",
+            "note": "Kurt Cobain Nirvana unplugged.b"
+        },
+
+{
+            "artist": "Sonny Boy Williamson",
+            "track": "Sonny Boys Jump",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Anita Ellis",
+            "track": "Put the Blame on Mame",
+            "genre": "",
+            "note": ""
+        }
+
+    ],
+"1947": [
+        {
+            "artist": "The Golden Gate Quartet",
+            "track": "Joshua Fit the Battle of Jericho",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Louis Jordan and His Tympany Five",
+            "track": "Jack, You're Dead",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Miles Davis",
+            "track": "Little Willie Leaps",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Golden Gate Quartet",
+            "track": "Atom and Evil",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "June Christy",
+            "track": "Nat Meets June",
+            "genre": "",
+            "note": ""
+        }
+
+    ],
+    "1948": [
+        
+
+{
+            "artist": "Lead Belly",
+            "track": "Irene",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Peggy Lee",
+            "track": "Why Don't You Do Right?",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "John Lee Hooker",
+            "track": "Boogie Chillen",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Sons of the Pioneers",
+            "track": "One More River",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Les Paul",
+            "track": "Lover",
+            "genre": "",
+            "note": "An innovator who probably had much bigger sounds in his mind. Nice guitars."
+        },
+
+{
+            "artist": "Louis Jordan",
+            "track": "Run Joe",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1949": [
+{
+            "artist": "Dámaso Pérez Prado",
+            "track": "Mambo No. 5",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Bill Landford & The Landfordaires",
+            "track": "Run On for a Long Time",
+            "genre": "",
+            "note": "Did not include Moby. But I was influenced."
+        },
+{
+            "artist": "John Lee Hooker",
+            "track": "Hobo Blues",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Bill Monroe & His Blue Grass Boys",
+            "track": "Bluegrass Breakdown",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Frankie Laine",
+            "track": "Mule Train",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Sons of the Pioneers",
+            "track": "Riders in the Sky",
+            "genre": "",
+            "note": "Peggy Lee also released a great version this year."
+        },
+{
+            "artist": "Peggy Lee",
+            "track": "Riders in the Sky",
+            "genre": "",
+            "note": "Think this is up there with favourite. Song included multiple times!"
+        },
+
+
+{
+            "artist": "Louis Jordan",
+            "track": "Beans and Cornbread",
+            "genre": "",
+            "note": ""
+        },
+
+
+
+{
+            "artist": "Anton Karas",
+            "track": "The Third Man Theme",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Miles Davis",
+            "track": "Move",
+            "genre": "",
+            "note": ""
+        }
+    ],
+"1950": [
+        {
+            "artist": "Muddy Waters",
+            "track": "Rollin' and a Tumblin'",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Fats Domino",
+            "track": "The Fat Man",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Frankie Laine",
+            "track": "The Cry of the Goose",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Sons of the Pioneers",
+            "track": "Old Man Atom",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Lord Beginner",
+            "track": "Victory Test Match",
+            "genre": "",
+            "note": "Cricket calypso"
+        },
+
+{
+            "artist": "Josh White",
+            "track": "Jim Crow Train",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Soul Stirers",
+            "track": "By and By",
+            "genre": "",
+            "note": "1st version Rebert Harris"
+        }
+
+    ],
+"1951": [
+        {
+            "artist": "Howlin' Wolf",
+            "track": "Cryin' at Daybreak",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Frankie Laine",
+            "track": "Jezebel",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "John Lee Hooker",
+            "track": "Ground Hog Blues",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Lord Kitchener",
+            "track": "London is the Place For Me",
+            "genre": "",
+            "note": "Sung at Tilbury Docks in 1948 but recorded in '51"
+        },
+
+
+{
+            "artist": "Humphrey Lyttelton",
+            "track": "London Blues",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Jackie Brenston and his Delta Cats",
+            "track": "Rocket 88",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Little Richard",
+            "track": "Taxi Blues",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Harry Partch",
+            "track": "The Rose",
+            "genre": "",
+            "note": "most accessible other bits odd but innovative"
+        }
+
+    ],
+
+"1952": [
+        
+
+{
+            "artist": "Clarence Ashley",
+            "track": "The Coo Coo Bird",
+            "genre": "",
+            "note": "On Anthology of American Folk Music, released in 1952 but song was recorded in 1929."
+        },
+{
+            "artist": "Jean Ritchie",
+            "track": "The Cuckoo",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Dock Boggs",
+            "track": "Country Blues",
+            "genre": "",
+            "note": "On Anthology of American Folk Music, released in 1952 but song was recorded earlier."
+        },
+
+{
+            "artist": "Little Water",
+            "track": "Juke",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Delta Rhythm Boys",
+            "track": "Alouette, Gentille Alouette",
+            "genre": "",
+            "note": "Trop, Trop,Trop / Alouette, Gentille Alouette"
+        },
+
+{
+            "artist": "Winifred Atwell",
+            "track": "Rag Britannia",
+            "genre": "",
+            "note": "Rag piano in 50s but if a TV star."
+        },
+
+
+{
+            "artist": "Lester Williams",
+            "track": "I Can't Lose With the Stuff I Use",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Lester Flatt, Earl Scruggs",
+            "track": "Pike County Breakdown",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Five Sharps",
+            "track": "Stormy Weather",
+            "genre": "",
+            "note": ""
+        }
+
+    ],
+
+
+"1953": [
+        {
+            "artist": "Big Mamma Thornton",
+            "track": "Hound Dog",
+            "genre": "",
+            "note": "There is a response song called Bear Cat - considered it but bit contrived."
+        },
+{
+            "artist": "Little Juniors Blue Flames",
+            "track": "Feelin' Good",
+            "genre": "",
+            "note": "Sun records"
+        },
+{
+            "artist": "Mardi Gras in New Orleans",
+            "track": "Fats Domino",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Sonny Boy Williamson and his House Rockers",
+            "track": "Cat Hop",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Moondog",
+            "track": "Theme",
+            "genre": "",
+            "note": "So good."
+        },
+
+
+{
+            "artist": "Howlin' Wolf",
+            "track": "All night Boogie",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Little Junior Parker",
+            "track": "Mystery Train",
+            "genre": "",
+            "note": "Prefer Elvis"
+        },
+{
+            "artist": "A.L. Llyod",
+            "track": "Down in Yon Forest",
+            "genre": "Folk",
+            "note": "Folk revival"
+        },
+
+{
+            "artist": "The Drifters",
+            "track": "Money Honey",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Peggy Lee",
+            "track": "Black Coffee",
+            "genre": "",
+            "note": ""
+        }
+
+    ],
+    "1954": [
+        {
+            "artist": "Ray Charles",
+            "track": "I Got a Woman",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Sarah Vaughan",
+            "track": "Lullaby of Birdland",
+            "genre": "",
+            "note": ""
+        },
+
+
+
+
+{
+            "artist": "The Delta Rhythm Boys",
+            "track": "Shoes",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Chords",
+            "track": "Sh-Boom",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Odetta and Larry Mohr",
+            "track": "Wade in the Water",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Jean Ritchie",
+            "track": "Shady Grove",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Peggy Seeger",
+            "track": "Leatherwing Bat",
+            "genre": "",
+            "note": "From Courting And Complaining Songs"
+        },
+{
+            "artist": "Peggy Seeger",
+            "track": "Katy Cruel",
+            "genre": "",
+            "note": "From Courting And Complaining Songs"
+        },
+{
+            "artist": "Jean Ritchie",
+            "track": "Pretty Polly",
+            "genre": "",
+            "note": "Shelton, 27"
+        },
+{
+            "artist": "Kitty Wells",
+            "track": "Searching (For someone like you)",
+            "genre": "",
+            "note": ""
+        }
+
+    ],
+    "1955": [
+{
+            "artist": "Little Richard",
+            "track": "Tutti Fruiti",
+            "genre": "",
+            "note": ""
+        },
+        
+{
+            "artist": "The Almanac Singers",
+            "track": "Which Side Are You On",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Bo Diddley",
+            "track": "Bo Diddley",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Lonnie Donegan",
+            "track": "Rock Island Line",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Elvis Presley",
+            "track": "Mystery Train",
+            "genre": "",
+            "note": "Prefer this version to Little Junior Parker's"
+        },
+{
+            "artist": "Moondog",
+            "track": "Dog Trot",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Tennessee Ernie Ford",
+            "track": "Sixteen Tons",
+            "genre": "",
+            "note": ""
+        }
+
+    ],
+    "1956": [
+        {
+            "artist": "Chuck Berry",
+            "track": "Roll Over Beethoven",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Screamin Jay Hawkins",
+            "track": "I Put A Spell on You",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Howlin Wolf",
+            "track": "Smokestack Lightnin",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Johnny Burnette and the Rock 'n Roll Trio",
+            "track": "Train Kept A-Rollin",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Ewan MacColl",
+            "track": "Turpin Hero",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Richard Berry",
+            "track": "Louie Louie",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Pink Anderson",
+            "track": "John Henry",
+            "genre": "",
+            "note": "Struggled to find my favourite version of this."
+        },
+{
+            "artist": "The Vipers Skiffle Group",
+            "track": "Pick a Bag of Cotton",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Tommy Steele",
+            "track": "Singing the Blues",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Ravi Shankar",
+            "track": "Rāga Jog",
+            "genre": "",
+            "note": ""
+        }
+
+    ],
+    "1957": [
+        {
+            "artist": "Bo Diddley",
+            "track": "Hey! Bo Diddley",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Bo Diddley",
+            "track": "Mona",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Muddy Waters",
+            "track": "Got My Mojo Working",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Jackie Wilson",
+            "track": "Reet Petite",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Gene Vincent",
+            "track": "Cat Man",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Little Richard",
+            "track": "Lucille",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Odetta",
+            "track": "Gallows Pole",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Josh White",
+            "track": "Gloomy Sunday",
+            "genre": "",
+            "note": ""
+        },
+       
+{
+            "artist": "Moondog",
+            "track": "Oboe Round",
+            "genre": "",
+            "note": ""
+        },
+
+
+        {
+            "artist": "Patsy Cline",
+            "track": "Walking After Midnight",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1958": [
+{
+            "artist": "Ritchie Valens",
+            "track": "La Bamba",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Frankie Laine",
+            "track": "Rawhide",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Chuck Berry",
+            "track": "Johnny B Goode",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Dale Hawkins",
+            "track": "Suzie Q",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Kip Tyler",
+            "track": "She's My Witch",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Link Wray",
+            "track": "Rumble",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Kid Baltan",
+            "track": "Song of the Second Moon",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Elvis Presley",
+            "track": "Crawfish",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Peggy Lee",
+            "track": "Fever",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Elizabeth Cotton",
+            "track": "Freight Train",
+            "genre": "",
+            "note": ""
+        }
+
+        
+    ],
+    "1959": [
+        
+{
+            "artist": "Duane Eddy",
+            "track": "Peter Gunn",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Johnny Kidd and the Pirates",
+            "track": "Feelin'",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Freddie Cannon",
+            "track": "Tallahassee Lassie",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Miles Davis",
+            "track": "So What",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Shirelles",
+            "track": "Dedicated to the One I Love",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Santo & Johnny",
+            "track": "Sleep Walk",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "John Lee Hooker",
+            "track": "Crawlin' King Snake",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Fireballs",
+            "track": "Torquay",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Dave Brubeck",
+            "track": "Take Five",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Kingston Trio",
+            "track": "Tom Dooley",
+            "genre": "",
+            "note": ""
+        }
+
+    ],
+    "1960": [
+        {
+            "artist": "The Ventures",
+            "track": "Walk Don't Run",
+            "genre": "",
+            "note": ""
+        },
+
+
+
+{
+            "artist": "John Lee Hooker",
+            "track": "No Shoes",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Phantom",
+            "track": "Love Me",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Ramrods",
+            "track": "Ghost Riders in the Sky",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Shadows",
+            "track": "Apache",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Shirelles",
+            "track": "Boys",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Johnny Kidd and The Pirates",
+            "track": "Shakin' All Over",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Bobby Vee",
+            "track": "Rubber Ball",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Billy Fury",
+            "track": "Wonderous Place",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Lee Hazelwood",
+            "track": "The Girl on Death Row",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1961": [
+        {
+            "artist": "Ray Charles",
+            "track": "Hit the Road Jack",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Howlin' Wolf",
+            "track": "Wang Dang Doodle",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Chubby Checker",
+            "track": "Let's Twist Again",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "John Leyton",
+            "track": "Johnny Remember Me",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Del Shannon",
+            "track": "Runaway",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Bobbettes",
+            "track": "Mr Johnny Q",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Wanda Jackson",
+            "track": "Funnel of Love",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Marvelettes",
+            "track": "Please Mr Postman",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Patsy Cline",
+            "track": "Crazy",
+            "genre": "",
+            "note": ""
+        }
+
+    ],
+    "1962": [
+        {
+            "artist": "Booker T. & the M.G.'s",
+            "track": "Green Onions",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Crystals",
+            "track": "He's a Rebel",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Ike & Tina Turner",
+            "track": "You Should've Treated Me Right",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "The Cookies",
+            "track": "Chains",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Skeeter Davis",
+            "track": "The End of the World",
+            "genre": "",
+            "note": ""
+        },
+
+
+        {
+            "artist": "John Lee Hooker",
+            "track": "Boom Boom",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Sam Cooke",
+            "track": "Twisten' the Night Away",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Fentones",
+            "track": "The Mexican",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Dick Dale",
+            "track": "Misirlou",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1963": [
+
+{
+            "artist": "Surfaris",
+            "track": "Bombora",
+            "genre": "",
+            "note": ""
+        },
+
+
+        {
+            "artist": "Jimmy Reed",
+            "track": "Shame, Shame, Shame",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Marvin Gaye",
+            "track": "Can I Get a Witness",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Bob Dylan",
+            "track": "Masters of War",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Screaming Lord Sutch",
+            "track": "Jack the Ripper",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "The Kingsmen",
+            "track": "Louie Louie",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Better LaVette",
+            "track": "You'll Never Change",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Federals",
+            "track": "Boot Hill",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "The Beatles",
+            "track": "Saw Her Standing There",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1964": [
+        {
+            "artist": "The Kinks",
+            "track": "All Day and All of the Night",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Animals",
+            "track": "Baby Let Me Take You Home",
+            "genre": "",
+            "note": "Had traditional blues origins."
+        },
+        {
+            "artist": "Herman's Hermits",
+            "track": "Something tells me I'm into something Good",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiophonic Workshop",
+            "track": "Doctor Who",
+            "genre": "",
+            "note": "Of course Delia Derbyshire but Daphne Oram in being a pioneer in the workshop."
+        },
+        {
+            "artist": "Beach Boys",
+            "track": "I Get Around",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Animals",
+            "track": "House of the Rising Sun",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Kinks",
+            "track": "You Really Got Me",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Simon and Garfunkel",
+            "track": "The Sound of Silence",
+            "genre": "",
+            "note": "Wednesday Morning, 3am"
+        },
+{
+            "artist": "Tommy Tucker",
+            "track": "Hi-Heel Sneakers",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "The Beatles",
+            "track": "Things We Said Today",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1965": [
+        {
+            "artist": "The Sonics",
+            "track": "Psycho",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Honeycombs",
+            "track": "I Can't Get Through to You",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Mamas & the Papas",
+            "track": "California Dreamin",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Zombies",
+            "track": "She's Not There",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Shangri-las",
+            "track": "Remember (Walking In The Sand)",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Gloria Jones",
+            "track": "Tainted Love",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Nina Simone",
+            "track": "Sinnerman",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Castaways",
+            "track": "Liar Liar",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Yardbirds",
+            "track": "For Your Love",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Kinks",
+            "track": "Til the End of The Day",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1966": [
+{
+            "artist": "Sam and Dave",
+            "track": "Hold On, I'm Coming",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Supremes",
+            "track": "You Just Keep Me Hanging On",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Love",
+            "track": "7 and 7 Is",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Troggs",
+            "track": "Wild Thing",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Rolling Stones",
+            "track": "Paint it Black",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Electric Prunes",
+            "track": "I Had Too Much to Dream Last Night",
+            "genre": "",
+            "note": ""
+        },
+        
+        
+        {
+            "artist": "The Beatles",
+            "track": "Tomorrow Never Knows",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Norma Tanega",
+            "track": "You're Dead",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Ennio Morricone",
+            "track": "The Ecstasy of Gold",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Velvet Underground",
+            "track": "All Tomorrow's Parties",
+            "genre": "",
+            "note": ""
+        }
+        
+    ],
+    "1967": [
+        {
+            "artist": "Jackie Wilson",
+            "track": "The Who Who Song",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Moody Blues",
+            "track": "Nights in White Satin",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Doors",
+            "track": "Break on Through",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Velvet Underground",
+            "track": "Venus in Furs",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Pink Floyd",
+            "track": "Interstellar Overdrive",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Jefferson Airplane",
+            "track": "White Rabbit",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Monkees",
+            "track": "Stepin' Stone",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Beatles",
+            "track": "I am the Walrus",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Beatles",
+            "track": "A Day in the Life",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Captain Beefheart and his Magic Band",
+            "track": "Zig Zag Wanderer",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1968": [
+{
+            "artist": "The Rolling Stones",
+            "track": "Jumpin' Jack Flash",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Jimi Hendrix",
+            "track": "Voodoo Chile",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Beatles",
+            "track": "Helter Skelter",
+            "genre": "",
+            "note": ""
+        },
+        
+        {
+            "artist": "Status Quo",
+            "track": "Pictures of Matchstick Men",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Arthur Brown",
+            "track": "Fire",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Canned Heat",
+            "track": "On The Road Again",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Silver Apples",
+            "track": "Oscillations",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Velvet Underground",
+            "track": "Sister Ray",
+            "genre": "",
+            "note": ""
+        },
+        
+      
+
+        {
+            "artist": "The Beatles",
+            "track": "Blackbird",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Marvin Gaye",
+            "track": "Heard It Through the Grapevine",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1969": [
+
+{
+            "artist": "The Stooges",
+            "track": "I Wanna Be Your Dog",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Shocking Blue",
+            "track": "Send Me a Postcard",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Rolling Stones",
+            "track": "Gimme Shelter",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "King Crimson",
+            "track": "21st Century Schizoid Man",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Audience",
+            "track": "House on the Hill",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Beatles",
+            "track": "Come Together",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Dusty Springfield",
+            "track": "Son of a Preacher Man",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Toots and The Maytals",
+            "track": "Monkey Man",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Scott Walker",
+            "track": "The Old Man's Back Again",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1970": [
+
+{
+            "artist": "Edwin Starr",
+            "track": "War",
+            "genre": "",
+            "note": ""
+        },
+        
+
+{
+            "artist": "Led Zeppelin",
+            "track": "Immigrant Song",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Black Sabbath",
+            "track": "War Pigs",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Stooges",
+            "track": "TV Eye",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "David Bowie",
+            "track": "The Man Who Sold the World",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Kinks",
+            "track": "This Time Tomorrow",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "John Lennon",
+            "track": "Working Class Hero",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Van Morrison",
+            "track": "Moondance",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Dusty Springfield",
+            "track": "Spooky",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Joni Mitchell",
+            "track": "Big Yellow Taxi",
+            "genre": "",
+            "note": ""
+        }
+
+        
+    ],
+    "1971": [
+        
+        {
+            "artist": "The Doors",
+            "track": "Riders on the Storm",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Doors",
+            "track": "Love Her Madly",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Can",
+            "track": "Paperhouse",
+            "genre": "",
+            "note": "This is from Tago Mago, could pick any."
+        },
+
+
+{
+            "artist": "Comus",
+            "track": "The Herald",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Jethro Tull",
+            "track": "Aqualung",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Bill Withers",
+            "track": "Ain't No Sunshine",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Rotary Connection",
+            "track": "I Am the Black Gold of the Sun",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "John Lennon",
+            "track": "Imagine",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Alice Coltrane",
+            "track": "Journey In Satchidananda",
+            "genre": "",
+            "note": ""
+        }
+
+
+ 
+    ],
+    "1972": [
+{
+            "artist": "Stevie Wonder",
+            "track": "Superstition",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Lou Reed",
+            "track": "Vicious",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Osmonds",
+            "track": "Crazy Horses",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Faust",
+            "track": "It's a Rainy Day, Sunshine Girl",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Roxy Music",
+            "track": "Remake/Remodel",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Lou Reed",
+            "track": "Walk on the Wild Side",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Neu!",
+            "track": "Hallogallo",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Can",
+            "track": "Vitamin C",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Captain Beefheart",
+            "track": "Click Clack",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Neil Young",
+            "track": "Heart of Gold",
+            "genre": "",
+            "note": ""
+        }
+
+
+        
+    ],
+    "1973": [
+        {
+            "artist": "Slade",
+            "track": "Cos Luv You ",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Mike Oldfield",
+            "track": "Tubular Bells",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Can",
+            "track": "Moonshake",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Stevie Wonder",
+            "track": "Higher Ground",
+            "genre": "",
+            "note": "Innervisions"
+        },
+
+,
+        {
+            "artist": "Wings",
+            "track": "Live and Let Die",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "T Rex",
+            "track": "20th Century Boy",
+            "genre": "",
+            "note": ""
+        },
+        
+{
+            "artist": "The Stooges",
+            "track": "Gimmie Danger",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Faust",
+            "track": "Krautrock",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Dolly Parton",
+            "track": "Jolene",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1974": [
+{
+            "artist": "Brian Eno",
+            "track": "Third Uncle",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Sparks",
+            "track": "This Town Ain't Big Enough for the Both of Us",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Dr Feelgood",
+            "track": "Roxette",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Queen",
+            "track": "Killer Queen",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Hollies",
+            "track": "All I need is the Air That I Breathe",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Kraftwerk",
+            "track": "Autobahn",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Big Star",
+            "track": "September Gurls",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Stevie Wonder",
+            "track": "You Haven't Done Nothing",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Nico",
+            "track": "The End",
+            "genre": "",
+            "note": ""
+        }
+
+    ],
+    "1975": [
+        
+        {
+            "artist": "Patti Smith",
+            "track": "Gloria",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Abba",
+            "track": "SOS",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Neu!",
+            "track": "Hero",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Steve Harley & Cockney Rebel",
+            "track": "Come Up and See Me (Make me Smile)",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Electric Light Orchestra",
+            "track": "Evil Woman",
+            "genre": "",
+            "note": "was considering Showdown for 1973"
+        },
+{
+            "artist": "Led Zeppelin",
+            "track": "Kashmir",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Engineers",
+            "track": "If I Were a Carpenter",
+            "genre": "",
+            "note": ""
+        },
+
+
+
+        {
+            "artist": "Queen",
+            "track": "Bohemian Rhapsody",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1976": [
+        {
+            "artist": "Boney M",
+            "track": "Daddy Cool",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Heart",
+            "track": "Crazy On You",
+            "genre": "",
+            "note": "Riff sounds like Bigmouth Strikes Again."
+        },
+
+{
+            "artist": "Blondie",
+            "track": "X Offender",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Richard Hell",
+            "track": "Blank Generation",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "The Modern Lovers",
+            "track": "Roadrunner",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Modern Lovers",
+            "track": "She Cracked",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Pere Ubu",
+            "track": "Cloud 149",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Minnie Ripperton",
+            "track": "Les Fleurs",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Blue Oyster Cult",
+            "track": "Don't Fear the Reaper",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Jean Michel Jarre",
+            "track": "Oxygen, PT 4",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1977": [
+        {
+            "artist": "Donna Summer",
+            "track": "I Feel Love",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "David Bowie",
+            "track": "Be My Wife",
+            "genre": "",
+            "note": "Difficult to fit Bowie in but Low favourite album."
+        },
+
+        {
+            "artist": "Suicide",
+            "track": "Ghost Rider",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Stranglers",
+            "track": "No More Heroes",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Queen",
+            "track": "We Will Rock You",
+            "genre": "",
+            "note": "A bit obvious."
+        },
+        {
+            "artist": "Television",
+            "track": "Marquee Moon",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Iggy Pop",
+            "track": "The Passenger",
+            "genre": "",
+            "note": "Bowie on backing vocals production."
+        },
+{
+            "artist": "The Stooges",
+            "track": "I'm Sick of You",
+            "genre": "",
+            "note": "Great breakdown."
+        },
+
+{
+            "artist": "Electric Light Orchestra",
+            "track": "Mr Blue Sky",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Talking Heads",
+            "track": "Psycho Killer",
+            "genre": "",
+            "note": "Like Bowie Byrne hard to represent."
+        }
+    ],
+    "1978": [
+        {
+            "artist": "Kraftwerk",
+            "track": "The Model",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Sylvester",
+            "track": "You Make Me Feel (Mighty Real)",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Human League",
+            "track": "Being Boiled",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Magazine",
+            "track": "Shot by Both Sides",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Boney M",
+            "track": "Rasputin",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Buzzcocks",
+            "track": "Ever Fallen in Love with someone you shouldn't have fallen in love with",
+            "genre": "",
+            "note": "in ahead of Undertones at the mo."
+        },
+        {
+            "artist": "The B-52s",
+            "track": "Planet Claire",
+            "genre": "",
+            "note": "Doubling up up on B-52 unbelievable '78."
+        },
+        {
+            "artist": "The B-52s",
+            "track": "Rock Lobster",
+            "genre": "",
+            "note": "So good. Not a novelty. Yet a novelty."
+        },
+        {
+            "artist": "Jona Lewie",
+            "track": "You'll Always Find Me In The Kitchen At Parties",
+            "genre": "",
+            "note": "Synths."
+        },
+        {
+            "artist": "Squeeze",
+            "track": "Take Me I'm Yours",
+            "genre": "",
+            "note": "Yes, Squeeze, apparently not produced by Cale, always thought it was."
+        }
+    ],
+    "1979": [
+        {
+            "artist": "Sparks",
+            "track": "Beat the Clock",
+            "genre": "",
+            "note": "Fun. Reminds me of Mark and Lard."
+        },
+        {
+            "artist": "Joy Division",
+            "track": "Transmission",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "The Cure",
+            "track": "Jumping Someone Else's Train",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Public Image Ltd.",
+            "track": "Death Disco",
+            "genre": "",
+            "note": "Yes, correct, no Sex Pistols but we have PiL. Sex Pistols were the progenitors of so much great stuff but individual songs not for me!"
+        },
+
+{
+            "artist": "Joy Division",
+            "track": "Shaddowplay",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cramps",
+            "track": "Human Fly",
+            "genre": "",
+            "note": "Bzzz"
+        },
+        {
+            "artist": "Gary Numan",
+            "track": "Are friends Electric",
+            "genre": "",
+            "note": "Are they? No."
+        },
+        {
+            "artist": "Bauhaus",
+            "track": " Bela Lagosi's Dead",
+            "genre": "Goth.",
+            "note": "I didn't think I was a fan of goth until I heard this."
+        },
+        {
+            "artist": "Abba",
+            "track": "Gimme! Gimmie! Gimme!",
+            "genre": "",
+            "note": "Madonna samples later to good effect. This. Better."
+        },
+{
+            "artist": "Godiego",
+            "track": "Monkey Magic",
+            "genre": "",
+            "note": "Always a mixtape favourite, and Geoff Barrow from Portishead likes it."
+        }
+    ],
+    "1980": [
+        {
+            "artist": "Kate Bush",
+            "track": "Army Dreamers",
+            "genre": "",
+            "note": ""
+        },
+
+
+        {
+            "artist": "Joy Division",
+            "track": "She's Lost Control",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Motorhead",
+            "track": "Ace of Spades",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Adam and the Ants",
+            "track": "Dog Eat Dog",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cure",
+            "track": "A Forest",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Beat",
+            "track": "Mirror in the Bathroom",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Blondie",
+            "track": "Atomic",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Liliput",
+            "track": "Die Matrosen",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Spandau Ballet",
+            "track": "To Cut a Long Story Short",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Modern Lovers",
+            "track": "I'm Straight",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1981": [
+        {
+            "artist": "Soft Cell",
+            "track": "Tainted Love",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Depeche Mode",
+            "track": "Boys Say Go!",
+            "genre": "",
+            "note": "From Speak and spell Vince Clarke"
+        },
+{
+            "artist": "Eurythmics",
+            "track": "Never Gonna Cry Again",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Kim Wilde",
+            "track": "Water on Glass",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Blondie",
+            "track": "Rapture",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Bauhaus",
+            "track": "Kick in the Eye",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Delta 5",
+            "track": "Shadow",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Ian Dury",
+            "track": "Spasticus Autisticus",
+            "genre": "",
+            "note": ""
+        },
+        
+        {
+            "artist": "The Stranglers",
+            "track": "Golden Brown",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Raincoats",
+            "track": "Only Loved at Night",
+            "genre": "",
+            "note": ""
+        }
+    ],
+
+"1982": [
+        {
+            "artist": "Yazoo",
+            "track": "Don't Go",
+            "genre": "",
+            "note": ""
+        },
+
+
+
+{
+            "artist": "Yazoo",
+            "track": "Situation",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "ABC",
+            "track": "Poison Arrow",
+            "genre": "",
+            "note": ""
+        },
+
+
+{
+            "artist": "Siouxie & the Banshees",
+            "track": "She's a Carnival",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Japan",
+            "track": "Ghosts",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Michael Jackson",
+            "track": "Billie Jean",
+            "genre": "",
+            "note": ""
+        },
+
+
+
+{
+            "artist": "R.E.M.",
+            "track": "Wolves, Lower",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Talk Talk",
+            "track": "Talk Talk",
+            "genre": "",
+            "note": ""
+        }
+],
+    "1983": [
+        {
+            "artist": "Eurythmics",
+            "track": "Sweet Dreams",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Fun Boy Three",
+            "track": "Our Lips Are Sealed",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Tears for Fears",
+            "track": "Pale Shelter",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Men at Work",
+            "track": "Down Under",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "New Order",
+            "track": "Blue Monday",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Public Image Limited",
+            "track": "This is Not a Love Song",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Echo & The Bunnymen",
+            "track": "The Cutter",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Smiths",
+            "track": "Hand in Glove",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Violent Femmes",
+            "track": "Gone Daddy Gone",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cure",
+            "track": "The Walk",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1984": [
+        {
+            "artist": "The Smiths",
+            "track": "What Difference Does It Make",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Smiths",
+            "track": "William It Was Really Nothing",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Bronski Beat",
+            "track": "Smalltown Boy",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Echo & The Bunnymen",
+            "track": "The Killing Moon",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Leonard Cohen",
+            "track": "Hallelujah",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cure",
+            "track": "The Caterpillar",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Bronski Beat",
+            "track": "Why",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "King",
+            "track": "Love and Pride",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Violent Femmes",
+            "track": "Country Death Song",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Talk Talk",
+            "track": "It's My Life",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1985": [
+        {
+            "artist": "The Smiths",
+            "track": "That Joke Isn't Funny Anymore",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Smiths",
+            "track": "How Soon is Now?",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Kate Bush",
+            "track": "Running Up That Hill",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cult",
+            "track": "She Sells Sanctuary",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Throwing Muses",
+            "track": "Green",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "R.E.M.",
+            "track": "Driver 8",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Bronski Beat",
+            "track": "Hit That Perfect Beat",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Harold Faltermeyer",
+            "track": "Axel F",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Dead or Alive",
+            "track": "You Spin Me Round",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cure",
+            "track": "In Between Days",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1986": [
+        {
+            "artist": "John Farnham",
+            "track": "The Voice",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Smiths",
+            "track": "Big Mouth Strikes Again",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Communards",
+            "track": "Don't Leave Me This Way",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Falco",
+            "track": "Rock Me Amadeus",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Bangles",
+            "track": "Walk Like an Egyptian",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Paul Simon",
+            "track": "You Can Call Me Al",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Talk Talk",
+            "track": "Life's What You Make It",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Smiths",
+            "track": "Panic",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Fall",
+            "track": "Mr. Pharmacist",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Smiths",
+            "track": "The Queen is Dead",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1987": [
+        {
+            "artist": "R.E.M.",
+            "track": "The One I Love",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Fall",
+            "track": "Hit the North",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "M/A/R/R/S",
+            "track": "Pump Up the Volume",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Communards",
+            "track": "Never Can Say Goodbye",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "INXS",
+            "track": "Need You Tonight",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "R.E.M.",
+            "track": "It's the End of the World as We Know It",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Swans",
+            "track": "New Mind",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cure",
+            "track": "Just Like Heaven",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Fuzzbox",
+            "track": "What's the Point",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Depeche Mode",
+            "track": "Strangelove",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1988": [
+        {
+            "artist": "R.E.M.",
+            "track": "Orange Crush",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Pixies",
+            "track": "Where is My Mind?",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "R.E.M.",
+            "track": "Pop Song 89",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Primitives",
+            "track": "Crash",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Neneh Cherry",
+            "track": "Buffalo Stance",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Nick Cave",
+            "track": "The Mercy Seat",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "S-Express",
+            "track": "Theme from S-Express",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Enya",
+            "track": "Orinoco Flow",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Salt-N-Pepa",
+            "track": "Push It",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cure",
+            "track": "Hot Hot Hot!!!",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1989": [
+        {
+            "artist": "Pixies",
+            "track": "Debaser",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Soul II Soul",
+            "track": "Back to Life",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Lightning Seeds",
+            "track": "Pure",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Depeche Mode",
+            "track": "Personal Jesus",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The B-52s",
+            "track": "Love Shack",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Nirvana",
+            "track": "Love Buzz",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Pixies",
+            "track": "Monkey Gone to Heaven",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Throwing Muses",
+            "track": "No Parachutes",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cure",
+            "track": "Lovesong",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Nirvana",
+            "track": "About a Girl",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1990": [
+        {
+            "artist": "Happy Mondays",
+            "track": "Step On",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Sonic Youth",
+            "track": "Kool Thing",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Jane's Addiction",
+            "track": "Been Caught Stealing",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Deee-Lite",
+            "track": "Groove is in the Heart",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Depeche Mode",
+            "track": "Enjoy the Silence",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Faith No More",
+            "track": "Epic",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cure",
+            "track": "Never Enough",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Adamski",
+            "track": "Killer",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "EMF",
+            "track": "Unbelievable",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "KLF",
+            "track": "What Time is Love?",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1991": [
+        {
+            "artist": "Nirvana",
+            "track": "Smells Like Teen Spirit",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Throwing Muses",
+            "track": "Counting Backwards",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "R.E.M.",
+            "track": "Losing My Religion",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "KLF",
+            "track": "3am Eternal",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "PJ Harvey",
+            "track": "Dress",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Orbital",
+            "track": "Satan",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Nirvana",
+            "track": "Polly",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Massive Attack",
+            "track": "Unfinished Sympathy",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Smashing Pumpkins",
+            "track": "Siva",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Massive Attack",
+            "track": "Safe from Harm",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1992": [
+        {
+            "artist": "Radiohead",
+            "track": "Creep",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Sonic Youth",
+            "track": "100%",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Sonic Youth",
+            "track": "Sugar Kane",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Suede",
+            "track": "The Drowners",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "PJ Harvey",
+            "track": "Sheela-Na-Gig",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Charlatans",
+            "track": "Weirdo",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "My Bloody Valentine",
+            "track": "Only Shallow",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Blur",
+            "track": "Popscene",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Boo Radleys",
+            "track": "Lazarus",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Sugarcubes",
+            "track": "Hit",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1993": [
+        {
+            "artist": "Blur",
+            "track": "Chemical World",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Breeders",
+            "track": "Cannonball",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Suede",
+            "track": "Animal Nitrate",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Rage Against The Machine",
+            "track": "Killing in The Name",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Dodgy",
+            "track": "In A Room",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "PJ Harvey",
+            "track": "50ft Queenie",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "PJ Harvey",
+            "track": "Rid of Me",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Stereolab",
+            "track": "French Disco",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiohead",
+            "track": "You",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Ace of Base",
+            "track": "All That She Wants",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1994": [
+        {
+            "artist": "Nick Cave and the Bad Seeds",
+            "track": "Red Right Hand",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Nick Cave and the Bad Seeds",
+            "track": "Do You Love Me?",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Elastica",
+            "track": "Line Up",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Portishead",
+            "track": "Sour Times",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Jeff Buckley",
+            "track": "Grace",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Auteurs",
+            "track": "Lenny Valentino",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "dEUS",
+            "track": "Suds and Soda",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Hole",
+            "track": "Violet",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Oasis",
+            "track": "Whatever",
+            "genre": "",
+            "note": "Basically everything before this and a little after. But it's 10 songs!"
+        },
+        {
+            "artist": "The Cranberries",
+            "track": "Zombie",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1995": [
+        {
+            "artist": "Nick Cave and Kylie Minogue",
+            "track": "Where The Wild Roses Grow",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Alanis Morissette",
+            "track": "You Oughta Know",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Whale",
+            "track": "Hobo Humpin Slobo Babe",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Sleater-Kinney",
+            "track": "The Last Song",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiohead",
+            "track": "Just",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Smashing Pumpkins",
+            "track": "Bullet With Butterfly Wings",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Seal",
+            "track": "Kiss From A Rose",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Portishead",
+            "track": "Glory Box",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Daft Punk",
+            "track": "Da Funk",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Placebo",
+            "track": "Bruise Pristine",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1996": [
+        {
+            "artist": "Bis",
+            "track": "Kandy Pop",
+            "genre": "Indie",
+            "note": "Unsigned"
+        },
+        {
+            "artist": "White Town",
+            "track": "Your Woman",
+            "genre": "",
+            "note": "Sampled a 1932 record. see Lew Stone. Entry point. Looking back and forwards. Number 1 in 97. First heard on Mark and Lard.  "
+        },
+        {
+            "artist": "Lilys",
+            "track": "A Nanny in Manhattan",
+            "genre": "",
+            "note": "Steve Lamaq one I think."
+        },
+        {
+            "artist": "Nick Cave and the Bad Seeds",
+            "track": "Stagger Lee",
+            "genre": "",
+            "note": "Nick Cave apparently influenced by "
+        },
+        {
+            "artist": "dEUS",
+            "track": "Roses",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Super Furry Animals",
+            "track": "The Man Don't Give a F**k",
+            "genre": "",
+            "note": "About a Cardiff football"
+        },
+        {
+            "artist": "Cake",
+            "track": "Going The Distance",
+            "genre": "",
+            "note": "A slightly quirkier one."
+        },
+        {
+            "artist": "Kula Shaker",
+            "track": "Govinda",
+            "genre": "",
+            "note": "Very 60s influenced but was welcome."
+        },
+        {
+            "artist": "The Chemical Brothers",
+            "track": "Setting Sun",
+            "genre": "",
+            "note": "Noel Gallagher. Nods to past and future. But at the time felt like the future!"
+        },
+        {
+            "artist": "Ocean Colour Scene",
+            "track": "The Riverboat Song",
+            "genre": "",
+            "note": "Extremely 60s influenced but added 90s production."
+        }
+    ],
+    "1997": [
+        {
+            "artist": "Primal Scream",
+            "track": "Kowalski",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Blur",
+            "track": "Song 2",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Placebo",
+            "track": "Nancy Boy",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Mansun",
+            "track": "She Makes My Nose Bleed",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Portishead",
+            "track": "All Mine",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Prodigy",
+            "track": "Mindfields",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Blue Boy",
+            "track": "Remember Me",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiohead",
+            "track": "Lucky",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiohead",
+            "track": "A Reminder",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Asian Dub Foundation",
+            "track": "Naxalite",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1998": [
+        {
+            "artist": "Godspeed You! Black Emperor",
+            "track": "Providence",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Massive Attack",
+            "track": "Teardrop",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "UNKLE",
+            "track": "Rabbit in Your Headlights",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Air",
+            "track": "All I Need",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Delgados",
+            "track": "Pull the Wires from the Wall",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The White Stripes",
+            "track": "Let's Shake Hands",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Hole",
+            "track": "Celebrity Skin",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Morcheeba",
+            "track": "Part of the Process",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Spiritualized",
+            "track": "Come Together",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "PJ Harvey",
+            "track": "A Perfect Day Elise",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "1999": [
+        {
+            "artist": "Muse",
+            "track": "Sunburn",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Black Rebel Motorcycle Club",
+            "track": "Red Eyes and Tears",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Primal Scream",
+            "track": "Swastika Eyes",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The All Seeing I",
+            "track": "Walk Like A Panther",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Mercury Rev",
+            "track": "Goddess On A Hiway",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Gay Dad",
+            "track": "To Earth With Love",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Fugazi",
+            "track": "I'm So Tired",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Blur",
+            "track": "No Distance Left To Run",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Clinic",
+            "track": "The Second Line",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Death in Vegas",
+            "track": "Dirge",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2000": [
+        {
+            "artist": "Primal Scream",
+            "track": "Kill All Hippies",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Badly Drawn Boy",
+            "track": "Once Around the Block",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Queens of the Stone Age",
+            "track": "Feel Good Hit of The Summer",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiohead",
+            "track": "Everything in its Right Place",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Fall",
+            "track": "Dr. Buck's Letter",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Doves",
+            "track": "A House",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Elliott Smith",
+            "track": "Son of Sam",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Calexico",
+            "track": "Crystal Frontier",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Dandy Warhols",
+            "track": "Get Off",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Clinic",
+            "track": "Return of Evil Bill",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2001": [
+        {
+            "artist": "Simian",
+            "track": "The Wisp",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cooper Temple Clause",
+            "track": "Devil Walks in The Sand",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Desert Sessions",
+            "track": "Nenada",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Liars",
+            "track": "Mr Your on Fire Mr",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Zero 7",
+            "track": "In the Waiting Line",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiohead",
+            "track": "Pyramid Song",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "PJ Harvey",
+            "track": "This is Love",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The White Stripes",
+            "track": "Fell In Love With A Girl",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Scuba Z",
+            "track": "The Vanishing American Family",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Seafood",
+            "track": "Cloaking",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2002": [
+        {
+            "artist": "Greenhorns",
+            "track": "There is an End",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Libertines",
+            "track": "I Get Along",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Ladytron",
+            "track": "Blue Jeans",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cooper Temple Clause",
+            "track": "Been Training Dogs",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Queens of the Stone Age",
+            "track": "No One Knows",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "mclusky",
+            "track": "To Hell with Good Intentions",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Ikara Colt",
+            "track": "May B 1 Day",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Foxholski",
+            "track": "Joy Butcher",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Kills",
+            "track": "Black Rooster",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Eighties Matchbox B-Line Disaster",
+            "track": "Celebrate Your Mother",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2003": [
+        {
+            "artist": "The Rapture",
+            "track": "Echoes",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Explosions in the Sky",
+            "track": "Your Hand in Mine",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Cooper Temple Clause",
+            "track": "AIM",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Franz Ferdinand",
+            "track": "Darts of Pleasure",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Psychid",
+            "track": "Field Day",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Yeah Yeah Yeahs",
+            "track": "Bang",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Electric Six",
+            "track": "Danger! High Voltage",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Datsuns",
+            "track": "Harmonic Generator",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Eighties Matchbox B-Line Disaster",
+            "track": "Psychosis Safari",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Faint",
+            "track": "Agenda Suicide",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2004": [
+        {
+            "artist": "Franz Ferdinand",
+            "track": "Take Me Out",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Art Brut",
+            "track": "Formed a Band",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Duke Spirit",
+            "track": "Cuts Across The Land",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "PJ Harvey",
+            "track": "The Letter",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Long Blondes",
+            "track": "Giddy Stratospheres",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Electrelane",
+            "track": "The Valleys",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Graham Coxon",
+            "track": "Freakin Out",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "22-20s",
+            "track": "Devil in Me",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "LCD Soundsystem",
+            "track": "Movement",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Others",
+            "track": "Psycho Vision",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2005": [
+        {
+            "artist": "Arcade Fire",
+            "track": "Rebellion (Lies)",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "LCD Soundsystem",
+            "track": "Daft Punk is Playing in My House",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Tom Vek",
+            "track": "C-C (You Set the Fire in Me)",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Bravery",
+            "track": "An Honest Mistake",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The White Stripes",
+            "track": "Blue Orchid",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Duke Spirit",
+            "track": "Love is an Unfamiliar Name",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "LCD Soundsystem",
+            "track": "Tribulations",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Franz Ferdinand",
+            "track": "Outsiders",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Sons and Daughters",
+            "track": "Dance Me In",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Chemical Brothers",
+            "track": "Galvanize",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2006": [
+        {
+            "artist": "The Gossip",
+            "track": "Standing in the Way of Control",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Seasick Steve",
+            "track": "Dog House Boogie",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Johnny Cash",
+            "track": "God's Gonna Cut You Down",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Long Blondes",
+            "track": "You Could Have Both",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "CSS",
+            "track": "Alala",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Gossip",
+            "track": "Listen Up!",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Alela Diane",
+            "track": "The Pirate's Gospel",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Editors",
+            "track": "All Sparks",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Breaks",
+            "track": "All Night Disco Party",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Party in Hiroshima",
+            "track": "Fraunhofer",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2007": [
+        {
+            "artist": "Klaxons",
+            "track": "Golden Skans",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "LCD Soundsystem",
+            "track": "North American Scum",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Grinderman",
+            "track": "No Pussy Blues",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Late of the Pier",
+            "track": "Bathroom Gurgle",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Devendra Banhart",
+            "track": "Seahorse",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "LCD Soundsystem",
+            "track": "Us V Them",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Klaxons",
+            "track": "Atlantis to Interzone",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Bat for Lashes",
+            "track": "Horse and I",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "DakhaBrakha",
+            "track": "Sho z-pod duba",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Blood Red Shoes",
+            "track": "It's Getting Boring by the Sea",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2008": [
+        {
+            "artist": "Portishead",
+            "track": "Machine Gun",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Portishead",
+            "track": "The Rip",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Foals",
+            "track": "Cassius",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Foals",
+            "track": "Two Steps, Twice",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Sons and Daughters",
+            "track": "Gilt Complex",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Rokia Traoré",
+            "track": "Dounia",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Late of the Pier",
+            "track": "Heartbeat",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Kills",
+            "track": "Cheap and Cheerful",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Black Keys",
+            "track": "I Got Mine",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Mystery Jets",
+            "track": "Hideaway",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2009": [
+        {
+            "artist": "The Horrors",
+            "track": "Sea Within a Sea",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The xx",
+            "track": "Crystalised",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Gossip",
+            "track": "Heavy Cross",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Brian Jonestown Massacre",
+            "track": "Anemone",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Kasabian",
+            "track": "Fire",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The xx",
+            "track": "Intro",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Dead Weather",
+            "track": "Treat Me Like Your Mother",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Band of Skulls",
+            "track": "I Know What I Am",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Franz Ferdinand",
+            "track": "Ulysses",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Joy Formidable",
+            "track": "Whirring",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2010": [
+        {
+            "artist": "Trash Kit",
+            "track": "Cadets",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Liars",
+            "track": "Scissor",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Laura Marling",
+            "track": "Devil's Spoke",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Laura Marling",
+            "track": "Rambling Man",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Warpaint",
+            "track": "Undertow",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Bombino",
+            "track": "Amidinine",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Strange Boys",
+            "track": "Be Brave",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Foals",
+            "track": "Spanish Sahara",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Foals",
+            "track": "Blue Blood",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Tokyo Police Club",
+            "track": "Bambi",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2011": [
+        {
+            "artist": "PJ Harvey",
+            "track": "The Words That Maketh Murder",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "PJ Harvey",
+            "track": "Let England Shake",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Black Keys",
+            "track": "Lonely Boy",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Anna Calvi",
+            "track": "Suzanne and I",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Metronomy",
+            "track": "The Bay",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Lianne La Havas",
+            "track": "Forget",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Kills",
+            "track": "Future Starts Slow",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Danger Mouse feat. Jack White",
+            "track": "Two Against One",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiohead",
+            "track": "Lotus Flower",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiohead",
+            "track": "Codex",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2012": [
+        {
+            "artist": "Savages",
+            "track": "Husbands",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Savages",
+            "track": "City's Full",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Black Keys",
+            "track": "Gold on the Ceiling",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Goat",
+            "track": "Run to Your Mama",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Django Django",
+            "track": "Default",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Django Django",
+            "track": "Life's a Beach",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The xx",
+            "track": "Angels",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Grimes",
+            "track": "Genesis",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Japandroids",
+            "track": "The House That Heaven Built",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Tame Impala",
+            "track": "Elephant",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2013": [
+        {
+            "artist": "Arcade Fire",
+            "track": "Reflektor",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Drenge",
+            "track": "Backwaters",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Shopping",
+            "track": "In Other Words",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Traams",
+            "track": "Klaus",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "James Blake",
+            "track": "Retrograde",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Drenge",
+            "track": "Bloodsports",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Queens of the Stone Age",
+            "track": "My God is the Sun",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Queens of the Stone Age",
+            "track": "I Sat by the Ocean",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Savages",
+            "track": "She Will",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Savages",
+            "track": "Shut Up",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2014": [
+        {
+            "artist": "Fat White Family",
+            "track": "Touch the Leather",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Trash Kit",
+            "track": "Medicine",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Royal Blood",
+            "track": "Come on Over",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Royal Blood",
+            "track": "Figure it Out",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Slaves",
+            "track": "Debbie Where's Your Car",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Slaves",
+            "track": "The Hunter",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Savages",
+            "track": "F**kers",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Gary Numan",
+            "track": "I am Dust",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Wytches",
+            "track": "Gravedweller",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Ty Segall",
+            "track": "Feel",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2015": [
+        {
+            "artist": "Savages",
+            "track": "Adore Life",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Ezra Furman",
+            "track": "Restless Year",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Songhoy Blues",
+            "track": "Soubour",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Songhoy Blues",
+            "track": "Al Hassidi Terei",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Courtney Barnett",
+            "track": "Pedestrian at Best",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Foals",
+            "track": "What Went Down",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Foals",
+            "track": "Mountain at the Gates",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Slaves",
+            "track": "Cheer Up London",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Savages",
+            "track": "The Answer",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Years & Years",
+            "track": "King",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2016": [
+        {
+            "artist": "Yak",
+            "track": "Harbour the Feeling",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiohead",
+            "track": "Burn the Witch",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Radiohead",
+            "track": "Decks Dark",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "DakhaBrakha",
+            "track": "Monakh",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Jambinai",
+            "track": "Wardrobe",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Blonde Redhead",
+            "track": "I Don't Want U",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "PJ Harvey",
+            "track": "The Wheel",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Massive Attack feat. Young Fathers",
+            "track": "Voodoo in my Blood",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Kevin Morby",
+            "track": "I Have Been to the Mountain",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "David Bowie",
+            "track": "Blackstar",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2017": [
+        {
+            "artist": "Idles",
+            "track": "Well Done",
+            "genre": "Rock",
+            "note": ""
+        },
+        {
+            "artist": "Sam Fender",
+            "track": "Play God",
+            "genre": "Indie",
+            "note": ""
+        },
+        {
+            "artist": "Goat",
+            "track": "Goatfuzz",
+            "genre": "Rock",
+            "note": ""
+        },
+        {
+            "artist": "Thee Oh Sees",
+            "track": "The Static God",
+            "genre": "Rock",
+            "note": ""
+        },
+        {
+            "artist": "The Myrrors",
+            "track": "Tea House Music",
+            "genre": "Rock",
+            "note": ""
+        },
+        {
+            "artist": "The Myrrors",
+            "track": "Organ Mantra",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Black Angels",
+            "track": "Currency",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "The Horrors",
+            "track": "Press Enter to Exit",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Queens of the Stone Age",
+            "track": "The Way You Used To Do",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Gary Numan",
+            "track": "My Name is Ruin",
+            "genre": "",
+            "note": ""
+        }
+    ],
+    "2018": [
+        {
+            "artist": "Idles",
+            "track": "Never Fight a Man with a Perm",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Idles",
+            "track": "Colossus",
+            "genre": "",
+            "note": ""
+        },
+{
+            "artist": "Goat Girl",
+            "track": "Throw Me a Bone",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "Viagra Boys",
+            "track": "Up All Night",
+            "genre": "",
+            "note": ""
+        },
+
+{
+            "artist": "The Breeders",
+            "track": "Wait in the Car",
+            "genre": "",
+            "note": ""
+        },
+
+        {
+            "artist": "Big Joanie",
+            "track": "Fall Asleep",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Big Joanie",
+            "track": "Used to be Friends",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Shopping",
+            "track": "The Hype",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Yak",
+            "track": "Fried",
+            "genre": "",
+            "note": ""
+        },
+        {
+            "artist": "Goat Girl",
+            "track": "The Man",
+            "genre": "",
+            "note": ""
+        }
+    ],
+"2019": [
+        { "artist": "Jambinai", "track": "Sun. Tears Red.", "genre": "", "note": "" },
+        { "artist": "Trash Kit", "track": "Horizon", "genre": "", "note": "" },
+        { "artist": "Drahla", "track": "Stimulus for Living", "genre": "", "note": "" },
+        { "artist": "Moon Duo", "track": "Fever Night", "genre": "", "note": "" },
+        { "artist": "Fontaines D.C.", "track": "Boys in the Better Land", "genre": "", "note": "" },
+        { "artist": "Cage The Elephant & Iggy Pop", "track": "Broken Boy", "genre": "", "note": "" },
+        { "artist": "Amyl and the Sniffers", "track": "I Got You", "genre": "", "note": "" },
+        { "artist": "Fontaines D.C.", "track": "Big", "genre": "", "note": "" },
+        { "artist": "Jambinai", "track": "ONDA", "genre": "", "note": "" },
+        { "artist": "Porridge Radio", "track": "Give / Take", "genre": "", "note": "" }
+    ],
+    "2020": [
+        { "artist": "Idles", "track": "Grounds", "genre": "", "note": "" },
+        { "artist": "Porridge Radio", "track": "Sweet", "genre": "", "note": "" },
+        { "artist": "Idles", "track": "A Hymn", "genre": "", "note": "" },
+        { "artist": "Walt Disco", "track": "Cut Your Hair", "genre": "", "note": "" },
+        { "artist": "Collectress", "track": "Landing", "genre": "", "note": "" },
+        { "artist": "Shopping", "track": "Initiative", "genre": "", "note": "" },
+        { "artist": "Deadletter", "track": "Fit for Work", "genre": "", "note": "" },
+        { "artist": "Porridge Radio", "track": "Good for You", "genre": "", "note": "" },
+        { "artist": "DakhaBrakha", "track": "Alambari", "genre": "", "note": "" },
+        { "artist": "Sprints", "track": "Drones", "genre": "", "note": "" }
+    ],
+    "2021": [
+        { "artist": "Black Country, New Road", "track": "Opus", "genre": "", "note": "" },
+        { "artist": "Italia 90", "track": "Borderline", "genre": "", "note": "" },
+        { "artist": "Goat Girl", "track": "Pest", "genre": "", "note": "" },
+        { "artist": "Goat Girl", "track": "Sad Cowboy", "genre": "", "note": "" },
+        { "artist": "Go_A", "track": "Shum", "genre": "", "note": "" },
+        { "artist": "Amyl and the Sniffers", "track": "Freaks to the Front", "genre": "", "note": "" },
+        { "artist": "Sprints", "track": "Swimming", "genre": "", "note": "" },
+        { "artist": "Wet Leg", "track": "Chaise Longue", "genre": "", "note": "" },
+        { "artist": "Night Beats", "track": "Hell In Texas", "genre": "", "note": "" },
+        { "artist": "Squid", "track": "Pamphlets", "genre": "", "note": "" }
+    ],
+    "2022": [
+        { "artist": "Paramore", "track": "This Is Why", "genre": "", "note": "" },
+        { "artist": "Deadletter", "track": "Pop Culture Connoisseur", "genre": "", "note": "" },
+        { "artist": "Bill Callahan", "track": "Bowevil", "genre": "", "note": "" },
+        { "artist": "Wet Leg", "track": "Angelica", "genre": "", "note": "" },
+        { "artist": "Warmduscher", "track": "Wild Flowers", "genre": "", "note": "" },
+        { "artist": "The Smile", "track": "You'll Never Work in Television Again", "genre": "", "note": "" },
+        { "artist": "Yeah Yeah Yeahs", "track": "Burning", "genre": "", "note": "" },
+        { "artist": "Sprints", "track": "Delia Smith", "genre": "", "note": "" },
+        { "artist": "Sprints", "track": "Little Fix", "genre": "", "note": "" },
+        { "artist": "Anna B Savage", "track": "Ghost", "genre": "", "note": "" }
+    ],
+
+"2023": [
+    {
+        "artist": "Man/Woman/Chainsaw",
+        "track": "What Lucy Found There",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Sprints",
+        "track": "Up and Comer",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Sprints",
+        "track": "Adore Adore Adore",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Bar italia",
+        "track": "My Little Tony",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Italia 90",
+        "track": "Leisure Activities",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "English Teacher",
+        "track": "Nearly Daffodils",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Sweeping Promises",
+        "track": "Eraser",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Gabriels",
+        "track": "Glory",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Pit Pony",
+        "track": "Accidental Doom",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Servals (Dee Fry)",
+        "track": "Moonwolves",
+        "genre": "",
+        "note": ""
+    }
+],
+"2024": [
+    {
+        "artist": "Man/Woman/Chainsaw",
+        "track": "The Boss",
+        "genre": "Post-Punk",
+        "note": ""
+    },
+    {
+        "artist": "Goat",
+        "track": "Ouroboros",
+        "genre": "Psychedelic Rock",
+        "note": ""
+    },
+    {
+        "artist": "English Teacher",
+        "track": "This Could Be Texas",
+        "genre": "Indie Rock",
+        "note": ""
+    },
+    {
+        "artist": "Idles",
+        "track": "Gift Horse",
+        "genre": "Post-Punk",
+        "note": ""
+    },
+    {
+        "artist": "Sprints",
+        "track": "Heavy",
+        "genre": "Garage Rock",
+        "note": ""
+    },
+    {
+        "artist": "Kim Gordon",
+        "track": "BYE BYE",
+        "genre": "Experimental",
+        "note": ""
+    },
+    {
+        "artist": "Kim Deal",
+        "track": "Coast",
+        "genre": "Alternative Rock",
+        "note": ""
+    },
+    {
+        "artist": "Amyl and the Sniffers",
+        "track": "Chewing Gum",
+        "genre": "Punk Rock",
+        "note": "From their 2024 album Cartoon Darkness."
+    },
+    {
+        "artist": "Honeyglaze",
+        "track": "Don't",
+        "genre": "Post-Punk",
+        "note": "."
+    },
+    {
+        "artist": "Jack White",
+        "track": "That's How I'm Feeling",
+        "genre": "Garage Rock",
+        "note": ""
+    }
+    
+],
+"2025": [
+    {
+        "artist": "Squid",
+        "track": "Building 650",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Kae Tempest",
+        "track": "Know Yourself",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Lambrini Girls",
+        "track": "no homo",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "pôt-pot",
+        "track": "22° Halo",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Skunk Anansie",
+        "track": "An Artist is an Artist",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Panic Shack",
+        "track": "Gok Wan",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Jehnny Beth",
+        "track": "Broken Rib",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Geese",
+        "track": "100 horses",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Soulwax",
+        "track": "Gimmie a reason",
+        "genre": "",
+        "note": ""
+    },
+    {
+        "artist": "Charlie XCX feat John Cale",
+        "track": "House",
+        "genre": "",
+        "note": ""
+    }
+],
+
+    "2026": [
+        {
+            "artist": "TBA",
+            "track": "TBA",
+            "genre": "",
+            "note": ""
+        }
+    ]
+};
+
+    function toggleSearch() {
+        const overlay = document.getElementById('search-overlay');
+        const input = document.getElementById('global-search');
+        overlay.classList.toggle('open');
+        if (overlay.classList.contains('open')) {
+            input.focus();
+        } else {
+            input.value = '';
+        }
+    }
+
+    function handleSearch(q) {
+        if(!q) return;
+        const results = [];
+        Object.keys(songData).forEach(y => {
+            songData[y].forEach(s => {
+                const searchStr = `${s.artist} ${s.track} ${s.genre}`.toLowerCase();
+                if(searchStr.includes(q.toLowerCase())) results.push({...s, year: y});
+            });
+        });
+        
+        const container = document.getElementById('decade-content');
+        container.innerHTML = `<div style="padding: 4rem 0"><p style="font-size: 0.7rem; text-transform: uppercase; color: var(--subtle)">Found: ${results.length} matches for "${q}"</p></div>`;
+        
+        // Group by year for cleaner search results
+        const years = [...new Set(results.map(r => r.year))];
+        years.forEach(y => {
+            const yearSongs = results.filter(r => r.year === y);
+            container.appendChild(createYearRow(y, yearSongs));
+        });
+        
+        showPage('decade');
+    }
+
+    function createYearRow(year, songs) {
+        const row = document.createElement('div');
+        row.className = 'year-row';
+        row.id = `year-${year}`;
+        let songsHtml = '';
+        songs.forEach((s, i) => {
+    // 1. Refine the query to exclude reissues and remasters
+    // 2. We keep the year to help narrow it down to that specific era
+    // Search queries for both platforms
+const searchQuery = encodeURIComponent(`${s.artist} ${s.track} ${year} -reissue -remastered`);
+
+
+const itunesQuery = encodeURIComponent(s.artist.split(/ feat| ft| &| with/i)[0] + " " + s.track);
+
+songsHtml += `
+    <div class="song-entry" 
+         ondblclick="addToPlaylist('${s.artist.replace(/'/g, "\\'")}', '${s.track.replace(/'/g, "\\'")}')"
+         ontouchstart="handleTouchStart('${s.artist.replace(/'/g, "\\'")}', '${s.track.replace(/'/g, "\\'")}')"
+         ontouchend="handleTouchEnd()">
+
+
+        <div class="song-meta">
+            <span style="font-family:monospace; font-size:0.7rem; color:var(--subtle); margin-right: 1.5rem;">${(i+1).toString().padStart(2,'0')}</span>
+            <span class="song-title">
+                <span class="song-artist-link" onclick="showArtistProfile('${s.artist}')">${s.artist}</span><span class="track-name">${s.track}</span>
+                <span class="preview-dot" title="Listen Preview" onclick="togglePreview('${s.artist.replace(/'/g, "\\'")}', '${s.track.replace(/'/g, "\\'")}', this)"></span>
+                
+                <a href="https://www.discogs.com/search/?q=${searchQuery}&type=all&sort=year,asc" target="_blank" class="discogs-link" title="Find Original Recording">◉°</a>
+                
+                <a href="https://music.apple.com/search?term=${itunesQuery}" target="_blank" class="itunes-link" title="Search on Apple Music">itunes</a>
+                
+                <span class="genre-tag" onclick="filterByGenre('${s.genre}')">${s.genre}</span>
+            </span>
+        </div>
+        <p class="song-note">${s.note}</p>
+    </div>
+`;
+});
+
+        row.innerHTML = `
+    <div class="year-heading">
+        <h2>${year}</h2>
+        <span onclick="addYearToPlaylist('${year}')" style="color: var(--subtle); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; display: block; margin-top: 0.5rem; transition: color 0.2s;">
+            + Add year to playlist
+        </span>
+    </div>
+    <div class="year-content">
+        <div class="song-list">${songsHtml}</div>
+    </div>
+`;
+        return row;
+    }
+
+    function renderDecade(startYear) {
+        const container = document.getElementById('decade-content');
+        const horizon = document.getElementById('year-horizon');
+        container.innerHTML = ''; horizon.innerHTML = '';
+        horizon.classList.add('visible');
+        for (let y = startYear; y < startYear + 10; y++) {
+            const link = document.createElement('div');
+            link.className = 'horizon-link'; link.innerText = y;
+            link.onclick = () => {
+                const el = document.getElementById(`year-${y}`);
+                if(el) el.scrollIntoView({ behavior: 'smooth' });
+            };
+            horizon.appendChild(link);
+            const songs = songData[y.toString()] || [];
+            container.appendChild(createYearRow(y, songs));
+        }
+        showPage('decade');
+    }
+
+    function filterByGenre(genre) {
+        const results = [];
+        Object.keys(songData).forEach(y => {
+            songData[y].forEach(s => {
+                if (s.genre === genre) results.push({...s, year: y});
+            });
+        });
+        const container = document.getElementById('decade-content');
+        container.innerHTML = `<div style="padding: 4rem 0"><p style="font-size: 0.7rem; text-transform: uppercase; color: var(--subtle)">Genre Lineage: ${genre}</p></div>`;
+        const years = [...new Set(results.map(r => r.year))];
+        years.forEach(y => {
+            const yearSongs = results.filter(r => r.year === y);
+            container.appendChild(createYearRow(y, yearSongs));
+        });
+        showPage('decade');
+    }
+
+    function showArtistProfile(name) {
+    const content = document.getElementById('artist-profile-content');
+    
+    const results = [];
+    Object.keys(songData).forEach(y => {
+        songData[y].forEach(s => {
+            if (s.artist === name) results.push({...s, year: y});
+        });
+    });
+
+    // --- UPDATE THIS SECTION ---
+    let profileHtml = `
+        <div style="margin-top: 6rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">${name}</h1>
+            <div style="margin-top: 0.25rem; display: flex; gap: 15px;">
+                <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(name)}" target="_blank" class="wiki-link">
+                    Wikipedia Biography ↗
+                </a>
+                <a href="https://open.spotify.com/search/${encodeURIComponent(name)}" target="_blank" class="spotify-link">
+                    Spotify ↗
+                </a>
+            </div>
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; margin-top: 1.5rem;">
+                Artist Timeline
+            </p>
+        </div>
+    `;
+    // ---------------------------
+
+    const years = [...new Set(results.map(r => r.year))];
+    years.forEach(y => {
+        const yearSongs = results.filter(r => r.year === y);
+        profileHtml += createYearRow(y, yearSongs).innerHTML;
+    });
+
+    content.innerHTML = profileHtml;
+    showPage('artist-profile');
+}
+
+let currentRegistrySort = 'alpha';
+
+function getRegistryStats() {
+    const allSongs = Object.values(songData).flat();
+    const artists = {};
+    const genres = {};
+    const years = Object.keys(songData).map(Number);
+    
+    allSongs.forEach(s => {
+        artists[s.artist] = (artists[s.artist] || 0) + 1;
+        if (s.genre) genres[s.genre] = (genres[s.genre] || 0) + 1;
+    });
+
+    const artistNames = Object.keys(artists);
+    const topArtist = artistNames.reduce((a, b) => artists[a] > artists[b] ? a : b, artistNames[0]);
+    const topGenre = Object.keys(genres).reduce((a, b) => genres[a] > genres[b] ? a : b, "N/A");
+    
+    return {
+        totalSongs: allSongs.length,
+        totalArtists: artistNames.length,
+        topArtist: topArtist,
+        topArtistCount: artists[topArtist],
+        topGenre: topGenre,
+        span: `${Math.min(...years)} — ${Math.max(...years)}`
+    };
+}
+
+function renderArtistIndex(sortBy) {
+    if (sortBy) currentRegistrySort = sortBy;
+    
+    const stats = getRegistryStats();
+    const statsContainer = document.getElementById('registry-stats');
+    const filterValue = document.getElementById('registry-local-filter')?.value.toLowerCase() || "";
+    
+    // Update Stats UI
+    statsContainer.innerHTML = `
+        <div style="min-width: 120px;">
+            <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle); margin-bottom: 0.5rem;">Collection</p>
+            <p style="font-size: 1.3rem; font-weight: 700;">${stats.totalSongs} <span style="font-size: 0.8rem; font-weight: 400; color: var(--subtle)">Tracks</span></p>
+        </div>
+        <div style="min-width: 120px;">
+            <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle); margin-bottom: 0.5rem;">Registry</p>
+            <p style="font-size: 1.3rem; font-weight: 700;">${stats.totalArtists} <span style="font-size: 0.8rem; font-weight: 400; color: var(--subtle)">Artists</span></p>
+        </div>
+        <div style="min-width: 120px;">
+            <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle); margin-bottom: 0.5rem;">Span</p>
+            <p style="font-size: 1.3rem; font-weight: 700;">${stats.span}</p>
+        </div>
+        <div style="min-width: 120px;">
+            <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle); margin-bottom: 0.5rem;">Top Contributor</p>
+            <p style="font-size: 1.3rem; font-weight: 700;">${stats.topArtist} <span style="font-weight: 400; font-size: 0.8rem; color: var(--subtle)">(${stats.topArtistCount})</span></p>
+        </div>
+        <div style="min-width: 120px;">
+            <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle); margin-bottom: 0.5rem;">Core Genre</p>
+            <p style="font-size: 1.3rem; font-weight: 700;">${stats.topGenre}</p>
+        </div>
+    `;
+
+    const container = document.getElementById('registry-content');
+    container.innerHTML = '';
+    
+    const artistCounts = {};
+    Object.values(songData).flat().forEach(s => {
+        artistCounts[s.artist] = (artistCounts[s.artist] || 0) + 1;
+    });
+
+    let artists = Object.keys(artistCounts);
+    
+    // Sort logic
+    if (currentRegistrySort === 'alpha') {
+        artists.sort();
+    } else {
+        artists.sort((a, b) => artistCounts[b] - artistCounts[a]);
+    }
+
+    // Filter and Render
+    artists.forEach(a => {
+        if (filterValue && !a.toLowerCase().includes(filterValue)) return;
+        
+        const card = document.createElement('div');
+        card.className = 'genre-card';
+        card.innerHTML = `<h3>${a}</h3><p>${artistCounts[a]} tracks in archive</p>`;
+        card.onclick = () => showArtistProfile(a);
+        container.appendChild(card);
+    });
+    
+    showPage('registry');
+}
+
+
+    function showPage(id) {
+        document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
+        document.getElementById(id + '-view').classList.add('active');
+        if (id !== 'decade') document.getElementById('year-horizon').classList.remove('visible');
+        if (id !== 'decade' || !document.getElementById('global-search').value) {
+            document.getElementById('search-overlay').classList.remove('open');
+        }
+        window.scrollTo(0,0);
+    }
+
+    function toggleTheme() {
+        const current = document.body.getAttribute('data-theme');
+        document.body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+
+let currentAudio = null;
+let currentDot = null;
+
+async function togglePreview(artist, track, el) {
+    // If clicking the same dot, stop playback
+    if (currentAudio && currentDot === el) {
+        currentAudio.pause();
+        el.classList.remove('playing');
+        currentAudio = null;
+        currentDot = null;
+        return;
+    }
+
+    // Stop any other audio currently playing
+    if (currentAudio) {
+        currentAudio.pause();
+        currentDot.classList.remove('playing');
+    }
+
+    el.classList.add('loading');
+    const query = encodeURIComponent(`${artist} ${track}`);
+    
+    try {
+        const response = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
+        const data = await response.json();
+        el.classList.remove('loading');
+
+        if (data.results && data.results.length > 0) {
+            const previewUrl = data.results[0].previewUrl;
+            currentAudio = new Audio(previewUrl);
+            currentDot = el;
+            
+            currentAudio.play();
+            el.classList.add('playing');
+
+            currentAudio.onended = () => {
+                el.classList.remove('playing');
+                currentAudio = null;
+            };
+        } else {
+            el.style.backgroundColor = "red"; // Flash red if no result found
+            setTimeout(() => el.style.backgroundColor = "", 500);
+        }
+    } catch (error) {
+        console.error("iTunes API Error:", error);
+        el.classList.remove('loading');
+    }
+}
+
+    function init() {
+        const grid = document.getElementById('index-grid');
+        const genreList = document.getElementById('genre-list');
+        const nav = document.getElementById('nav-decades');
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const yearParam = urlParams.get('year');
+// CHANGE THIS IN YOUR INIT FUNCTION:
+if (yearParam && songData[yearParam]) {
+    showPage('decade'); // <--- ADD THIS LINE to make the container visible
+    renderYear(yearParam);
+} else {
+    showPage('index'); // Default view
+}
+        
+        // Build Index Cards
+        for (let d = 1930; d <= 2020; d += 10) {
+            const card = document.createElement('div');
+            card.className = 'genre-card';
+            card.innerHTML = `<h3>${d}s</h3><p>${d} — ${d+9}</p>`;
+            card.onclick = () => renderDecade(d);
+            grid.appendChild(card);
+            
+            const btn = document.createElement('button');
+            btn.innerText = `${d}s`;
+            btn.onclick = () => renderDecade(d);
+            nav.appendChild(btn);
+        }
+
+        // Build Genre Cards
+        const genres = {};
+        Object.values(songData).flat().forEach(s => {
+            genres[s.genre] = (genres[s.genre] || 0) + 1;
+        });
+        Object.keys(genres).sort().forEach(g => {
+            const card = document.createElement('div');
+            card.className = 'genre-card';
+            card.innerHTML = `<h3>${g}</h3><p>${genres[g]} Tracks in Index</p>`;
+            card.onclick = () => filterByGenre(g);
+            genreList.appendChild(card);
+        });
+    }
+
+// Function 1: Export just the user's playlist
+function exportPlaylist() {
+    if (userPlaylist.length === 0) {
+        showToast("Playlist is empty!");
+        return;
+    }
+    
+    // Create CSV header
+    let csvContent = "Artist,Track\n";
+    
+    // Add each song, cleaning up quotes so the CSV doesn't break
+    userPlaylist.forEach(s => {
+        const cleanArtist = s.artist.replace(/"/g, '""');
+        const cleanTrack = s.track.replace(/"/g, '""');
+        csvContent += `"${cleanArtist}","${cleanTrack}"\n`;
+    });
+
+    // Create the download link
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    
+    link.setAttribute("href", url);
+    link.setAttribute("download", "my_1000_songs_playlist.csv");
+    document.body.appendChild(link);
+    
+    link.click(); // Trigger the download
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+
+// Function 2: Export the entire archive (Now separated!)
+function exportFullArchive() {
+    // Create CSV header - standard format for playlist converters
+    let csvContent = "Artist,Track\n";
+    
+    // Iterate through every year in the archive
+    Object.keys(songData).forEach(year => {
+        songData[year].forEach(s => {
+            // Clean up quotes to prevent CSV breakage
+            const cleanArtist = s.artist.replace(/"/g, '""');
+            const cleanTrack = s.track.replace(/"/g, '""');
+            
+            // Skip placeholders if they exist
+            if (cleanArtist !== "TBA" && cleanTrack !== "TBA") {
+                csvContent += `"${cleanArtist}","${cleanTrack}"\n`;
+            }
+        });
+    });
+
+    // Create and trigger the download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    
+    link.setAttribute("href", url);
+    link.setAttribute("download", "1000_songs_full_archive.csv");
+    document.body.appendChild(link);
+    
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+
+function showAgeView() {
+    showPage('age');
+}
+
+function calculateAgeSongs() {
+    const birthYearInput = document.getElementById('birth-year-input').value;
+    const birthYear = parseInt(birthYearInput);
+    const currentYear = new Date().getFullYear(); // 2026
+    const resultsContainer = document.getElementById('age-results');
+    const summaryContainer = document.getElementById('age-summary');
+    
+    // Validation
+    if (!birthYear || birthYear < 1930 || birthYear > currentYear) {
+        alert("Please enter a valid birth year between 1930 and " + currentYear);
+        return;
+    }
+
+    const age = currentYear - birthYear;
+    const totalSongs = age * 10;
+
+    // Update Summary
+    summaryContainer.innerHTML = `
+        You are about <strong>${age}</strong> years old. <br>
+        You are <strong>${totalSongs} Songs.</strong>
+    `;
+    
+    // Clear and Render Songs
+    resultsContainer.innerHTML = '';
+    
+    // Loop from birth year to the end of the current archive
+    for (let y = birthYear; y <= 2030; y++) {
+        const yearStr = y.toString();
+        const songs = songData[yearStr] || [];
+        
+        // Only render years that have songs (skipping empty futures)
+        if (songs.length > 0 && songs[0].track !== "TBA") {
+            resultsContainer.appendChild(createYearRow(yearStr, songs));
+        }
+    }
+    
+    // Scroll to results
+    summaryContainer.scrollIntoView({ behavior: 'smooth' });
+}
+
+// --- RADIO LOGIC ---
+let radioAudio = new Audio();
+let isRadioOn = false;
+let radioStaticCtx;
+let radioStaticNode;
+let radioStaticFilter;
+let dialTimeout;
+
+function showRadio() {
+    showPage('radio');
+}
+
+// Generates procedural static noise using Web Audio API (No files needed!)
+function playRadioStatic() {
+    if (!radioStaticCtx) {
+        radioStaticCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (radioStaticCtx.state === 'suspended') {
+        radioStaticCtx.resume();
+    }
+    if (radioStaticNode) return; // Already playing
+
+    const bufferSize = radioStaticCtx.sampleRate * 2;
+    const buffer = radioStaticCtx.createBuffer(1, bufferSize, radioStaticCtx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1; // White noise
+    }
+
+    radioStaticNode = radioStaticCtx.createBufferSource();
+    radioStaticNode.buffer = buffer;
+    radioStaticNode.loop = true;
+
+    // Filter to make it sound like a vintage radio
+    radioStaticFilter = radioStaticCtx.createBiquadFilter();
+    radioStaticFilter.type = 'bandpass';
+    radioStaticFilter.frequency.value = 1000;
+
+    const gainNode = radioStaticCtx.createGain();
+    gainNode.gain.value = 0.08; // Keep static volume low
+
+    radioStaticNode.connect(radioStaticFilter);
+    radioStaticFilter.connect(gainNode);
+    gainNode.connect(radioStaticCtx.destination);
+    radioStaticNode.start();
+}
+
+function stopRadioStatic() {
+    if (radioStaticNode) {
+        radioStaticNode.stop();
+        radioStaticNode.disconnect();
+        radioStaticNode = null;
+    }
+}
+
+function toggleRadio() {
+    isRadioOn = !isRadioOn;
+    const btn = document.getElementById('radio-power-btn');
+    const info = document.getElementById('radio-track-info');
+    
+    // Stop any main archive previews or playlists playing
+    if (typeof currentAudio !== 'undefined' && currentAudio) currentAudio.pause();
+    if (typeof playlistAudio !== 'undefined' && playlistAudio) stopSimplePlaylist();
+
+    if (isRadioOn) {
+        btn.innerText = "Power: ON";
+        btn.style.color = "var(--bg)";
+        btn.style.backgroundColor = "var(--text)";
+        info.innerText = "Tuning...";
+        handleDialScrub(document.getElementById('radio-dial').value);
+    } else {
+        btn.innerText = "Power: OFF";
+        btn.style.color = "var(--text)";
+        btn.style.backgroundColor = "transparent";
+        info.innerText = "Radio Off";
+        stopRadioStatic();
+        radioAudio.pause();
+        clearTimeout(dialTimeout);
+    }
+}
+
+function handleDialScrub(year) {
+    document.getElementById('radio-year').innerText = year;
+    if (!isRadioOn) return;
+
+    document.getElementById('radio-track-info').innerHTML = "<em>Tuning...</em>";
+    radioAudio.pause();
+    playRadioStatic();
+
+    // Debounce: Wait 800ms after the user stops dragging to fetch the song
+    clearTimeout(dialTimeout);
+    dialTimeout = setTimeout(() => {
+        lockInStation(year);
+    }, 800);
+}
+
+async function lockInStation(year) {
+    if (!isRadioOn) return;
+
+    const songs = songData[year.toString()];
+    if (!songs || songs.length === 0 || songs[0].track === "TBA") {
+        document.getElementById('radio-track-info').innerText = "Static... (No Signal in " + year + ")";
+        return; // Leave static playing
+    }
+
+    // Pick a random song from that year's 10 songs
+    const song = songs[Math.floor(Math.random() * songs.length)];
+    document.getElementById('radio-track-info').innerHTML = `Catching signal for <br> <span style="color:var(--text)">${song.artist}</span>...`;
+
+    try {
+        const query = encodeURIComponent(`${song.artist} ${song.track}`);
+        const response = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
+        const data = await response.json();
+
+        // If user moved dial while fetching, abort playing
+        if (document.getElementById('radio-year').innerText !== year.toString()) return;
+
+        if (data.results && data.results.length > 0 && data.results[0].previewUrl) {
+            stopRadioStatic();
+            radioAudio.src = data.results[0].previewUrl;
+            radioAudio.play();
+            
+            // Revert to static when song preview ends
+            radioAudio.onended = () => {
+                if (isRadioOn) {
+                    playRadioStatic();
+                    document.getElementById('radio-track-info').innerText = "Signal lost. Please retune.";
+                }
+            };
+
+            document.getElementById('radio-track-info').innerHTML = `
+                <div style="font-size:0.6rem; color:var(--accent); font-family:var(--font); font-weight:bold; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">▶ ON AIR</div>
+                <span style="font-size:1.4rem; color:var(--text); font-weight:800; font-family:var(--font); display:block; margin-bottom:2px;">${song.artist}</span>
+                <span style="font-size:1rem; font-family:var(--font);">${song.track}</span>
+            `;
+        } else {
+            // Keep static playing if no preview exists
+            document.getElementById('radio-track-info').innerText = "Signal lost (No preview found for " + song.artist + ")";
+        }
+    } catch (err) {
+        document.getElementById('radio-track-info').innerText = "Interference (Network Error)";
+    }
+}
+// --- END RADIO LOGIC ---
+function toggleNav() {
+    const actions = document.getElementById('nav-actions');
+    const toggleBtn = document.querySelector('.mobile-menu-toggle');
+    
+    actions.classList.toggle('open');
+    toggleBtn.classList.toggle('active');
+    
+    if (actions.classList.contains('open')) {
+        toggleBtn.innerText = 'CLOSE';
+    } else {
+        toggleBtn.innerText = 'MENU';
+    }
+}
+
+
+document.getElementById('nav-actions').addEventListener('click', function(e) {
+    // If a button is clicked and the mobile menu is currently open, close it
+    if (e.target.tagName === 'BUTTON' && this.classList.contains('open')) {
+        toggleNav(); 
+    }
+});
+
+function addYearToPlaylist(year) {
+    const songs = songData[year.toString()] || [];
+    let addedCount = 0;
+    
+    songs.forEach(s => {
+        // Skip placeholders and check for duplicates
+        if (s.track !== "TBA" && !userPlaylist.some(existing => existing.artist === s.artist && existing.track === s.track)) {
+            userPlaylist.push({ artist: s.artist, track: s.track });
+            addedCount++;
+        }
+    });
+
+    if (addedCount > 0) {
+        saveAndRefresh();
+        showToast(`Added ${addedCount} songs from ${year} to playlist`);
+    } else {
+        showToast(`All songs from ${year} are already in your playlist`);
+    }
+}
+    window.onload = init;
+</script>
+
+<footer style="margin-top: 80px; padding: 40px 0; text-align: center; border-top: 1px solid var(--line);">
+    <a href="all-songs.html" style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">
+        ARCHIVE INDEX
+    </a> <a href="#" onclick="exportFullArchive(); return false;" 
+           style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">
+          | DOWNLOAD
+        </a>
+</footer>
+
+
+     
+
+</body>
+</html>
