@@ -1,0 +1,38 @@
+{
+  "1991": [
+    { "artist": "Bikini Kill", "track": "Feels Blind", "genre": "Punk", "note": "Appeared on the seminal Kill Rock Stars compilation." },
+    { "artist": "Bratmobile", "track": "Girl Germs", "genre": "Punk", "note": "Early track defining the movement's raw energy." },
+    { "artist": "Heavens to Betsy", "track": "My Secret", "genre": "Punk", "note": "Corin Tucker's first band before Sleater-Kinney." },
+    { "artist": "Hole", "track": "Teenage Whore", "genre": "Grunge", "note": "Early Kim Gordon-produced raw track from Pretty on the Inside." },
+    { "artist": "7 Year Bitch", "track": "Lorna", "genre": "Punk", "note": "Seattle band heavily associated with the feminist punk scene." },
+    { "artist": "Autoclave", "track": "Dr. Seuss", "genre": "Indie Rock", "note": "Mary Timony's early Washington D.C. project." },
+    { "artist": "Calamity Jane", "track": "My Blood", "genre": "Punk", "note": "Portland pioneers of the Pacific Northwest sound." },
+    { "artist": "Kicking Giant", "track": "Alien I.D.", "genre": "Lo-Fi", "note": "Olympia scene staple." },
+    { "artist": "Tsunami", "track": "Headringer", "genre": "Indie Rock", "note": "Founders of the influential Simple Machines label." },
+    { "artist": "Mecca Normal", "track": "Rose", "genre": "Indie Rock", "note": "Canadian duo highly influential to the Olympia scene." }
+  ],
+  "1992": [
+    { "artist": "Bikini Kill", "track": "Suck My Left One", "genre": "Punk", "note": "Featured on their self-titled debut EP." },
+    { "artist": "L7", "track": "Pretend We're Dead", "genre": "Grunge", "note": "Feminist anthem that broke into the mainstream." },
+    { "artist": "Babes in Toyland", "track": "Bruise Violet", "genre": "Grunge", "note": "From their acclaimed album Fontanelle." },
+    { "artist": "Bratmobile", "track": "Kiss & Ride", "genre": "Punk", "note": "Classic track from the Olympia pioneers." },
+    { "artist": "Heavens to Betsy", "track": "These Words", "genre": "Punk", "note": "Released on an early split 7-inch." },
+    { "artist": "Spitboy", "track": "True Self Revealed", "genre": "Hardcore", "note": "Fierce Bay Area feminist hardcore." },
+    { "artist": "Fifth Column", "track": "All Women Are Bitches", "genre": "Punk", "note": "Queercore pioneers intersecting with Riot Grrrl." },
+    { "artist": "Lois", "track": "Press Play and Record", "genre": "Indie Pop", "note": "Key figure in the Olympia K Records scene." },
+    { "artist": "Jack Off Jill", "track": "My Cat", "genre": "Alternative Metal", "note": "Florida band echoing the Riot Grrrl ethos." },
+    { "artist": "Dickless", "track": "Lumber Jack", "genre": "Grunge", "note": "Sub Pop signees with an abrasive punk attitude." }
+  ],
+  "1993": [
+    { "artist": "Bikini Kill", "track": "Rebel Girl", "genre": "Punk", "note": "The definitive Riot Grrrl anthem, produced by Joan Jett." },
+    { "artist": "Huggy Bear", "track": "Her Jazz", "genre": "Punk", "note": "The UK's answer to the American Riot Grrrl movement." },
+    { "artist": "Bratmobile", "track": "Pots and Pans", "genre": "Punk", "note": "Standout from their debut studio album Pottymouth." },
+    { "artist": "Slant 6", "track": "What Kind of Monster Are You?", "genre": "Punk", "note": "Dischord Records classic." },
+    { "artist": "Team Dresch", "track": "Hand Grenade", "genre": "Queercore", "note": "Fierce queer punk anthem." },
+    { "artist": "Excuse 17", "track": "Hope You Feel Better", "genre": "Punk", "note": "Carrie Brownstein's pre-Sleater-Kinney band." },
+    { "artist": "Tribe 8", "track": "Frat Pig", "genre": "Punk", "note": "Outspoken San Francisco dyke punk." },
+    { "artist": "Free Kitten", "track": "Smash", "genre": "Noise Rock", "note": "Kim Gordon and Julie Cafritz supergroup." },
+    { "artist": "The Juliana Hatfield Three", "track": "My Sister", "genre": "Alternative Rock", "note": "Mainstream crossover with strong feminist themes." },
+    { "artist": "Heavens to Betsy", "track": "Calculated", "genre": "Punk", "note": "Raw emotion defining their debut full-length." }
+  ]
+}
