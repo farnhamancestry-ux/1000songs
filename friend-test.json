@@ -1,28 +1,38 @@
 {
   "1930": [
-    {
-      "artist": "Garfield Akers",
-      "track": "Dough Roller Blues",
-      "genre": "Blues",
-      "note": "4 tracks on Vocalion Records this, 1481. Uses rolling and tumblin riff."
-    },
-    {
-      "artist": "Blind Willie Johnson",
-      "track": "John the Revelator",
-      "genre": "Gospel",
-      "note": "Columbia records. Preacher and gospel singer."
-    },
-    {
-      "artist": "Son House",
-      "track": "Dry Spell Blues",
-      "genre": "Blues",
-      "note": "Paramount"
-    },
-    {
-      "artist": "Fred Astaire",
-      "track": "Putting on the Ritz",
-      "genre": "Musical",
-      "note": ""
-    }
+    { "artist": "Garfield Akers", "track": "Dough Roller Blues", "genre": "Blues", "note": "Uses rolling and tumblin riff." },
+    { "artist": "Blind Willie Johnson", "track": "John the Revelator", "genre": "Gospel", "note": "Columbia records." },
+    { "artist": "Son House", "track": "Dry Spell Blues", "genre": "Blues", "note": "Paramount release." },
+    { "artist": "Fred Astaire", "track": "Putting on the Ritz", "genre": "Musical", "note": "Irving Berlin classic." },
+    { "artist": "Duke Ellington", "track": "Mood Indigo", "genre": "Jazz", "note": "Originally titled Dreamy Blues." },
+    { "artist": "The Carter Family", "track": "Worried Man Blues", "genre": "Folk", "note": "Based on a traditional spiritual." },
+    { "artist": "Louis Armstrong", "track": "Blue Yodel No. 9", "genre": "Jazz", "note": "With Jimmie Rodgers." },
+    { "artist": "Mississippi Sheiks", "track": "Sitting on Top of the World", "genre": "Blues", "note": "Vocalion record." },
+    { "artist": "Jimmie Rodgers", "track": "Pistol Packin' Papa", "genre": "Country", "note": "The Singing Brakeman." },
+    { "artist": "Memphis Minnie", "track": "Bumble Bee", "genre": "Blues", "note": "Her first big hit." }
+  ],
+  "1931": [
+    { "artist": "Cab Calloway", "track": "Minnie the Moocher", "genre": "Jazz", "note": "Famous call-and-response." },
+    { "artist": "Skip James", "track": "Devil Got My Woman", "genre": "Blues", "note": "Eerie haunting falsetto." },
+    { "artist": "Bix Beiderbecke", "track": "Georgia on My Mind", "genre": "Jazz", "note": "Recorded shortly before his death." },
+    { "artist": "Bing Crosby", "track": "Out of Nowhere", "genre": "Pop", "note": "His first solo #1 hit." },
+    { "artist": "Robert Wilkins", "track": "That's No Way to Get Along", "genre": "Blues", "note": "Later covered by the Stones." },
+    { "artist": "The Boswell Sisters", "track": "Roll On, Mississippi, Roll On", "genre": "Vocal", "note": "Incredible harmonies." },
+    { "artist": "Wayne King", "track": "Goodnight Sweetheart", "genre": "Dance Band", "note": "Top seller of the year." },
+    { "artist": "Peetie Wheatstraw", "track": "Devil's Son-in-Law", "genre": "Blues", "note": "The High Sheriff from Hell." },
+    { "artist": "Ethel Waters", "track": "Stormy Weather", "genre": "Jazz", "note": "Signature song." },
+    { "artist": "Adelaide Hall", "track": "Diga Diga Doo", "genre": "Jazz", "note": "Duke Ellington association." }
+  ],
+  "1932": [
+    { "artist": "Duke Ellington", "track": "It Don't Mean a Thing", "genre": "Jazz", "note": "If it ain't got that swing." },
+    { "artist": "Fats Waller", "track": "Keepin' Out of Mischief Now", "genre": "Jazz", "note": "Piano solo masterpiece." },
+    { "artist": "The Delmore Brothers", "track": "Brown's Ferry Blues", "genre": "Country", "note": "Pioneering brother harmony." },
+    { "artist": "Lead Belly", "track": "Midnight Special", "genre": "Folk", "note": "Recorded in prison." },
+    { "artist": "Jack Hylton", "track": "The Clouds Will Soon Roll By", "genre": "Dance Band", "note": "UK favorite." },
+    { "artist": "Charlie Patton", "track": "High Sheriff Blues", "genre": "Blues", "note": "Recorded at Paramount." },
+    { "artist": "Billie Holiday", "track": "Your Mother's Son-In-Law", "genre": "Jazz", "note": "Her debut recording." },
+    { "artist": "Louis Armstrong", "track": "All of Me", "genre": "Jazz", "note": "Classic rendition." },
+    { "artist": "The Carter Family", "track": "The Cannonball", "genre": "Folk", "note": "Iconic guitar picking." },
+    { "artist": "Ishman Bracey", "track": "Woman Woman Blues", "genre": "Blues", "note": "Mississippi blues legend." }
   ]
 }
