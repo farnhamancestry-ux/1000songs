@@ -4,13 +4,13 @@
       "title": "Enjoy the Silence",
       "artist": "Depeche Mode",
       "genre": "Synth-pop",
-      "spotify_id": "6CH999oWDqxXALoYEx79su"
+      "note": "6CH999oWDqxXALoYEx79su"
     },
     {
       "title": "Thunderstruck",
       "artist": "AC/DC",
       "genre": "Hard Rock",
-      "spotify_id": "57bgLnS7vqc10p3FqAyvYJ"
+      "note": "57bgLnS7vqc10p3FqAyvYJ"
     }
   ],
   "1991": [
@@ -18,13 +18,13 @@
       "title": "Smells Like Teen Spirit",
       "artist": "Nirvana",
       "genre": "Grunge",
-      "spotify_id": "1f3yAtsJmSKjy772z0XpSR"
+      "note": "1f3yAtsJmSKjy772z0XpSR"
     },
     {
       "title": "Losing My Religion",
       "artist": "R.E.M.",
       "genre": "Alternative Rock",
-      "spotify_id": "31iF96-ia9J6y0S0P8V98U"
+      "note": "31iF96-ia9J6y0S0P8V98U"
     }
   ]
 }
