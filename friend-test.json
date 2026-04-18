@@ -1,13 +1,13 @@
 {
   "1990": [
     {
-      "title": "Enjoy the Silence",
+      "track": "Enjoy the Silence",
       "artist": "Depeche Mode",
       "genre": "Synth-pop",
       "note": "6CH999oWDqxXALoYEx79su"
     },
     {
-      "title": "Thunderstruck",
+      "track": "Thunderstruck",
       "artist": "AC/DC",
       "genre": "Hard Rock",
       "note": "57bgLnS7vqc10p3FqAyvYJ"
@@ -15,13 +15,13 @@
   ],
   "1991": [
     {
-      "title": "Smells Like Teen Spirit",
+      "track": "Smells Like Teen Spirit",
       "artist": "Nirvana",
       "genre": "Grunge",
       "note": "1f3yAtsJmSKjy772z0XpSR"
     },
     {
-      "title": "Losing My Religion",
+      "track": "Losing My Religion",
       "artist": "R.E.M.",
       "genre": "Alternative Rock",
       "note": "31iF96-ia9J6y0S0P8V98U"
