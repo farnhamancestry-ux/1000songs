@@ -1,8 +1,28 @@
-
-
-{ "artist": "Garfield Akers", "track": "Dough Roller Blues", "genre": "Blues", "note": "4 tracks on Vocalion Records this, 1481. Uses rolling and tumblin riff." },
-    { "artist": "Blind Willie Johnson", "track": "John the Revelator", "genre": "Gospel", "note": "Columbia records. Preacher and gospel singer." },
-    { "artist": "Son House", "track": "Dry Spell Blues", "genre": "Blues", "note": "Paramount" },
-    { "artist": "Fred Astaire", "track": "Putting on the Ritz", "genre": "Musical", "note": "" }
-]
+{
+  "tracks": [
+    {
+      "artist": "Garfield Akers",
+      "track": "Dough Roller Blues",
+      "genre": "Blues",
+      "note": "4 tracks on Vocalion Records this, 1481. Uses rolling and tumblin riff."
+    },
+    {
+      "artist": "Blind Willie Johnson",
+      "track": "John the Revelator",
+      "genre": "Gospel",
+      "note": "Columbia records. Preacher and gospel singer."
+    },
+    {
+      "artist": "Son House",
+      "track": "Dry Spell Blues",
+      "genre": "Blues",
+      "note": "Paramount"
+    },
+    {
+      "artist": "Fred Astaire",
+      "track": "Putting on the Ritz",
+      "genre": "Musical",
+      "note": ""
+    }
+  ]
 }
