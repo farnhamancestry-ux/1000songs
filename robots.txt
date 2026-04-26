@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Point Google to your sitemap
-Sitemap: https://farnhamancestry-ux.github.io/1000songs/sitemap.xml
+Sitemap: https://www.1000songs.co.uk/sitemap.xml
