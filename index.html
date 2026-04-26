@@ -2664,6 +2664,7 @@ function createYearRow(year, songs) {
                                 <div style="display: flex; align-items: center; margin-top: 4px;">
                                     <span class="track-name" style="margin-top: 0;">${s.track}</span>
                                     <span class="preview-dot" title="Listen Preview" onclick="togglePreview('${s.artist.replace(/'/g, "\\'")}', '${s.track.replace(/'/g, "\\'")}', this)"></span>
+<span onclick="checkSong('${s.artist.replace(/'/g, "\\'")}', '${s.track.replace(/'/g, "\\'")}')" style="font-size: 0.6rem; color: var(--subtle); cursor: pointer; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.1em; margin-left: 4px;">check</span>
                                 </div>
                             </div>
                             
@@ -2925,6 +2926,18 @@ async function togglePreview(artist, track, el) {
         el.classList.remove('loading');
     }
 }
+
+function checkSong(artist, track) {
+    const input = document.getElementById('quick-lookup-input');
+    if (input) {
+        input.value = `${artist} - ${track}`;
+        showPage('import');
+        runQuickLookup();
+        // Smooth scroll to the result
+        document.getElementById('quick-lookup-result').scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
 
     function init() {
         // 1. Handle URL parameters
