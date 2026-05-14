@@ -1,0 +1,20 @@
+name: Build Community Index
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Index
+        run: |
+          # This simple command finds all JSONs and merges them into one array
+          # Requires 'jq' which is pre-installed on GitHub runners
+          jq -s 'add' community-archives/*.json > community-index.json
+      - name: Commit index
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add community-index.json
+          git commit -m "Auto-update community index" || exit 0
+          git push
