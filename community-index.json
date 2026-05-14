@@ -1,0 +1,878 @@
+{
+  "1952": [
+    {
+      "artist": "Al Martino",
+      "track": "Here in My Heart",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1953": [
+    {
+      "artist": "Frankie Laine",
+      "track": "I Believe",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1954": [
+    {
+      "artist": "Doris Day",
+      "track": "Secret Love",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1955": [
+    {
+      "artist": "Slim Whitman",
+      "track": "Rose Marie",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1956": [
+    {
+      "artist": "Pat Boone",
+      "track": "I'll Be Home",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1957": [
+    {
+      "artist": "Paul Anka",
+      "track": "Diana",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1958": [
+    {
+      "artist": "Elvis Presley",
+      "track": "Jailhouse Rock",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1959": [
+    {
+      "artist": "Cliff Richard",
+      "track": "Living Doll",
+      "genre": "N/A",
+      "note": "Sales: 800,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1960": [
+    {
+      "artist": "Elvis Presley",
+      "track": "It's Now or Never",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1961": [
+    {
+      "artist": "Elvis Presley",
+      "track": "Wooden Heart",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1962": [
+    {
+      "artist": "Frank Ifield",
+      "track": "I Remember You",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1963": [
+    {
+      "artist": "The Beatles",
+      "track": "She Loves You",
+      "genre": "N/A",
+      "note": "Sales: 1,300,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1964": [
+    {
+      "artist": "The Beatles",
+      "track": "Can't Buy Me Love",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1965": [
+    {
+      "artist": "Ken Dodd",
+      "track": "Tears",
+      "genre": "N/A",
+      "note": "Sales: 1,268,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1966": [
+    {
+      "artist": "Tom Jones",
+      "track": "Green, Green Grass of Home",
+      "genre": "N/A",
+      "note": "Sales: 850,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1967": [
+    {
+      "artist": "Engelbert Humperdinck",
+      "track": "Release Me",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1968": [
+    {
+      "artist": "The Beatles",
+      "track": "Hey Jude",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1969": [
+    {
+      "artist": "The Archies",
+      "track": "Sugar, Sugar",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1970": [
+    {
+      "artist": "Mungo Jerry",
+      "track": "In the Summertime",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1971": [
+    {
+      "artist": "George Harrison",
+      "track": "My Sweet Lord",
+      "genre": "N/A",
+      "note": "Sales: 700,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1972": [
+    {
+      "artist": "The Royal Scots Dragoon Guards Band",
+      "track": "Amazing Grace",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1973": [
+    {
+      "artist": "Dawn featuring Tony Orlando",
+      "track": "Tie a Yellow Ribbon Round the Ole Oak Tree",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1974": [
+    {
+      "artist": "Mud",
+      "track": "Tiger Feet",
+      "genre": "N/A",
+      "note": "Sales: 730,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1975": [
+    {
+      "artist": "Bay City Rollers",
+      "track": "Bye Bye Baby",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1976": [
+    {
+      "artist": "Brotherhood of Man",
+      "track": "Save Your Kisses for Me",
+      "genre": "N/A",
+      "note": "Sales: 1,006,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1977": [
+    {
+      "artist": "Wings",
+      "track": "Mull of Kintyre / Girls' School",
+      "genre": "N/A",
+      "note": "Sales: 2,000,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1978": [
+    {
+      "artist": "Boney M.",
+      "track": "Rivers of Babylon / Brown Girl in the Ring",
+      "genre": "N/A",
+      "note": "Sales: 1,995,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1979": [
+    {
+      "artist": "Art Garfunkel",
+      "track": "Bright Eyes",
+      "genre": "N/A",
+      "note": "Sales: 1,155,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1980": [
+    {
+      "artist": "The Police",
+      "track": "Don't Stand So Close to Me",
+      "genre": "N/A",
+      "note": "Sales: 808,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1981": [
+    {
+      "artist": "The Human League",
+      "track": "Don't You Want Me",
+      "genre": "N/A",
+      "note": "Sales: 1,150,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1982": [
+    {
+      "artist": "Dexys Midnight Runners",
+      "track": "Come On Eileen",
+      "genre": "N/A",
+      "note": "Sales: 1,200,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1983": [
+    {
+      "artist": "Culture Club",
+      "track": "Karma Chameleon",
+      "genre": "N/A",
+      "note": "Sales: 1,390,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1984": [
+    {
+      "artist": "Band Aid",
+      "track": "Do They Know It's Christmas?",
+      "genre": "N/A",
+      "note": "Sales: 3,000,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1985": [
+    {
+      "artist": "Jennifer Rush",
+      "track": "The Power of Love",
+      "genre": "N/A",
+      "note": "Sales: 1,280,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1986": [
+    {
+      "artist": "The Communards",
+      "track": "Don't Leave Me This Way",
+      "genre": "N/A",
+      "note": "Sales: 745,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1987": [
+    {
+      "artist": "Rick Astley",
+      "track": "Never Gonna Give You Up",
+      "genre": "N/A",
+      "note": "Sales: 759,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1988": [
+    {
+      "artist": "Cliff Richard",
+      "track": "Mistletoe and Wine",
+      "genre": "N/A",
+      "note": "Sales: 750,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1989": [
+    {
+      "artist": "Black Box",
+      "track": "Ride On Time",
+      "genre": "N/A",
+      "note": "Sales: 960,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1990": [
+    {
+      "artist": "The Righteous Brothers",
+      "track": "Unchained Melody",
+      "genre": "N/A",
+      "note": "Sales: 840,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1991": [
+    {
+      "artist": "Bikini Kill",
+      "track": "Feels Blind",
+      "genre": "Punk",
+      "note": "Appeared on the seminal Kill Rock Stars compilation.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Bratmobile",
+      "track": "Girl Germs",
+      "genre": "Punk",
+      "note": "Early track defining the movement's raw energy.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Heavens to Betsy",
+      "track": "My Secret",
+      "genre": "Punk",
+      "note": "Corin Tucker's first band before Sleater-Kinney.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Hole",
+      "track": "Teenage Whore",
+      "genre": "Grunge",
+      "note": "Early Kim Gordon-produced raw track from Pretty on the Inside.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "7 Year Bitch",
+      "track": "Lorna",
+      "genre": "Punk",
+      "note": "Seattle band heavily associated with the feminist punk scene.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Autoclave",
+      "track": "Dr. Seuss",
+      "genre": "Indie Rock",
+      "note": "Mary Timony's early Washington D.C. project.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Calamity Jane",
+      "track": "My Blood",
+      "genre": "Punk",
+      "note": "Portland pioneers of the Pacific Northwest sound.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Kicking Giant",
+      "track": "Alien I.D.",
+      "genre": "Lo-Fi",
+      "note": "Olympia scene staple.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Tsunami",
+      "track": "Headringer",
+      "genre": "Indie Rock",
+      "note": "Founders of the influential Simple Machines label.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Mecca Normal",
+      "track": "Rose",
+      "genre": "Indie Rock",
+      "note": "Canadian duo highly influential to the Olympia scene.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Bryan Adams",
+      "track": "(Everything I Do) I Do It for You",
+      "genre": "N/A",
+      "note": "Sales: 1,850,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1992": [
+    {
+      "artist": "Bikini Kill",
+      "track": "Suck My Left One",
+      "genre": "Punk",
+      "note": "Featured on their self-titled debut EP.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "L7",
+      "track": "Pretend We're Dead",
+      "genre": "Grunge",
+      "note": "Feminist anthem that broke into the mainstream.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Babes in Toyland",
+      "track": "Bruise Violet",
+      "genre": "Grunge",
+      "note": "From their acclaimed album Fontanelle.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Bratmobile",
+      "track": "Kiss & Ride",
+      "genre": "Punk",
+      "note": "Classic track from the Olympia pioneers.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Heavens to Betsy",
+      "track": "These Words",
+      "genre": "Punk",
+      "note": "Released on an early split 7-inch.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Spitboy",
+      "track": "True Self Revealed",
+      "genre": "Hardcore",
+      "note": "Fierce Bay Area feminist hardcore.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Fifth Column",
+      "track": "All Women Are Bitches",
+      "genre": "Punk",
+      "note": "Queercore pioneers intersecting with Riot Grrrl.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Lois",
+      "track": "Press Play and Record",
+      "genre": "Indie Pop",
+      "note": "Key figure in the Olympia K Records scene.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Jack Off Jill",
+      "track": "My Cat",
+      "genre": "Alternative Metal",
+      "note": "Florida band echoing the Riot Grrrl ethos.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Dickless",
+      "track": "Lumber Jack",
+      "genre": "Grunge",
+      "note": "Sub Pop signees with an abrasive punk attitude.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Whitney Houston",
+      "track": "I Will Always Love You",
+      "genre": "N/A",
+      "note": "Sales: 1,500,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1993": [
+    {
+      "artist": "Bikini Kill",
+      "track": "Rebel Girl",
+      "genre": "Punk",
+      "note": "The definitive Riot Grrrl anthem, produced by Joan Jett.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Huggy Bear",
+      "track": "Her Jazz",
+      "genre": "Punk",
+      "note": "The UK's answer to the American Riot Grrrl movement.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Bratmobile",
+      "track": "Pots and Pans",
+      "genre": "Punk",
+      "note": "Standout from their debut studio album Pottymouth.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Slant 6",
+      "track": "What Kind of Monster Are You?",
+      "genre": "Punk",
+      "note": "Dischord Records classic.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Team Dresch",
+      "track": "Hand Grenade",
+      "genre": "Queercore",
+      "note": "Fierce queer punk anthem.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Excuse 17",
+      "track": "Hope You Feel Better",
+      "genre": "Punk",
+      "note": "Carrie Brownstein's pre-Sleater-Kinney band.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Tribe 8",
+      "track": "Frat Pig",
+      "genre": "Punk",
+      "note": "Outspoken San Francisco dyke punk.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Free Kitten",
+      "track": "Smash",
+      "genre": "Noise Rock",
+      "note": "Kim Gordon and Julie Cafritz supergroup.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "The Juliana Hatfield Three",
+      "track": "My Sister",
+      "genre": "Alternative Rock",
+      "note": "Mainstream crossover with strong feminist themes.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Heavens to Betsy",
+      "track": "Calculated",
+      "genre": "Punk",
+      "note": "Raw emotion defining their debut full-length.",
+      "file": "1990s.json"
+    },
+    {
+      "artist": "Meat Loaf",
+      "track": "I'd Do Anything for Love (But I Won't Do That)",
+      "genre": "N/A",
+      "note": "Sales: 720,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1994": [
+    {
+      "artist": "Wet Wet Wet",
+      "track": "Love Is All Around",
+      "genre": "N/A",
+      "note": "Sales: 1,783,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1995": [
+    {
+      "artist": "Robson & Jerome",
+      "track": "Unchained Melody",
+      "genre": "N/A",
+      "note": "Sales: 1,840,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1996": [
+    {
+      "artist": "Fugees",
+      "track": "Killing Me Softly",
+      "genre": "N/A",
+      "note": "Sales: 1,360,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1997": [
+    {
+      "artist": "Elton John",
+      "track": "Candle in the Wind 1997 / Something About the Way You Look Tonight",
+      "genre": "N/A",
+      "note": "Sales: 4,770,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1998": [
+    {
+      "artist": "Cher",
+      "track": "Believe",
+      "genre": "N/A",
+      "note": "Sales: 1,830,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1999": [
+    {
+      "artist": "Britney Spears",
+      "track": "...Baby One More Time",
+      "genre": "N/A",
+      "note": "Sales: 1,445,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2000": [
+    {
+      "artist": "Bob the Builder",
+      "track": "Can We Fix It?",
+      "genre": "N/A",
+      "note": "Sales: 853,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2001": [
+    {
+      "artist": "Shaggy featuring Rikrok",
+      "track": "It Wasn't Me",
+      "genre": "N/A",
+      "note": "Sales: 1,151,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2002": [
+    {
+      "artist": "Will Young",
+      "track": "Anything Is Possible / Evergreen",
+      "genre": "N/A",
+      "note": "Sales: 1,783,919.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2003": [
+    {
+      "artist": "The Black Eyed Peas",
+      "track": "Where Is the Love?",
+      "genre": "N/A",
+      "note": "Sales: 625,198.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2004": [
+    {
+      "artist": "Band Aid 20",
+      "track": "Do They Know It's Christmas?",
+      "genre": "N/A",
+      "note": "Sales: 1,065,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2005": [
+    {
+      "artist": "Tony Christie featuring Peter Kay",
+      "track": "Is This the Way to Amarillo",
+      "genre": "N/A",
+      "note": "Sales: 1,100,200.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2006": [
+    {
+      "artist": "Gnarls Barkley",
+      "track": "Crazy",
+      "genre": "N/A",
+      "note": "Sales: 820,053.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2007": [
+    {
+      "artist": "Leona Lewis",
+      "track": "Bleeding Love",
+      "genre": "N/A",
+      "note": "Sales: 788,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2008": [
+    {
+      "artist": "Alexandra Burke",
+      "track": "Hallelujah",
+      "genre": "N/A",
+      "note": "Sales: 888,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2009": [
+    {
+      "artist": "Lady Gaga",
+      "track": "Poker Face",
+      "genre": "N/A",
+      "note": "Sales: 882,059.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2010": [
+    {
+      "artist": "Eminem featuring Rihanna",
+      "track": "Love the Way You Lie",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2011": [
+    {
+      "artist": "Adele",
+      "track": "Someone like You",
+      "genre": "N/A",
+      "note": "Sales: 1,996,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2012": [
+    {
+      "artist": "Gotye featuring Kimbra",
+      "track": "Somebody That I Used to Know",
+      "genre": "N/A",
+      "note": "Sales: 1,318,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2013": [
+    {
+      "artist": "Robin Thicke featuring T.I. and Pharrell Williams",
+      "track": "Blurred Lines",
+      "genre": "N/A",
+      "note": "Sales: 1,470,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2014": [
+    {
+      "artist": "Pharrell Williams",
+      "track": "Happy",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,620,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2015": [
+    {
+      "artist": "Mark Ronson featuring Bruno Mars",
+      "track": "Uptown Funk",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,760,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2016": [
+    {
+      "artist": "Drake featuring Wizkid & Kyla",
+      "track": "One Dance",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,950,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2017": [
+    {
+      "artist": "Ed Sheeran",
+      "track": "Shape of You",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 3,200,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2018": [
+    {
+      "artist": "Calvin Harris and Dua Lipa",
+      "track": "One Kiss",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,570,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2019": [
+    {
+      "artist": "Lewis Capaldi",
+      "track": "Someone You Loved",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 2,300,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2020": [
+    {
+      "artist": "The Weeknd",
+      "track": "Blinding Lights",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 2,200,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2021": [
+    {
+      "artist": "Ed Sheeran",
+      "track": "Bad Habits",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,700,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2022": [
+    {
+      "artist": "Harry Styles",
+      "track": "As It Was",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,550,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2023": [
+    {
+      "artist": "Miley Cyrus",
+      "track": "Flowers",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,700,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2024": [
+    {
+      "artist": "Noah Kahan",
+      "track": "Stick Season",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,990,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2025": [
+    {
+      "artist": "Alex Warren",
+      "track": "Ordinary",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ]
+}
