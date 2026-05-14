@@ -1,4 +1,28 @@
 {
+  "1991": [
+    {
+      "artist": "Bryan Adams",
+      "track": "(Everything I Do) I Do It for You",
+      "genre": "N/A",
+      "note": "Sales: 1,850,000."
+    }
+  ],
+  "1992": [
+    {
+      "artist": "Whitney Houston",
+      "track": "I Will Always Love You",
+      "genre": "N/A",
+      "note": "Sales: 1,500,000."
+    }
+  ],
+  "1993": [
+    {
+      "artist": "Meat Loaf",
+      "track": "I'd Do Anything for Love (But I Won't Do That)",
+      "genre": "N/A",
+      "note": "Sales: 720,000."
+    }
+  ],
   "1952": [
     {
       "artist": "Al Martino",
@@ -309,30 +333,6 @@
       "track": "Unchained Melody",
       "genre": "N/A",
       "note": "Sales: 840,000."
-    }
-  ],
-  "1991": [
-    {
-      "artist": "Bryan Adams",
-      "track": "(Everything I Do) I Do It for You",
-      "genre": "N/A",
-      "note": "Sales: 1,850,000."
-    }
-  ],
-  "1992": [
-    {
-      "artist": "Whitney Houston",
-      "track": "I Will Always Love You",
-      "genre": "N/A",
-      "note": "Sales: 1,500,000."
-    }
-  ],
-  "1993": [
-    {
-      "artist": "Meat Loaf",
-      "track": "I'd Do Anything for Love (But I Won't Do That)",
-      "genre": "N/A",
-      "note": "Sales: 720,000."
     }
   ],
   "1994": [
