@@ -1,20 +1,33 @@
 name: Build Community Index
 on: [push]
 
+# This block gives the action permission to write changes back to the repo
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      # Updated to v4 to fix the Node.js 20 deprecation warning
+      - uses: actions/checkout@v4
+
       - name: Build Index
         run: |
-          # This simple command finds all JSONs and merges them into one array
-          # Requires 'jq' which is pre-installed on GitHub runners
-          jq -s 'add' community-archives/*.json > community-index.json
+          # Create the directory if it doesn't exist to prevent jq exit code 5
+          mkdir -p community-archives
+          # The '|| echo "[]"' ensures that even if no files exist, it creates an empty array
+          jq -s 'add' community-archives/*.json > community-index.json || echo "[]" > community-index.json
+
       - name: Commit index
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add community-index.json
-          git commit -m "Auto-update community index" || exit 0
-          git push
+          # Only commit and push if there are actual changes
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-update community index"
+            git push
+          
