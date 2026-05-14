@@ -9,25 +9,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Updated to v4 to fix the Node.js 20 deprecation warning
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Build Index
         run: |
-          # Create the directory if it doesn't exist to prevent jq exit code 5
+          # Create the directory if it doesn't exist
           mkdir -p community-archives
-          # The '|| echo "[]"' ensures that even if no files exist, it creates an empty array
-          jq -s 'add' community-archives/*.json > community-index.json || echo "[]" > community-index.json
+          
+          # Check if there are any .json files to process
+          # This prevents jq from failing with exit code 2 when no files match the glob
+          if ls community-archives/*.json >/dev/null 2>&1; then
+            jq -s 'add' community-archives/*.json > community-index.json
+          else
+            echo "No archive files found. Creating empty index."
+            echo "[]" > community-index.json
+          fi
 
       - name: Commit index
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add community-index.json
+          
           # Only commit and push if there are actual changes
           if git diff --quiet && git diff --staged --quiet; then
             echo "No changes to commit"
           else
             git commit -m "Auto-update community index"
             git push
-          
+          fi
