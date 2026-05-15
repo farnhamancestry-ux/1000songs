@@ -1,23 +1,8 @@
 {
-  "1956": [
-    {
-      "artist": "Danny Williams",
-      "track": "I've Got You Under My Skin",
-      "genre": "Pop",
-      "note": "Lewisham's 'British Johnny Mathis'."
-    }
-  ],
-  "1961": [
-    {
-      "artist": "Danny Williams",
-      "track": "Moon River",
-      "genre": "Pop",
-      "note": "The definitive Lewisham vocal performance."
-    }
-  ],
+  
   "1965": [
     {
-      "artist": "The Rolling Stones (Bill Wyman)",
+      "artist": "The Rolling Stones",
       "track": "(I Can't Get No) Satisfaction",
       "genre": "Rock",
       "note": "Bassist Bill Wyman was born in Lewisham."
@@ -25,7 +10,7 @@
   ],
   "1967": [
     {
-      "artist": "Cream (Ginger Baker)",
+      "artist": "Cream",
       "track": "Sunshine of Your Love",
       "genre": "Rock",
       "note": "Drum legend Ginger Baker was born in Lewisham."
@@ -52,12 +37,12 @@
       "artist": "Steve Harley & Cockney Rebel",
       "track": "Make Me Smile (Come Up and See Me)",
       "genre": "Glam Rock",
-      "note": "Frontman Steve Harley was born in Deptford."
+      "note": "Frontman Steve Harley was from New Cross."
     }
   ],
   "1977": [
     {
-      "artist": "Sex Pistols (Sid Vicious)",
+      "artist": "Sex Pistols",
       "track": "God Save The Queen",
       "genre": "Punk",
       "note": "Sid Vicious was born in Lewisham."
@@ -93,6 +78,17 @@
       "note": "Lewisham reggae pioneer."
     }
   ],
+
+"1985": [
+    {
+      "artist": "Kate Bush",
+      "track": "Running Up That Hill",
+      "genre": "Pop",
+      "note": "Lived in Brockley."
+    }
+  ],
+
+  
   "1988": [
     {
       "artist": "Mica Paris",
@@ -143,10 +139,10 @@
   ],
   "2005": [
     {
-      "artist": "Bloc Party",
-      "track": "Helicopter",
+      "artist": "The Kooks",
+      "track": "Naive",
       "genre": "Indie",
-      "note": "Pioneers of the New Cross scene."
+      "note": "Luke Pritchard born in Lewisham"
     }
   ],
   "2014": [
