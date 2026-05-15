@@ -1,0 +1,992 @@
+{
+  "1898": [
+    {
+      "artist": "Samuel Coleridge-Taylor",
+      "track": "Hiawatha's Wedding Feast",
+      "genre": "Classical",
+      "note": "The legendary Anglo-African composer was born in Holborn, Camden, achieving massive international acclaim with this cantata.",
+      "file": "camden.json"
+    }
+  ],
+  "1952": [
+    {
+      "artist": "Al Martino",
+      "track": "Here in My Heart",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1953": [
+    {
+      "artist": "Frankie Laine",
+      "track": "I Believe",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1954": [
+    {
+      "artist": "Doris Day",
+      "track": "Secret Love",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1955": [
+    {
+      "artist": "Slim Whitman",
+      "track": "Rose Marie",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1956": [
+    {
+      "artist": "Danny Williams",
+      "track": "I've Got You Under My Skin",
+      "genre": "Pop",
+      "note": "Lewisham's 'British Johnny Mathis'.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Pat Boone",
+      "track": "I'll Be Home",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1957": [
+    {
+      "artist": "Paul Anka",
+      "track": "Diana",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1958": [
+    {
+      "artist": "Elvis Presley",
+      "track": "Jailhouse Rock",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1959": [
+    {
+      "artist": "Cliff Richard",
+      "track": "Living Doll",
+      "genre": "N/A",
+      "note": "Sales: 800,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1960": [
+    {
+      "artist": "The Shadows",
+      "track": "Apache",
+      "genre": "Instrumental Rock",
+      "note": "Iconic drummer Tony Meehan, born in Hampstead, Camden, provided the driving beat behind this massive UK number one hit.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Elvis Presley",
+      "track": "It's Now or Never",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1961": [
+    {
+      "artist": "Danny Williams",
+      "track": "Moon River",
+      "genre": "Pop",
+      "note": "The definitive Lewisham vocal performance.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Elvis Presley",
+      "track": "Wooden Heart",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1962": [
+    {
+      "artist": "Frank Ifield",
+      "track": "I Remember You",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1963": [
+    {
+      "artist": "The Beatles",
+      "track": "She Loves You",
+      "genre": "N/A",
+      "note": "Sales: 1,300,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1964": [
+    {
+      "artist": "The Beatles",
+      "track": "Can't Buy Me Love",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1965": [
+    {
+      "artist": "The Rolling Stones (Bill Wyman)",
+      "track": "(I Can't Get No) Satisfaction",
+      "genre": "Rock",
+      "note": "Bassist Bill Wyman was born in Lewisham.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Ken Dodd",
+      "track": "Tears",
+      "genre": "N/A",
+      "note": "Sales: 1,268,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1966": [
+    {
+      "artist": "Tom Jones",
+      "track": "Green, Green Grass of Home",
+      "genre": "N/A",
+      "note": "Sales: 850,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1967": [
+    {
+      "artist": "Cream (Ginger Baker)",
+      "track": "Sunshine of Your Love",
+      "genre": "Rock",
+      "note": "Drum legend Ginger Baker was born in Lewisham.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Engelbert Humperdinck",
+      "track": "Release Me",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1968": [
+    {
+      "artist": "The Beatles",
+      "track": "Hey Jude",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1969": [
+    {
+      "artist": "David Bowie",
+      "track": "Space Oddity",
+      "genre": "Rock",
+      "note": "The Beckenham/Lewisham border era.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "The Archies",
+      "track": "Sugar, Sugar",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1970": [
+    {
+      "artist": "Free",
+      "track": "All Right Now",
+      "genre": "Hard Rock",
+      "note": "Guitar virtuoso Paul Kossoff, born in Hampstead, Camden, co-wrote and played the unmistakable riff for this classic anthem.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Mungo Jerry",
+      "track": "In the Summertime",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1971": [
+    {
+      "artist": "Rod Stewart",
+      "track": "Maggie May",
+      "genre": "Folk Rock",
+      "note": "Born and raised above his family’s shop on Archway Road in the borough, Stewart achieved global superstardom with this breakout track.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "The Rolling Stones",
+      "track": "Brown Sugar",
+      "genre": "Rock & Roll",
+      "note": "Legendary drummer Charlie Watts was born in Bloomsbury, Camden, providing the effortless swing that defined the band's golden era.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "George Harrison",
+      "track": "My Sweet Lord",
+      "genre": "N/A",
+      "note": "Sales: 700,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1972": [
+    {
+      "artist": "David Bowie",
+      "track": "Starman",
+      "genre": "Glam Rock",
+      "note": "Ziggy Stardust rehearsed in SE London.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "The Royal Scots Dragoon Guards Band",
+      "track": "Amazing Grace",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1973": [
+    {
+      "artist": "Dawn featuring Tony Orlando",
+      "track": "Tie a Yellow Ribbon Round the Ole Oak Tree",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1974": [
+    {
+      "artist": "Mud",
+      "track": "Tiger Feet",
+      "genre": "N/A",
+      "note": "Sales: 730,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1975": [
+    {
+      "artist": "Queen",
+      "track": "Bohemian Rhapsody",
+      "genre": "Progressive Rock",
+      "note": "Produced by Camden-born Roy Thomas Baker, whose multi-layered production techniques brought the operatic masterpiece to life.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Steve Harley & Cockney Rebel",
+      "track": "Make Me Smile (Come Up and See Me)",
+      "genre": "Glam Rock",
+      "note": "Frontman Steve Harley was born in Deptford.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Bay City Rollers",
+      "track": "Bye Bye Baby",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1976": [
+    {
+      "artist": "Brotherhood of Man",
+      "track": "Save Your Kisses for Me",
+      "genre": "N/A",
+      "note": "Sales: 1,006,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1977": [
+    {
+      "artist": "Bob Marley & The Wailers",
+      "track": "Exodus",
+      "genre": "Reggae",
+      "note": "Marley lived at 34 Ridgmount Gardens in Camden while writing and recording major parts of this monumental album.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "The Stranglers",
+      "track": "Peaches",
+      "genre": "Punk / New Wave",
+      "note": "Frontman and guitarist Hugh Cornwell was born in Camden, anchoring the band's gritty, melodic New Wave breakthrough.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Sex Pistols (Sid Vicious)",
+      "track": "God Save The Queen",
+      "genre": "Punk",
+      "note": "Sid Vicious was born in Lewisham.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Squeeze",
+      "track": "Take Me I'm Yours",
+      "genre": "New Wave",
+      "note": "Deptford's own songwriting masters.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Wings",
+      "track": "Mull of Kintyre / Girls' School",
+      "genre": "N/A",
+      "note": "Sales: 2,000,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1978": [
+    {
+      "artist": "Dire Straits",
+      "track": "Sultans of Swing",
+      "genre": "Rock",
+      "note": "Formed in a Deptford flat.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Boney M.",
+      "track": "Rivers of Babylon / Brown Girl in the Ring",
+      "genre": "N/A",
+      "note": "Sales: 1,995,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1979": [
+    {
+      "artist": "Gang of Four",
+      "track": "Damaged Goods",
+      "genre": "Post-Punk",
+      "note": "Camden-born drummer Hugo Burnham supplied the jagged, danceable rhythms central to this foundational post-punk anthem.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Squeeze",
+      "track": "Up the Junction",
+      "genre": "New Wave",
+      "note": "Lyrical tour of South East London.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Art Garfunkel",
+      "track": "Bright Eyes",
+      "genre": "N/A",
+      "note": "Sales: 1,155,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1980": [
+    {
+      "artist": "Motörhead",
+      "track": "Ace of Spades",
+      "genre": "Heavy Metal",
+      "note": "The deafening trio were a staple at the Camden Roundhouse, which served as a home turf for their legendary, high-octane gigs.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "The Sound",
+      "track": "I Can't Escape Myself",
+      "genre": "Post-Punk",
+      "note": "Formed and led by Camden-born frontman and brilliant songwriter Adrian Borland, a pioneer of the underground indie movement.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "The Police",
+      "track": "Don't Stand So Close to Me",
+      "genre": "N/A",
+      "note": "Sales: 808,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1981": [
+    {
+      "artist": "The Human League",
+      "track": "Don't You Want Me",
+      "genre": "N/A",
+      "note": "Sales: 1,150,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1982": [
+    {
+      "artist": "Dexys Midnight Runners",
+      "track": "Come On Eileen",
+      "genre": "N/A",
+      "note": "Sales: 1,200,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1983": [
+    {
+      "artist": "Spandau Ballet",
+      "track": "True",
+      "genre": "New Romantic / Pop",
+      "note": "Drummer John Keeble, born in Camden, provided the steady soul-pop groove for the band's most internationally recognized ballad.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Culture Club",
+      "track": "Karma Chameleon",
+      "genre": "N/A",
+      "note": "Sales: 1,390,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1984": [
+    {
+      "artist": "Maxi Priest",
+      "track": "In the Springtime",
+      "genre": "Reggae",
+      "note": "Lewisham reggae pioneer.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Band Aid",
+      "track": "Do They Know It's Christmas?",
+      "genre": "N/A",
+      "note": "Sales: 3,000,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1985": [
+    {
+      "artist": "Jennifer Rush",
+      "track": "The Power of Love",
+      "genre": "N/A",
+      "note": "Sales: 1,280,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1986": [
+    {
+      "artist": "The Communards",
+      "track": "Don't Leave Me This Way",
+      "genre": "N/A",
+      "note": "Sales: 745,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1987": [
+    {
+      "artist": "Guns N' Roses",
+      "track": "Sweet Child O' Mine",
+      "genre": "Hard Rock",
+      "note": "Iconic lead guitarist Slash (Saul Hudson) was born in Hampstead, Camden, before later relocating to Los Angeles.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Rick Astley",
+      "track": "Never Gonna Give You Up",
+      "genre": "N/A",
+      "note": "Sales: 759,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1988": [
+    {
+      "artist": "Mica Paris",
+      "track": "My One Temptation",
+      "genre": "Soul",
+      "note": "Lewisham's soul icon.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Cliff Richard",
+      "track": "Mistletoe and Wine",
+      "genre": "N/A",
+      "note": "Sales: 750,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1989": [
+    {
+      "artist": "Black Box",
+      "track": "Ride On Time",
+      "genre": "N/A",
+      "note": "Sales: 960,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1990": [
+    {
+      "artist": "Maxi Priest",
+      "track": "Close to You",
+      "genre": "Reggae-pop",
+      "note": "Lewisham artist hitting #1 globally.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "The Righteous Brothers",
+      "track": "Unchained Melody",
+      "genre": "N/A",
+      "note": "Sales: 840,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1991": [
+    {
+      "artist": "Bryan Adams",
+      "track": "(Everything I Do) I Do It for You",
+      "genre": "N/A",
+      "note": "Sales: 1,850,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1992": [
+    {
+      "artist": "Whitney Houston",
+      "track": "I Will Always Love You",
+      "genre": "N/A",
+      "note": "Sales: 1,500,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1993": [
+    {
+      "artist": "Gabrielle",
+      "track": "Dreams",
+      "genre": "Soul",
+      "note": "The pride of Brockley.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Meat Loaf",
+      "track": "I'd Do Anything for Love (But I Won't Do That)",
+      "genre": "N/A",
+      "note": "Sales: 720,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1994": [
+    {
+      "artist": "Elastica",
+      "track": "Connection",
+      "genre": "Britpop / Indie Rock",
+      "note": "The quintessential 90s indie group famously signed their record contract on the pool table inside Camden's Good Mixer pub.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Wet Wet Wet",
+      "track": "Love Is All Around",
+      "genre": "N/A",
+      "note": "Sales: 1,783,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1995": [
+    {
+      "artist": "Suggs",
+      "track": "Camden Town",
+      "genre": "Pop / Ska",
+      "note": "The Madness frontman paid direct homage to his roots with this solo single celebrating the atmosphere of the borough's markets.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Menswear",
+      "track": "Daydreamer",
+      "genre": "Britpop",
+      "note": "Formed directly out of the indie crowd at The Good Mixer, they quickly became the ultimate poster boys for the Camden Britpop era.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Robson & Jerome",
+      "track": "Unchained Melody",
+      "genre": "N/A",
+      "note": "Sales: 1,840,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1996": [
+    {
+      "artist": "Fugees",
+      "track": "Killing Me Softly",
+      "genre": "N/A",
+      "note": "Sales: 1,360,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1997": [
+    {
+      "artist": "Elton John",
+      "track": "Candle in the Wind 1997 / Something About the Way You Look Tonight",
+      "genre": "N/A",
+      "note": "Sales: 4,770,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1998": [
+    {
+      "artist": "Cher",
+      "track": "Believe",
+      "genre": "N/A",
+      "note": "Sales: 1,830,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "1999": [
+    {
+      "artist": "Gabrielle",
+      "track": "Rise",
+      "genre": "Soul",
+      "note": "UK Number 1 from Brockley.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Britney Spears",
+      "track": "...Baby One More Time",
+      "genre": "N/A",
+      "note": "Sales: 1,445,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2000": [
+    {
+      "artist": "Bob the Builder",
+      "track": "Can We Fix It?",
+      "genre": "N/A",
+      "note": "Sales: 853,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2001": [
+    {
+      "artist": "Daniel Bedingfield",
+      "track": "Gotta Get Thru This",
+      "genre": "Garage",
+      "note": "Classic Lewisham bedroom production.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Shaggy featuring Rikrok",
+      "track": "It Wasn't Me",
+      "genre": "N/A",
+      "note": "Sales: 1,151,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2002": [
+    {
+      "artist": "Will Young",
+      "track": "Anything Is Possible / Evergreen",
+      "genre": "N/A",
+      "note": "Sales: 1,783,919.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2003": [
+    {
+      "artist": "The Black Eyed Peas",
+      "track": "Where Is the Love?",
+      "genre": "N/A",
+      "note": "Sales: 625,198.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2004": [
+    {
+      "artist": "Natasha Bedingfield",
+      "track": "Unwritten",
+      "genre": "Pop",
+      "note": "Global success from the borough.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Band Aid 20",
+      "track": "Do They Know It's Christmas?",
+      "genre": "N/A",
+      "note": "Sales: 1,065,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2005": [
+    {
+      "artist": "Bloc Party",
+      "track": "Helicopter",
+      "genre": "Indie",
+      "note": "Pioneers of the New Cross scene.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Tony Christie featuring Peter Kay",
+      "track": "Is This the Way to Amarillo",
+      "genre": "N/A",
+      "note": "Sales: 1,100,200.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2006": [
+    {
+      "artist": "Gnarls Barkley",
+      "track": "Crazy",
+      "genre": "N/A",
+      "note": "Sales: 820,053.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2007": [
+    {
+      "artist": "Leona Lewis",
+      "track": "Bleeding Love",
+      "genre": "N/A",
+      "note": "Sales: 788,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2008": [
+    {
+      "artist": "Alexandra Burke",
+      "track": "Hallelujah",
+      "genre": "N/A",
+      "note": "Sales: 888,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2009": [
+    {
+      "artist": "Lady Gaga",
+      "track": "Poker Face",
+      "genre": "N/A",
+      "note": "Sales: 882,059.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2010": [
+    {
+      "artist": "Eminem featuring Rihanna",
+      "track": "Love the Way You Lie",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2011": [
+    {
+      "artist": "Adele",
+      "track": "Someone like You",
+      "genre": "N/A",
+      "note": "Sales: 1,996,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2012": [
+    {
+      "artist": "Gotye featuring Kimbra",
+      "track": "Somebody That I Used to Know",
+      "genre": "N/A",
+      "note": "Sales: 1,318,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2013": [
+    {
+      "artist": "Robin Thicke featuring T.I. and Pharrell Williams",
+      "track": "Blurred Lines",
+      "genre": "N/A",
+      "note": "Sales: 1,470,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2014": [
+    {
+      "artist": "Wolf Alice",
+      "track": "Moaning Lisa Smile",
+      "genre": "Alternative Rock",
+      "note": "Fronted by Camden-born Ellie Rowsell, the alternative group rose to fame with early shows around North London before winning the Mercury Prize.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Kae Tempest",
+      "track": "The Beechen Grove",
+      "genre": "Hip Hop/Poetry",
+      "note": "Lewisham-born Mercury Prize nominee.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Pharrell Williams",
+      "track": "Happy",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,620,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2015": [
+    {
+      "artist": "Novelist",
+      "track": "Endz",
+      "genre": "Grime",
+      "note": "Lewisham Grime anthem.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Mark Ronson featuring Bruno Mars",
+      "track": "Uptown Funk",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,760,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2016": [
+    {
+      "artist": "Ray BLK",
+      "track": "My Hood",
+      "genre": "R&B",
+      "note": "The definitive song for Catford/Lewisham.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Drake featuring Wizkid & Kyla",
+      "track": "One Dance",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,950,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2017": [
+    {
+      "artist": "Matt Maltese",
+      "track": "As the World Caves In",
+      "genre": "Indie Pop",
+      "note": "Born in Camden, the singer-songwriter crafted this baroque pop ballad which went viral globally as a modern indie classic.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Ed Sheeran",
+      "track": "Shape of You",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 3,200,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2018": [
+    {
+      "artist": "Calvin Harris and Dua Lipa",
+      "track": "One Kiss",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,570,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2019": [
+    {
+      "artist": "Russ Millions",
+      "track": "Gun Lean",
+      "genre": "Drill",
+      "note": "Deptford artist making Drill history.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Lewis Capaldi",
+      "track": "Someone You Loved",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 2,300,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2020": [
+    {
+      "artist": "Nubya Garcia",
+      "track": "Source",
+      "genre": "Jazz",
+      "note": "The Camden-born saxophonist and composer stands at the forefront of the vibrant, modern London jazz renaissance.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Enny",
+      "track": "Peng Black Girls",
+      "genre": "Hip Hop",
+      "note": "South East London empowerment.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "The Weeknd",
+      "track": "Blinding Lights",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 2,200,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2021": [
+    {
+      "artist": "Russ Millions",
+      "track": "Body",
+      "genre": "Drill",
+      "note": "Global chart topper from Deptford.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Ed Sheeran",
+      "track": "Bad Habits",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,700,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2022": [
+    {
+      "artist": "Harry Styles",
+      "track": "As It Was",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,550,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2023": [
+    {
+      "artist": "Nabihah Iqbal",
+      "track": "This Is England",
+      "genre": "Alternative / Electronic",
+      "note": "Born and raised in Camden, the musician and producer crafts rich, genre-bending soundscapes capturing contemporary British identity.",
+      "file": "camden.json"
+    },
+    {
+      "artist": "Shaybo",
+      "track": "Wishy Washy",
+      "genre": "Hip Hop",
+      "note": "The Queen of the South.",
+      "file": "lewisham.json"
+    },
+    {
+      "artist": "Miley Cyrus",
+      "track": "Flowers",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,700,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2024": [
+    {
+      "artist": "Noah Kahan",
+      "track": "Stick Season",
+      "genre": "N/A",
+      "note": "Combined Sales/Stream: 1,990,000.",
+      "file": "ukselling.json"
+    }
+  ],
+  "2025": [
+    {
+      "artist": "Alex Warren",
+      "track": "Ordinary",
+      "genre": "N/A",
+      "note": "Year-end best seller.",
+      "file": "ukselling.json"
+    }
+  ]
+}
