@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Songs | Radio Time Machine</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --subtle: #888888;
+            --line: #eeeeee;
+            --accent: #0066ff;
+            --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --subtle: #999999;
+            --line: #222222;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Changed from fixed height to min-height */
+            overflow-y: auto; /* Allows scrolling if widget is too small */
+            transition: background-color 0.3s ease;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        .radio-container {
+            text-align: center;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #radio-dial {
+            -webkit-appearance: none;
+            width: 100%;
+            max-width: 400px;
+            height: 2px;
+            background: var(--line);
+            outline: none;
+            margin: 2rem 0;
+        }
+
+        #radio-dial::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 30px;
+            background: var(--text);
+            cursor: ew-resize;
+            border-radius: 2px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--text);
+            color: var(--text);
+            padding: 8px 20px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--line);
+        }
+
+        /* NEW: Scrollable list for the embed */
+        #radio-year-list {
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 400px;
+            max-height: 180px;
+            overflow-y: auto;
+            text-align: left;
+            display: none;
+            border: 1px solid var(--line);
+            padding: 10px;
+            box-sizing: border-box;
+            background: var(--bg);
+            border-radius: 4px;
+        }
+
+        /* Custom scrollbar for the list */
+        #radio-year-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        #radio-year-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        #radio-year-list::-webkit-scrollbar-thumb {
+            background: var(--line);
+            border-radius: 2px;
+        }
+
+        .watermark {
+            position: relative; /* Changed to relative to prevent overlap */
+            margin-top: 20px;
+            font-size: 0.65rem;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .watermark a {
+            color: var(--subtle);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .watermark a:hover {
+            color: var(--text);
+        }
+
+        /* Embed Code Overlay */
+        #embed-overlay {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        [data-theme="dark"] #embed-overlay {
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        textarea.code-box {
+            width: 100%;
+            max-width: 400px;
+            height: 80px;
+            background: transparent;
+            border: 1px dashed var(--subtle);
+            color: var(--text);
+            padding: 10px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            resize: none;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="radio-container">
+        <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.2em; margin-bottom: 0.5rem;">Time Machine Dial</p>
+        <h1 id="radio-year" style="font-size: 4rem; font-weight: 800; letter-spacing: -0.05em; margin: 0; line-height: 1;">----</h1>
+        
+        <input type="range" id="radio-dial" min="0" max="10" value="0" oninput="handleDialScrub(this.value)">
+        
+        <div id="radio-track-info" style="min-height: 60px; font-family: monospace; font-size: 0.85rem; color: var(--subtle);">
+            Radio Off
+        </div>
+
+        <button id="radio-power-btn" class="btn" style="margin-top: 1.5rem;" onclick="toggleRadio()">
+            Power: OFF
+        </button>
+
+        <div id="radio-year-list"></div>
+    </div>
+
+    <div class="watermark">
+        <a href="https://www.1000songs.co.uk" target="_blank">Powered by 1000 Songs ↗</a> | 
+        <a href="#" onclick="showEmbedCode(); return false;">&lt;/&gt; Embed</a>
+    </div>
+
+    <div id="embed-overlay">
+        <h3 style="margin: 0; font-size: 1rem;">Embed this Radio</h3>
+        <p style="font-size: 0.7rem; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.1em;">Copy the code below</p>
+        <textarea class="code-box" id="embed-code-text" readonly></textarea>
+        <div style="display: flex; gap: 10px;">
+            <button class="btn" onclick="copyEmbed()">Copy</button>
+            <button class="btn" style="border: 1px dashed var(--subtle);" onclick="closeEmbed()">Close</button>
+        </div>
+    </div>
+
+<script>
+    // 1. Default Master Data (Paste your full 1930-2030 songData object here)
+    let songData = {
+  "1977": [
+    { "artist": "Suicide", "track": "Ghost Rider", "genre": "Synth Punk" }
+  ],
+  "1981": [
+    { "artist": "The Birthday Party", "track": "Release the Bats", "genre": "Post-Punk" }
+  ],
+  "1988": [
+    { "artist": "Sonic Youth", "track": "Silver Rocket", "genre": "Noise Rock" }
+  ],
+  "1992": [
+    { "artist": "Tom Waits", "track": "Goin' Out West", "genre": "Experimental Rock" }
+  ],
+  "1995": [
+    { "artist": "PJ Harvey", "track": "To Bring You My Love", "genre": "Alternative Rock" }
+  ],
+  "2002": [
+    { "artist": "Queens of the Stone Age", "track": "Song for the Dead", "genre": "Stoner Rock" }
+  ],
+  "2007": [
+    { "artist": "Grinderman", "track": "No Pussy Blues", "genre": "Garage Rock" }
+  ],
+  "2012": [
+    { "artist": "Death Grips", "track": "No Love", "genre": "Industrial Hip Hop" }
+  ],
+  "2018": [
+    { "artist": "IDLES", "track": "Colossus", "genre": "Post-Punk" }
+  ],
+  "2023": [
+    { "artist": "Model/Actriz", "track": "Crossing Guard", "genre": "Noise Rock" }
+  ]
+};
+
+    let availableRadioYears = [];
+    let radioAudio = new Audio();
+    let isRadioOn = false;
+    let radioStaticCtx, radioStaticNode, radioStaticFilter, dialTimeout;
+
+    // 2. Initialization & URL Parameter Check
+    async function init() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const dataUrl = urlParams.get('data');
+        const theme = urlParams.get('theme') || 'light';
+
+        // Apply theme parameter if provided (e.g., ?theme=dark)
+        if (theme === 'dark') document.body.setAttribute('data-theme', 'dark');
+
+        if (dataUrl) {
+            try {
+                document.getElementById('radio-track-info').innerText = "Loading archive...";
+                const response = await fetch(dataUrl);
+                if (!response.ok) throw new Error("Could not load custom data");
+                songData = await response.json();
+            } catch (err) {
+                console.error(err);
+                document.getElementById('radio-track-info').innerText = "Failed to load custom data. Using default.";
+            }
+        }
+
+        updateRadioLimits();
+        document.getElementById('radio-track-info').innerText = "Radio Off";
+    }
+
+    function updateRadioLimits() {
+        availableRadioYears = Object.keys(songData)
+            .map(Number)
+            .filter(y => !isNaN(y) && songData[y] && songData[y].length > 0 && songData[y][0].track !== "TBA")
+            .sort((a, b) => a - b);
+
+        const dial = document.getElementById('radio-dial');
+        const radioYearDisplay = document.getElementById('radio-year');
+
+        if (availableRadioYears.length > 0) {
+            dial.min = 0;
+            dial.max = availableRadioYears.length - 1;
+            dial.value = 0;
+            radioYearDisplay.innerText = availableRadioYears[0];
+        } else {
+            radioYearDisplay.innerText = "----";
+        }
+    }
+
+    // 3. Audio & Static Logic
+    function playRadioStatic() {
+        if (!radioStaticCtx) radioStaticCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (radioStaticCtx.state === 'suspended') radioStaticCtx.resume();
+        if (radioStaticNode) return;
+
+        const bufferSize = radioStaticCtx.sampleRate * 2;
+        const buffer = radioStaticCtx.createBuffer(1, bufferSize, radioStaticCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+
+        radioStaticNode = radioStaticCtx.createBufferSource();
+        radioStaticNode.buffer = buffer;
+        radioStaticNode.loop = true;
+
+        radioStaticFilter = radioStaticCtx.createBiquadFilter();
+        radioStaticFilter.type = 'bandpass';
+        radioStaticFilter.frequency.value = 1000;
+
+        const gainNode = radioStaticCtx.createGain();
+        gainNode.gain.value = 0.08;
+
+        radioStaticNode.connect(radioStaticFilter);
+        radioStaticFilter.connect(gainNode);
+        gainNode.connect(radioStaticCtx.destination);
+        radioStaticNode.start();
+    }
+
+    function stopRadioStatic() {
+        if (radioStaticNode) {
+            radioStaticNode.stop();
+            radioStaticNode.disconnect();
+            radioStaticNode = null;
+        }
+    }
+
+    function toggleRadio() {
+        isRadioOn = !isRadioOn;
+        const btn = document.getElementById('radio-power-btn');
+        const info = document.getElementById('radio-track-info');
+
+        if (isRadioOn) {
+            btn.innerText = "Power: ON";
+            btn.style.color = "var(--bg)";
+            btn.style.backgroundColor = "var(--text)";
+            info.innerText = "Tuning...";
+            handleDialScrub(document.getElementById('radio-dial').value);
+        } else {
+            btn.innerText = "Power: OFF";
+            btn.style.color = "var(--text)";
+            btn.style.backgroundColor = "transparent";
+            info.innerText = "Radio Off";
+            stopRadioStatic();
+            radioAudio.pause();
+            clearTimeout(dialTimeout);
+            document.getElementById('radio-year-list').style.display = 'none'; // Hide list when off
+        }
+    }
+
+    function handleDialScrub(indexValue) {
+        if (availableRadioYears.length === 0) return;
+        const year = availableRadioYears[indexValue];
+        document.getElementById('radio-year').innerText = year;
+        
+        if (!isRadioOn) return;
+
+        document.getElementById('radio-track-info').innerHTML = "<em>Tuning...</em>";
+        document.getElementById('radio-year-list').style.display = 'none'; // Hide list while tuning
+        radioAudio.pause();
+        playRadioStatic();
+
+        clearTimeout(dialTimeout);
+        dialTimeout = setTimeout(() => lockInStation(year), 800);
+    }
+
+    async function lockInStation(year, specificIndex = -1) {
+        if (!isRadioOn) return;
+
+        const songs = songData[year.toString()];
+        if (!songs || songs.length === 0 || songs[0].track === "TBA") {
+            document.getElementById('radio-track-info').innerText = `Static... (No Signal in ${year})`;
+            document.getElementById('radio-year-list').style.display = 'none';
+            return;
+        }
+
+        const songIndex = specificIndex !== -1 ? specificIndex : Math.floor(Math.random() * songs.length);
+        const song = songs[songIndex];
+
+        document.getElementById('radio-track-info').innerHTML = `Catching signal for <br> <span style="color:var(--text)">${song.artist}</span>...`;
+        document.getElementById('radio-year-list').style.display = 'none'; // Hide list while finding signal
+
+        try {
+            // Check for iTunes override ID in master data
+            let songId = song.overrideUrl || null;
+            let previewUrl = null;
+
+            if (songId) {
+                const lookupRes = await fetch(`https://itunes.apple.com/lookup?id=${songId}`);
+                const lookupData = await lookupRes.json();
+                if (lookupData.results[0] && lookupData.results[0].previewUrl) {
+                    previewUrl = lookupData.results[0].previewUrl;
+                }
+            }
+
+            // Fallback to standard search
+            if (!previewUrl) {
+                const query = encodeURIComponent(`${song.artist} ${song.track}`);
+                const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
+                const data = await res.json();
+                if (data.results[0]) previewUrl = data.results[0].previewUrl;
+            }
+
+            if (document.getElementById('radio-year').innerText !== year.toString()) return;
+
+            if (previewUrl) {
+                stopRadioStatic();
+                radioAudio.src = previewUrl;
+                radioAudio.play();
+                
+                radioAudio.onended = () => {
+                    if (isRadioOn) {
+                        document.getElementById('radio-track-info').innerText = "Scanning...";
+                        setTimeout(() => lockInStation(year), 1500); // Shuffle to next in same year
+                    }
+                };
+
+                document.getElementById('radio-track-info').innerHTML = `
+                    <div style="font-size:0.6rem; color:var(--accent); font-weight:bold; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">▶ ON AIR</div>
+                    <strong style="color:var(--text); font-size:1.1rem;">${song.artist}</strong><br>
+                    <span>${song.track}</span>
+                `;
+
+                // NEW: Render the alternative songs list
+                renderRadioYearList(year, songIndex, songs);
+
+            } else {
+                document.getElementById('radio-track-info').innerText = `Signal lost (${song.artist} not found). Retuning...`;
+                setTimeout(() => lockInStation(year), 1500);
+            }
+        } catch (err) {
+            document.getElementById('radio-track-info').innerText = "Interference (Network Error). Retuning...";
+            setTimeout(() => lockInStation(year), 1500);
+        }
+    }
+
+    // NEW: Function to manually switch station
+    function switchRadioStation(year, index) {
+        if (!isRadioOn) return;
+        radioAudio.pause();
+        playRadioStatic(); 
+        document.getElementById('radio-track-info').innerHTML = "<em>Tuning...</em>";
+        lockInStation(year, index);
+    }
+
+    // NEW: Function to render the clickable list below the radio
+    function renderRadioYearList(year, activeIndex, songs) {
+        const listContainer = document.getElementById('radio-year-list');
+        listContainer.style.display = 'block';
+        
+        let html = `<p style="font-size: 0.65rem; text-transform: uppercase; color: var(--subtle); border-bottom: 1px solid var(--line); padding-bottom: 5px; margin-bottom: 5px; margin-top: 0; text-align: center;">Also broadcasting from ${year}</p>`;
+        
+        songs.forEach((s, i) => {
+            if (i === activeIndex) return; // Skip currently playing
+            
+            html += `
+            <div style="display: flex; align-items: center; padding: 8px 5px; border-bottom: 1px dashed var(--line); cursor: pointer; transition: background 0.2s;" 
+                 onmouseover="this.style.background='var(--line)'" 
+                 onmouseout="this.style.background='transparent'" 
+                 onclick="switchRadioStation('${year}', ${i})">
+                
+                <span style="font-size: 0.7rem; margin-right: 10px; color: var(--accent); opacity: 0.8;">▶</span>
+                <div style="flex-grow: 1;">
+                    <span style="font-size: 0.8rem; font-weight: 600; color: var(--text);">${s.artist}</span><br>
+                    <span style="font-size: 0.7rem; color: var(--subtle);">${s.track}</span>
+                </div>
+            </div>`;
+        });
+        
+        listContainer.innerHTML = html;
+    }
+
+
+    // 4. Embed Generation Logic
+    function showEmbedCode() {
+        const overlay = document.getElementById('embed-overlay');
+        const codeBox = document.getElementById('embed-code-text');
+        
+        // Use the current URL (including parameters like ?data=custom.json) to generate the iframe
+        const currentUrl = window.location.href;
+        
+        // Increased the height slightly to 500 to account for the new tracklist
+        const iframeString = `<iframe src="${currentUrl}" width="100%" height="500" style="border: 1px solid #eee; border-radius: 4px;"></iframe>`;
+        codeBox.value = iframeString;
+        overlay.style.display = 'flex';
+    }
+
+    function closeEmbed() {
+        document.getElementById('embed-overlay').style.display = 'none';
+    }
+
+    function copyEmbed() {
+        const codeBox = document.getElementById('embed-code-text');
+        codeBox.select();
+        document.execCommand('copy');
+        alert("Embed code copied to clipboard!");
+    }
+
+    window.onload = init;
+</script>
+</body>
+</html>
