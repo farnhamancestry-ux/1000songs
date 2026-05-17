@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404: Signal Lost | Radio Time Machine</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --subtle: #888888;
+            --line: #eeeeee;
+            --accent: #ff3b30; /* Changed to red for error alert */
+            --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0a0a0a;
+                --text: #ffffff;
+                --subtle: #999999;
+                --line: #222222;
+                --accent: #ff453a;
+            }
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .radio-container {
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Flatlining static visualizer line */
+        .visualizer {
+            width: 100%;
+            height: 2px;
+            background: var(--line);
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visualizer::after {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; height: 100%; width: 20px;
+            background: var(--accent);
+            animation: scan 1.5s infinite linear;
+            opacity: 0.7;
+        }
+
+        @keyframes scan {
+            0% { left: -20px; }
+            100% { left: 100%; }
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--text);
+            color: var(--text);
+            padding: 8px 20px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin-top: 2rem;
+        }
+
+        .btn:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        .watermark {
+            margin-top: 40px;
+            font-size: 0.65rem;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .watermark a {
+            color: var(--subtle);
+            text-decoration: none;
+        }
+
+        /* Glitch effect for the 404 numbers */
+        .glitch {
+            position: relative;
+            animation: noise 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes noise {
+            0%, 90%, 100% { transform: skew(0deg); }
+            91%, 95% { transform: skew(3deg); color: var(--accent); }
+            92%, 94% { transform: skew(-2deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="radio-container">
+        <p id="status-label" style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.2em; margin-bottom: 0.5rem;">Tuning...</p>
+        <h1 id="radio-year" class="glitch" style="font-size: 5rem; font-weight: 800; letter-spacing: -0.05em; margin: 0; line-height: 1;">----</h1>
+        
+        <div class="visualizer"></div>
+        
+        <div id="radio-track-info" style="min-height: 60px; font-family: monospace; font-size: 0.85rem; color: var(--subtle); line-height: 1.4;">
+            Scanning frequencies...
+        </div>
+
+        <a href="/" class="btn">
+            Return to Present Day
+        </a>
+    </div>
+
+    <div class="watermark">
+        <a href="/">Powered by 1000 Songs ↗</a>
+    </div>
+
+<script>
+    const yearDisplay = document.getElementById('radio-year');
+    const infoDisplay = document.getElementById('radio-track-info');
+    const labelDisplay = document.getElementById('status-label');
+
+    // Simulate scanning through dial frequencies/years on load
+    let scanCount = 0;
+    const scanInterval = setInterval(() => {
+        const randomYear = Math.floor(Math.random() * (2026 - 1930 + 1)) + 1930;
+        yearDisplay.innerText = randomYear;
+        scanCount++;
+
+        if (scanCount > 15) {
+            clearInterval(scanInterval);
+            lockIn404();
+        }
+    }, 80);
+
+    function lockIn404() {
+        yearDisplay.innerText = "404";
+        labelDisplay.innerText = "Error";
+        labelDisplay.style.color = "var(--accent)";
+        
+        infoDisplay.innerHTML = `
+            <div style="font-size:0.6rem; color:var(--accent); font-weight:bold; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">⚠️ DEAD AIR</div>
+            <strong style="color:var(--text); font-size:1.1rem;">Signal Lost</strong><br>
+            <span>The timeline or page you are trying to pull from does not exist.</span>
+        `;
+    }
+</script>
+</body>
+</html>
