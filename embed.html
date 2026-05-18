@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Songs | Radio Time Machine</title>
+
+    <!-- ========================================== -->
+    <!-- TWITTER / X PLAYER CARD META TAGS         -->
+    <!-- ========================================== -->
+    <meta name="twitter:card" content="player">
+    <meta name="twitter:site" content="@1000songs_co_uk">
+    <meta id="meta-tw-title" name="twitter:title" content="1000 Songs | Radio Time Machine">
+    <meta name="twitter:description" content="Turn the dial and listen to tracks across different decades. Live interactive retro radio simulation.">
+    <!-- These fallbacks will be dynamically updated by the script below immediately on load -->
+    <meta id="meta-tw-player" name="twitter:player" content="https://1000songs.co.uk/embed.html?data=songs.json">
+    <meta name="twitter:player:width" content="480">
+    <meta name="twitter:player:height" content="520">
+    <meta name="twitter:image" content="https://1000songs.co.uk/preview-thumbnail.jpg">
+
+    <!-- ========================================== -->
+    <!-- OPEN GRAPH (Forums, Discord, Slack, etc.)  -->
+    <!-- ========================================== -->
+    <meta property="og:type" content="video.other">
+    <meta id="meta-og-title" property="og:title" content="1000 Songs | Radio Time Machine">
+    <meta property="og:description" content="An interactive web radio that plays music previews across decades. Turn the dial to travel back in time.">
+    <meta id="meta-og-url" property="og:url" content="https://1000songs.co.uk/embed.html">
+    <meta property="og:image" content="https://1000songs.co.uk/preview-thumbnail.jpg">
+    <!-- Secure video playback markup for forum inline embeds -->
+    <meta id="meta-og-video" property="og:video" content="https://1000songs.co.uk/embed.html?data=songs.json">
+    <meta id="meta-og-video-secure" property="og:video:secure_url" content="https://1000songs.co.uk/embed.html?data=songs.json">
+    <meta property="og:video:type" content="text/html">
+    <meta property="og:video:width" content="480">
+    <meta property="og:video:height" content="520">
+
+    <script>
+        // ==========================================
+        // DYNAMIC METADATA REWRITING
+        // ==========================================
+        (function() {
+            try {
+                const currentUrl = window.location.href;
+                const urlParams = new URLSearchParams(window.location.search);
+                const customData = urlParams.get('data');
+                
+                // Update player links to target the current URL context
+                document.getElementById('meta-tw-player').setAttribute('content', currentUrl);
+                document.getElementById('meta-og-url').setAttribute('content', currentUrl);
+                document.getElementById('meta-og-video').setAttribute('content', currentUrl);
+                document.getElementById('meta-og-video-secure').setAttribute('content', currentUrl);
+
+                if (customData) {
+                    const cleanName = customData.split('/').pop().replace('.json', '');
+                    const label = `Radio: ${cleanName.charAt(0).toUpperCase() + cleanName.slice(1)}`;
+                    document.getElementById('meta-tw-title').setAttribute('content', label);
+                    document.getElementById('meta-og-title').setAttribute('content', label);
+                }
+            } catch(e) {
+                console.error("Metadata rewriting failed: ", e);
+            }
+        })();
+    </script>
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #0d0d0d;
+            --subtle: #7a7a7a;
+            --line: #e5e5e5;
+            --accent: #0066ff;
+            --card-bg: #fafafa;
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0d0d0d;
+            --text: #ffffff;
+            --subtle: #9e9e9e;
+            --line: #222222;
+            --card-bg: #141414;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Container Layout */
+        .radio-container {
+            width: 100%;
+            max-width: 440px;
+            padding: 24px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .radio-container {
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .radio-top-bar {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+        }
+
+        .dial-section, .info-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .info-section {
+            margin-top: 1.5rem;
+        }
+
+        .section-label {
+            color: var(--subtle); 
+            text-transform: uppercase; 
+            font-size: 0.65rem; 
+            letter-spacing: 0.25em; 
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        #radio-year {
+            font-size: 4.5rem; 
+            font-weight: 900; 
+            letter-spacing: -0.05em; 
+            margin: 0; 
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        #radio-dial {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 3px;
+            background: var(--line);
+            outline: none;
+            margin: 2rem 0;
+            border-radius: 2px;
+        }
+
+        #radio-dial::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 32px;
+            background: var(--text);
+            cursor: ew-resize;
+            border-radius: 3px;
+            border: 2px solid var(--bg);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        #radio-track-info {
+            min-height: 70px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--subtle);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--text);
+            color: var(--text);
+            padding: 10px 24px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            margin-top: 1rem;
+            border-radius: 8px;
+        }
+
+        .btn:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        /* Radio Year List Track Styling */
+        #radio-year-list {
+            margin-top: 1.5rem;
+            width: 100%;
+            max-height: 250px;
+            overflow-y: auto;
+            text-align: left;
+            display: none;
+            border: 1px solid var(--line);
+            padding: 12px;
+            box-sizing: border-box;
+            background: var(--bg);
+            border-radius: 10px;
+        }
+
+        #radio-year-list.active-list {
+            display: block;
+        }
+
+        #radio-year-list::-webkit-scrollbar { width: 4px; }
+        #radio-year-list::-webkit-scrollbar-track { background: transparent; }
+        #radio-year-list::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
+
+        .list-title-row {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: var(--subtle);
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            margin-top: 0;
+            text-align: center;
+            letter-spacing: 0.05em;
+            font-weight: bold;
+        }
+
+        .track-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            border: 1px dashed var(--line);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .track-item:hover {
+            background: var(--line);
+            border-color: var(--subtle);
+        }
+
+        .track-item-icon {
+            font-size: 0.7rem;
+            margin-right: 12px;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
+        .track-item-content {
+            flex-grow: 1;
+        }
+
+        .track-artist {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            display: block;
+        }
+
+        .track-title {
+            font-size: 0.75rem;
+            color: var(--subtle);
+        }
+
+        /* Watermark & Embed */
+        .watermark {
+            margin-top: 20px;
+            font-size: 0.65rem;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .watermark a {
+            color: var(--subtle);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .watermark a:hover {
+            color: var(--text);
+        }
+
+        /* Custom Dynamic Embed Overlay UI */
+        #embed-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            padding: 24px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        [data-theme="dark"] #embed-overlay {
+            background: rgba(13, 13, 13, 0.98);
+        }
+
+        .embed-modal {
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px;
+            width: 100%;
+            max-width: 480px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .embed-control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+        }
+
+        .embed-control-group label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--subtle);
+            font-weight: bold;
+        }
+
+        .embed-input, .embed-select {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            color: var(--text);
+            padding: 10px;
+            font-size: 0.85rem;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        textarea.code-box {
+            width: 100%;
+            height: 90px;
+            background: var(--card-bg);
+            border: 1px dashed var(--subtle);
+            color: var(--text);
+            padding: 12px;
+            font-family: monospace;
+            font-size: 0.75rem;
+            resize: none;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        /* --- Desktop Layout Overrides --- */
+        @media (min-width: 768px) {
+            body {
+                justify-content: flex-start; /* Aligns app strictly to the top on desktop */
+                padding: 15px; /* Minimal container padding at the top of viewport */
+            }
+
+            .radio-container {
+                max-width: 720px;
+                padding: 32px;
+                margin-top: 0; /* Ensures container is directly at the top */
+            }
+
+            .radio-top-bar {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+                border-bottom: 1px solid var(--line);
+                padding-bottom: 24px;
+                margin-bottom: 16px;
+                gap: 32px;
+            }
+
+            .dial-section {
+                align-items: flex-start;
+                text-align: left;
+                flex: 1.2;
+            }
+
+            .info-section {
+                align-items: flex-end;
+                text-align: right;
+                flex: 1;
+                margin-top: 0;
+            }
+
+            #radio-year {
+                font-size: 5.5rem;
+            }
+
+            #radio-track-info {
+                align-items: flex-end;
+            }
+
+            #radio-year-list {
+                max-height: 320px;
+                border: none;
+                padding: 12px 0 0 0;
+            }
+
+            #radio-year-list.active-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .list-title-row {
+                grid-column: 1 / -1;
+            }
+
+            .track-item {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="radio-container">
+        <div class="radio-top-bar">
+            <!-- Left Side Dial controls -->
+            <div class="dial-section">
+                <p class="section-label">Time Machine Dial</p>
+                <h1 id="radio-year">----</h1>
+                <input type="range" id="radio-dial" min="0" max="10" value="0" oninput="handleDialScrub(this.value)">
+            </div>
+            
+            <!-- Right Side On Air / Play Info -->
+            <div class="info-section">
+                <div id="radio-track-info">Radio Off</div>
+                <button id="radio-power-btn" class="btn" onclick="toggleRadio()">Power: OFF</button>
+            </div>
+        </div>
+
+        <!-- Track List Grid -->
+        <div id="radio-year-list"></div>
+    </div>
+
+    <!-- Attribution and Sharing Tools -->
+    <div class="watermark">
+        <a href="https://www.1000songs.co.uk" target="_blank">Powered by 1000 Songs ↗</a> | 
+        <a href="#" onclick="showEmbedCode(); return false;">&lt;/&gt; Get Embed Code</a>
+    </div>
+
+    <!-- Customize and Copy Embed Tool overlay -->
+    <div id="embed-overlay">
+        <div class="embed-modal">
+            <h3 style="margin: 0; font-size: 1.1rem; text-align: center;">Embed Configuration</h3>
+            <p style="font-size: 0.7rem; color: var(--subtle); text-transform: uppercase; text-align: center; margin-top: -4px; letter-spacing: 0.1em;">Customise your retro radio widget</p>
+            
+            <div class="embed-control-group">
+                <label>Skin Theme</label>
+                <select id="embed-theme-select" class="embed-select" onchange="generateEmbedMarkup()">
+                    <option value="light">Light Aesthetic</option>
+                    <option value="dark">Dark Industrial</option>
+                </select>
+            </div>
+
+            <div class="embed-control-group">
+                <label>Initial Startup Year</label>
+                <select id="embed-year-select" class="embed-select" onchange="generateEmbedMarkup()">
+                    <option value="">Default (First Year)</option>
+                </select>
+            </div>
+
+            <div class="embed-control-group">
+                <label>Custom JSON Data Stream (Optional)</label>
+                <input type="text" id="embed-data-input" class="embed-input" placeholder="e.g. https://domain.com/my-playlist.json" oninput="generateEmbedMarkup()">
+            </div>
+
+            <div class="embed-control-group">
+                <label>Generated Iframe Embed Code</label>
+                <textarea class="code-box" id="embed-code-text" readonly onclick="this.select()"></textarea>
+            </div>
+
+            <div style="display: flex; gap: 10px; width: 100%;">
+                <button class="btn" style="flex: 1; margin: 0;" onclick="copyEmbed()">Copy Code</button>
+                <button class="btn" style="flex: 1; margin: 0; border: 1px dashed var(--subtle);" onclick="closeEmbed()">Close</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Fallback standard database structure
+    let songData = {
+        "1977": [{ "artist": "Suicide", "track": "Ghost Rider", "genre": "Synth Punk" }],
+        "1981": [{ "artist": "The Birthday Party", "track": "Release the Bats", "genre": "Post-Punk" }],
+        "1988": [{ "artist": "Sonic Youth", "track": "Silver Rocket", "genre": "Noise Rock" }]
+    };
+
+    let availableRadioYears = [];
+    let radioAudio = new Audio();
+    let isRadioOn = false;
+    let radioStaticCtx, radioStaticNode, radioStaticFilter, dialTimeout;
+
+    // Helper: Normalize keys across arbitrary external JSON structures
+    function normalizeSongData(rawInput) {
+        let normalized = {};
+
+        // Case 1: Raw structure is a plain Array of tracks
+        if (Array.isArray(rawInput)) {
+            rawInput.forEach(item => {
+                // Find potential year indicators
+                let yr = item.year || item.Year || item.release_year || item.date || item.Date;
+                if (!yr) return;
+
+                // Extract a 4-digit number from strings (e.g. "1977-12-01" -> "1977")
+                const match = yr.toString().match(/\b(19|20)\d{2}\b/);
+                if (!match) return;
+                const yearStr = match[0];
+
+                if (!normalized[yearStr]) {
+                    normalized[yearStr] = [];
+                }
+
+                normalized[yearStr].push({
+                    artist: item.artist || item.Artist || item.singer || item.band || item.creator || "Unknown Artist",
+                    track: item.track || item.Track || item.title || item.Title || item.song || "Unknown Track",
+                    genre: item.genre || item.Genre || item.style || "",
+                    overrideUrl: item.overrideUrl || item.itunesId || item.appleId || item.id || null
+                });
+            });
+        } 
+        // Case 2: Raw structure is an Object of arrays keyed by Year
+        else if (typeof rawInput === 'object' && rawInput !== null) {
+            Object.keys(rawInput).forEach(yearKey => {
+                const songs = rawInput[yearKey];
+                if (Array.isArray(songs)) {
+                    normalized[yearKey] = songs.map(item => ({
+                        artist: item.artist || item.Artist || item.singer || item.band || item.creator || "Unknown Artist",
+                        track: item.track || item.Track || item.title || item.Title || item.song || "Unknown Track",
+                        genre: item.genre || item.Genre || item.style || "",
+                        overrideUrl: item.overrideUrl || item.itunesId || item.appleId || item.id || null
+                    }));
+                }
+            });
+        }
+
+        // Return standardized object dictionary
+        return normalized;
+    }
+
+    async function init() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const dataUrl = urlParams.get('data');
+        const theme = urlParams.get('theme') || 'light';
+        const targetYear = urlParams.get('year');
+
+        if (theme === 'dark') document.body.setAttribute('data-theme', 'dark');
+
+        if (dataUrl) {
+            try {
+                document.getElementById('radio-track-info').innerText = "Connecting custom archive...";
+                
+                // Fetch dynamic file stream
+                const response = await fetch(dataUrl);
+                if (!response.ok) throw new Error("Could not download custom playlist data");
+                const rawData = await response.json();
+                
+                // Auto-normalize any arbitrary JSON pattern input!
+                songData = normalizeSongData(rawData);
+                
+            } catch (err) {
+                console.error("Custom JSON pipeline error: ", err);
+                // Gracefully fallback to base songs dataset if remote retrieval is blocked or fails
+                document.getElementById('radio-track-info').innerHTML = "<span style='color:red'>Stream Connection Error. Loading internal fallback data.</span>";
+                await new Promise(r => setTimeout(r, 1800));
+            }
+        }
+
+        updateRadioLimits(targetYear);
+        document.getElementById('radio-track-info').innerText = "Radio Off";
+        populateEmbedSelectors();
+    }
+
+    function updateRadioLimits(requestedYear) {
+        availableRadioYears = Object.keys(songData)
+            .map(Number)
+            .filter(y => !isNaN(y) && songData[y] && songData[y].length > 0 && songData[y][0].track !== "TBA")
+            .sort((a, b) => a - b);
+
+        const dial = document.getElementById('radio-dial');
+        const radioYearDisplay = document.getElementById('radio-year');
+
+        if (availableRadioYears.length > 0) {
+            dial.min = 0;
+            dial.max = availableRadioYears.length - 1;
+            
+            let startIndex = 0;
+            if (requestedYear) {
+                const foundIndex = availableRadioYears.indexOf(parseInt(requestedYear));
+                if (foundIndex !== -1) {
+                    startIndex = foundIndex;
+                }
+            }
+            
+            dial.value = startIndex;
+            const initialYear = availableRadioYears[startIndex];
+            radioYearDisplay.innerText = initialYear;
+            
+            if (!isRadioOn) {
+                renderRadioYearList(initialYear, -1, songData[initialYear.toString()]);
+            }
+        } else {
+            radioYearDisplay.innerText = "----";
+        }
+    }
+
+    function playRadioStatic() {
+        if (!radioStaticCtx) radioStaticCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (radioStaticCtx.state === 'suspended') radioStaticCtx.resume();
+        if (radioStaticNode) return;
+
+        const bufferSize = radioStaticCtx.sampleRate * 2;
+        const buffer = radioStaticCtx.createBuffer(1, bufferSize, radioStaticCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+
+        radioStaticNode = radioStaticCtx.createBufferSource();
+        radioStaticNode.buffer = buffer;
+        radioStaticNode.loop = true;
+
+        radioStaticFilter = radioStaticCtx.createBiquadFilter();
+        radioStaticFilter.type = 'bandpass';
+        radioStaticFilter.frequency.value = 1000;
+
+        const gainNode = radioStaticCtx.createGain();
+        gainNode.gain.value = 0.08;
+
+        radioStaticNode.connect(radioStaticFilter);
+        radioStaticFilter.connect(gainNode);
+        gainNode.connect(radioStaticCtx.destination);
+        radioStaticNode.start();
+    }
+
+    // Stop and cleanly disconnect audio context
+    function stopRadioStatic() {
+        if (radioStaticNode) {
+            try {
+                radioStaticNode.stop();
+                radioStaticNode.disconnect();
+            } catch(e) {}
+            radioStaticNode = null;
+        }
+    }
+
+    function toggleRadio() {
+        isRadioOn = !isRadioOn;
+        const btn = document.getElementById('radio-power-btn');
+        const info = document.getElementById('radio-track-info');
+
+        if (isRadioOn) {
+            btn.innerText = "Power: ON";
+            btn.style.color = "var(--bg)";
+            btn.style.backgroundColor = "var(--text)";
+            info.innerText = "Tuning...";
+            handleDialScrub(document.getElementById('radio-dial').value);
+        } else {
+            btn.innerText = "Power: OFF";
+            btn.style.color = "var(--text)";
+            btn.style.backgroundColor = "transparent";
+            info.innerText = "Radio Off";
+            stopRadioStatic();
+            radioAudio.pause();
+            clearTimeout(dialTimeout);
+            
+            const currentYear = document.getElementById('radio-year').innerText;
+            if (currentYear !== "----" && songData[currentYear]) {
+                renderRadioYearList(currentYear, -1, songData[currentYear]);
+            }
+        }
+    }
+
+    function handleDialScrub(indexValue) {
+        if (availableRadioYears.length === 0) return;
+        const year = availableRadioYears[indexValue];
+        document.getElementById('radio-year').innerText = year;
+        
+        if (!isRadioOn) {
+            renderRadioYearList(year, -1, songData[year.toString()]);
+            return;
+        }
+
+        document.getElementById('radio-track-info').innerHTML = "<em>Tuning...</em>";
+        renderRadioYearList(year, -1, songData[year.toString()]);
+        
+        radioAudio.pause();
+        playRadioStatic();
+
+        clearTimeout(dialTimeout);
+        dialTimeout = setTimeout(() => lockInStation(year), 800);
+    }
+
+    async function lockInStation(year, specificIndex = -1) {
+        if (!isRadioOn) return;
+
+        const songs = songData[year.toString()];
+        if (!songs || songs.length === 0 || songs[0].track === "TBA") {
+            document.getElementById('radio-track-info').innerText = `Static... (No Signal in ${year})`;
+            renderRadioYearList(year, -1, []);
+            return;
+        }
+
+        const songIndex = specificIndex !== -1 ? specificIndex : Math.floor(Math.random() * songs.length);
+        const song = songs[songIndex];
+
+        document.getElementById('radio-track-info').innerHTML = `Catching signal for <br> <span style="color:var(--text)">${song.artist}</span>...`;
+
+        try {
+            let songId = song.overrideUrl || null;
+            let previewUrl = null;
+
+            if (songId) {
+                const lookupRes = await fetch(`https://itunes.apple.com/lookup?id=${songId}`);
+                const lookupData = await lookupRes.json();
+                if (lookupData.results[0] && lookupData.results[0].previewUrl) {
+                    previewUrl = lookupData.results[0].previewUrl;
+                }
+            }
+
+            if (!previewUrl) {
+                const query = encodeURIComponent(`${song.artist} ${song.track}`);
+                const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
+                const data = await res.json();
+                if (data.results[0]) previewUrl = data.results[0].previewUrl;
+            }
+
+            if (document.getElementById('radio-year').innerText !== year.toString()) return;
+
+            if (previewUrl) {
+                stopRadioStatic();
+                radioAudio.src = previewUrl;
+                radioAudio.play();
+                
+                radioAudio.onended = () => {
+                    if (isRadioOn) {
+                        document.getElementById('radio-track-info').innerText = "Scanning...";
+                        setTimeout(() => lockInStation(year), 1500);
+                    }
+                };
+
+                document.getElementById('radio-track-info').innerHTML = `
+                    <div style="font-size:0.6rem; color:var(--accent); font-weight:bold; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">▶ ON AIR</div>
+                    <strong style="color:var(--text); font-size:1.1rem;">${song.artist}</strong><br>
+                    <span>${song.track}</span>
+                `;
+
+                renderRadioYearList(year, songIndex, songs);
+
+            } else {
+                document.getElementById('radio-track-info').innerText = `Signal lost (${song.artist} not found). Retuning...`;
+                setTimeout(() => lockInStation(year), 1500);
+            }
+        } catch (err) {
+            document.getElementById('radio-track-info').innerText = "Interference (Network Error). Retuning...";
+            setTimeout(() => lockInStation(year), 1500);
+        }
+    }
+
+    function switchRadioStation(year, index) {
+        if (!isRadioOn) {
+            isRadioOn = true;
+            const btn = document.getElementById('radio-power-btn');
+            btn.innerText = "Power: ON";
+            btn.style.color = "var(--bg)";
+            btn.style.backgroundColor = "var(--text)";
+            
+            const dial = document.getElementById('radio-dial');
+            const targetIndex = availableRadioYears.indexOf(parseInt(year));
+            if(targetIndex !== -1) dial.value = targetIndex;
+            document.getElementById('radio-year').innerText = year;
+        }
+
+        radioAudio.pause();
+        playRadioStatic(); 
+        document.getElementById('radio-track-info').innerHTML = "<em>Tuning...</em>";
+        
+        clearTimeout(dialTimeout);
+        lockInStation(year, index);
+    }
+
+    function renderRadioYearList(year, activeIndex, songs) {
+        const listContainer = document.getElementById('radio-year-list');
+        
+        if (!songs || songs.length === 0) {
+            listContainer.classList.remove('active-list');
+            return;
+        }
+        
+        listContainer.classList.add('active-list');
+        
+        const titleText = activeIndex === -1 ? `Broadcasting from ${year}` : `Also broadcasting from ${year}`;
+        let html = `<div class="list-title-row">${titleText}</div>`;
+        
+        songs.forEach((s, i) => {
+            if (i === activeIndex) return;
+            
+            html += `
+            <div class="track-item" onclick="switchRadioStation('${year}', ${i})">
+                <span class="track-item-icon">▶</span>
+                <div class="track-item-content">
+                    <span class="track-artist">${s.artist}</span>
+                    <span class="track-title">${s.track}</span>
+                </div>
+            </div>`;
+        });
+        
+        listContainer.innerHTML = html;
+    }
+
+    // ==========================================
+    // EMBED CREATOR UTILITIES & MANAGEMENT
+    // ==========================================
+    function populateEmbedSelectors() {
+        const yearSelect = document.getElementById('embed-year-select');
+        yearSelect.innerHTML = '<option value="">Default (First Year)</option>';
+        availableRadioYears.forEach(yr => {
+            const opt = document.createElement('option');
+            opt.value = yr;
+            opt.innerText = yr;
+            yearSelect.appendChild(opt);
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const dataUrl = urlParams.get('data') || '';
+        document.getElementById('embed-data-input').value = dataUrl;
+    }
+
+    function generateEmbedMarkup() {
+        const theme = document.getElementById('embed-theme-select').value;
+        const year = document.getElementById('embed-year-select').value;
+        const rawData = document.getElementById('embed-data-input').value.trim();
+
+        // Get absolute URL of current page without search query strings
+        const basePageUrl = window.location.origin + window.location.pathname;
+        const params = new URLSearchParams();
+
+        if (theme === 'dark') params.set('theme', 'dark');
+        if (year) params.set('year', year);
+        if (rawData) {
+            params.set('data', rawData);
+        } else {
+            const urlParams = new URLSearchParams(window.location.search);
+            const parentData = urlParams.get('data');
+            if (parentData) params.set('data', parentData);
+        }
+
+        const buildUrl = params.toString() ? `${basePageUrl}?${params.toString()}` : basePageUrl;
+        const iframeString = `<iframe src="${buildUrl}" width="100%" height="520" style="border: 1px solid #eee; border-radius: 12px;" allow="autoplay"></iframe>`;
+        
+        document.getElementById('embed-code-text').value = iframeString;
+    }
+
+    function showEmbedCode() {
+        generateEmbedMarkup();
+        document.getElementById('embed-overlay').style.display = 'flex';
+    }
+
+    function closeEmbed() {
+        document.getElementById('embed-overlay').style.display = 'none';
+    }
+
+    function copyEmbed() {
+        const codeBox = document.getElementById('embed-code-text');
+        codeBox.select();
+        document.execCommand('copy');
+    }
+
+    window.onload = init;
+</script>
+</body>
+</html>
