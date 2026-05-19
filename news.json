@@ -1,0 +1,30 @@
+[
+  {
+    "type": "news",
+    "date": "2026-05-19",
+    "title": "New Community Comments Feature!",
+    "author": "Josh",
+    "content": "I've added a new section where you can leave comments or suggest tracks. Drop a note using the form below, and I'll add my favorites to this feed."
+  },
+  {
+    "type": "comment",
+    "date": "2026-05-18",
+    "title": "Loving the 90s picks",
+    "author": "RadioLover99",
+    "content": "Really enjoying the 1990s section, specifically the Portishead choices. Have you thought about adding Tricky to 1995?"
+  },
+  {
+    "type": "comment",
+    "date": "2026-05-15",
+    "title": "Radio Time Machine",
+    "author": "Sarah_T",
+    "content": "The static effect between stations on the radio dial is such a great touch. It really feels like tuning an old AM radio."
+  },
+  {
+    "type": "news",
+    "date": "2026-05-10",
+    "title": "Lewisham Archive Added",
+    "author": "Josh",
+    "content": "Just uploaded the new Lewisham community archive to the community search page. Check it out to see the latest additions."
+  }
+]
