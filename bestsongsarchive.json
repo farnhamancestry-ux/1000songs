@@ -1,0 +1,616 @@
+{
+  "1900": [
+    {
+      "artist": "Vienna Philharmonic",
+      "track": "Symphony No. 4",
+      "genre": "Classical",
+      "note": "Composed by Gustav Mahler"
+    }
+  ],
+  "1901": [
+    {
+      "artist": "Charles Albert Tindley",
+      "track": "What Are They Doing in Heaven?",
+      "genre": "Gospel",
+      "note": "Written by Charles Albert Tindley"
+    }
+  ],
+  "1902": [
+    {
+      "artist": "Arthur Pryor",
+      "track": "In the Good Old Summertime",
+      "genre": "Tin Pan Alley",
+      "note": "Written by Hugie Cannon"
+    }
+  ],
+  "1903": [
+    {
+      "artist": "Heyde Quartet",
+      "track": "String Quartet in F Major",
+      "genre": "Classical",
+      "note": "Composed by Maurice Ravel"
+    }
+  ],
+  "1904": [
+    {
+      "artist": "Dick Manning",
+      "track": "Fascination",
+      "genre": "Pop",
+      "note": "Written by Dick Manning"
+    }
+  ],
+  "1905": [
+    {
+      "artist": "Lamoureux Orchestra",
+      "track": "La Mer",
+      "genre": "Classical",
+      "note": "Composed by Claude Debussy"
+    }
+  ],
+  "1906": [
+    {
+      "artist": "United States Naval Academy Band",
+      "track": "Anchors Aweigh!",
+      "genre": "March",
+      "note": "Written by Charles Zimmerman and Alfred H. Miles"
+    }
+  ],
+  "1907": [
+    {
+      "artist": "Billy Murray",
+      "track": "School Days (When We Were a Couple of Kids)",
+      "genre": "Tin Pan Alley",
+      "note": "Written by Gus Edwards"
+    }
+  ],
+  "1908": [
+    {
+      "artist": "Nora Bayes",
+      "track": "Shine on, Harvest Moon",
+      "genre": "Tin Pan Alley",
+      "note": "Written by Nora Bayes and Jack Norworth"
+    }
+  ],
+  "1909": [
+    {
+      "artist": "Billy Murray",
+      "track": "The Ballad of Casey Jones",
+      "genre": "Folk",
+      "note": "Written by Eddie Newton, Eddie Saunders, and T. Lawrence Seibert"
+    }
+  ],
+  "1910": [
+    {
+      "artist": "Ballets Russes",
+      "track": "The Firebird",
+      "genre": "Classical",
+      "note": "Composed by Igor Stravinsky"
+    }
+  ],
+  "1911": [
+    {
+      "artist": "Arthur Collins",
+      "track": "Alexander's Ragtime Band",
+      "genre": "Ragtime",
+      "note": "Written by Irving Berlin"
+    }
+  ],
+  "1912": [
+    {
+      "artist": "Ernie Burnett",
+      "track": "My Melancholy Baby",
+      "genre": "Jazz",
+      "note": "Written by Ernie Burnett"
+    }
+  ],
+  "1913": [
+    {
+      "artist": "Ballets Russes",
+      "track": "The Rite of Spring",
+      "genre": "Classical",
+      "note": "Composed by Igor Stravinsky"
+    }
+  ],
+  "1914": [
+    {
+      "artist": "W.C. Handy",
+      "track": "The Saint Louis Blues",
+      "genre": "Blues",
+      "note": "Written by W.C. Handy"
+    }
+  ],
+  "1915": [
+    {
+      "artist": "Irving Berlin",
+      "track": "I Love a Piano",
+      "genre": "Tin Pan Alley",
+      "note": "Written by Irving Berlin"
+    }
+  ],
+  "1916": [
+    {
+      "artist": "W.C. Handy",
+      "track": "Beale Street Blues",
+      "genre": "Blues",
+      "note": "Written by W.C. Handy"
+    }
+  ],
+  "1917": [
+    {
+      "artist": "Jerome Kern",
+      "track": "Till the Clouds Roll by",
+      "genre": "Musical Theatre",
+      "note": "Written by P.G. Wodehouse & Jerome Kern"
+    }
+  ],
+  "1918": [
+    {
+      "artist": "Marion Harris",
+      "track": "After You’ve Gone",
+      "genre": "Jazz",
+      "note": "Written by Turner Layton and Henry Creamer"
+    }
+  ],
+  "1919": [
+    {
+      "artist": "Marion Harris",
+      "track": "Baby, Won't You Please Come Home?",
+      "genre": "Jazz",
+      "note": "Written by Charles Warfield and Clarence Williams"
+    }
+  ],
+  "1920": [
+    {
+      "artist": "Paul Whiteman",
+      "track": "Whispering",
+      "genre": "Jazz",
+      "note": "Written by Sherman, Clay, and Co."
+    }
+  ],
+  "1921": [
+    {
+      "artist": "Irving Berlin",
+      "track": "All by Myself",
+      "genre": "Tin Pan Alley",
+      "note": "Written by Irving Berlin"
+    }
+  ],
+  "1922": [
+    {
+      "artist": "Emmett Miller",
+      "track": "Lovesick Blues",
+      "genre": "Country",
+      "note": "Written by Cliff Friend and Irving Mills"
+    }
+  ],
+  "1923": [
+    {
+      "artist": "Bessie Smith",
+      "track": "Nobody Knows You When You're Down and Out",
+      "genre": "Blues",
+      "note": "Written by Jimmy Cox"
+    }
+  ],
+  "1924": [
+    {
+      "artist": "Paul Whiteman",
+      "track": "Rhapsody in Blue",
+      "genre": "Classical/Jazz Fusion",
+      "note": "Written by George Gershwin"
+    }
+  ],
+  "1925": [
+    {
+      "artist": "Irving Berlin",
+      "track": "Always",
+      "genre": "Tin Pan Alley",
+      "note": "Written by Irving Berlin"
+    }
+  ],
+  "1926": [
+    {
+      "artist": "Gertrude Lawrence",
+      "track": "Someone to Watch Over Me",
+      "genre": "Jazz Standard",
+      "note": "Written by George Gershwin, Ira Gershwin, and Howard Dietz"
+    }
+  ],
+  "1927": [
+    {
+      "artist": "Paul Robeson",
+      "track": "Ol' Man River",
+      "genre": "Musical Theatre",
+      "note": "Written by Oscar Hammerstein II and Jerome Kern"
+    }
+  ],
+  "1928": [
+    {
+      "artist": "Harald Paulsen",
+      "track": "Mack the Knife",
+      "genre": "Cabaret",
+      "note": "Written by Kurt Weill and Bertolt Brecht"
+    }
+  ],
+  "1929": [
+    {
+      "artist": "Isham Jones",
+      "track": "Stardust",
+      "genre": "Jazz Standard",
+      "note": "Written by Hoagy Carmichael and Mitchell Parish"
+    }
+  ],
+  "1930": [
+    {
+      "artist": "Walter Vinson",
+      "track": "Sitting on Top of the World",
+      "genre": "Blues",
+      "note": "Written by Walter Vinson"
+    }
+  ],
+  "1931": [
+    {
+      "artist": "Herman Hupfeld",
+      "track": "As Time Goes By",
+      "genre": "Pop Standard",
+      "note": "Written by Herman Hupfeld"
+    }
+  ],
+  "1932": [
+    {
+      "artist": "Ray Noble",
+      "track": "Try a Little Tenderness",
+      "genre": "Pop Standard",
+      "note": "Written by Harry M. Woods, Jimmy Campbell & Reg Connelly"
+    }
+  ],
+  "1933": [
+    {
+      "artist": "Gertrude Niesen",
+      "track": "Smoke Gets in Your Eyes",
+      "genre": "Pop Standard",
+      "note": "Written by Jerome Kern and Otto Harbach"
+    }
+  ],
+  "1934": [
+    {
+      "artist": "Cole Porter",
+      "track": "Miss Otis Regrets",
+      "genre": "Jazz Standard",
+      "note": "Written by Cole Porter"
+    }
+  ],
+  "1935": [
+    {
+      "artist": "Abbie Mitchell",
+      "track": "Summertime",
+      "genre": "Opera/Jazz",
+      "note": "Written by Dubose Hayward and George Gershwin"
+    }
+  ],
+  "1936": [
+    {
+      "artist": "Frank Sinatra",
+      "track": "I've Got You Under My Skin",
+      "genre": "Pop/Jazz",
+      "note": "Written by Cole Porter"
+    }
+  ],
+  "1937": [
+    {
+      "artist": "Cole Porter",
+      "track": "In The Still Of The Night",
+      "genre": "Pop Standard",
+      "note": "Written by Cole Porter"
+    }
+  ],
+  "1938": [
+    {
+      "artist": "Paul Whiteman",
+      "track": "Heart and Soul",
+      "genre": "Pop Standard",
+      "note": "Written by Hoagy Carmichael and Frank Loesser"
+    }
+  ],
+  "1939": [
+    {
+      "artist": "Billie Holiday",
+      "track": "Strange Fruit",
+      "genre": "Jazz/Blues",
+      "note": "Written by Abel Meeropol"
+    }
+  ],
+  "1940": [
+    {
+      "artist": "Fats Domino",
+      "track": "Blueberry Hill",
+      "genre": "R&B/Rock and Roll",
+      "note": "Written by Vincent Rose, Larry Stock and Al Lewis"
+    }
+  ],
+  "1941": [
+    {
+      "artist": "Duke Ellington",
+      "track": "Take the 'A' Train",
+      "genre": "Jazz",
+      "note": "Written by Billy Strayhorn"
+    }
+  ],
+  "1942": [
+    {
+      "artist": "Cincinnati Symphony Orchestra",
+      "track": "Fanfare For The Common Man",
+      "genre": "Classical",
+      "note": "Written by Aaron Copland"
+    }
+  ],
+  "1943": [
+    {
+      "artist": "Charles Trenet",
+      "track": "La Mer",
+      "genre": "Chanson",
+      "note": "Written by Charles Trenet"
+    }
+  ],
+  "1944": [
+    {
+      "artist": "Duke Ellington",
+      "track": "I'm Beginning to See the Light",
+      "genre": "Jazz",
+      "note": "Written by Duke Ellington, Johnny Hodges, Harry James and Don George"
+    },
+    {
+      "artist": "Bing Crosby",
+      "track": "Swinging on a Star",
+      "genre": "Traditional Pop",
+      "note": "Written by Jimmy Van Heusen and Johnny Burke"
+    },
+    {
+      "artist": "Judy Garland",
+      "track": "Have Yourself a Merry Little Christmas",
+      "genre": "Holiday/Pop",
+      "note": "Written by Hugh Martin and Ralph Blane"
+    },
+    {
+      "artist": "Boston Symphony Orchestra",
+      "track": "Appalachian Spring",
+      "genre": "Classical",
+      "note": "Written by Aaron Copland"
+    }
+  ],
+  "1945": [
+    {
+      "artist": "Willie Nelson",
+      "track": "Blue Eyes Crying in the Rain",
+      "genre": "Country",
+      "note": "Written by Fred Rose"
+    }
+  ],
+  "1946": [
+    {
+      "artist": "Ethel Merman",
+      "track": "There's No Business Like Show Business",
+      "genre": "Musical Theatre",
+      "note": "Written by Irving Berlin"
+    }
+  ],
+  "1947": [
+    {
+      "artist": "Roy Brown",
+      "track": "Good Rockin' Tonight",
+      "genre": "R&B",
+      "note": "Written by Roy Brown"
+    }
+  ],
+  "1948": [
+    {
+      "artist": "Pee Wee King",
+      "track": "Tennessee Waltz",
+      "genre": "Country",
+      "note": "Written by Redd Stewart and Pee Wee King"
+    }
+  ],
+  "1949": [
+    {
+      "artist": "Ezio Pinza",
+      "track": "Some Enchanted Evening",
+      "genre": "Musical Theatre",
+      "note": "Written by Rodgers and Hammerstein"
+    }
+  ],
+  "1950": [
+    {
+      "artist": "Hank Snow",
+      "track": "I'm Movin' On",
+      "genre": "Country",
+      "note": "Written by Hank Snow"
+    }
+  ],
+  "1951": [
+    {
+      "artist": "The Ames Brothers",
+      "track": "It's All in the Game",
+      "genre": "Pop",
+      "note": "Written by Charles G. Dawes and Carl Sigman"
+    }
+  ],
+  "1952": [
+    {
+      "artist": "Big Mama Thornton",
+      "track": "Hound Dog",
+      "genre": "R&B",
+      "note": "Written by Jerry Leiber and Mike Stoller"
+    }
+  ],
+  "1953": [
+    {
+      "artist": "Bill Haley & His Comets",
+      "track": "Rock Around The Clock",
+      "genre": "Rock and Roll",
+      "note": "Written by Max C. Freedman and James E. Myers"
+    }
+  ],
+  "1954": [
+    {
+      "artist": "Joe Turner",
+      "track": "Shake, Rattle And Roll",
+      "genre": "R&B/Rock and Roll",
+      "note": "Written by Jesse Stone"
+    }
+  ],
+  "1955": [
+    {
+      "artist": "Fats Domino",
+      "track": "Ain't That a Shame",
+      "genre": "R&B",
+      "note": "Written by Antoine Domino and Dave Bartholomew"
+    },
+    {
+      "artist": "Chuck Berry",
+      "track": "Maybellene",
+      "genre": "Rock and Roll",
+      "note": "Written by Chuck Berry"
+    }
+  ],
+  "1956": [
+    {
+      "artist": "Johnny Cash",
+      "track": "I Walk the Line",
+      "genre": "Country",
+      "note": "Written by Johnny Cash"
+    }
+  ],
+  "1957": [
+    {
+      "artist": "The Everly Brothers",
+      "track": "Bye Bye Love",
+      "genre": "Country/Rock",
+      "note": "Written by Felice & Boudleaux Bryant"
+    }
+  ],
+  "1958": [
+    {
+      "artist": "Chuck Berry",
+      "track": "Johnny B. Goode",
+      "genre": "Rock and Roll",
+      "note": "Written by Chuck Berry"
+    }
+  ],
+  "1959": [
+    {
+      "artist": "Buddy Holly",
+      "track": "I Fought The Law",
+      "genre": "Rock and Roll",
+      "note": "Written by Sonny Curtis"
+    }
+  ],
+  "1960": [
+    {
+      "artist": "Roy Orbison",
+      "track": "Only the Lonely",
+      "genre": "Rock and Roll",
+      "note": "Written by Roy Orbison and Joe Melson"
+    },
+    {
+      "artist": "The Shirelles",
+      "track": "Will You Love Me Tomorrow",
+      "genre": "Pop",
+      "note": "Written by Gerry Goffin and Carole King"
+    }
+  ],
+  "1961": [
+    {
+      "artist": "Ben E. King",
+      "track": "Stand By Me",
+      "genre": "Soul",
+      "note": "Written by Ben E. King, Jerry Leiber and Mike Stoller"
+    }
+  ],
+  "1962": [
+    {
+      "artist": "The Temptations",
+      "track": "You’ve Really Got A Hold On Me",
+      "genre": "Soul",
+      "note": "Written by Smokey Robinson"
+    },
+    {
+      "artist": "Bob Dylan",
+      "track": "Blowin’ In The Wind",
+      "genre": "Folk",
+      "note": "Written by Bob Dylan"
+    }
+  ],
+  "1963": [
+    {
+      "artist": "The Ronettes",
+      "track": "Be My Baby",
+      "genre": "Pop",
+      "note": "Written by Jeff Barry, Ellie Greenwich and Phil Spector"
+    }
+  ],
+  "1964": [
+    {
+      "artist": "The Byrds",
+      "track": "Mr. Tambourine Man",
+      "genre": "Folk Rock",
+      "note": "Written by Bob Dylan"
+    },
+    {
+      "artist": "Simon & Garfunkel",
+      "track": "The Sound of Silence",
+      "genre": "Folk Rock",
+      "note": "Written by Paul Simon"
+    }
+  ],
+  "1965": [
+    {
+      "artist": "Bob Dylan",
+      "track": "Like A Rolling Stone",
+      "genre": "Rock",
+      "note": "Written by Bob Dylan"
+    }
+  ],
+  "1966": [
+    {
+      "artist": "The Rolling Stones",
+      "track": "Paint It Black",
+      "genre": "Rock",
+      "note": "Written by Jagger & Richards"
+    }
+  ],
+  "1967": [
+    {
+      "artist": "The Beatles",
+      "track": "Penny Lane",
+      "genre": "Rock",
+      "note": "Written by Lennon & McCartney"
+    },
+    {
+      "artist": "James Carr",
+      "track": "The Dark End of the Street",
+      "genre": "Soul",
+      "note": "Written by Dan Penn & Chips Moman"
+    },
+    {
+      "artist": "Jefferson Airplane",
+      "track": "White Rabbit",
+      "genre": "Psychedelic Rock",
+      "note": "Written by Grace Slick"
+    }
+  ],
+  "1968": [
+    {
+      "artist": "The Zombies",
+      "track": "Time of the Season",
+      "genre": "Psychedelic Pop",
+      "note": "Written by Rod Argent"
+    }
+  ],
+  "1969": [
+    {
+      "artist": "The Rolling Stones",
+      "track": "Gimme Shelter",
+      "genre": "Rock",
+      "note": "Written by Jagger & Richards"
+    }
+  ]
+}
