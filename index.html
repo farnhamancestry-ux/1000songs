@@ -715,7 +715,15 @@ main {
 </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto 4rem auto; padding: 0 1rem;">
-            
+
+<div id="button-container-3" style="border: 1px solid var(--line); padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+    <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Games</h1>
+    <div style="display: flex; align-items: baseline; gap: 1rem;">
+        <p style="font-size: 0.8rem; color: var(--subtle); margin: 0; line-height: 1.4;">Test your musical knowledge with Guess the Year and Name That Tune.</p>
+        <button class="header-btn" style="border: 1px solid var(--text); padding: 6px 12px; cursor: pointer; text-align: center; font-size: 0.65rem;" onclick="showPage('games')">Play ↗</button>
+    </div>
+</div>
+          
             <div id="button-container-1" style="border: 1px solid var(--line); padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
     <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Community</h1>
     
@@ -741,99 +749,82 @@ main {
 
     </div>
 </div>
+<div id="games-view" class="page-view">
+    <div style="margin-top: 2rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Games</h1>
+        <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Test your archive knowledge</p>
+    </div>
 
-
-            <div style="border: 1px solid var(--line); padding: 2rem; display: flex; flex-direction: column;">
-                <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Birth Songs</h1>
-                
-                <div style="font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.4; flex-grow: 1;">
-                    What are the songs the year you were born?
-                </div>
-
-                <div style="display: flex; gap: 1rem; align-items: center; width: 100%;">
-                    <input type="number" id="front-birth-year" placeholder="YYYY" 
-                           style="background: none; border: none; border-bottom: 1px solid var(--subtle); font-family: inherit; font-size: 1.1rem; padding: 5px 0; color: var(--text); outline: none; width: 80px; text-align: center;"
-                           onkeydown="if(event.key==='Enter') quickAgeLink()">
-                    <button class="header-btn" style="border: 1px solid var(--text); padding: 5px 15px; flex-grow: 1;" onclick="quickAgeLink()">GO</button>
-                </div>
-            </div>
-
-            <div style="border: 1px solid var(--line); padding: 2rem; display: flex; flex-direction: column;">
-                <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Guess Year</h1>
-                
-                <div id="guess-song-display" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.4; flex-grow: 1;">
-                    Loading transmission...
-                </div>
-                
-                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
-                    <input type="number" id="guess-year-input" placeholder="YYYY" 
-                        style="background: none; border: none; border-bottom: 1px solid var(--subtle); font-family: inherit; font-size: 1.1rem; padding: 5px 0; color: var(--text); outline: none; width: 80px; text-align: center;"
-                        onkeydown="if(event.key==='Enter') checkYearGuess()">
-                        
-                    <button id="guess-submit-btn" class="header-btn" style="border: 1px solid var(--text); padding: 5px 15px; flex-grow: 1;" onclick="checkYearGuess()">Guess</button>
-                    <button id="guess-next-btn" class="header-btn" style="border: 1px dashed var(--subtle); padding: 5px 15px; display: none; flex-grow: 1;" onclick="initGuessTheYear()">Next Track ↻</button>
-                </div>
-                
-                <div id="guess-feedback" style="font-size: 0.9rem; font-weight: 400; color: var(--subtle); min-height: 20px;"></div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-                    <div id="guess-streak-display" style="font-size: 0.9rem; font-weight: 700; color: var(--accent); display: none;">Streak: 0</div>
-                    <button id="guess-share-btn" class="header-btn" style="border: none; color: var(--accent); padding: 0; display: none;" onclick="shareScore('year')">Share Score ↗</button>
-                </div>
-            </div>
-
-            <div style="border: 1px solid var(--line); padding: 2rem; grid-column: 1 / -1;">
-                <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Name That Tune</h1>
-                
-                <div style="display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                    <select id="tune-decade-filter" class="header-btn" style="border: 1px solid var(--line); padding: 8px 10px; background: var(--bg); color: var(--text);" onchange="initNameThatTune()">
-                        <option value="any">Any Decade</option>
-                        <option value="1930">1930s</option>
-                        <option value="1940">1940s</option>
-                        <option value="1950">1950s</option>
-                        <option value="1960">1960s</option>
-                        <option value="1970">1970s</option>
-                        <option value="1980">1980s</option>
-                        <option value="1990">1990s</option>
-                        <option value="2000">2000s</option>
-                        <option value="2010">2010s</option>
-                        <option value="2020">2020s</option>
-                    </select>
-                    
-                    <select id="tune-genre-filter" class="header-btn" style="border: 1px solid var(--line); padding: 8px 10px; background: var(--bg); color: var(--text);" onchange="initNameThatTune()">
-                        <option value="any">Any Genre</option>
-                    </select>
-                </div>
-
-                <div id="tune-status" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.4;">
-                    Ready to play?
-                </div>
-                
-                <div style="display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                    <button id="tune-play-btn" class="header-btn" style="border: 1px solid var(--text); padding: 8px 15px;" onclick="playNameThatTune()">Play Audio Clue ▶</button>
-                    <button class="header-btn" style="border: 1px dashed var(--subtle); padding: 8px 15px;" onclick="initNameThatTune()">Next Track ⏭</button>
-                </div>
-                
-                <div id="tune-options" style="display: none; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;"></div>
-                
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
-                    <div id="tune-feedback" style="font-size: 0.9rem; font-weight: 400; color: var(--subtle); min-height: 20px;"></div>
-                    <div style="display: flex; gap: 15px; align-items: center;">
-                        <div id="tune-streak-display" style="font-size: 0.9rem; font-weight: 700; color: var(--accent); display: none;">Streak: 0</div>
-                        <button id="tune-share-btn" class="header-btn" style="border: none; color: var(--accent); padding: 0; display: none;" onclick="shareScore('tune')">Share Score ↗</button>
-                    </div>
-                </div>
-                <button id="tune-next-btn" class="header-btn" style="border: 1px dashed var(--subtle); padding: 8px 15px; margin-top: 1rem; display: none;" onclick="initNameThatTune()">Next Track ↻</button>
-            </div>
-
-            <div id="news-snippet-container" style="border: 1px solid var(--line); padding: 2rem; grid-column: 1 / -1; display: none; background: var(--line);">
-                <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">News</h1>
-                <div id="news-snippet-content">Loading...</div>
-                <button class="header-btn" style="border: 1px solid var(--text); padding: 8px 15px; margin-top: 1rem;" onclick="showPage('news')">
-                    Read All / Leave a Comment
-                </button>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 4rem auto; padding: 0 1rem;">
+        
+        <div style="border: 1px solid var(--line); padding: 2rem; display: flex; flex-direction: column;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Guess Year</h1>
+            
+            <div id="guess-song-display" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.4; flex-grow: 1;">
+                Loading transmission...
             </div>
             
+            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+                <input type="number" id="guess-year-input" placeholder="YYYY" 
+                    style="background: none; border: none; border-bottom: 1px solid var(--subtle); font-family: inherit; font-size: 1.1rem; padding: 5px 0; color: var(--text); outline: none; width: 80px; text-align: center;"
+                    onkeydown="if(event.key==='Enter') checkYearGuess()">
+                    
+                <button id="guess-submit-btn" class="header-btn" style="border: 1px solid var(--text); padding: 5px 15px; flex-grow: 1;" onclick="checkYearGuess()">Guess</button>
+                <button id="guess-next-btn" class="header-btn" style="border: 1px dashed var(--subtle); padding: 5px 15px; display: none; flex-grow: 1;" onclick="initGuessTheYear()">Next Track ↻</button>
+            </div>
+            
+            <div id="guess-feedback" style="font-size: 0.9rem; font-weight: 400; color: var(--subtle); min-height: 20px;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                <div id="guess-streak-display" style="font-size: 0.9rem; font-weight: 700; color: var(--accent); display: none;">Streak: 0</div>
+                <button id="guess-share-btn" class="header-btn" style="border: none; color: var(--accent); padding: 0; display: none;" onclick="shareScore('year')">Share Score ↗</button>
+            </div>
         </div>
+
+        <div style="border: 1px solid var(--line); padding: 2rem; grid-column: 1 / -1;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Name That Tune</h1>
+            
+            <div style="display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                <select id="tune-decade-filter" class="header-btn" style="border: 1px solid var(--line); padding: 8px 10px; background: var(--bg); color: var(--text);" onchange="initNameThatTune()">
+                    <option value="any">Any Decade</option>
+                    <option value="1930">1930s</option>
+                    <option value="1940">1940s</option>
+                    <option value="1950">1950s</option>
+                    <option value="1960">1960s</option>
+                    <option value="1970">1970s</option>
+                    <option value="1980">1980s</option>
+                    <option value="1990">1990s</option>
+                    <option value="2000">2000s</option>
+                    <option value="2010">2010s</option>
+                    <option value="2020">2020s</option>
+                </select>
+                
+                <select id="tune-genre-filter" class="header-btn" style="border: 1px solid var(--line); padding: 8px 10px; background: var(--bg); color: var(--text);" onchange="initNameThatTune()">
+                    <option value="any">Any Genre</option>
+                </select>
+            </div>
+
+            <div id="tune-status" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.4;">
+                Ready to play?
+            </div>
+            
+            <div style="display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                <button id="tune-play-btn" class="header-btn" style="border: 1px solid var(--text); padding: 8px 15px;" onclick="playNameThatTune()">Play Audio Clue ▶</button>
+                <button class="header-btn" style="border: 1px dashed var(--subtle); padding: 8px 15px;" onclick="initNameThatTune()">Next Track ⏭</button>
+            </div>
+            
+            <div id="tune-options" style="display: none; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;"></div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                <div id="tune-feedback" style="font-size: 0.9rem; font-weight: 400; color: var(--subtle); min-height: 20px;"></div>
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <div id="tune-streak-display" style="font-size: 0.9rem; font-weight: 700; color: var(--accent); display: none;">Streak: 0</div>
+                    <button id="tune-share-btn" class="header-btn" style="border: none; color: var(--accent); padding: 0; display: none;" onclick="shareScore('tune')">Share Score ↗</button>
+                </div>
+            </div>
+            <button id="tune-next-btn" class="header-btn" style="border: 1px dashed var(--subtle); padding: 8px 15px; margin-top: 1rem; display: none;" onclick="initNameThatTune()">Next Track ↻</button>
+        </div>
+    </div>
+</div>
         
         <div id="index-grid" class="genre-grid"></div>
     </div>
