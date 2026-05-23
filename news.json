@@ -1,4 +1,13 @@
 [
+
+  {
+    "type": "news",
+    "date": "23rd May 2026",
+    "title": "New Forum Feature!",
+    "author": "Josh",
+    "content": "I've added forum. Post on there and I can add the info to the site."
+  },
+  
   {
     "type": "news",
     "date": "19th May 2026",
