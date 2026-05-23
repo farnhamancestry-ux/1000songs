@@ -719,16 +719,17 @@ main {
             <div id="button-container-1" style="border: 1px solid var(--line); padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
     <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Curations</h1>
     
-    <div style="display: 140px 1fr; align-items: baseline; gap: 1rem; padding-bottom: 1rem;">
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px dashed var(--line); padding-bottom: 1rem;">
+            <p style="font-size: 0.8rem; color: var(--subtle); margin: 0; line-height: 1.4; flex-grow: 1;">Send me your personal top 10 choices to feature in our community library.</p>
+            <button class="header-btn" style="border: 1px solid var(--text); padding: 8px 15px; cursor: pointer; text-align: center; font-size: 0.65rem; white-space: nowrap;" onclick="showPage('your-10')">Submit ↗</button>
+        </div>
         
-        <p style="font-size: 0.8rem; color: var(--subtle); margin: 0; line-height: 1.4;">Send me your personal top 10 choices to feature in our community library.</p>
-
-<button class="header-btn" style="border: 1px solid var(--text); padding: 6px 12px; cursor: pointer; text-align: center; font-size: 0.65rem;" onclick="showPage('your-10')">Submit ↗</button>
-<p style="font-size: 0.8rem; color: var(--subtle); margin: 0; line-height: 1.4;">Curate your own selections.</p>
-<button class="header-btn" style="border: 1px solid var(--text); padding: 6px 12px; cursor: pointer; text-align: center; font-size: 0.65rem;" onclick="showPage('import')">Curate ↗</button>
-
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+            <p style="font-size: 0.8rem; color: var(--subtle); margin: 0; line-height: 1.4; flex-grow: 1;">Curate your own selections.</p>
+            <button class="header-btn" style="border: 1px solid var(--text); padding: 8px 15px; cursor: pointer; text-align: center; font-size: 0.65rem; white-space: nowrap;" onclick="showPage('import')">Curate ↗</button>
+        </div>
     </div>
-    
 </div>
 
 
@@ -803,7 +804,7 @@ main {
                     <button class="header-btn" style="border: 1px dashed var(--subtle); padding: 8px 15px;" onclick="initNameThatTune()">Next Track ⏭</button>
                 </div>
                 
-                <div id="tune-options" style="display: none; grid-template-rows: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;"></div>
+                <div id="tune-options" style="display: none; grid-template-columns: 1fr 1fr; gap: 10px;"></div>
                 
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
                     <div id="tune-feedback" style="font-size: 0.9rem; font-weight: 400; color: var(--subtle); min-height: 20px;"></div>
@@ -4527,7 +4528,7 @@ function initNameThatTune() {
     tuneOptions.forEach((song, index) => {
         const btn = document.createElement('button');
         btn.className = 'header-btn';
-        btn.style.cssText = "border: 1px solid var(--line); padding: 10px; text-align: left; width: 100%; text-transform: none; letter-spacing: 0; font-size: 0.9rem; transition: background 0.2s;";
+        btn.style.cssText = "border: 1px solid var(--line); padding: 10px; text-align: center; width: 100%; text-transform: none; letter-spacing: 0; font-size: 0.9rem; transition: background 0.2s;";
         btn.innerText = `${song.artist} - ${song.track}`;
         btn.onclick = () => checkTuneGuess(index, btn);
         optionsContainer.appendChild(btn);
@@ -4559,7 +4560,7 @@ async function playNameThatTune() {
                 tuneAudio.play();
                 
                 document.getElementById('tune-status').innerHTML = "Listening... (5 seconds)";
-                document.getElementById('tune-options').style.display = 'flex';
+                document.getElementById('tune-options').style.display = 'grid';
 
                 // Cut the audio after 5 seconds
                 tuneTimeout = setTimeout(() => {
@@ -4599,23 +4600,40 @@ function checkTuneGuess(selectedIndex, btnNode) {
         b.style.cursor = "default";
     });
     
+    let scoreToShare = tuneStreak;
+
     if (isCorrect) {
-        tuneStreak++; // Increment streak
+        tuneStreak++; // Increment live streak
+        scoreToShare = tuneStreak; // Update score to share
         btnNode.style.backgroundColor = "var(--text)";
         btnNode.style.color = "var(--bg)";
         document.getElementById('tune-feedback').innerHTML = `<span style="color: var(--text); font-weight: 700;">Spot on!</span> That was a classic from ${tuneTarget.year || "the archive"}.`;
     } else {
-        tuneStreak = 0; // Reset streak
-        // Mark the wrong guess
+        scoreToShare = tuneStreak; // Capture the final streak before resetting
+        tuneStreak = 0; // Reset live streak
+        
         btnNode.style.textDecoration = "line-through";
         btnNode.style.opacity = "0.5";
-        
-        // Highlight the actual correct answer
         const correctIndex = tuneOptions.indexOf(tuneTarget);
         buttons[correctIndex].style.border = "1px solid var(--text)";
         buttons[correctIndex].style.fontWeight = "700";
-        
         document.getElementById('tune-feedback').innerHTML = `Not quite! It was <span style="color: var(--text); font-weight: 700;">${tuneTarget.artist}</span>.`;
+    }
+
+    const tuneStreakDisplay = document.getElementById('tune-streak-display');
+    const tuneShareBtn = document.getElementById('tune-share-btn');
+    
+    // If they got at least 1 right, let them share (even if they just lost)
+    if (scoreToShare > 0) {
+        tuneStreakDisplay.style.display = 'block';
+        tuneStreakDisplay.innerText = isCorrect ? `Streak: ${scoreToShare}` : `Final Streak: ${scoreToShare}`;
+        
+        tuneShareBtn.style.display = 'inline-block';
+        // Dynamically bind the exact score to the button click
+        tuneShareBtn.onclick = () => shareScore('tune', scoreToShare);
+    } else {
+        tuneStreakDisplay.style.display = 'none';
+        tuneShareBtn.style.display = 'none';
     }
 
     // Update the streak UI
