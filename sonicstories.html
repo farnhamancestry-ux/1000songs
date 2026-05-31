@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="canonical" href="https://1000songs.co.uk/sonicstories.html" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMRR0XZXPN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BMRR0XZXPN');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Songs // Sonic Stories | Mapping Music Memories</title>
+    <meta name="title" content="1000 Songs // Sonic Stories | Mapping Music Memories">
+    <meta name="description" content="Explore and contribute to an interactive map-based oral history archive of personal stories, gigs, and songs that defined our lives.">
+    <meta name="author" content="Josh Farnham">
+
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --subtle: #888888;
+            --line: #eeeeee;
+            --accent: #0066ff;
+            --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --subtle: #999999;
+            --line: #222222;
+            --accent: #3388ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            line-height: 1.5;
+            -webkit-font-smoothing: grayscale;
+            transition: background-color 0.3s ease;
+        }
+
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-bottom: 1px solid var(--text);
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 1000;
+        }
+
+        main { 
+            padding: 0 5% 10rem 5%; 
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .title span {
+            font-weight: 300;
+            color: var(--subtle);
+            font-size: 0.9em;
+        }
+
+        /* Fixed Search Overlay */
+        #search-overlay {
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--bg);
+            z-index: 999;
+        }
+        #search-overlay.open {
+            height: 60px;
+            border-bottom: 1px solid var(--text);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+        .search-input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text);
+            outline: none;
+            padding: 0 5%;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text);
+            opacity: 0.6;
+            transition: opacity 0.2s, background 0.2s, color 0.2s;
+            font-family: var(--font);
+            padding: 4px 8px;
+            border-radius: 2px;
+        }
+        .header-btn:hover { opacity: 1; }
+        .header-btn.active-filter {
+            background: var(--text);
+            color: var(--bg);
+            opacity: 1;
+        }
+        
+        .cta-btn-primary {
+            background: var(--text) !important;
+            color: var(--bg) !important;
+            opacity: 1 !important;
+        }
+        .cta-btn-primary:hover {
+            opacity: 0.8 !important;
+        }
+
+        nav.decades-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav.decades-nav button {
+            background: none; border: none; cursor: pointer;
+            font-size: 0.65rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--subtle); padding: 0;
+            transition: color 0.2s;
+        }
+        
+        nav.decades-nav button:hover {
+            color: var(--text);
+        }
+
+        #stories-map {
+            width: 100%;
+            height: 400px;
+            border: 1px solid var(--text);
+            margin: 2rem 0;
+            z-index: 10;
+            border-radius: 4px;
+        }
+
+        .filters-bar {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid var(--text); 
+            padding-bottom: 0.8rem; 
+            margin-top: 1rem; 
+            flex-wrap: wrap; 
+            gap: 15px;
+        }
+        .filter-group {
+            display: flex; 
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 4px;
+        }
+        .filter-group::-webkit-scrollbar {
+            display: none;
+        }
+
+        .year-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            border-bottom: 1px solid var(--line);
+        }
+        .year-heading { position: sticky; top: 12rem; height: fit-content; padding: 4rem 0; }
+        .year-heading h2 { font-size: 4rem; font-weight: 800; letter-spacing: -0.04em; margin: 0; line-height: 1; }
+        
+        .year-content { 
+            padding: 4rem 0 6rem 2rem;
+            max-width: 750px; 
+            border-left: 1px solid var(--line); 
+        }
+
+        .song-list { display: flex; flex-direction: column; gap: 4rem; }
+        .song-entry { position: relative; }
+        
+        .story-title-line {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            margin-bottom: 0.5rem;
+        }
+
+        .story-narrative {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.85rem;
+            color: #222;
+            margin: 1.5rem 0;
+            line-height: 1.6;
+            letter-spacing: 0.03em;
+            text-shadow: 0.3px 0.3px 0.5px rgba(0,0,0,0.15);
+            opacity: 0.95;
+            padding-left: 15px;
+            border-left: 1px solid var(--line);
+            white-space: pre-wrap;
+        }
+
+        [data-theme="dark"] .story-narrative {
+            color: #ccc;
+            text-shadow: 0.3px 0.3px 0.5px rgba(255,255,255,0.05);
+        }
+
+        .song-attachment {
+            background: var(--line);
+            padding: 1rem;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .genre-tag {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--subtle);
+            cursor: pointer;
+            padding: 2px 6px;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            transition: all 0.2s;
+            display: inline-block;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+        .genre-tag:hover { border-color: var(--text); color: var(--text); }
+
+        /* Social Share Button Styling */
+        .share-options {
+            width: 100%;
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed rgba(128,128,128,0.3);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            background: transparent;
+            border: 1px solid var(--text);
+            color: var(--text);
+            font-size: 0.6rem;
+            padding: 4px 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.2s;
+            opacity: 0.6;
+        }
+        .share-btn:hover {
+            opacity: 1;
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        #radio-dial {
+            -webkit-appearance: none;
+            width: 100%;
+            max-width: 500px;
+            height: 2px;
+            background: var(--line);
+            outline: none;
+            margin: 1.5rem 0;
+        }
+        #radio-dial::-webkit-slider-thumb, #radio-dial::-moz-range-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 20px; height: 40px; background: var(--text); cursor: ew-resize; border-radius: 2px;
+        }
+        .radio-controls { display: flex; gap: 15px; margin-top: 1.5rem; align-items: center; justify-content: center; flex-wrap: wrap; }
+
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1px;
+            background: var(--line);
+            margin-top: 4rem;
+            border: 1px solid var(--line);
+        }
+
+        .genre-card {
+            background: var(--bg);
+            padding: 2.5rem 2rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .genre-card:hover { background: var(--line); }
+        .genre-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; font-weight: 700; }
+        .genre-card p { font-size: 0.65rem; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        .preview-btn {
+            display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;
+            background-color: transparent; border: none; margin-left: 8px; cursor: pointer; transition: all 0.2s ease;
+            vertical-align: middle; padding: 0; outline: none; opacity: 0.5; 
+        }
+        .preview-btn:hover { opacity: 1; transform: scale(1.1); }
+        .preview-btn::after { content: ""; display: block; box-sizing: border-box; transition: all 0.1s ease; }
+        .preview-btn:not(.playing):not(.loading)::after { width: 0; height: 0; border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--text); }
+        .preview-btn.loading { opacity: 1; }
+        .preview-btn.loading::after { width: 12px; height: 12px; border: 2px solid var(--subtle); border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        .preview-btn.playing { opacity: 1; }
+        .preview-btn.playing::after { width: 8px; height: 10px; border-left: 2px solid var(--accent); border-right: 2px solid var(--accent); background: transparent; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .mobile-menu-toggle { display: none; }
+
+        .typewriter-input {
+            width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--line);
+            color: var(--text); font-family: "Courier New", Courier, monospace; font-size: 1rem;
+            padding: 10px 0; outline: none; margin-bottom: 1.5rem; transition: border-color 0.2s;
+        }
+        .typewriter-input:focus { border-color: var(--text); }
+        
+        .typewriter-textarea {
+            width: 100%; height: 180px; background: transparent; border: 1px solid var(--line);
+            color: var(--text); font-family: "Courier New", Courier, monospace; font-size: 0.95rem;
+            padding: 12px; outline: none; resize: vertical; line-height: 1.6; transition: border-color 0.2s;
+        }
+        .typewriter-textarea:focus { border-color: var(--text); }
+
+        .label-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--subtle); cursor: pointer; padding: 2px 6px; border: 1px solid var(--line); border-radius: 2px; transition: all 0.2s; }
+        .label-tag:hover { border-color: var(--text); color: var(--text); }
+
+        .submit-grid {
+            margin-top: 2.5rem; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 3.5rem; 
+            max-width: 1200px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            header { padding: 1rem 15px; } 
+            main { padding: 0 15px 10rem 15px; }
+            .header-top { flex-wrap: wrap; }
+            
+            .mobile-menu-toggle { display: block; border: 1px solid var(--line); padding: 6px 10px; }
+            .actions {
+                position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--bg);
+                max-height: 0; overflow: hidden; flex-direction: column; align-items: flex-start;
+                transition: max-height 0.4s ease, opacity 0.3s; opacity: 0; z-index: 1000; padding: 0 15px;
+            }
+            .actions.open { max-height: 600px; padding-top: 1.5rem; padding-bottom: 1.5rem; opacity: 1; border-bottom: 1px solid var(--text); }
+
+            .year-row { grid-template-columns: 1fr; }
+            .year-content { border-left: none; padding: 2rem 0; max-width: 100%; }
+            .year-heading { position: relative; top: 0; padding: 1rem 0; }
+            .year-heading h2 { font-size: 3rem; }
+            
+            #stories-map { height: 40vh; min-height: 300px; max-height: 400px; margin: 1.5rem 0; }
+
+            .filters-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .filter-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; width: 100%; }
+            .filter-group .header-btn { text-align: center; padding: 6px 2px; font-size: 0.6rem; width: 100%; }
+            
+            /* Enhanced Form Mobile View */
+            .submit-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .submit-map-col { order: 1; }
+            .submit-form-col { order: 2; }
+            #selection-map { height: 280px !important; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="title" onclick="showPage('index')">1000 SONGS. <span>// SONIC STORIES.</span></div>
+        <button class="mobile-menu-toggle header-btn" onclick="toggleNav()">MENU</button>
+        
+        <div class="actions" id="nav-actions">
+            <button class="header-btn" onclick="toggleSearch()">Search</button>
+            <button class="header-btn" onclick="showPage('index')">Map</button>
+            <button class="header-btn" onclick="showPage('radio')">Transceiver</button>
+            <button class="header-btn" onclick="showPage('submit')">Submit</button>
+            <button class="header-btn" onclick="showPage('forum')">Discussion</button>
+            <button class="header-btn" onclick="renderArtistIndex()">Artists</button>
+            <button class="header-btn" onclick="showPage('appendix')">About</button>
+        </div>
+    </div>
+    
+    <div id="search-overlay">
+        <input type="text" id="global-search" class="search-input" placeholder="Search stories, locations, artists, or tags..." oninput="handleSearch(this.value)">
+    </div>
+    
+    <nav class="decades-nav" id="nav-decades"></nav>
+</header>
+
+<main>
+
+    <div id="index-view" class="page-view active">
+        <div style="margin: 4rem auto 3rem auto; max-width: 800px; text-align: center; padding: 0 1rem;">
+            <p style="font-size: 3.5rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem;">
+                Mapping Music Memories.
+            </p>
+            <p style="font-size: 1.15rem; font-weight: 300; line-height: 1.6; color: var(--subtle); max-width: 650px; margin: 0 auto 2.5rem auto;">
+                Welcome to the spatial companion of 1000 Songs. Explore personal accounts, landmark performances, and essential tracks plotted directly to their exact geographic coordinates on earth.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="header-btn cta-btn-primary" style="border: 1px solid var(--text); padding: 12px 24px; font-size: 0.75rem;" onclick="document.getElementById('stories-map').scrollIntoView({behavior: 'smooth'})">
+                    Explore the Map
+                </button>
+                <button class="header-btn" style="border: 1px solid var(--text); padding: 12px 24px; font-size: 0.75rem; opacity: 1;" onclick="showPage('submit')">
+                    Submit a Story
+                </button>
+                <button class="header-btn" style="border: 1px dashed var(--text); padding: 12px 24px; font-size: 0.75rem; opacity: 1;" onclick="showPage('radio')">
+                    Tune Transceiver
+                </button>
+                <button class="header-btn" style="border: 1px solid var(--text); padding: 12px 24px; font-size: 0.75rem; opacity: 1;" onclick="runSonicWanderer()">
+                    Sonic Wanderer
+                </button>
+            </div>
+        </div>
+
+        <div id="stories-map"></div>
+
+        <div class="filters-bar">
+            <h3 id="registry-count-label" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--subtle); white-space: nowrap;">Story Registry</h3>
+            <div class="filter-group">
+                <button class="header-btn active-filter" id="btn-filter-all" onclick="filterStories('all')">All</button>
+                <button class="header-btn" id="btn-filter-gig" onclick="filterByTag('gig')">Gigs</button>
+                <button class="header-btn" id="btn-filter-venue" onclick="filterByTag('venue')">Venues</button>
+                <button class="header-btn" id="btn-filter-record_store" onclick="filterByTag('record_store')">Record Stores</button>
+                <button class="header-btn" id="btn-filter-personal" onclick="filterByTag('personal')">Personal</button>
+                <button class="header-btn" onclick="findNearMe()" style="border: 1px dashed var(--text);"><span style="color:var(--accent);">⊙</span> Near Me</button>
+            </div>
+        </div>
+
+        <div id="stories-list-container"></div>
+    </div>
+
+    <div id="radio-view" class="page-view" style="display:none;">
+        <div style="margin-top: 4rem; text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.2em; margin-bottom: 0.5rem;">Sonic Story Transceiver</p>
+            <h1 id="radio-year" style="font-size: 5rem; font-weight: 800; letter-spacing: -0.05em; margin: 0; line-height: 1;">1980</h1>
+            
+            <input type="range" id="radio-dial" min="1950" max="2030" step="1" value="1980" oninput="handleDialScrub(this.value)" onchange="snapToNearestYear(this.value)">
+            
+            <input type="text" id="radio-filter" class="typewriter-input" style="max-width: 500px; margin-top: 1rem; font-size: 0.85rem; text-align: center;" placeholder="Filter signals (e.g., 'London punk', 'Hacienda')..." oninput="handleRadioFilter(this.value)">
+
+            <div id="radio-static-panel" style="min-height: 140px; width: 100%; max-width: 600px; margin-top: 2rem; font-family: monospace; font-size: 0.9rem;">
+                <p style="color: var(--subtle);" id="radio-status-text">Toggle the power unit to activate transmission sweep...</p>
+            </div>
+
+            <div class="radio-controls">
+                <button id="radio-power-btn" class="header-btn" style="border: 1px solid var(--text); padding: 10px 24px; font-size: 0.8rem;" onclick="toggleRadio()">
+                    Power On Transceiver
+                </button>
+                <button id="radio-mute-btn" class="header-btn" style="border: 1px solid var(--line); padding: 10px 24px; font-size: 0.8rem;" onclick="toggleMute()">
+                    Mute Audio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="submit-view" class="page-view" style="display:none;">
+        <div style="margin-top: 2.5rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Submit to the Sonic Archive</h1>
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Contribute your geographical music connections</p>
+        </div>
+
+        <div class="submit-grid">
+            <div style="grid-column: 1 / -1; max-width: 600px;">
+                <p style="font-size: 1rem; line-height: 1.6; color: var(--subtle); margin-bottom: 1rem;">
+                    Submissions are direct. Filling out the form compiles your entry and submits it to the curator. You can also export a copy of your draft JSON for offline safekeeping.
+                </p>
+            </div>
+
+            <div class="submit-map-col">
+                <p style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle); margin-bottom: 1rem;">Coordinate Locator reference</p>
+                <div id="selection-map" style="width: 100%; height: 420px; border: 1px solid var(--text); z-index:10; border-radius: 4px;"></div>
+                <p style="font-size: 0.75rem; color: var(--subtle); margin-top: 0.8rem; text-align: center; line-height:1.5;">
+                    Tap/Click anywhere on this map to drop a pin and automatically import the precise Latitude and Longitude values into the form fields.
+                </p>
+            </div>
+
+            <div class="submit-form-col">
+                <form id="story-form" action="#" method="POST" onsubmit="handleFormSubmission(event)">
+                    
+                    <input type="hidden" name="_subject" value="New Sonic Story Submission">
+                    
+                    <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Story Title</label>
+                    <input type="text" name="title" id="form-title" required class="typewriter-input" placeholder="e.g., Rain-slicked pavements outside the Hacienda">
+
+                    <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Your Name / Handle</label>
+                    <input type="text" name="author" id="form-author" required class="typewriter-input" placeholder="e.g., Jane Miller">
+
+                    <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Your Email (For submission follow-ups)</label>
+                    <input type="email" name="email" id="form-email" required class="typewriter-input" placeholder="e.g., jane@example.com">
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Year of Event</label>
+                            <input type="number" name="year" id="form-year" required class="typewriter-input" placeholder="YYYY" min="1930" max="2030">
+                        </div>
+                        <div>
+                            <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Tags (Comma separated)</label>
+                            <input type="text" name="tags" id="form-tags" class="typewriter-input" placeholder="e.g., gig, punk, london">
+                        </div>
+                    </div>
+
+                    <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Location Display Name</label>
+                    <input type="text" name="locationName" id="form-locname" required class="typewriter-input" placeholder="e.g., Hacienda, Manchester">
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Latitude</label>
+                            <input type="number" step="any" name="lat" id="form-lat" required class="typewriter-input" placeholder="53.476">
+                        </div>
+                        <div>
+                            <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Longitude</label>
+                            <input type="number" step="any" name="lng" id="form-lng" required class="typewriter-input" placeholder="-2.253">
+                        </div>
+                    </div>
+
+                    <div style="border: 1px dashed var(--line); padding: 1.2rem; margin-bottom: 2rem;">
+                        <p style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: var(--subtle); margin-bottom: 0.5rem;">Address Geocoder</p>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="geo-search-query" class="typewriter-input" style="margin-bottom:0; flex-grow:1;" placeholder="Type venue or city name...">
+                            <button type="button" class="header-btn" style="border: 1px solid var(--text); padding: 5px 15px;" onclick="geocodeAddress()">Locate</button>
+                        </div>
+                    </div>
+
+                    <div style="border: 1px dashed var(--line); padding: 1.2rem; margin-bottom: 2rem;">
+                        <p style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: var(--subtle); margin-bottom: 0.5rem;">Bound Soundtrack Song</p>
+                        <div style="display: flex; gap: 10px; margin-bottom: 0.5rem;">
+                            <input type="text" name="boundSong" id="song-search-query" class="typewriter-input" style="margin-bottom:0; flex-grow:1;" placeholder="Artist - Track Name">
+                            <button type="button" class="header-btn" style="border: 1px solid var(--text); padding: 5px 15px;" onclick="lookupFormSong()">Search</button>
+                        </div>
+                        <div id="song-search-feedback" style="font-family: monospace; font-size: 0.72rem; color: var(--accent);"></div>
+                    </div>
+
+                    <label style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">The Story Narrative (Typewriter style)</label>
+                    <textarea name="content" id="form-content" required class="typewriter-textarea" placeholder="Describe the scene, the music, the atmosphere, and why it stays pinned to this space..."></textarea>
+
+                    <div style="margin-top: 2rem; display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button type="submit" class="header-btn" style="border: 1px solid var(--text); padding: 12px 36px; font-size:0.75rem;">Transmit Curation</button>
+                        <button type="button" class="header-btn" style="border: 1px dashed var(--subtle); padding: 12px 36px; font-size:0.75rem;" onclick="exportStoryJSON()">Export Draft JSON</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="forum-view" class="page-view" style="display:none;">
+        <div style="margin-top: 2rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem; margin-bottom: 3rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Registry Discussions</h1>
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Sonic Stories Discussion Board</p>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--subtle); font-family: monospace;">
+            <p>Forum module unloaded for preview environment.</p>
+        </div>
+    </div>
+
+    <div id="registry-view" class="page-view" style="display:none;">
+        <div style="margin-top: 2rem; margin-bottom: 2rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Memory Catalyzed Artists</h1>
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Soundtrack Index of Geographic Experiences</p>
+        </div>
+        <div id="artist-registry-list" class="genre-grid"></div>
+    </div>
+
+    <div id="appendix-view" class="page-view" style="display:none;">
+        <div style="margin-top: 2.5rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Project Appendix</h1>
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">The Logic of Sonic Mapping</p>
+        </div>
+        <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 4rem;">
+            <section style="border-bottom: 1px solid var(--line); padding-bottom: 2rem;">
+                <h2 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">The Premise</h2>
+                <p style="font-size: 0.95rem; color: var(--subtle); line-height: 1.6;">
+                    <strong>Sonic Stories</strong> maps the spatial landscape of our music discoveries. Songs aren't just listened to in isolation; they are bound to damp basements, concrete amphitheaters, and starry hills.
+                </p>
+            </section>
+        </div>
+    </div>
+
+</main>
+
+<footer style="margin-top: 80px; padding: 40px 0; text-align: center; border-top: 1px solid var(--line);">
+    <a href="#" style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">RETURN TO 1000 SONGS</a>
+    <span style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; opacity: 0.5; margin: 0 10px;">|</span>
+    <a href="#" onclick="toggleTheme(); return false;" style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">THEME</a>
+    <span style="color: var(--subtle); font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;"><br> ©2026 Josh Farnham // Sonic Stories</span>
+</footer>
+
+<div id="custom-alert" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+    <div style="background: var(--bg); border: 1px solid var(--text); padding: 2rem; max-width: 400px; width: 90%; text-align: center; border-radius: 4px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);">
+        <p id="custom-alert-msg" style="margin-bottom: 1.5rem; font-family: monospace; font-size: 0.9rem; line-height: 1.5; color: var(--text);"></p>
+        <button onclick="document.getElementById('custom-alert').style.display='none'" class="header-btn" style="border: 1px solid var(--text); padding: 10px 24px; font-size: 0.7rem; width:100%;">ACKNOWLEDGE</button>
+    </div>
+</div>
+
+<!-- Leaflet JS Map Engine -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script>
+    // System utility to replace standard alerts safely
+    function showMsg(msg) {
+        document.getElementById('custom-alert-msg').innerText = msg;
+        document.getElementById('custom-alert').style.display = 'flex';
+    }
+
+    let storiesData = [
+        {
+            "id": "story-1",
+            "title": "Rain-slicked streets outside the Hacienda",
+            "author": "Josh Farnham",
+            "year": 1989,
+            "locationName": "The Haçienda, Manchester",
+            "lat": 53.4752,
+            "lng": -2.2514,
+            "artist": "Stone Roses",
+            "track": "Fools Gold",
+            "content": "I remember the smell of wet pavement mixing with industrial exhaust as we huddled outside the doors on Whitworth Street. The bassline of Fools Gold seemed to hum through the solid red brick of Manchester. For a few hours, the rain didn't feel cold; it felt electric.",
+            "tags": ["venue", "manchester", "madchester", "indie"],
+            "overrideUrl": "1376363024"
+        },
+        {
+            "id": "story-2",
+            "title": "Dust and Transience under the Kentish Sun",
+            "author": "Alice Reed",
+            "year": 1971,
+            "locationName": "Chatham Historic Dockyards, Kent",
+            "lat": 51.3961,
+            "lng": 0.5284,
+            "artist": "Can",
+            "track": "Paperhouse",
+            "content": "Working near the slips during the hot summer of '71. We had a portable record player out behind the old timber structures. The mechanical repetitions of Can't rhythm felt perfectly matched to the rhythmic hammering of the shipwrights in the distance.",
+            "tags": ["historical", "kent", "krautrock"]
+        },
+        {
+            "id": "story-3",
+            "title": "A Beacon in the Scottish Highlands",
+            "author": "David MacLeod",
+            "year": 2003,
+            "locationName": "Glen Coe, Scotland",
+            "lat": 56.6826,
+            "lng": -4.9862,
+            "artist": "Explosions in the Sky",
+            "track": "Your Hand in Mine",
+            "content": "Driving north through the pass as the sun dipped behind the ridges. The sky turned a deep bruised violet. Just as the guitars soared in 'Your Hand in Mine', the fog parted to reveal the sheer mass of the Three Sisters. A cinematic moment of absolute silence inside the car, while the music roared.",
+            "tags": ["personal", "roadtrip", "scotland", "post-rock"]
+        },
+        {
+            "id": "story-4",
+            "title": "Plaster dust falls from the Brixton Ceiling",
+            "author": "Josh Farnham",
+            "year": 1999,
+            "locationName": "Brixton Academy, London",
+            "lat": 51.4651,
+            "lng": -0.1153,
+            "artist": "Death in Vegas",
+            "track": "Dirge",
+            "content": "The heat was unbearable, a dense wall of hum, sweat, and cheap beer. When Dirge finally kicked in, the floor of the Brixton Academy began to oscillate like a suspension bridge. You could see fine white plaster dust shaking loose from the historic ceiling, glittering under the blue spotlights.",
+            "tags": ["gig", "london", "electronic"]
+        },
+        {
+            "id": "story-5",
+            "title": "Echoes of the Goth Vanguard",
+            "author": "Marcus Thorne",
+            "year": 1979,
+            "locationName": "The Batcave Club, Soho, London",
+            "lat": 51.5136,
+            "lng": -0.1328,
+            "artist": "Bauhaus",
+            "track": "Bela Lugosi's Dead",
+            "content": "Soho in '79 was gritty, dark, and dangerous. We climbed down the narrow stairs into the club. The air was thick with dry ice and clove cigarettes. The skeletal delay on the guitar felt like it was bouncing directly off the damp brick walls. We danced in slow, stylized movements. It felt like starting a new age.",
+            "tags": ["venue", "goth", "london"]
+        },
+        {
+            "id": "story-6",
+            "title": "The Birth of London Punk",
+            "author": "Sarah Jenkins",
+            "year": 1977,
+            "locationName": "The Roxy, Covent Garden, London",
+            "lat": 51.5144,
+            "lng": -0.1245,
+            "artist": "The Clash",
+            "track": "White Riot",
+            "content": "One hundred sweaty bodies crammed into a tiny space. The sheer kinetic energy was terrifying but liberating. The moment the opening chord struck, the entire room surged forward as a single organism. It was chaotic, abrasive, and perfectly captured the anger of London at the time.",
+            "tags": ["gig", "punk", "london"]
+        },
+        {
+            "id": "story-7",
+            "title": "Flipping Vinyl at Rough Trade",
+            "author": "Tom Vance",
+            "year": 1978,
+            "locationName": "Rough Trade Shop, Ladbroke Grove",
+            "lat": 51.5173,
+            "lng": -0.2079,
+            "artist": "Stiff Little Fingers",
+            "track": "Suspect Device",
+            "content": "Before the internet, finding the edge of culture required physical digging. I remember walking into Rough Trade and hearing this absolute buzzsaw guitar blasting from the store speakers. I didn't even ask who it was, I just walked to the counter and said, 'I'll take whatever is playing right now.'",
+            "tags": ["record_store", "punk", "discovery"]
+        }
+    ];
+
+    let currentAudio = null;
+    let currentDot = null;
+    let mainMap = null;
+    let selectionMap = null;
+    let selectionMarker = null;
+    let mapMarkers = [];
+    let isMuted = false;
+
+    window.onload = function() {
+        initMaps();
+        buildDecadeNav();
+        renderStoriesGroupedByYear(storiesData);
+        populateAssociatedArtists();
+    };
+
+    function showPage(id) {
+        document.querySelectorAll('.page-view').forEach(v => {
+            v.style.display = 'none';
+        });
+        document.getElementById(id + '-view').style.display = 'block';
+        
+        if (id === 'index' && mainMap) {
+            setTimeout(() => { mainMap.invalidateSize(); }, 300);
+        }
+        if (id === 'submit' && selectionMap) {
+            setTimeout(() => { selectionMap.invalidateSize(); }, 300);
+        }
+        
+        window.scrollTo(0,0);
+        
+        const actions = document.getElementById('nav-actions');
+        if (actions.classList.contains('open')) {
+            actions.classList.remove('open');
+        }
+    }
+
+    function toggleNav() {
+        document.getElementById('nav-actions').classList.toggle('open');
+    }
+
+    function toggleSearch() {
+        const overlay = document.getElementById('search-overlay');
+        const input = document.getElementById('global-search');
+        overlay.classList.toggle('open');
+        if (overlay.classList.contains('open')) {
+            input.focus();
+        } else {
+            input.value = '';
+            renderStoriesGroupedByYear(storiesData);
+            plotStoriesOnMap(storiesData);
+        }
+    }
+
+    function handleSearch(q) {
+        if (!q) {
+            renderStoriesGroupedByYear(storiesData);
+            plotStoriesOnMap(storiesData);
+            return;
+        }
+
+        const filtered = storiesData.filter(story => {
+            const searchPayload = [
+                story.artist, story.track, story.author, story.locationName, 
+                story.title, story.content, ...(story.tags || [])
+            ].join(" ").toLowerCase();
+            return searchPayload.includes(q.toLowerCase());
+        });
+
+        renderStoriesGroupedByYear(filtered);
+        plotStoriesOnMap(filtered);
+
+        if (filtered.length > 0 && mainMap) {
+            mainMap.fitBounds(new L.featureGroup(mapMarkers).getBounds().pad(0.1));
+        }
+    }
+
+    function toggleTheme() {
+        const currentTheme = document.body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        updateMapTiles(newTheme);
+    }
+
+    function updateMapTiles(theme) {
+        const url = theme === 'dark' 
+            ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+            : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+            
+        [mainMap, selectionMap].forEach(mapObj => {
+            if (mapObj) {
+                mapObj.eachLayer(layer => {
+                    if (layer instanceof L.TileLayer) mapObj.removeLayer(layer);
+                });
+                L.tileLayer(url, { attribution: '&copy; CartoDB' }).addTo(mapObj);
+            }
+        });
+    }
+
+    function renderStoriesGroupedByYear(data) {
+        const container = document.getElementById('stories-list-container');
+        container.innerHTML = '';
+
+        if (data.length === 0) {
+            container.innerHTML = `<p style="padding: 4rem; text-align: center; color: var(--subtle); font-family: monospace;">No matching archive logs found.</p>`;
+            return;
+        }
+
+        const grouped = data.reduce((acc, story) => {
+            if (!acc[story.year]) acc[story.year] = [];
+            acc[story.year].push(story);
+            return acc;
+        }, {});
+
+        const years = Object.keys(grouped).map(Number).sort((a, b) => b - a);
+
+        years.forEach(year => {
+            const row = document.createElement('div');
+            row.className = 'year-row';
+            row.id = `year-${year}`;
+            
+            let songsHtml = '';
+            grouped[year].forEach((story) => {
+                const tagsHtml = (story.tags || []).map(t => `<span class="genre-tag" onclick="filterByTag('${t}')">${t}</span>`).join('');
+                const safeArtist = story.artist.replace(/'/g, "\\'");
+                const safeTrack = story.track.replace(/'/g, "\\'");
+                const overrideUrlParam = story.overrideUrl ? `'${story.overrideUrl}'` : 'null';
+
+                let distanceString = story.distanceKm ? ` | ${story.distanceKm.toFixed(1)} km away` : '';
+
+                songsHtml += `
+                <div class="song-entry" style="margin-bottom: 2.5rem; border-bottom: 1px dashed var(--line); padding-bottom: 1.5rem;" id="${story.id}">
+                    <div style="font-family: monospace; font-size: 0.72rem; color: var(--subtle); margin-bottom: 1rem; line-height: 1.6;">
+                        <span style="color: var(--text); font-weight: bold;">// ${story.locationName}</span>
+                        <br>Contributor: ${story.author}
+                        <br>Coords: ${story.lat.toFixed(4)}, ${story.lng.toFixed(4)}${distanceString} 
+                        <span class="label-tag" style="font-size: 0.55rem; padding: 2px 6px; border-radius: 2px; cursor: pointer; margin-left:5px;" onclick="locateOnMap(${story.lat}, ${story.lng})">LOCATE</span>
+                    </div>
+                    <h3 class="story-title-line">${story.title}</h3>
+                    <div class="story-narrative">"${story.content}"</div>
+                    
+                    <div class="song-attachment">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <button class="preview-btn" title="Play Preview Attachment" onclick="togglePreview('${safeArtist}', '${safeTrack}', this, ${overrideUrlParam})"></button>
+                            <div>
+                                <span style="font-size: 0.9rem; font-weight: 700;">${story.artist}</span>
+                                <span style="font-size: 0.8rem; color: var(--subtle); display: block;">${story.track}</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                            ${tagsHtml}
+                        </div>
+                        <div class="share-options">
+                            <span style="font-size: 0.6rem; text-transform: uppercase; color: var(--subtle); letter-spacing: 0.1em; font-weight: 700;">Share Signal:</span>
+                            <button onclick="shareStoryNative('${story.id}')" class="share-btn">Web Share</button>
+                            <button onclick="shareToTwitter('${story.id}')" class="share-btn">X / Twitter</button>
+                            <button onclick="shareToFacebook('${story.id}')" class="share-btn">Facebook</button>
+                            <button onclick="copyStoryLink('${story.id}')" class="share-btn">Copy Link</button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+
+            row.innerHTML = `<div class="year-heading"><h2>${year}</h2></div><div class="year-content"><div class="song-list">${songsHtml}</div></div>`;
+            container.appendChild(row);
+        });
+
+        document.getElementById('registry-count-label').innerHTML = `Story Registry (${data.length} entries)`;
+    }
+
+    function getShareData(id) {
+        const story = storiesData.find(s => s.id === id);
+        if(!story) return null;
+        const text = `Check out "${story.title}" tied to ${story.locationName} via the Sonic Stories Archive. #1000Songs #SonicStories`;
+        const url = window.location.href.split('?')[0] + `?story=${id}`;
+        return { story, text, url };
+    }
+
+    function shareStoryNative(id) {
+        const data = getShareData(id);
+        if(!data) return;
+        if (navigator.share) {
+            navigator.share({ title: data.story.title, text: data.text, url: data.url }).catch(console.error);
+        } else {
+            showMsg("Native Web Share is not supported on this browser/device. Try copying the link.");
+        }
+    }
+
+    function shareToTwitter(id) {
+        const data = getShareData(id);
+        if(!data) return;
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(data.text)}&url=${encodeURIComponent(data.url)}`;
+        window.open(twitterUrl, '_blank');
+    }
+
+    function shareToFacebook(id) {
+        const data = getShareData(id);
+        if(!data) return;
+        const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(data.url)}`;
+        window.open(fbUrl, '_blank');
+    }
+
+    function copyStoryLink(id) {
+        const data = getShareData(id);
+        if(!data) return;
+        try {
+            document.execCommand('copy'); // Legacy fallback
+            navigator.clipboard.writeText(data.url).then(() => {
+                showMsg("Story signal link copied to your clipboard.");
+            });
+        } catch (err) {
+            const textArea = document.createElement("textarea");
+            textArea.value = data.url;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            textArea.remove();
+            showMsg("Story signal link copied to your clipboard.");
+        }
+    }
+
+    function initMaps() {
+        mainMap = L.map('stories-map').setView([53.5, -2.5], 6); 
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap', maxZoom: 20
+        }).addTo(mainMap);
+
+        selectionMap = L.map('selection-map').setView([53.5, -2.0], 6);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap'
+        }).addTo(selectionMap);
+
+        plotStoriesOnMap(storiesData);
+
+        selectionMap.on('click', function(e) {
+            const lat = e.latlng.lat.toFixed(6);
+            const lng = e.latlng.lng.toFixed(6);
+            document.getElementById('form-lat').value = lat;
+            document.getElementById('form-lng').value = lng;
+
+            if (selectionMarker) selectionMarker.setLatLng(e.latlng);
+            else selectionMarker = L.marker(e.latlng).addTo(selectionMap);
+        });
+        
+        window.addEventListener('resize', () => {
+            if (mainMap) mainMap.invalidateSize();
+            if (selectionMap) selectionMap.invalidateSize();
+        });
+    }
+
+    function plotStoriesOnMap(data) {
+        mapMarkers.forEach(m => mainMap.removeLayer(m));
+        mapMarkers = [];
+
+        data.forEach(story => {
+            if (story.lat && story.lng) {
+                let markerColor = '#1DB954';
+                if (story.tags.includes('gig')) markerColor = '#0066ff';
+                if (story.tags.includes('historical')) markerColor = '#fa243c';
+                if (story.tags.includes('venue')) markerColor = '#9d00ff';
+                if (story.tags.includes('record_store')) markerColor = '#ff8800';
+
+                const customIcon = L.divIcon({
+                    html: `<div style="background-color: ${markerColor}; width: 14px; height: 14px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 4px rgba(0,0,0,0.4);"></div>`,
+                    className: 'custom-pin', iconSize: [14, 14], iconAnchor: [7, 7]
+                });
+
+                const marker = L.marker([story.lat, story.lng], { icon: customIcon }).addTo(mainMap);
+                marker.on('click', () => filterToLocation(story.lat, story.lng));
+                marker.bindTooltip(`<strong>${story.locationName}</strong><br>${story.artist} - ${story.track}`, { direction: 'top', opacity: 0.9 });
+                mapMarkers.push(marker);
+            }
+        });
+    }
+
+    function locateOnMap(lat, lng) {
+        if (mainMap) {
+            mainMap.setView([lat, lng], 14, { animate: true, duration: 1.5 });
+            document.getElementById('stories-map').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    function filterToLocation(lat, lng) {
+        const filtered = storiesData.filter(s => s.lat === lat && s.lng === lng);
+        renderStoriesGroupedByYear(filtered);
+        plotStoriesOnMap(filtered);
+        if(filtered.length > 0 && mainMap) mainMap.setView([lat, lng], 13, { animate: true, duration: 1 });
+
+        document.getElementById('registry-count-label').innerHTML = `Location Filter (${filtered.length} entries) <button class="header-btn" style="border:1px solid var(--text); padding: 2px 6px; margin-left:10px; opacity:1;" onclick="filterStories('all')">Clear Filter ✕</button>`;
+    }
+
+    function findNearMe() {
+        if (!navigator.geolocation) {
+            showMsg("Geolocation is not supported by your browser");
+            return;
+        }
+        
+        document.getElementById('registry-count-label').innerHTML = `Locating...`;
+        
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                
+                const userIcon = L.divIcon({
+                    html: `<div style="background-color: var(--text); width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--bg); box-shadow: 0 0 4px rgba(0,0,0,0.4);"></div>`,
+                    className: 'custom-pin', iconSize: [14, 14], iconAnchor: [7, 7]
+                });
+                
+                if(window.userLocMarker) mainMap.removeLayer(window.userLocMarker);
+                window.userLocMarker = L.marker([lat, lng], {icon: userIcon, zIndexOffset: 1000}).addTo(mainMap).bindTooltip("You are here", {direction: 'top'});
+
+                const withDist = storiesData.map(s => {
+                    const R = 6371; const dLat = (s.lat - lat) * Math.PI / 180; const dLon = (s.lng - lng) * Math.PI / 180;
+                    const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat * Math.PI / 180) * Math.cos(s.lat * Math.PI / 180) * Math.sin(dLon/2) * Math.sin(dLon/2); 
+                    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+                    return {...s, distanceKm: R * c};
+                }).sort((a,b) => a.distanceKm - b.distanceKm);
+
+                const closest = withDist.slice(0, 15);
+                renderStoriesGroupedByYear(closest);
+                plotStoriesOnMap(closest);
+                if(window.userLocMarker) window.userLocMarker.addTo(mainMap); 
+                mainMap.setView([lat, lng], 10);
+                
+                document.getElementById('registry-count-label').innerHTML = `Closest Stories <button class="header-btn" style="border:1px solid var(--text); padding: 2px 6px; margin-left:10px; opacity:1;" onclick="filterStories('all')">Clear Filter ✕</button>`;
+            },
+            (error) => {
+                showMsg("Unable to retrieve your location.");
+                filterStories('all');
+            }
+        );
+    }
+
+    async function geocodeAddress() {
+        const query = document.getElementById('geo-search-query').value;
+        if(!query) return;
+        try {
+            const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`);
+            const data = await res.json();
+            if(data && data.length > 0) {
+                const lat = parseFloat(data[0].lat);
+                const lng = parseFloat(data[0].lon);
+                document.getElementById('form-lat').value = lat.toFixed(6);
+                document.getElementById('form-lng').value = lng.toFixed(6);
+                if(selectionMap) {
+                    selectionMap.setView([lat, lng], 13);
+                    if(selectionMarker) selectionMarker.setLatLng([lat, lng]);
+                    else selectionMarker = L.marker([lat, lng]).addTo(selectionMap);
+                }
+            } else {
+                showMsg("Geocode failed. Location not found via public registry.");
+            }
+        } catch(e) { console.error(e); }
+    }
+
+    async function lookupFormSong() {
+        const query = document.getElementById('song-search-query').value;
+        if(!query) return;
+        document.getElementById('song-search-feedback').innerText = "Querying catalog...";
+        try {
+            const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=1`);
+            const data = await res.json();
+            if(data.results && data.results.length > 0) {
+                const track = data.results[0];
+                document.getElementById('song-search-feedback').innerText = `Bound Match: ${track.artistName} - ${track.trackName}`;
+            } else {
+                document.getElementById('song-search-feedback').innerText = "No exact match found. Will submit as raw text.";
+            }
+        } catch(e) {
+            document.getElementById('song-search-feedback').innerText = "API Error. Check network.";
+        }
+    }
+
+    function exportStoryJSON() {
+        const story = {
+            title: document.getElementById('form-title').value, author: document.getElementById('form-author').value,
+            year: parseInt(document.getElementById('form-year').value), locationName: document.getElementById('form-locname').value,
+            lat: parseFloat(document.getElementById('form-lat').value), lng: parseFloat(document.getElementById('form-lng').value),
+            content: document.getElementById('form-content').value, tags: document.getElementById('form-tags').value.split(',').map(t=>t.trim())
+        };
+        const blob = new Blob([JSON.stringify(story, null, 2)], {type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'sonic-story-draft.json'; a.click();
+    }
+
+    function handleFormSubmission(e) {
+        e.preventDefault();
+        showMsg("Data Transmission received. Thank you for your contribution to the Sonic Archive.");
+        e.target.reset();
+        document.getElementById('song-search-feedback').innerText = "";
+    }
+
+    function filterStories(category) {
+        if(window.userLocMarker) { mainMap.removeLayer(window.userLocMarker); window.userLocMarker = null; }
+        document.querySelectorAll('.filter-group .header-btn').forEach(btn => btn.classList.remove('active-filter'));
+        
+        if (category === 'all') {
+            document.getElementById(`btn-filter-all`).classList.add('active-filter');
+            renderStoriesGroupedByYear(storiesData); plotStoriesOnMap(storiesData);
+            if(mainMap) mainMap.fitBounds(new L.featureGroup(mapMarkers).getBounds().pad(0.1));
+            document.getElementById('registry-count-label').innerHTML = `Story Registry (${storiesData.length} entries)`;
+        } else filterByTag(category);
+    }
+
+    function filterByTag(tag) {
+        document.querySelectorAll('.filter-group .header-btn').forEach(btn => btn.classList.remove('active-filter'));
+        const exactBtn = document.getElementById(`btn-filter-${tag}`);
+        if(exactBtn) exactBtn.classList.add('active-filter');
+
+        const filtered = storiesData.filter(s => (s.tags || []).includes(tag.toLowerCase()));
+        renderStoriesGroupedByYear(filtered); plotStoriesOnMap(filtered); showPage('index');
+        
+        if(filtered.length > 0 && mainMap) mainMap.fitBounds(new L.featureGroup(mapMarkers).getBounds().pad(0.1));
+        document.getElementById('registry-count-label').innerHTML = `Tag Filter: ${tag.toUpperCase()} (${filtered.length} entries) <button class="header-btn" style="border:1px solid var(--text); padding: 2px 6px; margin-left:10px; opacity:1;" onclick="filterStories('all')">Clear Filter ✕</button>`;
+    }
+
+    function buildDecadeNav() {
+        const nav = document.getElementById('nav-decades');
+        nav.innerHTML = '<button onclick="filterByDecade(\'all\')">ALL YEARS</button>';
+        const years = storiesData.map(s => s.year);
+        if (years.length === 0) return;
+        const minDecade = Math.floor(Math.min(...years) / 10) * 10;
+        const maxDecade = Math.floor(Math.max(...years) / 10) * 10;
+        
+        for (let d = minDecade; d <= maxDecade; d += 10) {
+            const btn = document.createElement('button');
+            btn.innerText = `${d}s`; btn.onclick = () => filterByDecade(d.toString()); nav.appendChild(btn);
+        }
+    }
+
+    function filterByDecade(startYearStr) {
+        document.querySelectorAll('.filter-group .header-btn').forEach(btn => btn.classList.remove('active-filter'));
+        if (startYearStr === 'all') return filterStories('all');
+
+        const startYear = parseInt(startYearStr); const endYear = startYear + 9;
+        const filtered = storiesData.filter(s => s.year >= startYear && s.year <= endYear);
+        
+        renderStoriesGroupedByYear(filtered); plotStoriesOnMap(filtered); showPage('index');
+        if(filtered.length > 0 && mainMap) mainMap.fitBounds(new L.featureGroup(mapMarkers).getBounds().pad(0.1));
+        document.getElementById('registry-count-label').innerHTML = `${startYear}s Filter (${filtered.length} entries) <button class="header-btn" style="border:1px solid var(--text); padding: 2px 6px; margin-left:10px; opacity:1;" onclick="filterStories('all')">Clear Filter ✕</button>`;
+    }
+
+    function populateAssociatedArtists() {
+        const container = document.getElementById('artist-registry-list');
+        container.innerHTML = '';
+        const counts = {};
+        storiesData.forEach(s => { counts[s.artist] = (counts[s.artist] || 0) + 1; });
+
+        Object.keys(counts).sort().forEach(artist => {
+            const card = document.createElement('div'); card.className = 'genre-card';
+            card.innerHTML = `<h3>${artist}</h3><p>${counts[artist]} Bound Curation Logs</p>`;
+            card.onclick = () => {
+                const associated = storiesData.filter(s => s.artist === artist);
+                renderStoriesGroupedByYear(associated); plotStoriesOnMap(associated); showPage('index');
+                if(associated.length > 0 && mainMap) mainMap.fitBounds(new L.featureGroup(mapMarkers).getBounds().pad(0.1));
+                document.getElementById('registry-count-label').innerHTML = `Artist Filter: ${artist} (${associated.length} entries) <button class="header-btn" style="border:1px solid var(--text); padding: 2px 6px; margin-left:10px; opacity:1;" onclick="filterStories('all')">Clear Filter ✕</button>`;
+            };
+            container.appendChild(card);
+        });
+    }
+
+    function renderArtistIndex() { populateAssociatedArtists(); showPage('registry'); }
+
+    function runSonicWanderer() {
+        const random = storiesData[Math.floor(Math.random() * storiesData.length)];
+        filterToLocation(random.lat, random.lng);
+        document.getElementById('stories-map').scrollIntoView({behavior: 'smooth'});
+    }
+
+    function handleDialScrub(val) { document.getElementById('radio-year').innerText = val; }
+    
+    function snapToNearestYear(val) {
+        document.getElementById('radio-status-text').innerText = `Dial tuned to ${val}. Cross-referencing database...`;
+        filterByDecade(val.toString().slice(0,3) + '0'); 
+        setTimeout(() => showPage('index'), 800);
+    }
+    
+    function handleRadioFilter(val) { /* Interactive hooks for specific string queries in radio view */ }
+    
+    function toggleRadio() {
+        showMsg("Transceiver sweep sequence initiated... [Notice: Real-time Audio synthesis module requires a secure production backend connection]");
+    }
+
+    function toggleMute() {
+        isMuted = !isMuted;
+        const btn = document.getElementById('radio-mute-btn');
+        btn.innerText = isMuted ? "Unmute Audio" : "Mute Audio";
+        btn.style.backgroundColor = isMuted ? "var(--text)" : "transparent";
+        btn.style.color = isMuted ? "var(--bg)" : "var(--text)";
+        if (currentAudio) currentAudio.muted = isMuted;
+    }
+
+    async function togglePreview(artist, track, el, overrideUrl) {
+        if (currentAudio && currentDot === el) {
+            if (!currentAudio.paused) { currentAudio.pause(); el.classList.remove('playing'); } 
+            else { currentAudio.play(); el.classList.add('playing'); }
+            return;
+        }
+
+        if (currentAudio) {
+            currentAudio.pause(); currentAudio = null;
+            if (currentDot) currentDot.classList.remove('playing', 'loading');
+        }
+
+        el.classList.add('loading'); currentDot = el; let previewUrl = null;
+
+        if (overrideUrl && overrideUrl !== 'null') {
+            if (overrideUrl.startsWith('http')) previewUrl = overrideUrl;
+            else {
+                try {
+                    const response = await fetch(`https://itunes.apple.com/lookup?id=${overrideUrl}`);
+                    const data = await response.json();
+                    if (data.results && data.results[0] && data.results[0].previewUrl) previewUrl = data.results[0].previewUrl;
+                } catch (err) { console.error("ID Lookup failed", err); }
+            }
+        }
+
+        if (!previewUrl) {
+            const query = encodeURIComponent(`${artist} ${track}`);
+            try {
+                const response = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
+                const data = await response.json();
+                if (data.results && data.results.length > 0 && data.results[0].previewUrl) previewUrl = data.results[0].previewUrl;
+            } catch (error) { console.error("Audio query failure:", error); }
+        }
+
+        if (currentDot !== el) return;
+        el.classList.remove('loading');
+
+        if (previewUrl) {
+            currentAudio = new Audio(previewUrl);
+            currentAudio.muted = isMuted;
+            currentAudio.play();
+            el.classList.add('playing');
+            currentAudio.onended = () => {
+                el.classList.remove('playing');
+                currentAudio = null;
+                currentDot = null;
+            };
+        } else {
+            el.classList.remove('loading');
+            showMsg("A preview stream for this bound soundtrack could not be automatically synthesized via the catalog API.");
+        }
+    }
+</script>
+
+</body>
+</html>
