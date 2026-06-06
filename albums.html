@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Songs // Albums</title>
+    <meta name="title" content="1000 Songs // Albums | A Sonic Archive">
+    <meta name="description" content="Explore an alternative sonic archive. Play Guess the Year, Name That Tune, and discover eras of sound.">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --subtle: #888888;
+            --line: #eeeeee;
+            --accent: #0066ff;
+            --correct: #10b981;
+            --wrong: #ef4444;
+            --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --subtle: #999999;
+            --line: #222222;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            line-height: 1.5;
+            -webkit-font-smoothing: grayscale;
+            transition: background-color 0.3s ease;
+        }
+
+        header {
+            padding: 1.5rem 5%; 
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-bottom: 1px solid var(--text);
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 1000;
+        }
+
+        main { padding: 0 5% 10rem 5%; }
+
+        .header-top { display: flex; justify-content: space-between; align-items: center; }
+
+        .title {
+            font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; cursor: pointer;
+        }
+
+        .label-tag {
+            font-size: 0.65rem; font-family: monospace; text-transform: uppercase;
+            letter-spacing: 0.05em; color: var(--subtle); opacity: 0.8; margin-left: 5px;
+        }
+        .label-tag::before { content: "℗ "; font-size: 0.7rem; }
+
+        #search-overlay {
+            height: 0; overflow: hidden; transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--bg);
+        }
+        #search-overlay.open { height: 60px; border-top: 1px solid var(--line); }
+        .search-input {
+            width: 100%; height: 100%; border: none; background: transparent;
+            font-size: 1.5rem; font-weight: 300; color: var(--text); outline: none; padding: 0 10px;
+        }
+
+        .actions { display: flex; gap: 1.2rem; align-items: center; }
+        .header-btn {
+            background: none; border: none; cursor: pointer; font-size: 0.65rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--text); opacity: 0.6; transition: opacity 0.2s;
+        }
+        .header-btn:hover { opacity: 1; }
+        .header-btn.active-nav { opacity: 1; border-bottom: 1px solid var(--text); }
+
+        .year-horizon {
+            display: none; gap: 1rem; padding-bottom: 0.5rem; overflow-x: auto; scrollbar-width: none;
+        }
+        .year-horizon.visible { display: flex; }
+        .horizon-link { font-size: 0.7rem; font-family: monospace; cursor: pointer; color: var(--subtle); }
+
+        nav.decades-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+        nav.decades-nav button {
+            background: none; border: none; cursor: pointer; font-size: 0.65rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle); padding: 0;
+        }
+
+        /* Genre Tags */
+        .genre-tag {
+            font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em;
+            color: var(--subtle); cursor: pointer; margin-left: 12px; padding: 2px 6px;
+            border: 1px solid var(--line); border-radius: 2px; transition: all 0.2s;
+        }
+        .genre-tag:hover { border-color: var(--text); color: var(--text); }
+
+        .year-row { display: grid; grid-template-columns: 200px 1fr; border-bottom: 1px solid var(--line); }
+        .year-heading { position: sticky; top: 12rem; height: fit-content; padding: 4rem 0; }
+        .year-heading h2 { font-size: 4rem; font-weight: 800; letter-spacing: -0.04em; }
+
+        .year-content { padding: 4rem 0 6rem 2rem; max-width: 700px; border-left: 1px solid var(--line); }
+        .song-list { display: flex; flex-direction: column; gap: 4rem; }
+        .song-entry { position: relative; }
+        .song-title { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; }
+        
+        .track-name {
+            display: block; color: var(--subtle); font-size: 0.9rem; font-weight: 400; margin-top: 4px; margin-left: 0;
+        }
+        .song-note {
+            font-family: "Courier New", Courier, monospace; font-size: 0.75rem; color: #333; 
+            margin-top: 0.8rem; line-height: 1.5; letter-spacing: 0.05em; 
+            text-shadow: 0.3px 0.3px 0.5px rgba(0,0,0,0.2); opacity: 0.9;
+            padding-left: 5px; border-left: 1px solid var(--line); 
+        }
+        [data-theme="dark"] .song-note { color: #ccc; text-shadow: 0.3px 0.3px 0.5px rgba(255,255,255,0.1); }
+        
+        .song-artist-link { cursor: pointer; border-bottom: 1px solid transparent; transition: 0.2s; }
+        .song-artist-link:hover { border-bottom: 1px solid var(--text); }
+
+        .page-view { display: none; animation: fadeIn 0.4s ease; }
+        .active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        #radio-dial {
+            -webkit-appearance: none; width: 100%; max-width: 500px; height: 2px;
+            background: var(--line); outline: none; margin: 1.5rem 0; 
+        }
+        #radio-dial::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none; width: 20px; height: 40px;
+            background: var(--text); cursor: ew-resize; border-radius: 2px;
+        }
+
+        .preview-btn {
+            display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;
+            background: transparent; border: none; margin-left: 8px; cursor: pointer;
+            transition: all 0.2s ease; vertical-align: middle; padding: 0; outline: none; opacity: 0.5; 
+        }
+        .preview-btn:hover { opacity: 1; transform: scale(1.1); }
+        .preview-btn::after { content: ""; display: block; box-sizing: border-box; transition: all 0.1s ease; }
+        .preview-btn:not(.playing):not(.loading)::after {
+            border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--text);
+        }
+        .preview-btn.loading { opacity: 1; }
+        .preview-btn.loading::after {
+            width: 12px; height: 12px; border: 2px solid var(--subtle); border-top-color: transparent;
+            border-radius: 50%; animation: spin 0.8s linear infinite;
+        }
+        .preview-btn.playing { opacity: 1; }
+        .preview-btn.playing::after {
+            width: 8px; height: 10px; border-left: 2px solid var(--accent); border-right: 2px solid var(--accent);
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .mobile-menu-toggle { display: none; }
+        @media (max-width: 768px) {
+            header { padding: 1rem 15px; } 
+            main { padding: 0 15px 10rem 15px; }
+            .header-top { flex-wrap: wrap; }
+            .mobile-menu-toggle { display: block; border: 1px solid var(--line); padding: 6px 10px; }
+            .actions {
+                position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); 
+                max-height: 0; overflow: hidden; flex-direction: column;
+                transition: max-height 0.4s ease, opacity 0.3s, padding 0.3s;
+                opacity: 0; z-index: 1000; padding: 0 15px; 
+            }
+            .actions.open {
+                max-height: 500px; padding-top: 1.5rem; padding-bottom: 1.5rem; opacity: 1;
+                border-bottom: 1px solid var(--text); box-shadow: 0 15px 15px -10px rgba(0,0,0,0.05); 
+            }
+            .year-row { grid-template-columns: 1fr; }
+            .year-content { border-left: none; padding: 2rem 0; max-width: 100%; }
+            .year-heading { position: relative; top: 0; padding: 1rem 0; }
+            .year-heading h2 { font-size: 3rem; }
+        }
+
+        #toast-container {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--text);
+            color: var(--bg); padding: 10px 20px; font-size: 0.7rem; z-index: 9999; border-radius: 2px;
+            font-family: monospace; opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+        }
+        #toast-container.show { opacity: 1; }
+
+        .artist-grid {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem;
+        }
+        .artist-chip {
+            padding: 6px 14px; border: 1px solid var(--line); border-radius: 50px; font-size: 0.8rem;
+            cursor: pointer; transition: all 0.2s; background: var(--bg); color: var(--text);
+        }
+        .artist-chip:hover { border-color: var(--text); background: var(--text); color: var(--bg); }
+
+        .game-container {
+            max-width: 600px; margin: 4rem auto; text-align: center; border: 1px solid var(--line); padding: 3rem 2rem; border-radius: 8px;
+        }
+        .game-title { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+        .game-subtitle { color: var(--subtle); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem; }
+        
+        .game-visualizer {
+            width: 80px; height: 80px; margin: 0 auto 2rem auto; border-radius: 50%;
+            background: var(--line); display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .game-visualizer.playing { background: rgba(0, 102, 255, 0.1); border: 2px solid var(--accent); }
+        .game-visualizer.playing::after {
+            content: ''; position: absolute; width: 100%; height: 100%;
+            border-radius: 50%; border: 2px solid var(--accent);
+            animation: pulse 1.5s infinite ease-out;
+        }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+
+        .game-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        @media (max-width: 500px) { .game-options { grid-template-columns: 1fr; } }
+        
+        .game-btn {
+            background: var(--bg); border: 1px solid var(--line); padding: 1rem;
+            font-size: 0.9rem; font-weight: 600; cursor: pointer; border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .game-btn:hover:not(:disabled) { border-color: var(--text); transform: translateY(-2px); }
+        .game-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+        
+        .game-btn.correct { background: var(--correct); color: white; border-color: var(--correct); }
+        .game-btn.wrong { background: var(--wrong); color: white; border-color: var(--wrong); }
+
+        .score-display { font-family: monospace; font-size: 1.2rem; margin-top: 2rem; }
+
+        .loader-text { font-family: monospace; font-size: 0.8rem; color: var(--subtle); animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="title" onclick="showPage('index-view')">1000 SONGS // ALBUMS.</div>
+        <button class="mobile-menu-toggle header-btn" onclick="toggleNav()">MENU</button>
+        
+        <div class="actions" id="nav-actions">
+            <button class="header-btn" onclick="toggleSearch()">Search</button>
+
+            <button class="header-btn nav-link" onclick="showPage('artist-view')">Artists</button>
+            <button class="header-btn nav-link" onclick="showPage('games-view')">Games</button>
+            <button class="header-btn nav-link" onclick="showPage('radio-view')">Radio</button>
+<button class="header-btn nav-link" onclick="showPage('import-view')">Import</button>
+
+            <button class="header-btn nav-link" onclick="showPage('appendix-view')">About</button>
+        </div>
+    </div>
+    <div id="search-overlay">
+        <input type="text" id="global-search" class="search-input" placeholder="Type artist, album, or genre..." oninput="handleSearch(this.value)">
+    </div>
+    <div class="year-horizon" id="year-horizon"></div>
+    <nav class="decades-nav" id="nav-decades"></nav>
+</header>
+
+<main>
+    <div id="index-view" class="page-view active">
+        <div style="margin: 4rem auto 5rem auto; max-width: 800px; text-align: center; padding: 0 1rem;">
+            <p style="font-size: 3rem; font-weight: 300; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 2rem;">
+                <span style="font-weight: 800">1000</span> songs.<br>           
+                <span style="font-weight: 800">700</span> albums.<br>
+                <span style="font-weight: 800">1</span> sonic archive.
+            </p>
+            <p style="font-size: 1.15rem; font-weight: 300; line-height: 1.6; color: var(--subtle); max-width: 600px; margin: 0 auto; margin-bottom: 2.5rem;">
+                An alternative, ear-crafted archive from 1960 to 2030. Each entry features a playable preview track. Explore eras, test your knowledge, or browse your favorite artists.
+            </p>
+
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button onclick="showPage('games-view')" style="background: var(--text); color: var(--bg); border: none; padding: 14px 24px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease;">
+                    Play Games ↗
+                </button>
+                <button onclick="showPage('radio-view')" style="background: transparent; color: var(--text); border: 1px solid var(--line); padding: 14px 24px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease;">
+                    Time Machine Radio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="decade-view" class="page-view">
+        <div id="decade-content"></div>
+    </div>
+
+    <div id="artist-view" class="page-view">
+        <div style="margin-top: 2rem; border-bottom: 1px solid var(--line); padding-bottom: 2rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Artist Directory</h1>
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Browse all curated artists</p>
+        </div>
+        <div id="artist-list" class="artist-grid">
+            <!-- Populated via JS -->
+        </div>
+        <div id="artist-specific-content" style="margin-top: 4rem;">
+            <!-- Selected artist songs go here -->
+        </div>
+    </div>
+
+<div id="import-view" class="page-view">
+    <div style="margin-top: 2rem; border-bottom: 1px solid var(--text); padding-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Import Albums</h1>
+        <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 1.5rem;">Create your own archive</p>
+        
+        <p style="font-size: 1.1rem; font-weight: 400; line-height: 1.5; max-width: 600px;">
+            Paste in your albums as below, upload a file, check an album, or use the generator:<br><br>
+            <strong>1. Year, Artist, Album, Preview Track</strong> (Instant import)<br>
+            <strong>2. Artist, Album, Preview Track</strong> (Slower, looks up the release year automatically)<br>
+
+<strong>3. List of Artists</strong> Enter batch year. Slower, but you can find whether a list of bands released an album in a particular year!<br>
+
+<br>
+        </p>
+
+        <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; max-width: 600px;">
+            <textarea id="import-text" placeholder="Year, Artist, Album, Preview Track
+1965, The Beatles, Rubber Soul, In My Life
+1980, Joy Division, Closer, Isolation
+
+-- OR --
+
+Artist, Album, Preview Track
+The Beatles, Rubber Soul, In My Life" style="width:100%; height: 180px; background: none; border: 1px solid var(--line); color: var(--text); padding: 10px; font-family: inherit; resize: vertical; outline: none;"></textarea>
+
+
+            
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 8px; border-right: 1px solid var(--line); padding-right: 1rem;">
+        <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle);">Batch Year:</span>
+        <input type="number" id="batch-year-input" placeholder="Optional" min="1960" max="2030" 
+               style="width: 80px; background: transparent; border: 1px dashed var(--line); padding: 6px; color: var(--text); outline: none; font-family: monospace; font-size: 0.8rem; text-align: center;">
+    </div>
+    <input type="file" id="import-csv" accept=".csv" style="font-size: 0.8rem; font-family: monospace;">
+    <button class="header-btn" style="border: 1px solid var(--text); padding: 10px 20px;" onclick="processImport()">Get Albums</button>
+</div>
+        </div>
+
+        <div style="margin-top: 2.5rem; margin-bottom: 1rem; border: 1px dashed var(--line); padding: 1.5rem; max-width: 600px;">
+            <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle); margin-bottom: 0.5rem;">Artist Archive Generator</p>
+            <p style="font-size: 1rem; color: var(--text); margin-bottom: 1rem; line-height: 1.5;">
+                Type an artist name to pull up to 10 albums a year from MusicBrainz.
+            </p>
+            <div style="display: flex; gap: 1px;">
+                <input type="text" id="api-band-input" placeholder="e.g. The Beatles" 
+                       style="flex: 1; background: transparent; border: 1px solid var(--line); padding: 10px; color: var(--text); outline: none;">
+                <button class="header-btn" style="border: 1px solid var(--text); padding: 0 20px;" onclick="fetchFullDiscography()">Get</button>
+            </div>
+            <div id="fetch-log" style="font-size: 0.65rem; margin-top: 10px; font-family: monospace; color: var(--accent);"></div>
+        </div>
+
+        <div id="year-checker" style="margin-top: 1rem; margin-bottom: 1rem; border: 1px dashed var(--line); padding: 1.5rem; max-width: 600px;">
+            <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--subtle); margin-bottom: 0.5rem;">Year Checker</p>
+            <p style="font-size: 1rem; color: var(--text); margin-bottom: 1rem; line-height: 1.5;">
+                Check an album and test the audio preview.
+            </p>
+            
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <input type="text" id="quick-lookup-input" placeholder="Artist - Album - Preview Track" 
+                       style="flex: 1; background: transparent; border: 1px solid var(--line); padding: 10px; color: var(--text); outline: none; min-width: 200px;"
+                       onkeydown="if(event.key==='Enter') runQuickLookup()">
+                <button class="header-btn" style="border: 1px solid var(--text); padding: 0 20px;" onclick="runQuickLookup()">Check</button>
+            </div>
+            
+            <div id="quick-lookup-result" style="font-size: 0.8rem; font-family: monospace; color: var(--subtle); background: var(--line); padding: 1rem; margin-top: 1rem; display: none; line-height: 1.6;"></div>
+        </div>
+        
+        <div id="import-progress" style="margin-top: 2rem; font-family: monospace; font-size: 0.8rem; color: var(--subtle); line-height: 1.6; max-height: 300px; overflow-y: auto; background: var(--line); padding: 1rem; display: none; max-width: 600px;"></div>
+    </div>
+</div>
+
+    <div id="games-view" class="page-view">
+        <div style="margin-top: 2rem; text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 2rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">The Games Room</h1>
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Test your sonic memory</p>
+        </div>
+
+        <div id="game-selection" style="display: flex; gap: 2rem; justify-content: center; margin-top: 4rem; flex-wrap: wrap;">
+            <div style="border: 1px solid var(--line); padding: 2rem; width: 300px; text-align: center; border-radius: 8px; cursor: pointer;" onclick="initGame('tune')" onmouseover="this.style.borderColor='var(--text)'" onmouseout="this.style.borderColor='var(--line)'">
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Name That Tune</h3>
+                <p style="font-size: 0.8rem; color: var(--subtle); margin-bottom: 1.5rem;">Listen to a preview and guess the correct song & artist.</p>
+                <button class="header-btn" style="border: 1px solid var(--text); padding: 8px 16px;">PLAY</button>
+            </div>
+            
+            <div style="border: 1px solid var(--line); padding: 2rem; width: 300px; text-align: center; border-radius: 8px; cursor: pointer;" onclick="initGame('year')" onmouseover="this.style.borderColor='var(--text)'" onmouseout="this.style.borderColor='var(--line)'">
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Guess The Year</h3>
+                <p style="font-size: 0.8rem; color: var(--subtle); margin-bottom: 1.5rem;">Listen to a preview and deduce the era it was released.</p>
+                <button class="header-btn" style="border: 1px solid var(--text); padding: 8px 16px;">PLAY</button>
+            </div>
+        </div>
+
+        <!-- Active Game Container -->
+        <div id="active-game-area" class="game-container" style="display: none;">
+            <h2 id="game-active-title" class="game-title">Game Title</h2>
+            <p id="game-active-subtitle" class="game-subtitle">Game Subtitle</p>
+            
+            <div id="game-status" class="loader-text" style="display:none; margin-bottom: 1rem;">Tuning in...</div>
+            
+            <div id="game-visualizer" class="game-visualizer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text);"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            </div>
+
+            <div id="game-options-container" class="game-options">
+                <!-- Buttons injected here -->
+            </div>
+
+            <div class="score-display">
+                Score: <span id="game-score">0</span> / <span id="game-rounds">0</span>
+            </div>
+
+            <button id="next-round-btn" class="header-btn" style="display: none; margin: 2rem auto 0 auto; border: 1px solid var(--text); padding: 10px 20px;" onclick="loadNextRound()">NEXT ROUND ➔</button>
+            
+            <button class="header-btn" style="margin-top: 3rem; opacity: 0.4;" onclick="exitGame()">← Exit Game</button>
+        </div>
+    </div>
+
+    <div id="radio-view" class="page-view">
+        <div style="margin-top: 3rem; text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.2em; margin-bottom: 0.5rem;">Time Machine Dial</p>
+            <h1 id="radio-year" style="font-size: 6rem; font-weight: 800; letter-spacing: -0.05em; margin: 0; line-height: 1;">1960</h1>
+            
+            <input type="range" id="radio-dial" min="0" max="0" value="0" oninput="handleDialScrub(this.value)">
+            
+            <div id="radio-track-info" style="min-height: 40px; margin-top: 1rem; font-family: monospace; font-size: 0.9rem; color: var(--subtle);">
+                Radio Off
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem; justify-content: center;">
+                <button id="radio-power-btn" class="header-btn" style="border: 1px solid var(--text); padding: 12px 40px; font-size: 0.9rem;" onclick="toggleRadio()">
+                    Power: OFF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="appendix-view" class="page-view">
+        <div style="margin-top: 2rem; border-bottom: 1px solid var(--line); padding-bottom: 2rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">About The Archive</h1>
+            <p style="color: var(--subtle); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">The Journey of Sound: 1960 – 2030</p>
+        </div>
+        <div style="margin-top: 2rem; max-width: 800px;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6; margin-bottom: 1rem;">
+                This space maps out a long-form listening journey: curated albums and songs per year, tracing sonic evolution from 1960 to 2030. 
+            </p>
+            <p style="font-size: 0.95rem; color: var(--subtle); line-height: 1.6;">
+                Because full albums cannot be previewed cleanly in a web browser, each entry relies on iTunes API to pull a 30-second representative "Preview Track." Use the games to test your musical knowledge against the archive.
+            </p>
+        </div>
+    </div>
+</main>
+
+<footer style="margin-top: 80px; padding: 40px 0; text-align: center; border-top: 1px solid var(--line);">
+    <a href="index.html" style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">
+        MAIN INDEX
+    </a>
+    <a href="#" onclick="toggleTheme(); return false;" style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">
+        | THEME
+    </a> 
+    <a href="#" onclick="downloadJSON(); return false;" style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">
+        | DOWNLOAD JSON
+    </a> 
+    <a href="#" onclick="downloadHTML(); return false;" style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">
+        | DOWNLOAD HTML
+    </a> 
+    <span style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">
+        <br> ©2026 Josh Farnham
+    </span>
+</footer>
+
+<div id="toast-container">Message</div>
+
+<script>
+    // Expanded Data for Games and Detailed UI Display with `note` fields
+    let albumData = {
+        "1960": [
+            { "artist": "Miles Davis", "album": "Sketches of Spain", "previewTrack": "Concierto de Aranjuez", "genre": "Jazz", "note": "Third collaboration with Gil Evans. Groundbreaking orchestral jazz." },
+            { "artist": "Etta James", "album": "At Last!", "previewTrack": "At Last", "genre": "R&B", "note": "Debut studio album, featuring one of the most famous vocal performances in history." },
+            { "artist": "John Coltrane", "album": "Giant Steps", "previewTrack": "Giant Steps", "genre": "Jazz", "note": "A breakthrough in jazz harmony and complex chord progressions." }
+        ],
+        "1965": [
+            { "artist": "The Beatles", "album": "Rubber Soul", "previewTrack": "In My Life", "genre": "Rock", "note": "Marked a massive shift in their lyrical depth and studio experimentation." },
+            { "artist": "Bob Dylan", "album": "Highway 61 Revisited", "previewTrack": "Like a Rolling Stone", "genre": "Folk Rock", "note": "Dylan goes electric. A defining moment in rock history." },
+            { "artist": "Nina Simone", "album": "I Put a Spell on You", "previewTrack": "Feeling Good", "genre": "Soul", "note": "Iconic, powerful vocals with exceptional arranging." }
+        ],
+        "1971": [
+            { "artist": "Marvin Gaye", "album": "What's Going On", "previewTrack": "What's Going On", "genre": "Soul", "note": "A monumental concept album exploring social and environmental themes." },
+            { "artist": "Led Zeppelin", "album": "Led Zeppelin IV", "previewTrack": "Stairway to Heaven", "genre": "Rock", "note": "Contains some of the most influential guitar riffs of the 70s." },
+            { "artist": "Joni Mitchell", "album": "Blue", "previewTrack": "A Case of You", "genre": "Folk", "note": "Perhaps the greatest confessional singer-songwriter album ever recorded." }
+        ],
+"1979": [
+    { "artist": "Joy Division", "album": "Unknown Pleasures", "previewTrack": "Shadowplay", "genre": "Post-Punk", "note": "" },
+    { "artist": "Blondie", "album": "Eat to the Beat", "previewTrack": "Dreaming", "genre": "New Wave", "note": "" },
+    { "artist": "Tubeway Army (Gary Numan)", "album": "Replicas", "previewTrack": "Are 'Friends' Electric?", "genre": "Synth-Pop", "note": "" },
+    { "artist": "The Cure", "album": "Three Imaginary Boys", "previewTrack": "10:15 Saturday Night", "genre": "Post-Punk", "note": "" },
+    { "artist": "Public Image Ltd.", "album": "Metal Box", "previewTrack": "Death Disco", "genre": "Post-Punk", "note": "" },
+    { "artist": "The Human League", "album": "Reproduction", "previewTrack": "Empire State Human", "genre": "Synth-Pop", "note": "" },
+    { "artist": "The Cramps", "album": "Gravest Hits", "previewTrack": "Human Fly", "genre": "Psychobilly", "note": "" },
+    { "artist": "The B-52's", "album": "The B-52's", "previewTrack": "Rock Lobster", "genre": "New Wave", "note": "" },
+    { "artist": "Siouxsie and the Banshees", "album": "Join Hands", "previewTrack": "Icon", "genre": "Post-Punk", "note": "" },
+    { "artist": "Yellow Magic Orchestra", "album": "Solid State Survivor", "previewTrack": "Behind the Mask", "genre": "Synth-Pop", "note": "" }
+],
+
+
+
+        "1980": [
+            { "artist": "Talking Heads", "album": "Remain in Light", "previewTrack": "Once in a Lifetime", "genre": "New Wave", "note": "Brilliant polyrhythms and Brian Eno's pioneering production." },
+            { "artist": "Joy Division", "album": "Closer", "previewTrack": "Isolation", "genre": "Post-Punk", "note": "A haunting, atmospheric masterpiece released posthumously." },
+            { "artist": "David Bowie", "album": "Scary Monsters", "previewTrack": "Ashes to Ashes", "genre": "Rock", "note": "Bowie bridges his Berlin era with the impending New Romantic movement." }
+        ],
+        "1991": [
+            { "artist": "Nirvana", "album": "Nevermind", "previewTrack": "Smells Like Teen Spirit", "genre": "Grunge", "note": "The album that broke alternative rock into the mainstream worldwide." },
+            { "artist": "Pearl Jam", "album": "Ten", "previewTrack": "Alive", "genre": "Grunge", "note": "An arena-rock powerhouse that helped define the Seattle sound." },
+            { "artist": "My Bloody Valentine", "album": "Loveless", "previewTrack": "Only Shallow", "genre": "Shoegaze", "note": "Kevin Shields' magnum opus of gliding guitars and dense textures." }
+        ],
+
+"1993": [
+    {
+        "artist": "PJ Harvey",
+        "album": "Rid of Me",
+        "previewTrack": "50ft Queenie",
+        "genre": "Alternative Rock",
+        "note": ""
+    },
+    {
+        "artist": "Radiohead",
+        "album": "Pablo Honey",
+        "previewTrack": "You",
+        "genre": "Alternative Rock",
+        "note": ""
+    },
+    {
+        "artist": "Blur",
+        "album": "Modern Life Is Rubbish",
+        "previewTrack": "Chemical World",
+        "genre": "Britpop",
+        "note": ""
+    },
+    {
+        "artist": "The Breeders",
+        "album": "Last Splash",
+        "previewTrack": "Cannonball",
+        "genre": "Alternative Rock",
+        "note": ""
+    },
+    {
+        "artist": "Nirvana",
+        "album": "In Utero",
+        "previewTrack": "Heart-Shaped Box",
+        "genre": "Grunge",
+        "note": ""
+    },
+    {
+        "artist": "Suede",
+        "album": "Suede",
+        "previewTrack": "Animal Nitrate",
+        "genre": "Britpop",
+        "note": ""
+    },
+    {
+        "artist": "Belly",
+        "album": "Star",
+        "previewTrack": "",
+        "genre": "Alternative Rock",
+        "note": ""
+    },
+    {
+        "artist": "The Smashing Pumpkins",
+        "album": "Siamese Dream",
+        "previewTrack": "Cherub Rock",
+        "genre": "Alternative Rock",
+        "note": ""
+    },
+    {
+        "artist": "Bjork",
+        "album": "Debut",
+        "previewTrack": "",
+        "genre": "Alternative",
+        "note": ""
+    },
+    {
+        "artist": "Stereolab",
+        "album": "Transient Random-Noise Bursts with Announcements",
+        "previewTrack": "French Disco",
+        "genre": "Post-rock",
+        "note": ""
+    }
+],
+
+
+"1994": [
+    {
+        "artist": "Nick Cave and the Bad Seeds",
+        "album": "Let Love In",
+        "previewTrack": "Red Right Hand",
+        "genre": "Post-punk / Gothic Rock",
+        "note": ""
+    },
+    {
+        "artist": "Portishead",
+        "album": "Dummy",
+        "previewTrack": "Glory Box",
+        "genre": "Trip hop",
+        "note": ""
+    },
+    {
+        "artist": "Jeff Buckley",
+        "album": "Grace",
+        "previewTrack": "Last Goodbye",
+        "genre": "Alternative Rock",
+        "note": ""
+    },
+    {
+        "artist": "Massive Attack",
+        "album": "Protection",
+        "previewTrack": "Protection",
+        "genre": "Britpop",
+        "note": ""
+    },
+    {
+        "artist": "dEUS",
+        "album": "Worst Case Scenario",
+        "previewTrack": "Suds & Soda",
+        "genre": "Experimental Rock",
+        "note": ""
+    },
+    {
+        "artist": "Hole",
+        "album": "Live Through This",
+        "previewTrack": "Violet",
+        "genre": "Grunge / Alternative Rock",
+        "note": ""
+    },
+    {
+        "artist": "Oasis",
+        "album": "Definitely Maybe",
+        "previewTrack": "Live Forever",
+        "genre": "Britpop",
+        "note": ""
+    },
+    {
+        "artist": "Blur",
+        "album": "Parklife",
+        "previewTrack": "Girls & Boys",
+        "genre": "Britpop",
+        "note": ""
+    },
+    {
+        "artist": "Suede",
+        "album": "Dog Man Star",
+        "previewTrack": "The Wild Ones",
+        "genre": "Britpop / Glam Rock",
+        "note": ""
+    },
+    {
+        "artist": "The Prodigy",
+        "album": "Music for the Jilted Generation",
+        "previewTrack": "No Good (Start the Dance)",
+        "genre": "Big Beat / Electronic",
+        "note": ""
+    }
+],
+
+"1995": [
+  { 
+    "artist": "Radiohead", 
+    "album": "The Bends", 
+    "previewTrack": "High and Dry", 
+    "genre": "Alternative Rock", 
+    "note": "A massive sonic leap forward from their debut, establishing the band's critical acclaim." 
+  },
+  { 
+    "artist": "Alanis Morissette", 
+    "album": "Jagged Little Pill", 
+    "previewTrack": "You Oughta Know", 
+    "genre": "Alternative Rock / Pop Rock", 
+    "note": "A massive global phenomenon that defined the 90s alt-rock confessional style." 
+  },
+  { 
+    "artist": "PJ Harvey", 
+    "album": "To Bring You My Love", 
+    "previewTrack": "Down by the Water", 
+    "genre": "Alternative Rock", 
+    "note": "A dark, blues-infused masterpiece that brought Harvey widespread mainstream attention." 
+  },
+  { 
+    "artist": "Oasis", 
+    "album": "(What's the Story) Morning Glory?", 
+    "previewTrack": "Wonderwall", 
+    "genre": "Britpop", 
+    "note": "A defining monument of the Britpop era and one of the best-selling albums of all time." 
+  },
+  { 
+    "artist": "Elastica", 
+    "album": "Elastica", 
+    "genre": "Britpop / Post-Punk", 
+    "previewTrack": "Connection", 
+    "note": "The fast-selling debut album that perfectly blended punk urgency with catchy pop hooks." 
+  },
+  { 
+    "artist": "Blur", 
+    "album": "The Great Escape", 
+    "previewTrack": "Country House", 
+    "genre": "Britpop", 
+    "note": "The satirical climax of the Britpop 'Battle of the Bands' era." 
+  },
+  { 
+    "artist": "The Chemical Brothers", 
+    "album": "Exit Planet Dust", 
+    "previewTrack": "Leave Home", 
+    "genre": "Electronic / Big Beat", 
+    "note": "A pioneering electronic debut that helped launch the big beat movement." 
+  },
+  { 
+    "artist": "Supergrass", 
+    "album": "I Should Coco", 
+    "previewTrack": "Alright", 
+    "genre": "Britpop", 
+    "note": "An infectious, high-energy blend of punk-pop and youthful optimism." 
+  },
+  { 
+    "artist": "Leftfield", 
+    "album": "Leftism", 
+    "previewTrack": "Release the Pressure", 
+    "genre": "Electronic / Progressive House", 
+    "note": "A landmark electronic release that seamlessly fused techno, house, and dub." 
+  },
+  { 
+    "artist": "Echobelly", 
+    "album": "On", 
+    "previewTrack": "King of the Kerb", 
+    "genre": "Britpop", 
+    "note": "A quintessential 90s alt-pop record driven by sharp, melodic songwriting." 
+  }
+],
+
+"1998": [
+  { 
+    "artist": "Air", 
+    "album": "Moon Safari", 
+    "previewTrack": "Sexy Boy", 
+    "genre": "Downtempo", 
+    "note": "" 
+  },
+  { 
+    "artist": "UNKLE", 
+    "album": "Psyence Fiction", 
+    "previewTrack": "Rabbit in Your Headlights", 
+    "genre": "Trip Hop", 
+    "note": "" 
+  },
+  { 
+    "artist": "Gomez", 
+    "album": "Bring It On", 
+    "previewTrack": "78 Stone Shuffle", 
+    "genre": "Indie Rock", 
+    "note": "" 
+  },
+  { 
+    "artist": "Morcheeba", 
+    "album": "Big Calm", 
+    "previewTrack": "The Sea", 
+    "genre": "Trip Hop", 
+    "note": "" 
+  },
+  { 
+    "artist": "PJ Harvey", 
+    "album": "Is This Desire?", 
+    "previewTrack": "A Perfect Day Elise", 
+    "genre": "Alternative Rock", 
+    "note": "" 
+  },
+  { 
+    "artist": "The Delgados", 
+    "album": "Peloton", 
+    "previewTrack": "Pull the Wires From the Wall", 
+    "genre": "Indie Pop", 
+    "note": "" 
+  },
+  { 
+    "artist": "Mansun", 
+    "album": "Six", 
+    "previewTrack": "Legacy", 
+    "genre": "Progressive Rock", 
+    "note": "" 
+  },
+  { 
+    "artist": "Fatboy Slim", 
+    "album": "You've Come a Long Way, Baby", 
+    "previewTrack": "Praise You", 
+    "genre": "Big Beat", 
+    "note": "" 
+  },
+  { 
+    "artist": "Asian Dub Foundation", 
+    "album": "Rafi's Revenge", 
+    "previewTrack": "Buzzin", 
+    "genre": "Electronic", 
+    "note": "" 
+  },
+  { 
+    "artist": "Stereolab", 
+    "album": "Aluminum Tunes", 
+    "previewTrack": "Pop Quiz", 
+    "genre": "Post Rock", 
+    "note": "" 
+  }
+],
+
+
+        "2000": [
+            { "artist": "Radiohead", "album": "Kid A", "previewTrack": "Everything In Its Right Place", "genre": "Electronic", "note": "A drastic left-turn from guitar rock into electronic experimentation." },
+            { "artist": "OutKast", "album": "Stankonia", "previewTrack": "Ms. Jackson", "genre": "Hip Hop", "note": "Southern hip-hop pushed to eclectic, psychedelic new heights." },
+            { "artist": "Coldplay", "album": "Parachutes", "previewTrack": "Yellow", "genre": "Alternative", "note": "A defining release for early 2000s post-Britpop melodic rock." }
+        ],
+"2002": [
+  { 
+    "artist": "The Libertines", 
+    "album": "Up the Bracket", 
+    "previewTrack": "Time for Heroes", 
+    "genre": "Indie Rock", 
+    "note": "" 
+  },
+  { 
+    "artist": "Queens of the Stone Age", 
+    "album": "Songs for the Deaf", 
+    "previewTrack": "No One Knows", 
+    "genre": "Stoner Rock", 
+    "note": "" 
+  },
+  { 
+    "artist": "The Eighties Matchbox B-Line Disaster", 
+    "album": "Horse of the Dog", 
+    "previewTrack": "Psychosis Safari", 
+    "genre": "Psychobilly", 
+    "note": "" 
+  },
+  { 
+    "artist": "The Cooper Temple Clause", 
+    "album": "See This Through and Leave", 
+    "previewTrack": "Who Needs Enemies?", 
+    "genre": "Alternative Rock", 
+    "note": "" 
+  },
+  { 
+    "artist": "Ladytron", 
+    "album": "Light & Magic", 
+    "previewTrack": "Seventeen", 
+    "genre": "Electroclash", 
+    "note": "" 
+  },
+  { 
+    "artist": "The Greenhornes", 
+    "album": "Dual Mono", 
+    "previewTrack": "Garage Rock", 
+    "genre": "Garage Rock", 
+    "note": "" 
+  },
+  { 
+    "artist": "Ikara Colt", 
+    "album": "Chat and Business", 
+    "previewTrack": "Rudd", 
+    "genre": "Art Punk", 
+    "note": "" 
+  },
+  { 
+    "artist": "The Coral", 
+    "album": "The Coral", 
+    "previewTrack": "Dreaming of You", 
+    "genre": "Indie Pop", 
+    "note": "" 
+  },
+  { 
+    "artist": "Clinic", 
+    "album": "Walking with Thee", 
+    "previewTrack": "Walking with Thee", 
+    "genre": "Art Punk", 
+    "note": "" 
+  },
+  { 
+    "artist": "The Von Bondies", 
+    "album": "Lack of Communication", 
+    "previewTrack": "It Came From Within", 
+    "genre": "Garage Rock Revival", 
+    "note": "" 
+  }
+],
+
+"2012": [
+  { 
+    "artist": "Japandroids", 
+    "album": "Celebration Rock", 
+    "previewTrack": "The House That Heaven Built", 
+    "genre": "Indie Rock / Noise Rock", 
+    "note": "" 
+  },
+  { 
+    "artist": "Django Django", 
+    "album": "Django Django", 
+    "previewTrack": "Default", 
+    "genre": "Art Rock / Psychedelic Pop", 
+    "note": "" 
+  },
+  { 
+    "artist": "Goat", 
+    "album": "World Music", 
+    "previewTrack": "Run To Your Girl", 
+    "genre": "Psychedelic Rock / Afrobeat", 
+    "note": "" 
+  },
+  { 
+    "artist": "The xx", 
+    "album": "Coexist", 
+    "previewTrack": "Angels", 
+    "genre": "Indie Pop / Minimal Electronic", 
+    "note": "" 
+  },
+  { 
+    "artist": "Savages", 
+    "album": "I Am Here EP", 
+    "previewTrack": "Husbands", 
+    "genre": "Post-Punk", 
+    "note": "" 
+  },
+  { 
+    "artist": "The Black Keys", 
+    "album": "El Camino", 
+    "previewTrack": "Lonely Boy", 
+    "genre": "Garage Rock / Blues Rock", 
+    "note": "" 
+  },
+  { 
+    "artist": "Jack White", 
+    "album": "Blunderbuss", 
+    "previewTrack": "Love Interruption", 
+    "genre": "Blues Rock / Roots Rock", 
+    "note": "" 
+  },
+  { 
+    "artist": "Toy", 
+    "album": "Toy", 
+    "previewTrack": "Left Myself Behind", 
+    "genre": "Psychedelic Rock / Shoegaze", 
+    "note": "" 
+  },
+  { 
+    "artist": "Beach House", 
+    "album": "Bloom", 
+    "previewTrack": "Myth", 
+    "genre": "Dream Pop", 
+    "note": "" 
+  },
+  { 
+    "artist": "Swans", 
+    "album": "The Seer", 
+    "previewTrack": "Avatar", 
+    "genre": "Experimental Rock / Post-Rock", 
+    "note": "" 
+  }
+],
+"2013": [
+    { "artist": "Arcade Fire", "album": "Reflektor", "previewTrack": "Reflektor", "genre": "Art Rock" },
+    { "artist": "Drenge", "album": "Drenge", "previewTrack": "Bloodsports", "genre": "Alternative Rock" },
+    { "artist": "Shopping", "album": "Consumer Complaints", "previewTrack": "In Other Words", "genre": "Post-Punk" },
+    { "artist": "Traams", "album": "Grin", "previewTrack": "Flowers", "genre": "Post-Punk" },
+    { "artist": "James Blake", "album": "Overgrown", "previewTrack": "Retrograde", "genre": "Electronic" },
+    { "artist": "Queens of the Stone Age", "album": "...Like Clockwork", "previewTrack": "I Sat by the Ocean", "genre": "Stoner Rock" },
+    { "artist": "Bombino", "album": "Nomad", "previewTrack": "Amidinine", "genre": "Desert Blues" },
+    { "artist": "Savages", "album": "Silence Yourself", "previewTrack": "Husbands", "genre": "Post-Punk" },
+    { "artist": "Foals", "album": "Holy Fire", "previewTrack": "My Number", "genre": "Indie Rock" },
+    { "artist": "Factory Floor", "album": "Factory Floor", "previewTrack": "Fall Back", "genre": "Electronic" }
+],
+        "2015": [
+            { "artist": "Kendrick Lamar", "album": "To Pimp a Butterfly", "previewTrack": "Alright", "genre": "Hip Hop", "note": "A dense, jazz-infused masterpiece of modern rap." },
+            { "artist": "Sufjan Stevens", "album": "Carrie & Lowell", "previewTrack": "Should Have Known Better", "genre": "Indie Folk", "note": "A devastatingly beautiful and stripped-back meditation on grief." },
+            { "artist": "Tame Impala", "album": "Currents", "previewTrack": "The Less I Know The Better", "genre": "Psychedelic", "note": "Kevin Parker shifts fully into immaculately produced synth-pop." }
+        ],
+
+    "2023": [
+        {
+            "artist": "Lankum",
+            "album": "False Lankum",
+            "previewTrack": "Go Dig My Grave",
+            "genre": "Folk",
+            "note": ""
+        },
+        {
+            "artist": "bar italia",
+            "album": "The Twits",
+            "previewTrack": "Nurse!",
+            "genre": "Indie",
+            "note": ""
+        },
+        {
+            "artist": "Italia 90",
+            "album": "Living Systems",
+            "previewTrack": "Cut",
+            "genre": "Post-Punk",
+            "note": ""
+        },
+        {
+            "artist": "Sweeping Promises",
+            "album": "Good Living Is Coming For You",
+            "previewTrack": "Eraser",
+            "genre": "Punk",
+            "note": ""
+        },
+        {
+            "artist": "Gabriels",
+            "album": "Angels & Queens",
+            "previewTrack": "Angels & Queens",
+            "genre": "Soul",
+            "note": ""
+        },
+        {
+            "artist": "Dee Fry Servals",
+            "album": "StimScapes EP",
+            "previewTrack": "Moonwolves",
+            "genre": "Ambient",
+            "note": ""
+        },
+        {
+            "artist": "The Bug Club",
+            "album": "Rare Birds: Hour of Song",
+            "previewTrack": "Short and Thick",
+            "genre": "Garage",
+            "note": ""
+        },
+        {
+            "artist": "Grian Chatten",
+            "album": "Chaos For The Fly",
+            "previewTrack": "Fairlies",
+            "genre": "Alternative",
+            "note": ""
+        },
+        {
+            "artist": "Mitski",
+            "album": "The Land Is Inhospitable and So Are We",
+            "previewTrack": "My Love Mine All Mine",
+            "genre": "Pop",
+            "note": ""
+        },
+        {
+            "artist": "Squid",
+            "album": "O Monolith",
+            "previewTrack": "Swing (In A Dream)",
+            "genre": "Rock",
+            "note": ""
+        }
+    ]
+
+    };
+
+    // Global App State
+    let currentAudio = null;
+    let currentlyPlayingBtn = null;
+    let radioMode = false;
+    let flatSongList = [];
+    let availableRadioYears = [];
+    let radioStaticCtx;
+    let radioStaticNode;
+    let radioStaticFilter;
+    let dialTimeout;
+    
+    function showToast(msg) {
+        const toast = document.getElementById('toast-container');
+        toast.innerText = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    function toggleTheme() {
+        const current = document.body.getAttribute('data-theme');
+        const newTheme = current === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+    }
+
+    function toggleNav() { document.getElementById('nav-actions').classList.toggle('open'); }
+    
+    function toggleSearch() {
+        const overlay = document.getElementById('search-overlay');
+        const input = document.getElementById('global-search');
+        overlay.classList.toggle('open');
+        if (overlay.classList.contains('open')) {
+            input.focus();
+        } else {
+            input.value = '';
+        }
+    }
+
+    function stopAllAudio() {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio = null;
+        }
+        if (currentlyPlayingBtn) {
+            currentlyPlayingBtn.classList.remove('playing', 'loading');
+            currentlyPlayingBtn = null;
+        }
+        document.getElementById('game-visualizer').classList.remove('playing');
+        stopRadioStatic();
+    }
+
+    function showPage(pageId) {
+        stopAllAudio(); // Stop audio on page change
+        document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        document.getElementById('nav-actions').classList.remove('open');
+        
+        // Highlight active nav
+        document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active-nav'));
+        if(event && event.currentTarget && event.currentTarget.classList.contains('nav-link')) {
+            event.currentTarget.classList.add('active-nav');
+        }
+
+        if(pageId === 'artist-view') populateArtists();
+        if(pageId !== 'games-view' && activeGameMode !== null) exitGame(); // Cleanup if navigating away
+        
+        window.scrollTo(0,0);
+    }
+
+    function initDecadesNav() {
+        const nav = document.getElementById('nav-decades');
+        nav.innerHTML = '';
+        const years = Object.keys(albumData).map(Number).sort((a,b)=>a-b);
+        if(years.length === 0) return;
+        
+        let startDecade = Math.floor(years[0] / 10) * 10;
+        let endDecade = Math.floor(years[years.length-1] / 10) * 10;
+
+        for (let y = startDecade; y <= endDecade; y += 10) {
+            const btn = document.createElement('button');
+            btn.innerText = y + 's';
+            btn.onclick = () => renderDecade(y);
+            nav.appendChild(btn);
+        }
+    }
+
+    function renderDecade(startYear) {
+        const container = document.getElementById('decade-content');
+        container.innerHTML = '';
+        
+        const horizon = document.getElementById('year-horizon');
+        horizon.innerHTML = '';
+        horizon.classList.add('visible');
+        
+        let foundAny = false;
+        for(let y = startYear; y < startYear + 10; y++) {
+            if(albumData[y.toString()]) {
+                foundAny = true;
+                const link = document.createElement('span');
+                link.className = 'horizon-link'; link.innerText = y;
+                link.onclick = () => document.getElementById(`year-anchor-${y}`).scrollIntoView({behavior: 'smooth'});
+                horizon.appendChild(link);
+                container.appendChild(createYearRow(y, albumData[y.toString()]));
+            }
+        }
+        
+        if(!foundAny) container.innerHTML = `<div style="padding:4rem; text-align:center; color:var(--subtle);">No archive data for this decade yet.</div>`;
+        
+        showPage('decade-view');
+        window.scrollTo(0,0);
+    }
+
+    function createYearRow(year, albums) {
+        const row = document.createElement('div');
+        row.className = 'year-row'; row.id = `year-anchor-${year}`;
+
+        let albumsHtml = '';
+        albums.forEach((a, i) => {
+            const indexStr = (i + 1).toString().padStart(2, '0');
+            const safeArtist = a.artist.replace(/'/g, "\\'");
+            const safeTrack = a.previewTrack.replace(/'/g, "\\'");
+
+            albumsHtml += `
+                <div class="song-entry">
+                    <div class="song-meta" style="display: flex; align-items: flex-start; margin-bottom: 2rem;">
+                        <span style="font-family:monospace; font-size:0.7rem; color:var(--subtle); margin-right: 1.5rem; margin-top: 5px;">
+                            ${indexStr}
+                        </span>
+                        
+                        <div style="display: flex; flex-direction: column; width: 100%;">
+                            <div class="song-title">
+                                <span class="song-artist-link" onclick="viewSpecificArtist('${safeArtist}')">${a.artist}</span>
+                                <div style="display: flex; align-items: center; margin-top: 4px;">
+                                    <span class="preview-btn" title="Listen Preview" onclick="playPreview('${safeArtist}', '${safeTrack}', this)" style="margin-left: 0; margin-right: 8px;"></span>
+                                    <span class="track-name" style="margin-top: 0;">${a.album} <span style="opacity:0.6; font-size:0.85em;">(Preview: ${a.previewTrack})</span></span>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
+                                ${a.genre ? `<span class="genre-tag" style="margin-left: 0;" onclick="handleSearch('${a.genre}')">${a.genre}</span>` : ''}
+                            </div>
+                            <p class="song-note" style="${a.note ? '' : 'display:none;'}">${a.note || ''}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        row.innerHTML = `
+            <div class="year-heading">
+                <h2>${year}</h2>
+            </div>
+            <div class="year-content">
+                <div class="song-list">${albumsHtml}</div>
+            </div>
+        `;
+        
+        return row;
+    }
+
+    async function playPreview(artist, trackName, btnElement) {
+        if (currentlyPlayingBtn === btnElement && currentAudio && !currentAudio.paused) {
+            stopAllAudio(); return; 
+        }
+        stopAllAudio();
+
+        currentlyPlayingBtn = btnElement;
+        btnElement.classList.add('loading');
+
+        const cleanArtist = artist.split(/ feat| ft| &| with/i)[0].trim();
+        
+        // FIX: Removed the .replace() method so spaces correctly encode to %20
+        const query = encodeURIComponent(`${cleanArtist} ${trackName.trim()}`);
+
+        try {
+            const res = await fetch(`https://itunes.apple.com/search?term=${query}&limit=1&entity=song`);
+            const data = await res.json();
+
+            if (data.results && data.results[0] && data.results[0].previewUrl) {
+                currentAudio = new Audio(data.results[0].previewUrl);
+                currentAudio.oncanplay = () => {
+                    btnElement.classList.remove('loading');
+                    btnElement.classList.add('playing');
+                    currentAudio.play();
+                };
+                currentAudio.onended = () => { stopAllAudio(); };
+            } else {
+                showToast("No audio preview found via iTunes.");
+                stopAllAudio();
+            }
+        } catch (err) {
+            showToast("Network error fetching audio.");
+            stopAllAudio();
+        }
+    }
+
+    function populateArtists() {
+        const artistMap = {};
+        for(const y in albumData) {
+            albumData[y].forEach(s => {
+                if(!artistMap[s.artist]) artistMap[s.artist] = [];
+                artistMap[s.artist].push({...s, year: y});
+            });
+        }
+        
+        const sorted = Object.keys(artistMap).sort();
+        const grid = document.getElementById('artist-list');
+        grid.innerHTML = '';
+        
+        sorted.forEach(artist => {
+            const chip = document.createElement('div');
+            chip.className = 'artist-chip';
+            chip.innerText = artist;
+            chip.onclick = () => renderSpecificArtist(artist, artistMap[artist]);
+            grid.appendChild(chip);
+        });
+    }
+
+    function viewSpecificArtist(artistName) {
+        showPage('artist-view');
+        // Small delay to let page transition, then click the chip
+        setTimeout(() => {
+            const chips = document.querySelectorAll('.artist-chip');
+            for(let c of chips) {
+                if(c.innerText === artistName) { c.click(); break; }
+            }
+        }, 100);
+    }
+
+    function renderSpecificArtist(artist, songs) {
+        const container = document.getElementById('artist-specific-content');
+        container.innerHTML = `
+            <h2 style="font-size:2rem; margin-bottom: 2rem; border-bottom: 1px solid var(--line); padding-bottom: 1rem;">${artist}</h2>
+            <div class="song-list"></div>
+        `;
+        const list = container.querySelector('.song-list');
+        
+        songs.sort((a,b)=>a.year - b.year).forEach((a, i) => {
+            const indexStr = (i + 1).toString().padStart(2, '0');
+            const safeArtist = a.artist.replace(/'/g, "\\'");
+            const safeTrack = a.previewTrack.replace(/'/g, "\\'");
+
+            const entry = document.createElement('div');
+            entry.className = 'song-entry';
+            entry.innerHTML = `
+                <div class="song-meta" style="display: flex; align-items: flex-start; margin-bottom: 2rem;">
+                    <span style="font-family:monospace; font-size:0.7rem; color:var(--subtle); margin-right: 1.5rem; margin-top: 5px;">
+                        ${a.year}
+                    </span>
+                    
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <div class="song-title">
+                            <span>${a.artist}</span>
+                            <div style="display: flex; align-items: center; margin-top: 4px;">
+    <span class="preview-btn" title="Listen Preview" onclick="playPreview('${safeArtist}', '${safeTrack}', this)" style="margin-left: 0; margin-right: 8px;"></span>
+    <span class="track-name" style="margin-top: 0;">${a.album} <span style="opacity:0.6; font-size:0.85em;">(Preview: ${a.previewTrack})</span></span>
+    <span onclick="checkSong('${safeArtist}', '${a.album.replace(/'/g, "\\'")}', '${safeTrack}')" style="font-size: 0.6rem; color: var(--subtle); cursor: pointer; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.1em; margin-left: 12px; transition: 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.6">check</span>
+</div></span>
+                            </div>
+                        </div>
+                        <p class="song-note" style="${a.note ? '' : 'display:none;'}">${a.note || ''}</p>
+                    </div>
+                </div>
+            `;
+            list.appendChild(entry);
+        });
+        
+        container.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    function handleSearch(query) {
+        const term = query.toLowerCase().trim();
+        if(term.length < 2) { if(term === '') showPage('index-view'); return; }
+
+        const container = document.getElementById('decade-content');
+        const encodedQuery = encodeURIComponent(query).replace(/%20/g, '+');
+        const discogsLink = `https://www.discogs.com/search/?q=${encodedQuery}&type=all`;
+        const itunesLink = `https://music.apple.com/search?term=${encodedQuery}`;
+
+        container.innerHTML = `
+            <div style="padding: 4rem 0 2rem 0; border-bottom: 1px solid var(--line); margin-bottom: 2rem;">
+                <h2 style="font-size:2rem; margin-bottom: 1rem;">Search: ${query}</h2>
+                <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                    <span style="font-size: 0.9rem; font-weight: 600;">External Lookup:</span>
+                    <a href="${discogsLink}" target="_blank" class="header-btn" style="border: 1px solid var(--text); padding: 5px 15px; text-decoration: none;">Discogs ↗</a>
+                    <a href="${itunesLink}" target="_blank" class="header-btn" style="border: 1px solid var(--text); padding: 5px 15px; text-decoration: none;">iTunes ↗</a>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('year-horizon').classList.remove('visible');
+        const listDiv = document.createElement('div'); listDiv.className = 'song-list';
+
+        let matches = 0;
+        for (const year in albumData) {
+            albumData[year].forEach((a, i) => {
+                if (a.artist.toLowerCase().includes(term) || a.album.toLowerCase().includes(term) || (a.genre && a.genre.toLowerCase().includes(term)) || a.previewTrack.toLowerCase().includes(term)) {
+                    matches++;
+                    const safeArtist = a.artist.replace(/'/g, "\\'");
+                    const safeTrack = a.previewTrack.replace(/'/g, "\\'");
+                    
+                    const entry = document.createElement('div'); entry.className = 'song-entry';
+                    entry.innerHTML = `
+                        <div class="song-meta" style="display: flex; align-items: flex-start; margin-bottom: 2rem;">
+                            <span style="font-family:monospace; font-size:0.7rem; color:var(--subtle); margin-right: 1.5rem; margin-top: 5px;">
+                                ${year}
+                            </span>
+                            
+                            <div style="display: flex; flex-direction: column; width: 100%;">
+                                <div class="song-title">
+                                    <span class="song-artist-link" onclick="viewSpecificArtist('${safeArtist}')">${a.artist}</span>
+                                    <div style="display: flex; align-items: center; margin-top: 4px;">
+                                        <span class="preview-btn" title="Listen Preview" onclick="playPreview('${safeArtist}', '${safeTrack}', this)" style="margin-left: 0; margin-right: 8px;"></span>
+                                        <span class="track-name" style="margin-top: 0;">${a.album} <span style="opacity:0.6; font-size:0.85em;">(Preview: ${a.previewTrack})</span></span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
+                                    ${a.genre ? `<span class="genre-tag" style="margin-left: 0;" onclick="handleSearch('${a.genre}')">${a.genre}</span>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    listDiv.appendChild(entry);
+                }
+            });
+        }
+        if(matches === 0) listDiv.innerHTML = `<p style="color:var(--subtle);">No matches found in internal archive.</p>`;
+        container.appendChild(listDiv);
+        showPage('decade-view');
+    }
+
+    let activeGameMode = null; // 'tune' or 'year'
+    let gameScore = 0;
+    let gameRounds = 0;
+    let currentCorrectAnswer = null;
+
+    function buildFlatSongList() {
+        flatSongList = [];
+        for(let year in albumData) {
+            albumData[year].forEach(s => flatSongList.push({...s, year: year}));
+        }
+    }
+
+    function initGame(mode) {
+        stopAllAudio();
+        if(flatSongList.length < 4) buildFlatSongList();
+        
+        activeGameMode = mode;
+        gameScore = 0;
+        gameRounds = 0;
+        
+        document.getElementById('game-selection').style.display = 'none';
+        document.getElementById('active-game-area').style.display = 'block';
+        
+        document.getElementById('game-active-title').innerText = mode === 'tune' ? 'Name That Tune' : 'Guess The Year';
+        document.getElementById('game-active-subtitle').innerText = mode === 'tune' ? 'Identify the song and artist' : 'Identify the release year';
+        
+        updateScoreBoard();
+        loadNextRound();
+    }
+
+    function exitGame() {
+        stopAllAudio();
+        activeGameMode = null;
+        document.getElementById('active-game-area').style.display = 'none';
+        document.getElementById('game-selection').style.display = 'flex';
+    }
+
+    function updateScoreBoard() {
+        document.getElementById('game-score').innerText = gameScore;
+        document.getElementById('game-rounds').innerText = gameRounds;
+    }
+
+    async function loadNextRound() {
+        stopAllAudio();
+        document.getElementById('next-round-btn').style.display = 'none';
+        const optionsContainer = document.getElementById('game-options-container');
+        optionsContainer.innerHTML = '';
+        
+        const status = document.getElementById('game-status');
+        status.style.display = 'block';
+        status.innerText = "Tuning into archive...";
+        
+        // Start playing static to hide load times
+        playRadioStatic();
+
+        let previewUrl = null;
+        let targetSong = null;
+        let attempts = 0;
+
+        // Loop until we find a song with a valid iTunes preview
+        while (!previewUrl && attempts < 5) {
+            targetSong = flatSongList[Math.floor(Math.random() * flatSongList.length)];
+            const cleanArtist = targetSong.artist.split(/ feat| ft| &| with/i)[0].trim();
+            const query = encodeURIComponent(`${cleanArtist} ${targetSong.previewTrack.trim()}`.replace(/\s+/g, '+'));
+            
+            try {
+                const res = await fetch(`https://itunes.apple.com/search?term=${query}&limit=1&entity=song`);
+                const data = await res.json();
+                if (data.results && data.results[0] && data.results[0].previewUrl) {
+                    previewUrl = data.results[0].previewUrl;
+                }
+            } catch(e) { console.warn("iTunes fetch failed for game"); }
+            attempts++;
+        }
+
+        if(!previewUrl) {
+            stopRadioStatic();
+            status.innerText = "Network interference. Try next round.";
+            document.getElementById('next-round-btn').style.display = 'block';
+            return;
+        }
+
+        status.style.display = 'none';
+        currentCorrectAnswer = targetSong;
+
+        // Display artist and song for "Guess The Year" mode
+        if (activeGameMode === 'year') {
+            document.getElementById('game-active-subtitle').innerText = `"${targetSong.previewTrack}" by ${targetSong.artist}`;
+        }
+        
+        // Generate Options
+        let options = [targetSong];
+        while(options.length < 4) {
+            let random = flatSongList[Math.floor(Math.random() * flatSongList.length)];
+            let isDuplicate = options.some(o => {
+                if(activeGameMode === 'tune') return o.previewTrack === random.previewTrack;
+                if(activeGameMode === 'year') return o.year === random.year;
+            });
+            if(!isDuplicate) options.push(random);
+        }
+        
+        // Shuffle options
+        options.sort(() => Math.random() - 0.5);
+
+        // Render Buttons
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'game-btn';
+            
+            if(activeGameMode === 'tune') {
+                btn.innerText = `${opt.previewTrack} - ${opt.artist}`;
+                btn.onclick = () => handleGameAnswer(btn, opt.previewTrack === targetSong.previewTrack);
+            } else {
+                btn.innerText = opt.year;
+                btn.onclick = () => handleGameAnswer(btn, opt.year === targetSong.year);
+            }
+            optionsContainer.appendChild(btn);
+        });
+
+        // Play Audio
+        currentAudio = new Audio(previewUrl);
+        currentAudio.oncanplay = () => {
+            stopRadioStatic(); // End static as real audio takes over
+            document.getElementById('game-visualizer').classList.add('playing');
+            currentAudio.play();
+        };
+        currentAudio.onpause = () => document.getElementById('game-visualizer').classList.remove('playing');
+        currentAudio.onended = () => document.getElementById('game-visualizer').classList.remove('playing');
+    }
+
+    function handleGameAnswer(btnClicked, isCorrect) {
+        // Disable all buttons
+        const allBtns = document.querySelectorAll('.game-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        if(isCorrect) {
+            btnClicked.classList.add('correct');
+            gameScore++;
+        } else {
+            btnClicked.classList.add('wrong');
+            // Highlight correct one
+            allBtns.forEach(b => {
+                let text = b.innerText;
+                if(activeGameMode === 'tune' && text.includes(currentCorrectAnswer.previewTrack)) b.classList.add('correct');
+                if(activeGameMode === 'year' && text === currentCorrectAnswer.year) b.classList.add('correct');
+            });
+        }
+        
+        gameRounds++;
+        updateScoreBoard();
+        document.getElementById('next-round-btn').style.display = 'block';
+    }
+
+    // --- Radio Logic & Procedural Static ---
+    function playRadioStatic() {
+        if (!radioStaticCtx) {
+            radioStaticCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (radioStaticCtx.state === 'suspended') radioStaticCtx.resume();
+        if (radioStaticNode) return;
+
+        const bufferSize = radioStaticCtx.sampleRate * 2;
+        const buffer = radioStaticCtx.createBuffer(1, bufferSize, radioStaticCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            data[i] = Math.random() * 2 - 1; // White noise
+        }
+
+        radioStaticNode = radioStaticCtx.createBufferSource();
+        radioStaticNode.buffer = buffer;
+        radioStaticNode.loop = true;
+
+        radioStaticFilter = radioStaticCtx.createBiquadFilter();
+        radioStaticFilter.type = 'bandpass';
+        radioStaticFilter.frequency.value = 1000;
+
+        const gainNode = radioStaticCtx.createGain();
+        gainNode.gain.value = 0.08;
+
+        radioStaticNode.connect(radioStaticFilter);
+        radioStaticFilter.connect(gainNode);
+        gainNode.connect(radioStaticCtx.destination);
+        radioStaticNode.start();
+    }
+
+    function stopRadioStatic() {
+        if (radioStaticNode) {
+            radioStaticNode.stop();
+            radioStaticNode.disconnect();
+            radioStaticNode = null;
+        }
+    }
+
+    function updateRadioLimits() {
+        availableRadioYears = Object.keys(albumData)
+            .map(Number)
+            .filter(y => !isNaN(y) && albumData[y] && albumData[y].length > 0)
+            .sort((a, b) => a - b);
+
+        const dial = document.getElementById('radio-dial');
+        const radioYearDisplay = document.getElementById('radio-year');
+
+        if (dial && availableRadioYears.length > 0) {
+            dial.min = 0;
+            dial.max = availableRadioYears.length - 1;
+            dial.value = 0;
+            if (radioYearDisplay) radioYearDisplay.innerText = availableRadioYears[0];
+        }
+    }
+
+    function toggleRadio() {
+        radioMode = !radioMode;
+        const btn = document.getElementById('radio-power-btn');
+        const info = document.getElementById('radio-track-info');
+        
+        if(radioMode) {
+            btn.innerText = "Power: ON"; btn.style.background = "var(--text)"; btn.style.color = "var(--bg)";
+            info.innerText = "Tuning...";
+            const dialIndex = document.getElementById('radio-dial').value;
+            handleDialScrub(dialIndex);
+        } else {
+            btn.innerText = "Power: OFF"; btn.style.background = "transparent"; btn.style.color = "var(--text)";
+            info.innerText = "Radio Off";
+            stopAllAudio();
+            clearTimeout(dialTimeout);
+        }
+    }
+
+    function handleDialScrub(indexValue) {
+        if (availableRadioYears.length === 0) return;
+        const year = availableRadioYears[indexValue];
+        document.getElementById('radio-year').innerText = year;
+        
+        if(radioMode) {
+            stopAllAudio();
+            playRadioStatic();
+            document.getElementById('radio-track-info').innerHTML = "<em>Tuning...</em>";
+            
+            clearTimeout(dialTimeout);
+            dialTimeout = setTimeout(() => {
+                playRadioYear(year);
+            }, 800);
+        }
+    }
+
+    async function playRadioYear(year) {
+        if(!radioMode) return;
+        const info = document.getElementById('radio-track-info');
+        const albums = albumData[year.toString()];
+        
+        if(!albums || albums.length === 0) {
+            info.innerText = `Static... no transmission found for ${year}.`;
+            return;
+        }
+
+        const randomAlbum = albums[Math.floor(Math.random() * albums.length)];
+        info.innerText = `Connecting to iTunes: ${randomAlbum.artist}...`;
+
+        const cleanArtist = randomAlbum.artist.split(/ feat| ft| &| with/i)[0].trim();
+        const query = encodeURIComponent(`${cleanArtist} ${randomAlbum.previewTrack.trim()}`.replace(/\s+/g, '+'));
+
+        try {
+            const res = await fetch(`https://itunes.apple.com/search?term=${query}&limit=1&entity=song`);
+            const data = await res.json();
+
+            // Ensure user hasn't moved the dial while fetching
+            if (document.getElementById('radio-year').innerText !== year.toString()) return;
+
+            if (data.results && data.results[0] && data.results[0].previewUrl) {
+                stopRadioStatic();
+                info.innerText = `▶ ${randomAlbum.artist} - ${randomAlbum.previewTrack}`;
+                currentAudio = new Audio(data.results[0].previewUrl);
+                currentAudio.play();
+                
+                currentAudio.onended = () => {
+                    if (!radioMode) return;
+                    let currentIndex = availableRadioYears.indexOf(Number(year));
+                    let nextIndex = currentIndex + 1;
+                    if (nextIndex >= availableRadioYears.length) nextIndex = 0; // loop
+                    
+                    document.getElementById('radio-dial').value = nextIndex;
+                    handleDialScrub(nextIndex);
+                };
+            } else { 
+                info.innerText = `⚠ Signal lost for ${randomAlbum.previewTrack}. Retuning...`;
+                setTimeout(() => {
+                    if (radioMode) {
+                        let currentIndex = availableRadioYears.indexOf(Number(year));
+                        let nextIndex = currentIndex + 1;
+                        if (nextIndex >= availableRadioYears.length) nextIndex = 0;
+                        document.getElementById('radio-dial').value = nextIndex;
+                        handleDialScrub(nextIndex);
+                    }
+                }, 2000);
+            }
+        } catch(e) { 
+            info.innerText = "⚠ Antenna failure. Network error."; 
+        }
+    }
+// --- IMPORT & CHECKER LOGIC ---
+
+let lastViewBeforeCheck = 'index-view';
+let lastScrollPos = 0;
+
+async function processImport() {
+    const textData = document.getElementById('import-text').value;
+    const fileInput = document.getElementById('import-csv');
+    const progress = document.getElementById('import-progress');
+    const batchYearVal = document.getElementById('batch-year-input').value.trim();
+    const batchYear = /^\d{4}$/.test(batchYearVal) ? batchYearVal : null;
+    
+    let lines = [];
+
+    // 1. Check if a file is attached
+    if (fileInput && fileInput.files && fileInput.files.length > 0) {
+        try {
+            const file = fileInput.files[0];
+            const text = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (event) => resolve(event.target.result);
+                reader.onerror = (error) => reject(error);
+                reader.readAsText(file);
+            });
+            lines = text.split(/\r?\n/);
+        } catch (err) {
+            showToast("Error reading the CSV file.");
+            return;
+        }
+    } 
+    // 2. If no file, check the text box
+    else if (textData.trim()) {
+        lines = textData.split(/\r?\n/);
+    } 
+    // 3. If both are empty, stop
+    else {
+        showToast("Please choose a CSV file or paste text first.");
+        return;
+    }
+
+    let tracksToProcess = [];
+    lines.forEach(line => {
+        if(!line.trim()) return;
+        const lowerLine = line.toLowerCase();
+        if(lowerLine.includes('artist,album')) return; 
+        
+        const parts = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+        
+        let firstCol = parts[0] ? parts[0].replace(/^"|"$/g, '').trim() : '';
+        let secondCol = parts[1] ? parts[1].replace(/^"|"$/g, '').trim() : '';
+        let thirdCol = parts[2] ? parts[2].replace(/^"|"$/g, '').trim() : '';
+        let fourthCol = parts[3] ? parts[3].replace(/^"|"$/g, '').trim() : '';
+        
+        if (parts.length >= 4 && /^\d{4}$/.test(firstCol)) {
+            // Format 1: Year, Artist, Album, Track
+            tracksToProcess.push({ lookupType: 'none', year: firstCol, artist: secondCol, album: thirdCol, previewTrack: fourthCol });
+        } else if (parts.length === 3 && !/^\d{4}$/.test(firstCol)) {
+            // Format 2: Artist, Album, Track (Use batch year if provided, else lookup year)
+            tracksToProcess.push({ lookupType: batchYear ? 'none' : 'year', year: batchYear || null, artist: firstCol, album: secondCol, previewTrack: thirdCol });
+        } else if (parts.length === 2 && /^\d{4}$/.test(firstCol)) {
+            // Format 3: Year, Artist (Needs Album & Track Lookup)
+            tracksToProcess.push({ lookupType: 'album_and_track', year: firstCol, artist: secondCol, album: null, previewTrack: null });
+        } else if (parts.length === 2 && batchYear && !/^\d{4}$/.test(firstCol)) {
+            // Format 4: Artist, Album + Batch Year (Needs Track Lookup)
+            tracksToProcess.push({ lookupType: 'track_only', year: batchYear, artist: firstCol, album: secondCol, previewTrack: null });
+        } else if (parts.length === 1 && firstCol && batchYear) {
+            // NEW Format 5: Just Artist + Batch Year (Needs Album & Track Lookup)
+            tracksToProcess.push({ lookupType: 'album_and_track', year: batchYear, artist: firstCol, album: null, previewTrack: null });
+        }
+    });
+
+    if(tracksToProcess.length === 0) {
+        showToast("No valid entries found.");
+        return;
+    }
+
+    progress.style.display = "block";
+    progress.innerHTML = `<span style="color:var(--text)">Found ${tracksToProcess.length} entries. Starting import...</span><br><br>`;
+    
+    let newAlbumData = {};
+    
+    for (let i = 0; i < tracksToProcess.length; i++) {
+        const t = tracksToProcess[i];
+        let year = t.year;
+        let album = t.album;
+        let previewTrack = t.previewTrack;
+        
+        if (t.lookupType === 'album_and_track' || t.lookupType === 'album') {
+            progress.innerHTML += `Processing [${i+1}/${tracksToProcess.length}]: Finding album for ${t.artist} (${year})... `;
+            progress.scrollTop = progress.scrollHeight;
+            
+            album = await queryAlbumFromDiscogs(year, t.artist);
+            await new Promise(resolve => setTimeout(resolve, 3000)); // Respect Discogs rate limit
+            
+            if (album) {
+                progress.innerHTML += `<span style="color:var(--text)">Found: ${album}.</span> Finding track... `;
+                
+                previewTrack = await queryTrackFromiTunes(t.artist, album);
+                
+                if (previewTrack) {
+                    progress.innerHTML += `<span style="color:var(--text)">Found: ${previewTrack}</span><br>`;
+                } else {
+                    previewTrack = album; 
+                    progress.innerHTML += `<span style="color:var(--subtle)">Track not found. Fallback to album name.</span><br>`;
+                }
+
+                if (!newAlbumData[year]) newAlbumData[year] = [];
+                newAlbumData[year].push({
+                    artist: t.artist,
+                    album: album,
+                    previewTrack: previewTrack,
+                    genre: "Imported",
+                    note: "Auto-imported via Album/Track lookup"
+                });
+            } else {
+                progress.innerHTML += `<span style="color:red">Not found (Skipped)</span><br>`;
+            }
+        } else if (t.lookupType === 'track_only') {
+            progress.innerHTML += `Processing [${i+1}/${tracksToProcess.length}]: Finding track for ${t.artist} - ${t.album}... `;
+            progress.scrollTop = progress.scrollHeight;
+            
+            previewTrack = await queryTrackFromiTunes(t.artist, t.album);
+            if (previewTrack) {
+                progress.innerHTML += `<span style="color:var(--text)">Found: ${previewTrack}</span><br>`;
+            } else {
+                previewTrack = t.album; 
+                progress.innerHTML += `<span style="color:var(--subtle)">Track not found. Fallback to album name.</span><br>`;
+            }
+            if (!newAlbumData[year]) newAlbumData[year] = [];
+            newAlbumData[year].push({
+                artist: t.artist, album: t.album, previewTrack: previewTrack, genre: "Imported", note: "Auto-imported via Batch Year"
+            });
+        } else {
+            progress.innerHTML += `Processing [${i+1}/${tracksToProcess.length}]: ${t.artist} - ${t.album}... `;
+            progress.scrollTop = progress.scrollHeight;
+            
+            if (t.lookupType === 'year') {
+                year = await queryYearFromDiscogs(t.artist, t.album);
+                await new Promise(resolve => setTimeout(resolve, 3000)); // Respect Discogs rate limit
+            }
+            
+            if (year) {
+                progress.innerHTML += `<span style="color:var(--text)">Found: ${year}</span><br>`;
+                if (!newAlbumData[year]) newAlbumData[year] = [];
+                newAlbumData[year].push({
+                    artist: t.artist,
+                    album: t.album,
+                    previewTrack: t.previewTrack,
+                    genre: "Imported",
+                    note: "Added via User Import"
+                });
+            } else {
+                progress.innerHTML += `<span style="color:red">Not found (Skipped)</span><br>`;
+            }
+        }
+    }
+    
+    progress.innerHTML += `<br><strong style="color:var(--accent)">Import Complete! Rebuilding UI...</strong>`;
+    progress.scrollTop = progress.scrollHeight;
+    
+    albumData = newAlbumData; 
+    
+    // Reinitialize state
+    initDecadesNav();
+    buildFlatSongList();
+    updateRadioLimits();
+    
+    setTimeout(() => {
+        showPage('index-view');
+        showToast("Archive successfully replaced!");
+    }, 1500);
+}
+
+async function queryYearFromDiscogs(artist, album) {
+    try {
+        const cleanArtist = artist.split(/ feat|&|,| vs| with/i)[0].trim();
+        const baseParams = new URLSearchParams({
+            artist: cleanArtist,
+            release_title: album,
+            type: 'master',
+            sort: 'year',
+            sort_order: 'asc',
+            per_page: 5
+        });
+
+        let res = await fetch(`https://api.discogs.com/database/search?${baseParams.toString()}`, {
+            headers: { 'User-Agent': '1000SongsImporter/1.0' }
+        });
+        
+        if (res.status === 429) {
+            await new Promise(resolve => setTimeout(resolve, 5000));
+            return null; 
+        }
+        
+        let data = await res.json();
+        if (!data.results || data.results.length === 0) return null;
+
+        const results = data.results || [];
+        const oldestValid = results.find(r => r.year && r.year.length === 4);
+        return oldestValid ? oldestValid.year : null;
+    } catch (err) {
+        return null;
+    }
+}
+
+async function queryTrackFromiTunes(artist, album) {
+    try {
+        const cleanArtist = artist.split(/ feat| ft| &| with/i)[0].trim();
+        const query = encodeURIComponent(`${cleanArtist} ${album}`.replace(/\s+/g, '+'));
+        
+        // Fetch up to 25 tracks to ensure we get a good pool of results
+        const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=25`);
+        const data = await res.json();
+
+        // 1. Prioritize a track that definitely belongs to this specific album
+        const albumTracks = (data.results || []).filter(t => 
+            t.previewUrl && 
+            t.collectionName && 
+            t.collectionName.toLowerCase().includes(album.toLowerCase())
+        );
+
+        if (albumTracks.length > 0) {
+            return albumTracks[0].trackName;
+        }
+        
+        // 2. Fallback: If no exact album match, just take the top track for the artist
+        if (data.results && data.results.length > 0 && data.results[0].previewUrl) {
+            return data.results[0].trackName;
+        }
+        
+        return null;
+    } catch (err) {
+        return null; // Fallback handled in the main loop
+    }
+}
+
+async function fetchFullDiscography() {
+    const artistName = document.getElementById('api-band-input').value;
+    const log = document.getElementById('fetch-log');
+    if (!artistName) return;
+
+    const wait = (ms) => new Promise(res => setTimeout(res, ms));
+    log.innerText = "Scanning Archive for artist...";
+
+    const headers = {
+        'Accept': 'application/json',
+        'User-Agent': '1000SongsArchive/4.0 ( contact: 251577599+farnhamancestry-ux@users.noreply.github.com )'
+    };
+
+    try {
+        const artistRes = await fetch(`https://musicbrainz.org/ws/2/artist/?query=artist:${encodeURIComponent(artistName)}&fmt=json`, { headers });
+        const artistData = await artistRes.json();
+        
+        if (!artistData.artists || artistData.artists.length === 0) {
+            log.innerText = "Artist not found.";
+            return;
+        }
+
+        const mbid = artistData.artists[0].id;
+        const officialName = artistData.artists[0].name;
+        log.innerText = `Found ${officialName}. Fetching release history...`;
+
+        await wait(1200);
+
+        const rgUrl = `https://musicbrainz.org/ws/2/release-group?artist=${mbid}&limit=100&fmt=json`;
+        const rgRes = await fetch(rgUrl, { headers });
+        const rgData = await rgRes.json();
+
+        if (!rgData['release-groups']) {
+            log.innerText = "No records found.";
+            return;
+        }
+
+        let newDiscography = {};
+        let albumCount = 0;
+
+        const sortedGroups = rgData['release-groups']
+            .filter(rg => rg['first-release-date'])
+            .sort((a, b) => a['first-release-date'].localeCompare(b['first-release-date']));
+
+        log.innerText = `Found ${sortedGroups.length} releases. Extracting (this may take a minute)...`;
+
+        for (let i = 0; i < sortedGroups.length; i++) {
+            const rg = sortedGroups[i];
+            const type = rg['primary-type']; 
+            const secondary = rg['secondary-types'] || [];
+            const year = rg['first-release-date'].split('-')[0];
+
+            // Added type === 'Album' to ensure EPs and Singles are ignored
+            if (type === 'Album' && !secondary.includes('Compilation') && !secondary.includes('Live') && year >= 1960 && year <= 2030) {
+                if (newDiscography[year] && newDiscography[year].length >= 10) continue;
+
+                log.innerText = `Extracting from ${year} (${rg.title})...`;
+                await wait(1200);
+
+                const releaseUrl = `https://musicbrainz.org/ws/2/release?release-group=${rg.id}&inc=recordings&limit=1&fmt=json`;
+                const releaseRes = await fetch(releaseUrl, { headers });
+                if (!releaseRes.ok) continue; 
+                
+                const releaseData = await releaseRes.json();
+
+                if (releaseData.releases && releaseData.releases.length > 0) {
+                    const firstRelease = releaseData.releases[0];
+                    if (firstRelease.media && firstRelease.media.length > 0) {
+                        const tracks = firstRelease.media[0].tracks;
+                        if (!newDiscography[year]) newDiscography[year] = [];
+
+                        const isDup = newDiscography[year].some(s => s.album.toLowerCase() === rg.title.toLowerCase());
+                        if (!isDup && tracks.length > 0) {
+                            newDiscography[year].push({
+                                "artist": officialName,
+                                "album": rg.title,
+                                "previewTrack": tracks[0].title, // Pull the first track as the preview
+                                "genre": type || "Alternative",
+                                "note": `Extracted from MusicBrainz`
+                            });
+                            albumCount++;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (albumCount === 0) {
+            log.innerText = "Could not extract any albums.";
+            return;
+        }
+
+        albumData = newDiscography; 
+        initDecadesNav();
+        buildFlatSongList();
+        updateRadioLimits();
+
+        log.innerText = `Success! Mapped ${albumCount} original albums for ${officialName}.`;
+        showPage('index-view');
+
+    } catch (err) {
+        log.innerText = "Connection timed out. Please wait 10 seconds and try again.";
+    }
+}
+
+// --- CHECKER ---
+function checkSong(artist, album, previewTrack) {
+    const activeView = document.querySelector('.page-view.active');
+    if (activeView) lastViewBeforeCheck = activeView.id;
+    lastScrollPos = window.scrollY;
+
+    const input = document.getElementById('quick-lookup-input');
+    if (input) {
+        input.value = `${artist} - ${album} - ${previewTrack}`;
+        showPage('import-view');
+        runQuickLookup();
+        setTimeout(() => document.getElementById('year-checker').scrollIntoView({ behavior: 'smooth' }), 100);
+    }
+}
+
+function goBackToSong() {
+    showPage(lastViewBeforeCheck);
+    window.scrollTo({ top: lastScrollPos, behavior: 'smooth' });
+}
+
+async function runQuickLookup() {
+    const input = document.getElementById('quick-lookup-input').value;
+    const resultDiv = document.getElementById('quick-lookup-result');
+    
+    if (!input || !input.includes('-')) {
+        showToast("Format: Artist - Album - Preview Track");
+        return;
+    }
+
+    const parts = input.split('-');
+    const artist = parts[0].trim();
+    const album = parts.length > 1 ? parts[1].trim() : '';
+    const previewTrack = parts.length > 2 ? parts.slice(2).join('-').trim() : album;
+
+    resultDiv.style.display = "block";
+    const safeArtist = artist.replace(/'/g, "\\'");
+    const safeTrack = previewTrack.replace(/'/g, "\\'");
+    
+    resultDiv.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px dashed var(--subtle); padding-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+            <div style="flex-grow: 1;">
+                <strong style="color: var(--text); font-size: 1rem;">${artist}</strong><br>
+                <span style="font-size: 0.9rem;">${album}</span>
+                <span id="checker-preview-text" style="display: block; font-size: 0.75rem; color: var(--subtle); margin-top: 2px;">Preview: Selecting random track...</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <button class="header-btn" style="border: 1px solid var(--text); padding: 4px 10px; cursor: pointer; border-radius: 2px;" onclick="goBackToSong()">← BACK TO ARCHIVE</button>
+                <div style="display: flex; align-items: center;">
+                    <span style="text-transform: uppercase; font-size: 0.6rem; letter-spacing: 0.1em; margin-right: 5px;">Test Audio</span>
+                    <span class="preview-btn" title="Listen Preview" onclick="playRandomAlbumPreview('${safeArtist}', '${album.replace(/'/g, "\\'")}', this)" style="margin:0;"></span>
+                </div>
+            </div>
+        </div>
+        <div id="quick-discogs-status">Querying Discogs for Album Release...</div>
+    `;
+
+    const statusDiv = document.getElementById('quick-discogs-status');
+
+    try {
+        const cleanArtist = artist.split(/ feat|&|,| vs| with/i)[0].trim();
+        const searchParams = new URLSearchParams({
+            artist: cleanArtist,
+            release_title: album,
+            type: 'master',
+            sort: 'year',
+            sort_order: 'asc',
+            per_page: 5
+        });
+
+        let res = await fetch(`https://api.discogs.com/database/search?${searchParams.toString()}`, {
+            headers: { 'User-Agent': '1000SongsImporter/1.1' }
+        });
+
+        if (res.status === 429) {
+            statusDiv.innerHTML = `<span style="color:red">Rate limit hit. Wait a minute.</span>`;
+            return;
+        }
+
+        let data = await res.json();
+        let results = data.results || [];
+        const validMatches = results.filter(r => r.year && /^\d{4}$/.test(r.year));
+
+        if (validMatches.length > 0) {
+            const match = validMatches[0];
+            statusDiv.innerHTML = `
+                <div style="margin-bottom: 15px; padding-bottom: 10px;">
+                    <div style="color: var(--text); margin-bottom: 8px;"><strong>✓ Earliest Match Found</strong></div>
+                    <strong>Official Title:</strong> ${match.title}<br>
+                    <strong>Release Year:</strong> <span style="color:var(--accent); font-weight: bold;">${match.year}</span><br>
+                    <div style="margin-top: 10px;">
+                        <a href="https://www.discogs.com${match.uri}" target="_blank" style="color: var(--text); text-decoration: underline; font-size: 0.8rem;">View on Discogs ↗</a>
+                    </div>
+                </div>
+            `;
+        } else {
+            statusDiv.innerHTML = `<div>No release found. Try a broader search or check spelling.</div>`;
+        }
+    } catch (err) {
+        statusDiv.innerHTML = `<span style="color:red">Error connecting to Discogs API.</span>`;
+    }
+}
+async function playRandomAlbumPreview(artist, album, btnElement) {
+    // 1. Handle UI/Stop existing
+    if (currentlyPlayingBtn === btnElement && currentAudio && !currentAudio.paused) {
+        stopAllAudio(); 
+        return; 
+    }
+    stopAllAudio();
+    currentlyPlayingBtn = btnElement;
+    btnElement.classList.add('loading');
+    
+    const previewTextEl = document.getElementById('checker-preview-text');
+    if (previewTextEl) previewTextEl.innerText = "Searching for album tracks...";
+
+    // 2. Query iTunes specifically for the album to get multiple tracks
+    const cleanArtist = artist.split(/ feat| ft| &| with/i)[0].trim();
+    const query = encodeURIComponent(`${cleanArtist} ${album}`.replace(/\s+/g, '+'));
+
+    try {
+        // We set limit=25 to ensure we get a good list of tracks from the album
+        const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=25`);
+        const data = await res.json();
+
+        // 3. Filter for tracks that belong to the album and have a preview
+        const albumTracks = (data.results || []).filter(t => 
+            t.previewUrl && 
+            t.collectionName && 
+            t.collectionName.toLowerCase().includes(album.toLowerCase())
+        );
+
+        if (albumTracks.length > 0) {
+            // 4. Pick a random track from the filtered list
+            const randomTrack = albumTracks[Math.floor(Math.random() * albumTracks.length)];
+            
+            if (previewTextEl) {
+                previewTextEl.innerText = `Previewing: ${randomTrack.trackName}`;
+            }
+
+            // 5. Play
+            currentAudio = new Audio(randomTrack.previewUrl);
+            currentAudio.oncanplay = () => {
+                btnElement.classList.remove('loading');
+                btnElement.classList.add('playing');
+                currentAudio.play();
+            };
+            currentAudio.onerror = () => {
+                showToast("Audio source error.");
+                stopAllAudio();
+            };
+            currentAudio.onended = () => { stopAllAudio(); };
+        } else {
+            // Fallback: If no tracks match the collection name, try general search
+            if (previewTextEl) previewTextEl.innerText = "Album tracks not found (Try specific track)";
+            showToast("Could not find album audio.");
+            stopAllAudio();
+        }
+    } catch (err) {
+        showToast("Network error.");
+        stopAllAudio();
+    }
+}
+
+async function queryAlbumFromDiscogs(year, artist) {
+    try {
+        const cleanArtist = artist.split(/ feat|&|,| vs| with/i)[0].trim();
+        const baseParams = new URLSearchParams({
+            artist: cleanArtist,
+            year: year,
+            type: 'master',
+            sort: 'have', // Sort by popularity to get the most notable album
+            sort_order: 'desc',
+            per_page: 5
+        });
+
+        let res = await fetch(`https://api.discogs.com/database/search?${baseParams.toString()}`, {
+            headers: { 'User-Agent': '1000SongsImporter/1.2' }
+        });
+        
+        if (res.status === 429) {
+            await new Promise(resolve => setTimeout(resolve, 5000));
+            return null; 
+        }
+        
+        let data = await res.json();
+        if (!data.results || data.results.length === 0) return null;
+
+        // Discogs master release titles are usually "Artist - Album"
+        let rawTitle = data.results[0].title;
+        let albumTitle = rawTitle.includes(' - ') ? rawTitle.split(' - ').slice(1).join(' - ') : rawTitle;
+        
+        return albumTitle.trim();
+    } catch (err) {
+        return null;
+    }
+}
+// --- DOWNLOAD LOGIC ---
+
+function downloadJSON() {
+    // Stringify the live data map
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(albumData, null, 4));
+    const dlAnchorElem = document.createElement('a');
+    dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", "album_archive.json");
+    document.body.appendChild(dlAnchorElem);
+    dlAnchorElem.click();
+    document.body.removeChild(dlAnchorElem);
+}
+
+function downloadHTML() {
+    // 1. Get the current HTML of the document
+    let currentHTML = document.documentElement.outerHTML;
+
+    // 2. Identify the original albumData block and replace it with our live state
+    // This regex looks for "let albumData = {" and captures everything up to the closing "};"
+    const regex = /let\s+albumData\s*=\s*\{[\s\S]*?\};/;
+    const updatedDataStr = `let albumData = ${JSON.stringify(albumData, null, 8)};`;
+    
+    let updatedHTML = currentHTML.replace(regex, updatedDataStr);
+
+    // 3. Prepend the doctype (outerHTML drops it)
+    updatedHTML = "<!DOCTYPE html>\n" + updatedHTML;
+
+    // 4. Create a Blob and trigger the download
+    const blob = new Blob([updatedHTML], { type: 'text/html' });
+    const dlAnchorElem = document.createElement('a');
+    dlAnchorElem.setAttribute("href", URL.createObjectURL(blob));
+    dlAnchorElem.setAttribute("download", "albums_archive_updated.html");
+    document.body.appendChild(dlAnchorElem);
+    dlAnchorElem.click();
+    document.body.removeChild(dlAnchorElem);
+    URL.revokeObjectURL(dlAnchorElem.href);
+}
+
+    // Init
+    window.onload = () => {
+        initDecadesNav();
+        buildFlatSongList();
+        updateRadioLimits();
+    };
+
+</script>
+</body>
+</html>
