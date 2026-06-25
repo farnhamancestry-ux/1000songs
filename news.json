@@ -1,4 +1,13 @@
 [
+        {
+    "type": "news",
+    "date": "25th June 2026",
+    "title": "Welcome from Hacker News",
+    "author": "Josh",
+    "content": "Hello Hacker News people! Very much would welcome messages or suggestions! https://news.ycombinator.com/item?id=48678717"
+  },
+
+    
     {
     "type": "news",
     "date": "18th June 2026",
