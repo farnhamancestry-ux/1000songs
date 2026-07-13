@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>1000 Songs | Offline Journal Updater</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f8f9fa;
+            --border: #e2e8f0;
+            --text: #0f172a;
+            --subtle: #64748b;
+            --accent: #0066ff;
+            --accent-hover: #0052cc;
+            --danger: #ef4444;
+            --success: #10b981;
+            --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f172a;
+                --surface: #1e293b;
+                --border: #334155;
+                --text: #f8fafc;
+                --subtle: #94a3b8;
+                --accent: #3b82f6;
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding: 1rem;
+            padding-bottom: 5rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+        .subtitle { font-size: 0.8rem; color: var(--subtle); font-family: monospace; }
+
+        /* Panels */
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: none; /* Hidden by default */
+        }
+
+        .panel.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Upload Step */
+        .upload-area {
+            border: 2px dashed var(--accent);
+            border-radius: 8px;
+            padding: 3rem 1rem;
+            text-align: center;
+            background: rgba(0, 102, 255, 0.05);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .upload-area input[type="file"] {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--subtle);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input[type="text"], input[type="date"], textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+        }
+
+        textarea {
+            min-height: 300px;
+            resize: vertical;
+            line-height: 1.6;
+            font-family: monospace; /* Better for editing HTML */
+        }
+
+        /* Toolbar */
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: var(--surface);
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-bottom: none;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .toolbar button {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.4rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .toolbar button:active { background: var(--border); }
+        
+        .toolbar-group-label {
+            width: 100%;
+            font-size: 0.7rem;
+            color: var(--subtle);
+            margin-bottom: -0.2rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Lists for Artists and Refs */
+        .item-list {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .item-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg);
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-remove {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+        }
+
+        .add-row {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Primary Buttons */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn:hover { background: var(--accent-hover); }
+        .btn-secondary { background: var(--subtle); margin-top: 0.5rem; }
+
+        /* Helper Utilities */
+        .editor-wrapper textarea {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>1000 SONGS.</h1>
+        <div class="subtitle">// OFFLINE SPA UPDATER</div>
+    </header>
+
+    <!-- STEP 1: UPLOAD -->
+    <div id="step-upload" class="panel active">
+        <h2>Step 1: Load Current Blog</h2>
+        <p style="color: var(--subtle); font-size: 0.9rem; margin-bottom: 1.5rem;">Select your latest `blog.html` file from your device. The file stays completely on your phone.</p>
+        
+        <div class="upload-area">
+            <input type="file" id="file-input" accept=".html,.htm">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">📄</div>
+            <h3 style="color: var(--accent);">Tap to Select File</h3>
+            <p style="font-size: 0.8rem; color: var(--subtle); margin-top: 0.5rem;">Must be the valid 1000 Songs HTML file</p>
+        </div>
+    </div>
+
+    <!-- STEP 2: EDITOR -->
+    <div id="step-editor" class="panel">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem;">
+            <h2>Step 2: Draft New Entry</h2>
+            <span id="file-status" style="font-size: 0.75rem; color: var(--success); font-weight: bold;">File Loaded ✓</span>
+        </div>
+
+        <div class="form-group">
+            <label>Article Title</label>
+            <input type="text" id="post-title" placeholder="e.g., 1983: The Birth of MIDI" oninput="generateID()">
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+            <div class="form-group" style="flex: 1;">
+                <label>Article ID (URL Anchor)</label>
+                <input type="text" id="post-id" placeholder="e.g., deep-dive-1983">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label>Date</label>
+                <input type="text" id="post-date" placeholder="e.g., July 13, 2026">
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+            <div class="form-group" style="flex: 1;">
+                <label>Category</label>
+                <input type="text" id="post-category" value="Deep Dive">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label>Author</label>
+                <input type="text" id="post-author" value="Josh Farnham">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Tags (Comma separated)</label>
+            <input type="text" id="post-tags" placeholder="e.g., 1983, midi, synth-pop">
+        </div>
+
+        <!-- Featured Artists Builder -->
+        <div class="form-group" style="background: var(--bg); padding: 1rem; border: 1px solid var(--border); border-radius: 6px;">
+            <label>Featured Artists (Header Strip)</label>
+            <ul id="featured-artists-list" class="item-list"></ul>
+            <div class="add-row">
+                <input type="text" id="new-featured-artist" placeholder="Artist Name (e.g., New Order)">
+                <button type="button" onclick="addFeaturedArtist()" style="padding: 0 1rem; background: var(--text); color: var(--bg); border: none; border-radius: 4px; font-weight: bold;">ADD</button>
+            </div>
+        </div>
+
+        <div class="form-group editor-wrapper">
+            <label>Body Content (HTML/Text)</label>
+            <div class="toolbar">
+                <div class="toolbar-group-label">Basic</div>
+                <button type="button" onclick="wrapText('<strong>', '</strong>')"><b>B</b></button>
+                <button type="button" onclick="wrapText('<em>', '</em>')"><i>I</i></button>
+                <button type="button" onclick="wrapText('<h3>', '</h3>')">H3</button>
+                <button type="button" onclick="wrapText('<p>', '</p>')">¶ P</button>
+                <button type="button" onclick="wrapText('<blockquote>&quot;', '&quot;</blockquote>')">Quote</button>
+                
+                <div class="toolbar-group-label">Sonic Connectors</div>
+                <button type="button" onclick="insertSongSnippet()" style="color: var(--accent);">🎵 Add Song Snippet</button>
+                <button type="button" onclick="insertArtistLink()" style="color: var(--accent);">👤 Artist Link</button>
+                <button type="button" onclick="insertYearLink()" style="color: var(--accent);">📅 Year Link</button>
+            </div>
+            <textarea id="post-body" placeholder="Write your deep dive here... Use buttons above to insert smart links."></textarea>
+        </div>
+
+        <!-- References Builder -->
+        <div class="form-group" style="background: var(--bg); padding: 1rem; border: 1px solid var(--border); border-radius: 6px;">
+            <label>References / Further Reading (Optional)</label>
+            <ul id="references-list" class="item-list"></ul>
+            <div class="add-row">
+                <input type="text" id="new-reference" placeholder="Text or HTML link (e.g., <a href='...'>Source</a>)">
+                <button type="button" onclick="addReference()" style="padding: 0 1rem; background: var(--text); color: var(--bg); border: none; border-radius: 4px; font-weight: bold;">ADD</button>
+            </div>
+        </div>
+
+        <button class="btn" onclick="exportUpdatedFile()">Export Updated Blog.html</button>
+        <button class="btn btn-secondary" onclick="location.reload()">Cancel / Start Over</button>
+    </div>
+</div>
+
+<script>
+    // State variables
+    let originalHTMLContent = "";
+    let featuredArtists = [];
+    let references = [];
+
+    // Format current date on load
+    document.addEventListener("DOMContentLoaded", () => {
+        const dateInput = document.getElementById('post-date');
+        const options = { month: 'long', day: 'numeric', year: 'numeric' };
+        dateInput.value = new Date().toLocaleDateString('en-US', options);
+    });
+
+    // File Upload Handler
+    document.getElementById('file-input').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            originalHTMLContent = e.target.result;
+            
+            // Basic validation
+            if(originalHTMLContent.includes('id="posts-feed"')) {
+                document.getElementById('step-upload').classList.remove('active');
+                document.getElementById('step-editor').classList.add('active');
+            } else {
+                alert("Error: Doesn't look like the correct 1000 Songs blog.html file. Missing #posts-feed container.");
+            }
+        };
+        reader.readAsText(file);
+    });
+
+    // Auto-generate ID from title
+    function generateID() {
+        const title = document.getElementById('post-title').value;
+        const idField = document.getElementById('post-id');
+        if (!idField.dataset.manuallyEdited) {
+            idField.value = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        }
+    }
+    
+    document.getElementById('post-id').addEventListener('input', function() {
+        this.dataset.manuallyEdited = "true";
+    });
+
+    // --- Array Builders ---
+    
+    function addFeaturedArtist() {
+        const input = document.getElementById('new-featured-artist');
+        const name = input.value.trim();
+        if (name && !featuredArtists.includes(name)) {
+            featuredArtists.push(name);
+            renderFeaturedArtists();
+            input.value = '';
+        }
+    }
+
+    function removeFeaturedArtist(index) {
+        featuredArtists.splice(index, 1);
+        renderFeaturedArtists();
+    }
+
+    function renderFeaturedArtists() {
+        const list = document.getElementById('featured-artists-list');
+        list.innerHTML = '';
+        featuredArtists.forEach((artist, index) => {
+            list.innerHTML += `
+                <li>
+                    <span>${artist}</span>
+                    <button class="btn-remove" onclick="removeFeaturedArtist(${index})">X</button>
+                </li>
+            `;
+        });
+    }
+
+    function addReference() {
+        const input = document.getElementById('new-reference');
+        const text = input.value.trim();
+        if (text) {
+            references.push(text);
+            renderReferences();
+            input.value = '';
+        }
+    }
+
+    function removeReference(index) {
+        references.splice(index, 1);
+        renderReferences();
+    }
+
+    function renderReferences() {
+        const list = document.getElementById('references-list');
+        list.innerHTML = '';
+        references.forEach((ref, index) => {
+            // escape html for display only in the list manager
+            const displaySafe = ref.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            list.innerHTML += `
+                <li>
+                    <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:80%;">${displaySafe}</span>
+                    <button class="btn-remove" onclick="removeReference(${index})">X</button>
+                </li>
+            `;
+        });
+    }
+
+    // --- Smart Editor Functions ---
+
+    function insertAtCursor(text) {
+        const textarea = document.getElementById('post-body');
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const currentVal = textarea.value;
+        textarea.value = currentVal.substring(0, start) + text + currentVal.substring(end);
+        textarea.selectionStart = textarea.selectionEnd = start + text.length;
+        textarea.focus();
+    }
+
+    function wrapText(openTag, closeTag) {
+        const textarea = document.getElementById('post-body');
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const currentVal = textarea.value;
+        const selectedText = currentVal.substring(start, end);
+        
+        const textToInsert = openTag + selectedText + closeTag;
+        textarea.value = currentVal.substring(0, start) + textToInsert + currentVal.substring(end);
+        
+        // Put cursor inside if nothing was selected, otherwise at the end
+        if(start === end) {
+            textarea.selectionStart = textarea.selectionEnd = start + openTag.length;
+        } else {
+            textarea.selectionStart = textarea.selectionEnd = start + textToInsert.length;
+        }
+        textarea.focus();
+    }
+
+    function encodeURLParam(str) {
+        return encodeURIComponent(str).replace(/%20/g, '+');
+    }
+
+    function insertSongSnippet() {
+        const artist = prompt("Artist Name (e.g., Donna Summer):");
+        if (!artist) return;
+        const track = prompt("Track Name (e.g., I Feel Love):");
+        if (!track) return;
+
+        const html = `<button class="blog-play-btn" data-artist="${artist}" data-track="${track}" onclick="playInline(this)" title="Play Preview"></button> <em>${track}</em> by <a href="https://www.1000songs.co.uk/?artist=${encodeURLParam(artist)}" class="artist-link" target="_blank">${artist}</a>`;
+        insertAtCursor(html);
+    }
+
+    function insertArtistLink() {
+        const artist = prompt("Artist Name:");
+        if (!artist) return;
+        const html = `<a href="https://www.1000songs.co.uk/?artist=${encodeURLParam(artist)}" class="artist-link" target="_blank">${artist}</a>`;
+        insertAtCursor(html);
+    }
+
+    function insertYearLink() {
+        const year = prompt("Year (e.g., 1977):");
+        if (!year) return;
+        const html = `<a href="https://www.1000songs.co.uk/?year=${year}" class="sonic-link" target="_blank">${year}</a>`;
+        insertAtCursor(html);
+    }
+
+    // --- Export Logic ---
+
+    function buildFeaturedArtistsHTML() {
+        if (featuredArtists.length === 0) return '';
+        
+        let tagsHTML = featuredArtists.map(artist => {
+            const encoded = encodeURLParam(artist);
+            // The exact SVG string requested by the blog template
+            const svgIcon = `<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>`;
+            return `\n                    <a href="https://www.1000songs.co.uk/?artist=${encoded}" class="artist-tag" target="_blank" title="View ${artist} on 1000 Songs">\n                        ${svgIcon}\n                        ${artist}\n                    </a>`;
+        }).join('');
+
+        return `\n                <!-- Artist Mentions Strip -->\n                <div class="artist-mentions-strip">\n                    <span class="artist-mentions-label">Featured Artists:</span>${tagsHTML}\n                </div>`;
+    }
+
+    function buildReferencesHTML() {
+        if (references.length === 0) return '';
+        
+        let listItems = references.map(ref => `<li>${ref}</li>`).join('\n                        ');
+        
+        return `\n                <div class="article-references">\n                    <h4>References & Further Reading</h4>\n                    <ul>\n                        ${listItems}\n                    </ul>\n                </div>`;
+    }
+
+    function exportUpdatedFile() {
+        // 1. Gather all inputs
+        const title = document.getElementById('post-title').value.trim();
+        const id = document.getElementById('post-id').value.trim() || 'new-post';
+        const date = document.getElementById('post-date').value.trim();
+        const category = document.getElementById('post-category').value.trim();
+        const author = document.getElementById('post-author').value.trim();
+        const tags = document.getElementById('post-tags').value.trim();
+        let bodyContent = document.getElementById('post-body').value.trim();
+
+        if (!title || !bodyContent) {
+            alert("Title and Body Content are required.");
+            return;
+        }
+
+        // Ensure body paragraphs are wrapped if they aren't already
+        if (!bodyContent.startsWith('<')) {
+            // Rough heuristic: split by double newlines and wrap in <p> if they don't contain block HTML
+            bodyContent = bodyContent.split(/\n\s*\n/).map(p => {
+                if(p.trim().startsWith('<p>') || p.trim().startsWith('<h3>') || p.trim().startsWith('<blockquote>')) return p.trim();
+                return `<p>${p.trim()}</p>`;
+            }).join('\n                ');
+        }
+
+        // 2. Construct the new <article> HTML string
+        const newArticleHTML = `
+        <!-- ARTICLE -->
+        <article class="post-article" id="${id}" data-tags="${tags}">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#${id}">${title}</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">${date}</span>
+                    <span class="blog-category-tag">${category}</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By ${author}</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('${id}', this)" title="Copy link to this article">ID: #${id}</button>
+                </div>${buildFeaturedArtistsHTML()}
+            </header>
+            <div class="post-body">
+                ${bodyContent}${buildReferencesHTML()}
+            </div>
+        </article>
+`;
+
+        // 3. Inject into the original HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(originalHTMLContent, "text/html");
+        
+        const feedContainer = doc.getElementById('posts-feed');
+        if (!feedContainer) {
+            alert("Fatal Error: Could not find id='posts-feed' in the uploaded document during export.");
+            return;
+        }
+
+        // Convert string to a temporary DOM node to append
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = newArticleHTML;
+        
+        // Insert at the top of the feed
+        while (tempDiv.firstChild) {
+            feedContainer.insertBefore(tempDiv.lastChild, feedContainer.firstChild);
+        }
+
+        // 4. Serialize back to HTML string
+        let finalHTMLString = "<!DOCTYPE html>\n" + doc.documentElement.outerHTML;
+
+        // 5. Trigger Download
+        const blob = new Blob([finalHTMLString], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = "blog.html"; 
+        
+        // Append, click, and remove for mobile compatibility
+        document.body.appendChild(a);
+        a.click();
+        
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            alert("Success! The updated blog.html has been downloaded to your device.");
+        }, 100);
+    }
+</script>
+
+</body>
+</html>
