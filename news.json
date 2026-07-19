@@ -1,5 +1,14 @@
 [
 
+  
+  {
+  "type": "news",
+  "date": "19th July 2026",
+  "title": "Sonic Journal Blog",
+  "author": "Josh",
+  "content": "I have created a sonic journal blog <a href=\"www.1000songs.co.uk/blog/\">Blog</a>!"
+  },
+  
 
   {
   "type": "comment",
