@@ -1,6 +1,17 @@
 [
 
+{
+  "type": "news",
+  "date": "23rd July 2026",
+  "title": "Product Hunt",
+  "author": "Josh",
+  "content": "1000 songs is now on: <a href=\"https://www.producthunt.com/products/1000-songs-10-songs-a-year-100-years?launch=1000-songs-10-songs-a-year-100-years\">Product Hunt</a>!"
+  },
+  
 
+
+
+  
   {
   "type": "news",
   "date": "20th July 2026",
