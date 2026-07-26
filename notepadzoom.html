@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drafting Table | Notepad Editor</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --subtle: #888888;
+            --line: #eeeeee;
+            --accent: #0066ff;
+            --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --subtle: #999999;
+            --line: #222222;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            line-height: 1.5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        header {
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--text);
+            background: var(--bg);
+            z-index: 1000;
+        }
+
+        .brand {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .tool-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text);
+            opacity: 0.6;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .tool-btn:hover { opacity: 1; }
+
+        .editor-container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            height: calc(100vh - 75px);
+        }
+
+        aside {
+            border-right: 1px solid var(--line);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .stat-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--subtle);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: var(--mono);
+        }
+
+        main {
+            position: relative;
+            background: var(--bg);
+        }
+
+        #editor {
+            width: 100%;
+            height: 100%;
+            padding: 4rem;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: var(--text);
+            font-family: var(--mono);
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: none;
+            overflow-y: auto;
+        }
+
+        /* Hidden file input */
+        #file-input { display: none; }
+
+        /* Notification */
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--text);
+            color: var(--bg);
+            padding: 1rem 2rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transform: translateY(200%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 2000;
+        }
+        #toast.visible { transform: translateY(0); }
+
+        /* Drag & Drop Overlay */
+        .drop-zone {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.05);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed var(--subtle);
+            margin: 1rem;
+            pointer-events: none;
+        }
+        main.dragover .drop-zone { display: flex; }
+
+        @media (max-width: 768px) {
+            header { padding: 1.5rem; }
+            .editor-container { grid-template-columns: 1fr; }
+            aside { display: none; }
+            #editor { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand">DRAFTING TABLE.</div>
+    <div class="toolbar">
+        <button class="tool-btn" onclick="triggerOpen()">Open</button>
+        <button class="tool-btn" onclick="downloadFile('text/html', 'index.html')">Save HTML</button>
+        <button class="tool-btn" onclick="downloadFile('text/plain', 'note.txt')">Save TXT</button>
+        <button class="tool-btn" onclick="toggleZoom()">Zoom Out</button>
+        <button class="tool-btn" onclick="clearEditor()">Clear</button>
+        <button class="tool-btn" onclick="toggleTheme()">Theme</button>
+    </div>
+</header>
+
+<div class="editor-container">
+    <aside>
+        <div>
+            <div class="stat-label">Characters</div>
+            <div id="char-count" class="stat-value">0</div>
+        </div>
+        <div>
+            <div class="stat-label">Words</div>
+            <div id="word-count" class="stat-value">0</div>
+        </div>
+        <div>
+            <div class="stat-label">Format</div>
+            <div id="format-tag" class="stat-value" style="font-size: 0.8rem;">PLAIN TEXT</div>
+        </div>
+    </aside>
+
+    <main id="drop-area">
+        <textarea id="editor" placeholder="Paste your HTML code or start typing here..." spellcheck="false"></textarea>
+        <div class="drop-zone">DROP FILE TO LOAD</div>
+    </main>
+</div>
+
+<input type="file" id="file-input" accept=".html,.txt,.css,.js,.md">
+<div id="toast">File Loaded</div>
+
+<script>
+    const editor = document.getElementById('editor');
+    const charCount = document.getElementById('char-count');
+    const wordCount = document.getElementById('word-count');
+    const formatTag = document.getElementById('format-tag');
+    const fileInput = document.getElementById('file-input');
+    const dropArea = document.getElementById('drop-area');
+
+    // Zoom Out Logic
+    let zoomStep = 0;
+    const zoomSizes = ['1rem', '0.8rem', '0.6rem', '0.4rem'];
+    const zoomLabels = ['100%', '80%', '60%', '40%'];
+
+    function toggleZoom() {
+        zoomStep = (zoomStep + 1) % zoomSizes.length;
+        editor.style.fontSize = zoomSizes[zoomStep];
+        showToast(`Zoom: ${zoomLabels[zoomStep]}`);
+    }
+
+    // Update stats
+    editor.addEventListener('input', updateStats);
+
+    function updateStats() {
+        const text = editor.value;
+        charCount.innerText = text.length;
+        wordCount.innerText = text.trim() ? text.trim().split(/\s+/).length : 0;
+        
+        // Detect HTML
+        if (text.trim().startsWith('<') && text.trim().includes('>')) {
+            formatTag.innerText = 'HTML / WEB';
+        } else {
+            formatTag.innerText = 'PLAIN TEXT';
+        }
+    }
+
+    // Toggle Theme
+    function toggleTheme() {
+        const current = document.body.getAttribute('data-theme');
+        document.body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+
+    // Clear Editor
+    function clearEditor() {
+        if (confirm('Are you sure you want to clear all text?')) {
+            editor.value = '';
+            updateStats();
+        }
+    }
+
+    // Open File Logic
+    function triggerOpen() {
+        fileInput.click();
+    }
+
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) readFile(file);
+    });
+
+    function readFile(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            editor.value = e.target.result;
+            updateStats();
+            showToast(`Loaded: ${file.name}`);
+        };
+        reader.readAsText(file);
+    }
+
+    // Download Logic
+    function downloadFile(mime, filename) {
+        const content = editor.value;
+        const blob = new Blob([content], { type: mime });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast(`Exported as ${filename}`);
+    }
+
+    // Toast Notification
+    function showToast(msg) {
+        const toast = document.getElementById('toast');
+        toast.innerText = msg;
+        toast.classList.add('visible');
+        setTimeout(() => toast.classList.remove('visible'), 3000);
+    }
+
+    // Drag and Drop
+    dropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropArea.classList.add('dragover');
+    });
+
+    dropArea.addEventListener('dragleave', () => {
+        dropArea.classList.remove('dragover');
+    });
+
+    dropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropArea.classList.remove('dragover');
+        const file = e.dataTransfer.files[0];
+        if (file) readFile(file);
+    });
+
+    // Handle Tab key in textarea
+    editor.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            e.preventDefault();
+            const start = editor.selectionStart;
+            const end = editor.selectionEnd;
+            editor.value = editor.value.substring(0, start) + "    " + editor.value.substring(end);
+            editor.selectionStart = editor.selectionEnd = start + 4;
+        }
+    });
+
+</script>
+</body>
+</html>
