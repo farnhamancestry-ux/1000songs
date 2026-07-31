@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV/JSON to Songs Schema Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for the textarea */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+        
+        <!-- Header -->
+        <div class="bg-indigo-600 text-white p-6 sm:p-8">
+            <h1 class="text-2xl sm:text-3xl font-bold">Songs Schema Converter</h1>
+            <p class="mt-2 text-indigo-100">Upload your CSV or JSON, map the columns, and generate your grouped JSON schema.</p>
+        </div>
+
+        <div class="p-6 sm:p-8 space-y-8">
+            
+            <!-- Error Message Box -->
+            <div id="errorBox" class="hidden bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-red-700 font-medium" id="errorMessage"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 1: Upload -->
+            <section id="step-upload" class="space-y-4">
+                <div class="flex items-center space-x-3 border-b pb-2">
+                    <div class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center font-bold">1</div>
+                    <h2 class="text-xl font-semibold">Upload Data Source</h2>
+                </div>
+                
+                <div class="flex items-center justify-center w-full">
+                    <label for="fileUpload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-slate-300 border-dashed rounded-lg cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-10 h-10 mb-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                            <p class="mb-2 text-sm text-slate-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                            <p class="text-xs text-slate-500">CSV or flat JSON file</p>
+                            <p id="fileNameDisplay" class="mt-3 text-sm font-semibold text-indigo-600 hidden"></p>
+                        </div>
+                        <input id="fileUpload" type="file" class="hidden" onchange="handleFileUpload(event)" />
+                    </label>
+                </div>
+            </section>
+
+            <!-- Step 2: Mapping -->
+            <section id="step-mapping" class="space-y-4 hidden opacity-0 transition-opacity duration-500">
+                <div class="flex items-center space-x-3 border-b pb-2">
+                    <div class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center font-bold">2</div>
+                    <h2 class="text-xl font-semibold">Map Columns</h2>
+                </div>
+                <p class="text-sm text-slate-500">Select which column from your uploaded file matches the required JSON fields.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-lg border border-slate-200" id="mappingContainer">
+                    <!-- Mapping dropdowns injected via JS -->
+                </div>
+
+                <div class="flex justify-end pt-4">
+                    <button onclick="generateJSON()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg shadow-sm transition-colors flex items-center">
+                        Generate JSON
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Step 3: Output -->
+            <section id="step-output" class="space-y-4 hidden opacity-0 transition-opacity duration-500">
+                <div class="flex items-center space-x-3 border-b pb-2">
+                    <div class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center font-bold">3</div>
+                    <h2 class="text-xl font-semibold">Generated JSON</h2>
+                </div>
+                
+                <div class="relative">
+                    <textarea id="jsonOutput" readonly class="w-full h-96 p-4 font-mono text-sm bg-slate-900 text-green-400 rounded-lg shadow-inner focus:outline-none" spellcheck="false"></textarea>
+                    
+                    <div class="absolute top-4 right-4 space-x-2 flex">
+                        <button onclick="copyToClipboard()" class="bg-white/10 hover:bg-white/20 text-white backdrop-blur px-3 py-1.5 rounded text-sm transition-colors flex items-center border border-white/20">
+                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            Copy
+                        </button>
+                        <button onclick="downloadJSON()" class="bg-white/10 hover:bg-white/20 text-white backdrop-blur px-3 py-1.5 rounded text-sm transition-colors flex items-center border border-white/20">
+                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        let rawData = [];
+        let headers = [];
+        let finalJsonString = "";
+
+        const targetSchemaFields = [
+            { id: 'group_year', label: 'Year (Grouping Key)', desc: 'Used to group the songs (e.g. "1930")', required: true, jsonKey: null },
+            { id: 'field_artist', label: 'Artist', desc: 'The name of the artist/band', required: true, jsonKey: 'artist' },
+            { id: 'field_track', label: 'Track', desc: 'The song title', required: true, jsonKey: 'track' },
+            { id: 'field_genre', label: 'Genre', desc: 'Musical genre (Optional)', required: false, jsonKey: 'genre' },
+            { id: 'field_label', label: 'Label', desc: 'Record label (Optional)', required: false, jsonKey: 'label' },
+            { id: 'field_note', label: 'Note', desc: 'Extra details/notes (Optional)', required: false, jsonKey: 'note' },
+            { id: 'field_overrideUrl', label: 'Override URL', desc: 'Custom link (Optional)', required: false, jsonKey: 'overrideUrl' }
+        ];
+
+        function showError(msg) {
+            const errBox = document.getElementById('errorBox');
+            document.getElementById('errorMessage').innerText = msg;
+            errBox.classList.remove('hidden');
+            setTimeout(() => { errBox.classList.add('hidden'); }, 5000);
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            document.getElementById('fileNameDisplay').innerText = `Selected file: ${file.name}`;
+            document.getElementById('fileNameDisplay').classList.remove('hidden');
+            
+            const ext = file.name.split('.').pop().toLowerCase();
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const content = e.target.result;
+                
+                if (ext === 'csv' || ext === 'txt') {
+                    Papa.parse(content, {
+                        header: true,
+                        skipEmptyLines: true,
+                        complete: function(results) {
+                            if(results.errors.length > 0 && results.data.length === 0) {
+                                showError("Failed to parse CSV. Please check the file format.");
+                                return;
+                            }
+                            rawData = results.data;
+                            headers = results.meta.fields;
+                            renderMappingUI();
+                        }
+                    });
+                } else if (ext === 'json') {
+                    try {
+                        const jsonParsed = JSON.parse(content);
+                        if (Array.isArray(jsonParsed) && jsonParsed.length > 0) {
+                            rawData = jsonParsed;
+                            // Extract headers from the first object's keys
+                            headers = Object.keys(jsonParsed[0]); 
+                            renderMappingUI();
+                        } else {
+                            showError("JSON must be a flat array of objects for mapping.");
+                        }
+                    } catch (err) {
+                        showError("Invalid JSON file uploaded.");
+                    }
+                } else {
+                    // Fallback: try parsing as CSV anyway if extension is unknown
+                    Papa.parse(content, {
+                        header: true,
+                        skipEmptyLines: true,
+                        complete: function(results) {
+                            if(results.errors.length > 0 && results.data.length === 0) {
+                                showError("Unsupported file type or invalid format. Please upload a valid CSV or JSON.");
+                                return;
+                            }
+                            rawData = results.data;
+                            headers = results.meta.fields;
+                            renderMappingUI();
+                        }
+                    });
+                }
+            };
+            
+            reader.readAsText(file);
+        }
+
+        function renderMappingUI() {
+            const container = document.getElementById('mappingContainer');
+            container.innerHTML = ''; // Clear previous mappings if any
+
+            // Build select options
+            let optionsHtml = '<option value="">-- Do not map / Ignore --</option>';
+            headers.forEach(header => {
+                // Sanitize header for display
+                const safeHeader = header.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                optionsHtml += `<option value="${safeHeader}">${safeHeader}</option>`;
+            });
+
+            targetSchemaFields.forEach(field => {
+                const requiredBadge = field.required 
+                    ? '<span class="ml-2 text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded font-semibold">Required</span>' 
+                    : '<span class="ml-2 text-xs bg-slate-200 text-slate-500 px-2 py-0.5 rounded font-semibold">Optional</span>';
+                
+                // Attempt to auto-match headers based on similarity
+                const html = `
+                    <div class="flex flex-col space-y-1.5">
+                        <label class="text-sm font-semibold text-slate-700 flex items-center" for="${field.id}">
+                            ${field.label} ${requiredBadge}
+                        </label>
+                        <p class="text-xs text-slate-500 pb-1">${field.desc}</p>
+                        <select id="${field.id}" class="border border-slate-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white">
+                            ${optionsHtml}
+                        </select>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+
+            // Auto-select dropdowns if names vaguely match
+            targetSchemaFields.forEach(field => {
+                const selectElement = document.getElementById(field.id);
+                const searchStr = field.label.toLowerCase();
+                
+                for(let i = 0; i < selectElement.options.length; i++) {
+                    const optVal = selectElement.options[i].value.toLowerCase();
+                    if(optVal !== "" && (optVal.includes(searchStr) || searchStr.includes(optVal))) {
+                        selectElement.selectedIndex = i;
+                        break;
+                    }
+                }
+            });
+
+            // Reveal step 2 smoothly
+            const mapSection = document.getElementById('step-mapping');
+            mapSection.classList.remove('hidden');
+            setTimeout(() => { mapSection.classList.remove('opacity-0'); }, 50);
+            
+            // Scroll to mapping smoothly
+            mapSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function generateJSON() {
+            // Validate required fields
+            const mappings = {};
+            let hasErrors = false;
+
+            targetSchemaFields.forEach(field => {
+                const el = document.getElementById(field.id);
+                const selectedVal = el.value;
+                
+                if (field.required && !selectedVal) {
+                    showError(`Please select a column for the required field: ${field.label}`);
+                    hasErrors = true;
+                }
+                
+                mappings[field.id] = selectedVal;
+            });
+
+            if (hasErrors) return;
+
+            // Process data
+            const outputObj = {};
+            
+            rawData.forEach(row => {
+                const yearKeyCol = mappings['group_year'];
+                let year = row[yearKeyCol];
+                
+                if (!year) {
+                    // Fallback to "Unknown" if the row is somehow missing the year value, 
+                    // or skip row entirely (we'll fallback to avoid dataloss)
+                    year = "Unknown Year"; 
+                }
+
+                if (!outputObj[year]) {
+                    outputObj[year] = [];
+                }
+
+                // Construct the song object
+                const song = {};
+                
+                // We iterate over our schema to populate song obj (skipping the group_year itself)
+                targetSchemaFields.forEach(field => {
+                    if (field.jsonKey) {
+                        const mappedCol = mappings[field.id];
+                        if (mappedCol && row[mappedCol]) {
+                            // Trim whitespace for cleaner output
+                            song[field.jsonKey] = String(row[mappedCol]).trim();
+                        } else if (field.required) {
+                            // If it's required but empty in the CSV, just give it an empty string
+                            song[field.jsonKey] = "";
+                        }
+                    }
+                });
+
+                outputObj[year].push(song);
+            });
+
+            // Format to JSON String
+            finalJsonString = JSON.stringify(outputObj, null, 2);
+            document.getElementById('jsonOutput').value = finalJsonString;
+
+            // Reveal step 3 smoothly
+            const outSection = document.getElementById('step-output');
+            outSection.classList.remove('hidden');
+            setTimeout(() => { outSection.classList.remove('opacity-0'); }, 50);
+            
+            // Scroll to output
+            outSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function copyToClipboard() {
+            if (!finalJsonString) return;
+            
+            const textArea = document.getElementById('jsonOutput');
+            textArea.select();
+            
+            try {
+                // Standard approach for web apps / iframe compatibility
+                document.execCommand('copy');
+                
+                // Briefly show success
+                const btn = event.currentTarget;
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = `<svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Copied!`;
+                btn.classList.add('text-green-300', 'border-green-300');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHtml;
+                    btn.classList.remove('text-green-300', 'border-green-300');
+                }, 2000);
+                
+            } catch (err) {
+                showError("Failed to copy to clipboard.");
+            }
+            
+            // Deselect
+            window.getSelection().removeAllRanges();
+        }
+
+        function downloadJSON() {
+            if (!finalJsonString) return;
+            
+            const blob = new Blob([finalJsonString], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "songs_formatted.json";
+            document.body.appendChild(a);
+            a.click();
+            
+            // Cleanup
+            setTimeout(() => {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }, 0);
+        }
+    </script>
+</body>
+</html>
