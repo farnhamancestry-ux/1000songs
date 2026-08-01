@@ -1,312 +1,360 @@
 {
   "1980": [
     {
-      "artist": "Nazia Hassan",
-      "track": "Aap Jaisa Koi",
-      "genre": "Pop / Disco",
-      "note": "A massive hit that essentially birthed the Indian pop and disco craze."
+      "artist": "Nazia Hassan[cite: 1]",
+      "track": "Aap Jaisa Koi[cite: 1]",
+      "genre": "Pop / Disco[cite: 1]",
+      "note": "A massive hit that essentially birthed the Indian pop and disco craze.[cite: 1]"
     },
     {
-      "artist": "Ilaiyaraaja, S. P. Balasubrahmanyam",
-      "track": "Ilaya Nila Pozhigirathu",
-      "genre": "Regional / Filmi",
-      "note": "A masterpiece composed by the legendary Ilaiyaraaja featuring iconic acoustic guitar."
-    },
-    {
-      "artist": "Kishore Kumar",
-      "track": "Om Shanti Om",
-      "genre": "Filmi / Disco",
-      "note": "One of the most recognizable anthems of 80s Bollywood."
-    },
-    {
-      "artist": "Asha Bhosle",
-      "track": "Dil Cheez Kya Hai",
-      "genre": "Ghazal / Filmi",
-      "note": "A classic showcasing the deeply rooted classical side of 80s Indian cinema."
-    },
-    {
-      "artist": "Kavita Krishnamurthy",
-      "track": "Hawa Hawai",
-      "genre": "Filmi / Pop",
-      "note": "A quirky, energetic track that remains a dance floor staple."
-    },
-    {
-      "artist": "Bappi Lahiri, Parvati Khan",
-      "track": "Jimmy Jimmy Jimmy Aaja",
-      "genre": "Disco",
-      "note": "A global disco phenomenon that found massive success internationally, including in Russia."
-    },
-    {
-      "artist": "Udit Narayan",
-      "track": "Papa Kehte Hain",
-      "genre": "Filmi",
-      "note": "A generational youth anthem from the late 80s."
-    },
-    {
-      "artist": "Hassan Jahangir",
-      "track": "Hawa Hawa",
-      "genre": "Pop",
-      "note": "An independent pop track that crossed borders and took the subcontinent by storm."
-    },
-    {
-      "artist": "Lata Mangeshkar",
-      "track": "Ek Radha Ek Meera",
-      "genre": "Filmi",
-      "note": "A timeless classic from the legendary Nightingale of India."
-    },
-    {
-      "artist": "Amit Kumar, Sapna Mukherjee",
-      "track": "Tirchi Topiwale",
-      "genre": "Filmi",
-      "note": "A massive late-80s blockbuster track that bridged the gap to the 90s sound."
+      "artist": "Kishore Kumar[cite: 1]",
+      "track": "Om Shanti Om[cite: 1]",
+      "genre": "Filmi / Disco[cite: 1]",
+      "note": "One of the most recognizable anthems of 80s Bollywood.[cite: 1]"
     }
   ],
-  "1990": [
+  "1981": [
     {
-      "artist": "A.R. Rahman, Sukhwinder Singh, Sapna Awasthi",
-      "track": "Chaiyya Chaiyya",
-      "genre": "Filmi / World",
-      "note": "Composed by A.R. Rahman, this track revolutionized the sonic landscape of Indian music."
+      "artist": "Asha Bhosle[cite: 1]",
+      "track": "Dil Cheez Kya Hai[cite: 1]",
+      "genre": "Ghazal / Filmi[cite: 1]",
+      "note": "A classic showcasing the deeply rooted classical side of 80s Indian cinema.[cite: 1]"
+    }
+  ],
+  "1982": [
+    {
+      "artist": "Ilaiyaraaja, S. P. Balasubrahmanyam[cite: 1]",
+      "track": "Ilaya Nila Pozhigirathu[cite: 1]",
+      "genre": "Regional / Filmi[cite: 1]",
+      "note": "A masterpiece composed by the legendary Ilaiyaraaja featuring iconic acoustic guitar.[cite: 1]"
     },
     {
-      "artist": "Alisha Chinai",
-      "track": "Made in India",
-      "genre": "Indipop",
-      "note": "The definitive anthem of the 90s Indipop boom."
+      "artist": "Bappi Lahiri, Parvati Khan[cite: 1]",
+      "track": "Jimmy Jimmy Jimmy Aaja[cite: 1]",
+      "genre": "Disco[cite: 1]",
+      "note": "A global disco phenomenon that found massive success internationally, including in Russia.[cite: 1]"
+    }
+  ],
+  "1985": [
+    {
+      "artist": "Lata Mangeshkar[cite: 1]",
+      "track": "Ek Radha Ek Meera[cite: 1]",
+      "genre": "Filmi[cite: 1]",
+      "note": "A timeless classic from the legendary Nightingale of India.[cite: 1]"
+    }
+  ],
+  "1987": [
+    {
+      "artist": "Kavita Krishnamurthy[cite: 1]",
+      "track": "Hawa Hawai[cite: 1]",
+      "genre": "Filmi / Pop[cite: 1]",
+      "note": "A quirky, energetic track that remains a dance floor staple.[cite: 1]"
     },
     {
-      "artist": "Kumar Sanu, Lata Mangeshkar",
-      "track": "Tujhe Dekha Toh",
-      "genre": "Filmi / Romance",
-      "note": "The ultimate romantic ballad of the 90s from DDLJ."
+      "artist": "Hassan Jahangir[cite: 1]",
+      "track": "Hawa Hawa[cite: 1]",
+      "genre": "Pop[cite: 1]",
+      "note": "An independent pop track that crossed borders and took the subcontinent by storm.[cite: 1]"
+    }
+  ],
+  "1988": [
+    {
+      "artist": "Udit Narayan[cite: 1]",
+      "track": "Papa Kehte Hain[cite: 1]",
+      "genre": "Filmi[cite: 1]",
+      "note": "A generational youth anthem from the late 80s.[cite: 1]"
+    }
+  ],
+  "1989": [
+    {
+      "artist": "Amit Kumar, Sapna Mukherjee[cite: 1]",
+      "track": "Tirchi Topiwale[cite: 1]",
+      "genre": "Filmi[cite: 1]",
+      "note": "A massive late-80s blockbuster track that bridged the gap to the 90s sound.[cite: 1]"
+    }
+  ],
+  "1992": [
+    {
+      "artist": "Udit Narayan, Sadhana Sargam[cite: 1]",
+      "track": "Pehla Nasha[cite: 1]",
+      "genre": "Filmi[cite: 1]",
+      "note": "One of the first Indian film songs to heavily feature a slow-rock beat.[cite: 1]"
+    }
+  ],
+  "1995": [
+    {
+      "artist": "Alisha Chinai[cite: 1]",
+      "track": "Made in India[cite: 1]",
+      "genre": "Indipop[cite: 1]",
+      "note": "The definitive anthem of the 90s Indipop boom.[cite: 1]"
     },
     {
-      "artist": "Hariharan",
-      "track": "Tu Hi Re",
-      "genre": "Filmi",
-      "note": "A hauntingly beautiful melody showcasing Hariharan's classical prowess."
+      "artist": "Kumar Sanu, Lata Mangeshkar[cite: 1]",
+      "track": "Tujhe Dekha Toh[cite: 1]",
+      "genre": "Filmi / Romance[cite: 1]",
+      "note": "The ultimate romantic ballad of the 90s from DDLJ.[cite: 1]"
     },
     {
-      "artist": "Adnan Sami, Asha Bhosle",
-      "track": "Kabhi To Nazar Milao",
-      "genre": "Pop",
-      "note": "A massive non-film hit featuring Padma Shri Adnan Sami."
+      "artist": "Hariharan[cite: 1]",
+      "track": "Tu Hi Re[cite: 1]",
+      "genre": "Filmi[cite: 1]",
+      "note": "A hauntingly beautiful melody showcasing Hariharan's classical prowess.[cite: 1]"
     },
     {
-      "artist": "Daler Mehndi",
-      "track": "Bolo Ta Ra Ra",
-      "genre": "Bhangra / Pop",
-      "note": "Brought Punjabi pop music into the mainstream national consciousness."
+      "artist": "Daler Mehndi[cite: 1]",
+      "track": "Bolo Ta Ra Ra[cite: 1]",
+      "genre": "Bhangra / Pop[cite: 1]",
+      "note": "Brought Punjabi pop music into the mainstream national consciousness.[cite: 1]"
+    }
+  ],
+  "1996": [
+    {
+      "artist": "Lucky Ali[cite: 1]",
+      "track": "O Sanam[cite: 1]",
+      "genre": "Indipop[cite: 1]",
+      "note": "A soulful, acoustic-driven track that defined the indie scene of the decade.[cite: 1]"
+    }
+  ],
+  "1998": [
+    {
+      "artist": "A.R. Rahman, Sukhwinder Singh, Sapna Awasthi[cite: 1]",
+      "track": "Chaiyya Chaiyya[cite: 1]",
+      "genre": "Filmi / World[cite: 1]",
+      "note": "Composed by A.R. Rahman, this track revolutionized the sonic landscape of Indian music.[cite: 1]"
+    }
+  ],
+  "1999": [
+    {
+      "artist": "K.K.[cite: 1]",
+      "track": "Tadap Tadap[cite: 1]",
+      "genre": "Filmi[cite: 1]",
+      "note": "An emotional powerhouse track that established K.K. as an industry mainstay.[cite: 1]"
     },
     {
-      "artist": "Udit Narayan, Sadhana Sargam",
-      "track": "Pehla Nasha",
-      "genre": "Filmi",
-      "note": "One of the first Indian film songs to heavily feature a slow-rock beat."
-    },
-    {
-      "artist": "Lucky Ali",
-      "track": "O Sanam",
-      "genre": "Indipop",
-      "note": "A soulful, acoustic-driven track that defined the indie scene of the decade."
-    },
-    {
-      "artist": "K.K.",
-      "track": "Tadap Tadap",
-      "genre": "Filmi",
-      "note": "An emotional powerhouse track that established K.K. as an industry mainstay."
-    },
-    {
-      "artist": "Kavita Krishnamurthy",
-      "track": "Nimbooda",
-      "genre": "Filmi / Folk",
-      "note": "A brilliant fusion of classical and folk influences."
+      "artist": "Kavita Krishnamurthy[cite: 1]",
+      "track": "Nimbooda[cite: 1]",
+      "genre": "Filmi / Folk[cite: 1]",
+      "note": "A brilliant fusion of classical and folk influences.[cite: 1]"
     }
   ],
   "2000": [
     {
-      "artist": "Sunidhi Chauhan, Sukhwinder Singh",
-      "track": "Beedi",
-      "genre": "Filmi / Item Number",
-      "note": "A roaring, energetic track dominated by Sunidhi Chauhan's powerful vocals."
-    },
-    {
-      "artist": "Mohit Chauhan",
-      "track": "Tum Se Hi",
-      "genre": "Filmi / Romance",
-      "note": "A breezy, romantic blockbuster that cemented Mohit Chauhan's voice in Bollywood."
-    },
-    {
-      "artist": "Vishal & Shekhar, K.K., Shaan",
-      "track": "Dus Bahane",
-      "genre": "Pop / Dance",
-      "note": "Composed by Vishal Dadlani and Shekhar Ravjiani, a definitive 2000s club track."
-    },
-    {
-      "artist": "Shreya Ghoshal, Kavita Krishnamurthy",
-      "track": "Dola Re Dola",
-      "genre": "Filmi / Classical",
-      "note": "A monumental hit that highlighted Shreya Ghoshal's incredible entry into playback singing."
-    },
-    {
-      "artist": "A.R. Rahman, Sukhwinder Singh",
-      "track": "Jai Ho",
-      "genre": "World / Filmi",
-      "note": "The global crossover hit that earned India massive international acclaim."
-    },
-    {
-      "artist": "Sonu Nigam",
-      "track": "Kal Ho Naa Ho",
-      "genre": "Filmi / Romance",
-      "note": "A heart-wrenching, beautifully orchestrated modern classic."
-    },
-    {
-      "artist": "Shaan",
-      "track": "Chand Sifarish",
-      "genre": "Filmi",
-      "note": "A brilliant blend of romantic melodies and subtle classical elements."
-    },
-    {
-      "artist": "Shankar Mahadevan, Alisha Chinai",
-      "track": "Kajra Re",
-      "genre": "Filmi / Qawwali-Pop",
-      "note": "A massive cultural moment blending traditional Qawwali rhythms with modern pop."
-    },
-    {
-      "artist": "Atif Aslam",
-      "track": "Tera Hone Laga Hoon",
-      "genre": "Filmi / Pop",
-      "note": "Showcased the huge cross-border collaboration trend of the 2000s."
-    },
-    {
-      "artist": "Kailash Kher",
-      "track": "Teri Deewani",
-      "genre": "Sufi / Rock",
-      "note": "An independent track that brought Sufi rock to the absolute forefront."
+      "artist": "Adnan Sami, Asha Bhosle[cite: 1]",
+      "track": "Kabhi To Nazar Milao[cite: 1]",
+      "genre": "Pop[cite: 1]",
+      "note": "A massive non-film hit featuring Padma Shri Adnan Sami.[cite: 1]"
     }
   ],
-  "2010": [
+  "2002": [
     {
-      "artist": "Arijit Singh",
-      "track": "Tum Hi Ho",
-      "genre": "Filmi / Romance",
-      "note": "The defining romantic anthem that made Arijit Singh the undisputed voice of the decade."
+      "artist": "Shreya Ghoshal, Kavita Krishnamurthy[cite: 1]",
+      "track": "Dola Re Dola[cite: 1]",
+      "genre": "Filmi / Classical[cite: 1]",
+      "note": "A monumental hit that highlighted Shreya Ghoshal's incredible entry into playback singing.[cite: 1]"
+    }
+  ],
+  "2003": [
+    {
+      "artist": "Sonu Nigam[cite: 1]",
+      "track": "Kal Ho Naa Ho[cite: 1]",
+      "genre": "Filmi / Romance[cite: 1]",
+      "note": "A heart-wrenching, beautifully orchestrated modern classic.[cite: 1]"
+    }
+  ],
+  "2005": [
+    {
+      "artist": "Vishal & Shekhar, K.K., Shaan[cite: 1]",
+      "track": "Dus Bahane[cite: 1]",
+      "genre": "Pop / Dance[cite: 1]",
+      "note": "Composed by Vishal Dadlani and Shekhar Ravjiani, a definitive 2000s club track.[cite: 1]"
     },
     {
-      "artist": "DIVINE, Naezy",
-      "track": "Mere Gully Mein",
-      "genre": "Desi Hip Hop",
-      "note": "The spark that ignited India's massive underground hip-hop revolution."
+      "artist": "Shankar Mahadevan, Alisha Chinai[cite: 1]",
+      "track": "Kajra Re[cite: 1]",
+      "genre": "Filmi / Qawwali-Pop[cite: 1]",
+      "note": "A massive cultural moment blending traditional Qawwali rhythms with modern pop.[cite: 1]"
+    }
+  ],
+  "2006": [
+    {
+      "artist": "Sunidhi Chauhan, Sukhwinder Singh[cite: 1]",
+      "track": "Beedi[cite: 1]",
+      "genre": "Filmi / Item Number[cite: 1]",
+      "note": "A roaring, energetic track dominated by Sunidhi Chauhan's powerful vocals.[cite: 1]"
     },
     {
-      "artist": "Amit Trivedi",
-      "track": "Namo Namo",
-      "genre": "Filmi / Devotional",
-      "note": "A beautiful, uplifting composition crafted and sung by Amit Trivedi."
+      "artist": "Shaan[cite: 1]",
+      "track": "Chand Sifarish[cite: 1]",
+      "genre": "Filmi[cite: 1]",
+      "note": "A brilliant blend of romantic melodies and subtle classical elements.[cite: 1]"
     },
     {
-      "artist": "Guru Randhawa",
-      "track": "High Rated Gabru",
-      "genre": "Punjabi Pop",
-      "note": "A massive independent hit highlighting Guru Randhawa's grip on the pop scene."
+      "artist": "Kailash Kher[cite: 1]",
+      "track": "Teri Deewani[cite: 1]",
+      "genre": "Sufi / Rock[cite: 1]",
+      "note": "An independent track that brought Sufi rock to the absolute forefront.[cite: 1]"
+    }
+  ],
+  "2007": [
+    {
+      "artist": "Mohit Chauhan[cite: 1]",
+      "track": "Tum Se Hi[cite: 1]",
+      "genre": "Filmi / Romance[cite: 1]",
+      "note": "A breezy, romantic blockbuster that cemented Mohit Chauhan's voice in Bollywood.[cite: 1]"
+    }
+  ],
+  "2008": [
+    {
+      "artist": "A.R. Rahman, Sukhwinder Singh[cite: 1]",
+      "track": "Jai Ho[cite: 1]",
+      "genre": "World / Filmi[cite: 1]",
+      "note": "The global crossover hit that earned India massive international acclaim.[cite: 1]"
+    }
+  ],
+  "2009": [
+    {
+      "artist": "Atif Aslam[cite: 1]",
+      "track": "Tera Hone Laga Hoon[cite: 1]",
+      "genre": "Filmi / Pop[cite: 1]",
+      "note": "Showcased the huge cross-border collaboration trend of the 2000s.[cite: 1]"
+    }
+  ],
+  "2013": [
+    {
+      "artist": "Arijit Singh[cite: 1]",
+      "track": "Tum Hi Ho[cite: 1]",
+      "genre": "Filmi / Romance[cite: 1]",
+      "note": "The defining romantic anthem that made Arijit Singh the undisputed voice of the decade.[cite: 1]"
     },
     {
-      "artist": "Benny Dayal",
-      "track": "Badtameez Dil",
-      "genre": "Filmi / Dance",
-      "note": "A high-energy, brass-heavy track brought to life by Benny Dayal."
+      "artist": "Benny Dayal[cite: 1]",
+      "track": "Badtameez Dil[cite: 1]",
+      "genre": "Filmi / Dance[cite: 1]",
+      "note": "A high-energy, brass-heavy track brought to life by Benny Dayal.[cite: 1]"
+    }
+  ],
+  "2014": [
+    {
+      "artist": "Raftaar, Manj Musik[cite: 1]",
+      "track": "Swag Mera Desi[cite: 1]",
+      "genre": "Desi Hip Hop[cite: 1]",
+      "note": "A defining, aggressive hip-hop track featuring Raftaar's rapid-fire flow.[cite: 1]"
+    }
+  ],
+  "2015": [
+    {
+      "artist": "DIVINE, Naezy[cite: 1]",
+      "track": "Mere Gully Mein[cite: 1]",
+      "genre": "Desi Hip Hop[cite: 1]",
+      "note": "The spark that ignited India's massive underground hip-hop revolution.[cite: 1]"
     },
     {
-      "artist": "Raftaar, Manj Musik",
-      "track": "Swag Mera Desi",
-      "genre": "Desi Hip Hop",
-      "note": "A defining, aggressive hip-hop track featuring Raftaar's rapid-fire flow."
+      "artist": "Badshah, Aastha Gill[cite: 1]",
+      "track": "DJ Waley Babu[cite: 1]",
+      "genre": "Pop / Rap[cite: 1]",
+      "note": "The ultimate party anthem that solidified Badshah as a mainstream pop-rap icon.[cite: 1]"
     },
     {
-      "artist": "Badshah, Aastha Gill",
-      "track": "DJ Waley Babu",
-      "genre": "Pop / Rap",
-      "note": "The ultimate party anthem that solidified Badshah as a mainstream pop-rap icon."
+      "artist": "Papon[cite: 1]",
+      "track": "Moh Moh Ke Dhaage[cite: 1]",
+      "genre": "Filmi / Classical[cite: 1]",
+      "note": "An intricately woven, soulful rendition proving Papon's vocal mastery.[cite: 1]"
+    }
+  ],
+  "2017": [
+    {
+      "artist": "Guru Randhawa[cite: 1]",
+      "track": "High Rated Gabru[cite: 1]",
+      "genre": "Punjabi Pop[cite: 1]",
+      "note": "A massive independent hit highlighting Guru Randhawa's grip on the pop scene.[cite: 1]"
+    }
+  ],
+  "2018": [
+    {
+      "artist": "Amit Trivedi[cite: 1]",
+      "track": "Namo Namo[cite: 1]",
+      "genre": "Filmi / Devotional[cite: 1]",
+      "note": "A beautiful, uplifting composition crafted and sung by Amit Trivedi.[cite: 1]"
     },
     {
-      "artist": "Papon",
-      "track": "Moh Moh Ke Dhaage",
-      "genre": "Filmi / Classical",
-      "note": "An intricately woven, soulful rendition proving Papon's vocal mastery."
+      "artist": "Neha Kakkar, Dhvani Bhanushali[cite: 1]",
+      "track": "Dilbar[cite: 1]",
+      "genre": "Filmi / EDM[cite: 1]",
+      "note": "A prime example of the 2010s trend of highly successful, electronic remakes.[cite: 1]"
     },
     {
-      "artist": "Neha Kakkar, Dhvani Bhanushali",
-      "track": "Dilbar",
-      "genre": "Filmi / EDM",
-      "note": "A prime example of the 2010s trend of highly successful, electronic remakes."
-    },
-    {
-      "artist": "Sid Sriram",
-      "track": "Inkem Inkem Inkem Kaavaale",
-      "genre": "Regional (Telugu)",
-      "note": "A beautiful melody that made Sid Sriram a household name in the Southern regional industries."
+      "artist": "Sid Sriram[cite: 1]",
+      "track": "Inkem Inkem Inkem Kaavaale[cite: 1]",
+      "genre": "Regional (Telugu)[cite: 1]",
+      "note": "A beautiful melody that made Sid Sriram a household name in the Southern regional industries.[cite: 1]"
     }
   ],
   "2020": [
     {
-      "artist": "Emiway Bantai",
-      "track": "Machayenge 3",
-      "genre": "Desi Hip Hop",
-      "note": "Showcasing the sustained power of the creator economy and independent artistry."
+      "artist": "AP Dhillon, Gurinder Gill[cite: 1]",
+      "track": "Excuses[cite: 1]",
+      "genre": "Punjabi / Synth-Pop[cite: 1]",
+      "note": "A viral sensation marking the global dominance of the new-age Punjabi sound.[cite: 1]"
+    }
+  ],
+  "2021": [
+    {
+      "artist": "Emiway Bantai[cite: 1]",
+      "track": "Machayenge 3[cite: 1]",
+      "genre": "Desi Hip Hop[cite: 1]",
+      "note": "Showcasing the sustained power of the creator economy and independent artistry.[cite: 1]"
     },
     {
-      "artist": "Arijit Singh",
-      "track": "Kesariya",
-      "genre": "Filmi / Pop",
-      "note": "A record-breaking modern romance track dominated by Arijit Singh."
+      "artist": "Kaala Bhairava, Rahul Sipligunj[cite: 1]",
+      "track": "Naatu Naatu[cite: 1]",
+      "genre": "Regional (Telugu)[cite: 1]",
+      "note": "An explosive, Oscar-winning track that put Indian regional music on the global map.[cite: 1]"
     },
     {
-      "artist": "AP Dhillon, Gurinder Gill",
-      "track": "Excuses",
-      "genre": "Punjabi / Synth-Pop",
-      "note": "A viral sensation marking the global dominance of the new-age Punjabi sound."
+      "artist": "Shreya Ghoshal[cite: 1]",
+      "track": "Param Sundari[cite: 1]",
+      "genre": "Filmi / Dance[cite: 1]",
+      "note": "A massive return to the classic Indian dance number by Shreya Ghoshal.[cite: 1]"
     },
     {
-      "artist": "Kaala Bhairava, Rahul Sipligunj",
-      "track": "Naatu Naatu",
-      "genre": "Regional (Telugu)",
-      "note": "An explosive, Oscar-winning track that put Indian regional music on the global map."
+      "artist": "Sid Sriram[cite: 1]",
+      "track": "Srivalli[cite: 1]",
+      "genre": "Regional (Telugu)[cite: 1]",
+      "note": "A pan-India smash hit perfectly delivered through Sid Sriram's signature cadence.[cite: 1]"
+    }
+  ],
+  "2022": [
+    {
+      "artist": "Arijit Singh[cite: 1]",
+      "track": "Kesariya[cite: 1]",
+      "genre": "Filmi / Pop[cite: 1]",
+      "note": "A record-breaking modern romance track dominated by Arijit Singh.[cite: 1]"
     },
     {
-      "artist": "Shreya Ghoshal",
-      "track": "Param Sundari",
-      "genre": "Filmi / Dance",
-      "note": "A massive return to the classic Indian dance number by Shreya Ghoshal."
+      "artist": "Vishal Dadlani, Shilpa Rao[cite: 1]",
+      "track": "Besharam Rang[cite: 1]",
+      "genre": "Filmi / Pop[cite: 1]",
+      "note": "A bold, bass-heavy track anchored by Vishal Dadlani's distinct vocal texture.[cite: 1]"
     },
     {
-      "artist": "Vishal Dadlani, Shilpa Rao",
-      "track": "Besharam Rang",
-      "genre": "Filmi / Pop",
-      "note": "A bold, bass-heavy track anchored by Vishal Dadlani's distinct vocal texture."
+      "artist": "King[cite: 1]",
+      "track": "Maan Meri Jaan[cite: 1]",
+      "genre": "Pop / Indie[cite: 1]",
+      "note": "A massive commercial hit that blurred the lines between indie pop and mainstream hip hop.[cite: 1]"
     },
     {
-      "artist": "King",
-      "track": "Maan Meri Jaan",
-      "genre": "Pop / Indie",
-      "note": "A massive commercial hit that blurred the lines between indie pop and mainstream hip hop."
-    },
+      "artist": "Ali Sethi, Shae Gill[cite: 1]",
+      "track": "Pasoori[cite: 1]",
+      "genre": "Pop / World[cite: 1]",
+      "note": "A cross-border cultural phenomenon from Coke Studio that dominated Indian charts.[cite: 1]"
+    }
+  ],
+  "2023": [
     {
-      "artist": "Ali Sethi, Shae Gill",
-      "track": "Pasoori",
-      "genre": "Pop / World",
-      "note": "A cross-border cultural phenomenon from Coke Studio that dominated Indian charts."
-    },
-    {
-      "artist": "Anirudh Ravichander",
-      "track": "Hukum",
-      "genre": "Regional (Tamil) / Rock",
-      "note": "A high-octane regional anthem showing the commercial power of the Southern film industries."
-    },
-    {
-      "artist": "Sid Sriram",
-      "track": "Srivalli",
-      "genre": "Regional (Telugu)",
-      "note": "A pan-India smash hit perfectly delivered through Sid Sriram's signature cadence."
+      "artist": "Anirudh Ravichander[cite: 1]",
+      "track": "Hukum[cite: 1]",
+      "genre": "Regional (Tamil) / Rock[cite: 1]",
+      "note": "A high-octane regional anthem showing the commercial power of the Southern film industries.[cite: 1]"
     }
   ]
 }
