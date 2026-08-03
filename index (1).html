@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonic Collide | Archive Comparator</title>
+    
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --subtle: #888888;
+            --line: #eeeeee;
+            --accent: #0066ff;
+            --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --subtle: #999999;
+            --line: #222222;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            line-height: 1.5;
+            transition: background-color 0.3s ease;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid var(--text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; }
+        
+        main { padding: 2rem 5%; }
+
+        .comparator-ui {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .dataset-pane {
+            border: 1px solid var(--line);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .pane-header {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--subtle);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .url-input {
+            width: 100%;
+            background: none;
+            border: 1px solid var(--line);
+            padding: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .btn-load {
+            background: var(--text);
+            color: var(--bg);
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .stats {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--line);
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .entry-list {
+            height: 400px;
+            overflow-y: auto;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .song-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .loading-spinner { color: var(--subtle); font-style: italic; }
+
+        @media (max-width: 768px) {
+            .comparator-ui { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="title">SONIC COLLIDE.</div>
+    <button onclick="document.body.toggleAttribute('data-theme', document.body.getAttribute('data-theme') === 'dark' ? null : 'dark')" style="background: none; border: none; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; font-weight: 700;">Toggle Mode</button>
+</header>
+
+<main>
+    <div class="stats" id="comparison-report">
+        Load two datasets to see the comparative analysis.
+    </div>
+
+    <div class="comparator-ui">
+        <div class="dataset-pane" id="pane-a">
+            <div class="pane-header">Source A</div>
+            <input type="text" class="url-input" id="url-a" value="https://1000songs.co.uk/?data=jitterywhiteguy.json">
+            <button class="btn-load" onclick="loadDataset('a')">Load A</button>
+            <div class="entry-list" id="list-a"></div>
+        </div>
+
+        <div class="dataset-pane" id="pane-b">
+            <div class="pane-header">Source B</div>
+            <input type="text" class="url-input" id="url-b" value="https://1000songs.co.uk/?data=songs.json">
+            <button class="btn-load" onclick="loadDataset('b')">Load B</button>
+            <div class="entry-list" id="list-b"></div>
+        </div>
+    </div>
+</main>
+
+<script>
+    let dataA = null;
+    let dataB = null;
+
+    async function loadDataset(id) {
+        const url = document.getElementById(`url-${id}`).value;
+        const listEl = document.getElementById(`list-${id}`);
+        
+        listEl.innerHTML = '<div class="loading-spinner">Fetching data...</div>';
+        
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Network response error');
+            const data = await response.json();
+            
+            if(id === 'a') dataA = data;
+            else dataB = data;
+            
+            renderList(id, data);
+            runComparison();
+        } catch (e) {
+            listEl.innerHTML = `<div style="color:red">Error: Could not fetch data. CORS might be blocking the request.</div>`;
+            console.error(e);
+        }
+    }
+
+    function renderList(id, data) {
+        const listEl = document.getElementById(`list-${id}`);
+        listEl.innerHTML = '';
+        
+        // Assuming data is an array of objects
+        if (Array.isArray(data)) {
+            data.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'song-item';
+                div.innerText = `${item.artist || 'Unknown'} - ${item.track || 'Unknown'}`;
+                listEl.appendChild(div);
+            });
+        } else {
+            listEl.innerText = "Invalid data format.";
+        }
+    }
+
+    function runComparison() {
+        if (!dataA || !dataB) return;
+
+        const reportEl = document.getElementById('comparison-report');
+        
+        // Simple comparison logic: find intersection based on track name
+        const tracksA = dataA.map(item => item.track?.toLowerCase()).filter(Boolean);
+        const tracksB = dataB.map(item => item.track?.toLowerCase()).filter(Boolean);
+        
+        const intersection = tracksA.filter(track => tracksB.includes(track));
+        
+        reportEl.innerHTML = `
+            <strong>Comparison Report:</strong><br>
+            Source A size: ${dataA.length} items.<br>
+            Source B size: ${dataB.length} items.<br>
+            Shared Tracks identified: ${intersection.length}
+        `;
+    }
+</script>
+</body>
+</html>
