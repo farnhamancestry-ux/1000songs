@@ -2,6 +2,15 @@
 
 {
   "type": "news",
+  "date": "17th August 2026",
+  "title": "Reviews",
+  "author": "Josh",
+  "content": "Recent additions to the blog: Geoffrey Lewis,pôt-pot, Opus Kink, Graham Coxon, Dead or Alive and Odetta. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
+  },
+  
+  
+{
+  "type": "news",
   "date": "6th August 2026",
   "title": "Reviews",
   "author": "Josh",
