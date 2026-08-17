@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Songs|100 Years of Alternative Music: Reviews, Deep Dives and Method</title>
+    <meta name="description" content="An architectural breakdown of the 1000 Songs project. Explore the essays, critical boundaries, and curation methodology defining 100 years of alternative music.">
+
+<link rel="canonical" href="https://www.1000songs.co.uk/blog.html">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    
+    <!-- Google Tag (gtag.js) Fallback -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-BMRR0XZXPN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BMRR0XZXPN');
+    </script>
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --subtle: #666666;
+            --line: #eeeeee;
+            --accent: #0066ff;
+            --accent-light: rgba(0, 102, 255, 0.06);
+            --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --overlay-bg: rgba(255, 255, 255, 0.98);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --subtle: #a0a0a0;
+            --line: #222222;
+            --accent-light: rgba(0, 102, 255, 0.15);
+            --overlay-bg: rgba(10, 10, 10, 0.98);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -webkit-font-smoothing: grayscale;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-bottom: 1px solid var(--text);
+            position: relative;
+            background: var(--bg);
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+.post-article {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px; /* Estimates the height of an unrendered post */
+}
+
+        .journal-badge {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+
+
+        .actions {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .header-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text);
+            opacity: 0.6;
+            transition: opacity 0.2s, color 0.2s;
+            padding: 4px 8px;
+        }
+        .header-btn:hover { opacity: 1; color: var(--accent); }
+
+        #search-overlay {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--bg);
+        }
+        #search-overlay.open {
+            height: 60px;
+            border-top: 1px solid var(--line);
+        }
+        .search-input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text);
+            outline: none;
+            padding: 0 10px;
+        }
+
+        main { 
+            padding: 0 5% 10rem 5%; 
+        }
+
+        .hero-banner {
+            margin: 4rem auto 5rem auto;
+            max-width: 800px;
+            text-align: center;
+            padding: 0 1rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .hero-banner h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner h1 span {
+            font-weight: 800;
+        }
+
+        .hero-banner p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--subtle);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .posts-feed {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .post-article {
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 5rem;
+            scroll-margin-top: 100px;
+        }
+        
+        .post-article:last-child {
+            border-bottom: none;
+        }
+
+        .post-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        
+        .post-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .post-title a:hover {
+            color: var(--accent);
+        }
+
+        .blog-date {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.8rem;
+            color: var(--subtle);
+        }
+
+        .blog-category-tag {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--subtle);
+            padding: 2px 6px;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+        }
+
+        .article-id-badge {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.65rem;
+            color: var(--accent);
+            background-color: var(--accent-light);
+            padding: 3px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px dashed rgba(0, 102, 255, 0.4);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: bold;
+        }
+
+        .article-id-badge:hover {
+            background-color: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .post-meta-strip {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .post-body {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .post-body p {
+            margin-bottom: 2rem;
+        }
+
+        .post-body h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin: 3rem 0 1.5rem 0;
+        }
+
+        .post-body h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .post-body blockquote {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.95rem;
+            color: var(--text);
+            margin: 2.5rem 0;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--accent);
+            opacity: 0.9;
+            letter-spacing: 0.02em;
+            line-height: 1.6;
+        }
+
+        .post-body ul, .post-body ol {
+            margin: 1.5rem 0 2.5rem 2rem;
+        }
+
+        .post-body li {
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-play-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.2em;
+            height: 1.2em;
+            background-color: var(--accent-light);
+            color: var(--accent);
+            border: 1px solid rgba(0, 102, 255, 0.15);
+            border-radius: 4px;
+            margin: 0 0.25em;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            vertical-align: middle;
+            transform: translateY(-0.08em);
+            position: relative;
+            padding: 0;
+        }
+
+        .blog-play-btn:hover {
+            background-color: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: translateY(-0.08em) scale(1.08);
+        }
+
+        .blog-play-btn svg {
+            width: 0.65em;
+            height: 0.65em;
+            pointer-events: none;
+        }
+
+        .blog-play-btn.playing {
+            background-color: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        .blog-play-btn.loading svg {
+            animation: spin 0.8s linear infinite;
+        }
+
+        .sonic-link {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1.5px dashed var(--accent);
+            padding-bottom: 1px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .sonic-link:hover {
+            color: var(--accent);
+            border-bottom-style: solid;
+            background-color: var(--accent-light);
+        }
+
+        .artist-link {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1.5px solid var(--accent);
+            padding-bottom: 1px;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+        
+        .artist-link:hover {
+            color: var(--accent);
+            background-color: var(--accent-light);
+        }
+        
+        .artist-link::after {
+            content: "↗";
+            font-size: 0.65em;
+            vertical-align: super;
+            opacity: 0.65;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        
+        .artist-link:hover::after {
+            transform: translate(1px, -1px);
+            opacity: 1;
+        }
+
+        /* Artist mentions header meta strip and badges */
+        .artist-mentions-strip {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--line);
+            width: 100%;
+        }
+
+        .artist-mentions-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--subtle);
+            font-weight: 700;
+        }
+
+        .artist-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text);
+            background-color: var(--line);
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .artist-tag:hover {
+            background-color: var(--accent-light);
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .artist-tag svg {
+            opacity: 0.6;
+            color: var(--accent);
+            transition: opacity 0.2s;
+        }
+        
+        .artist-tag:hover svg {
+            opacity: 1;
+        }
+
+        /* Views management layout definitions */
+        .titles-view, .forum-view, .comments-view {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .titles-view.active, .forum-view.active, .comments-view.active {
+            display: block;
+        }
+
+        .posts-feed.hidden, .hero-banner.hidden {
+            display: none !important;
+        }
+
+        .titles-view h2, .forum-view h2, .comments-view h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--text);
+            padding-bottom: 1rem;
+        }
+
+        .title-list-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--line);
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s ease;
+        }
+
+        .title-list-item:hover {
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .title-list-item h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .title-list-item:hover h3 {
+            color: var(--accent);
+        }
+        
+        .article-references {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--line);
+            background-color: var(--accent-light);
+            padding: 2rem;
+            border-radius: 4px;
+        }
+
+        .article-references h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .article-references ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .article-references li {
+            font-size: 0.95rem;
+            color: var(--subtle);
+            margin-bottom: 0.75rem;
+            padding-left: 1.25rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .article-references li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .article-references a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--line);
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .article-references a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--subtle);
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--line);
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 8px 0;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-textarea {
+            border: 1px solid var(--line);
+            padding: 10px;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .submit-btn {
+            background: var(--text);
+            color: var(--bg);
+            border: 1px solid var(--text);
+            padding: 12px 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .submit-btn:hover {
+            background: transparent;
+            color: var(--text);
+        }
+
+        .giscus-container {
+            margin-top: 2rem;
+            border-top: 1px solid var(--line);
+            padding-top: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 15px; } 
+            main { padding: 0 15px 10rem 15px; }
+
+            .header-top {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+                border: 1px solid var(--line);
+                padding: 6px 10px;
+            }
+
+            .actions {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg);
+                max-height: 0;
+                overflow: hidden;
+                flex-direction: column;
+                transition: max-height 0.4s ease, opacity 0.3s, padding 0.3s;
+                opacity: 0;
+                z-index: 1000;
+                padding: 0 15px;
+                border-bottom: 0px solid transparent;
+            }
+
+            .actions.open {
+                max-height: 450px;
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+                opacity: 1;
+                border-bottom: 1px solid var(--text);
+                box-shadow: 0 15px 15px -10px rgba(0,0,0,0.05);
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="title-wrapper" onclick="showView('feed')">
+            <div class="title">1000 SONGS.</div>
+            <div class="journal-badge">// JOURNAL</div>
+        </div>
+        
+        <button class="mobile-menu-toggle header-btn" onclick="toggleNav()">MENU</button>
+        
+        <div class="actions" id="nav-actions">
+            <button class="header-btn" onclick="showView('titles')">Titles Index</button>
+
+<button class="header-btn" onclick="toggleSearch()">Search</button>
+            <button class="header-btn" onclick="showView('forum')">Forum</button>
+            <button class="header-btn" onclick="showView('comments')">Comments</button>
+           
+            
+            <a href="https://www.1000songs.co.uk/" class="header-btn" style="text-decoration: none; border: 1px solid var(--text); padding: 4px 10px; border-radius: 2px;">Main Archive ↗</a>
+        </div>
+    </div>
+    <div id="search-overlay">
+        <input type="text" id="global-search" class="search-input" placeholder="Search deep dives, methods, or tags..." oninput="handleSearch(this.value)">
+    </div>
+</header>
+
+<main>
+    <div id="titles-view" class="titles-view">
+        <h2>Journal Index</h2>
+        <div id="titles-list">
+            <!-- Generated Dynamically on DOM Load -->
+        </div>
+    </div>
+
+    <div id="forum-view" class="forum-view">
+        <h2>Community Forum</h2>
+        <p style="color: var(--subtle); font-size: 1.1rem; font-weight: 300; margin-bottom: 2rem;">
+            Welcome to the open discussion board. Suggest new historical connections, alternative curate list theories, or share your musical journey.
+        </p>
+        <div class="giscus-container">
+            <div class="giscus"></div>
+        </div>
+    </div>
+
+    <div id="comments-view" class="comments-view">
+        <h2>Comments</h2>
+        <p style="color: var(--subtle); font-size: 1.1rem; font-weight: 300; margin-bottom: 2rem;">
+            Use the form below to send direct feedback, submit customized curated track timelines, or notify me of typos.
+        </p>
+        
+        <div style="border: 1px solid var(--line); padding: 2.5rem; border-radius: 4px; margin-bottom: 3rem;">
+            <form action="https://formspree.io/f/maqpnpyq" method="POST" style="display: flex; flex-direction: column;">
+                <div class="form-group">
+                    <label class="form-label" for="comment-name">Your Name / Handle</label>
+                    <input type="text" id="comment-name" name="name" class="form-input" placeholder="e.g. Jean Ritchie Fan" required="">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="comment-email">Your Email Address</label>
+                    <input type="email" id="comment-email" name="email" class="form-input" placeholder="e.g. you@domain.com" required="">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="comment-body">Comment</label>
+                    <textarea id="comment-body" name="comment" class="form-textarea" placeholder="Type your thoughts, alternative year lists, or corrections here..." required=""></textarea>
+                </div>
+
+                <input type="hidden" name="_subject" value="New Comment Submission for 1000 Songs Blog">
+                <button type="submit" class="submit-btn" style="align-self: flex-start;">Send Comment</button>
+            </form>
+        </div>
+
+        
+        </div>
+    
+
+    <div class="hero-banner" id="hero-banner">
+        <h1>The <span>Sonic Journal</span></h1>
+        <p>Exploring the specific years, trends, and artists surrounding our <a href="https://1000songs.co.uk" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--text); text-decoration-style: dotted; color: var(--text);">100-year alternative music archive</a>  and showcasing new discoveries.</p>
+    </div>
+
+    <div class="posts-feed" id="posts-feed"><article class="post-article" id="odetta" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#odetta">Odetta</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">17 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('odetta', this)" title="Copy link to this article">ID: #odetta</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Bob Dylan famously said he traded his electric guitar for an acoustic the moment he heard Odetta. (He might of considered that when he was ripping off June Ritchie too).</p>
+                <p>Janis Joplin imitated her. Martin Luther King Jr. crowned her "The Queen of American Folk Music".</p>
+                <p>Born in Birmingham, Alabama, she moved to Los Angeles as a child and actually began formal operatic training at the age of thirteen.</p>
+                <p>So she had this, classically trained vocal power. She channeled that vocal control directly into her work folk, spirituals, and blues.</p>
+                <p>Was really great going through her back catalogue. For the archive, I went with "Wade in the Water" and "Gallows Pole".</p>
+                <p>The first is about liberation and is widely believed to have served as a coded message on the Underground Railroad, instructing escaping slaves to step into the water to throw tracking bloodhounds off their scent.</p>
+                <p><button class="blog-play-btn" data-artist="Odetta" data-track="Wade in the Water" onclick="playInline(this)" title="Play Preview"></button> <em>Wade in the Water</em> by <a href="https://www.1000songs.co.uk/?artist=Odetta" class="artist-link" target="_blank">Odetta</a></p>
+                <p>Then there is "Gallows Pole,". I also have Lead Belly's version in the archive. It is a tense, driving folk-blues narrative about a condemned woman frantically pleading with her family to bring enough silver or gold to bribe the hangman. It is gritty, urgent, and exactly what I want!</p>
+                <p><button class="blog-play-btn" data-artist="Odetta" data-track="Gallows Pole" onclick="playInline(this)" title="Play Preview"></button> <em>Gallows Pole</em> by <a href="https://www.1000songs.co.uk/?artist=Odetta" class="artist-link" target="_blank">Odetta</a></p>
+                <p>Cillian Murphy did a brilliant series for BBC 6 music called limited edition he went for every night when featuring Odetta which shows another side.</p>
+                <p>Odetta is the sound of raw, genuine, undiluted authenticity. Just brilliant.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Odetta">Odetta</a></li>
+                        <li><a href="https://www.bbc.co.uk/programmes/m001rfzs">Cillian Murphy Limited Edition</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article><article class="post-article" id="graham-coxon" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#graham-coxon">Graham Coxon</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">13 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('graham-coxon', this)" title="Copy link to this article">ID: #graham-coxon</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Graham+Coxon" class="artist-tag" target="_blank" title="View Graham Coxon on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Graham Coxon
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>For a fairly brief, surreal period of my life, I felt like I was living in an episode of Stella Street. For those who don't know, Stella Street was a brilliant BBC sitcom where musicians and celebrities lived on the same suburban street, going about their mundane, everyday business.</p>
+                <p>I'd walk into Sainsbury's in the morning and see Amy Winehouse still on a night out, or I'd be standing directly behind Bill Nighy while I was buying my broccoli. Or sitting in an, otherwise completely empty internet cafe that was occupied by no one except Rhys Ifans. Or going to the local pub and seeing Pete Doherty, Kelly Osbourne, Noel Fielding and Amy Winehouse (again).</p>
+                <p>But out of all these surreal encounters, the one that stands out the most was walking into the corner shop and bumping into Graham Coxon. Whenever I saw Graham, he always looked absolutely terrified to me.</p>
+                <p>He had the distinct look of a man who constantly feared I was going to corner him by the biscuits and start singing Parklife right into his face.</p>
+                <p>There was no need to be fearful, though.</p>
+                <p>If I had a bit more confidence back then, I wouldn't have sung Parklife, I would have sung Freakin' Out into his face instead.</p>
+                <p><button class="blog-play-btn" data-artist="Graham Coxon" data-track="Freakin Out" onclick="playInline(this)" title="Play Preview"></button> <em>Freakin Out</em> by <a href="https://www.1000songs.co.uk/?artist=Graham+Coxon" class="artist-link" target="_blank">Graham Coxon</a></p>
+                <p>Graham is responsible for some of my favourite guitar riffs of all time, Popscene, Song 2, or Freakin Out.</p>
+                <p>It was a strange privilege occupying the same geographic area as him for a while, and I was even lucky enough to see him perform just down the road.</p>
+                <p>He wrote these riffs like he didn't really want to, or wasn't that bothered that he could do it. It is incredibly annoying when someone is so effortlessly good that they barely seem to break a sweat while churning out pure genius.</p>
+                <p>His solo career is nothing short of prolific, releasing a mountain of music since 1998, playing almost all the instruments himself, designing his own album art, and scoring soundtracks. He has never really stopped, right up to his 2026 album release, Castle Park. But I will be honest, a lot of his solo stuff mainly didn't sit right with me. I am a sucker for something catchy, and his solo discography often leans a bit too heavily into the experimental for my personal taste.</p>
+                <p>Freakin' Out is the exception to that rule. It bridges the gap between his noisy, indie-rock sensibilities and a proper riff.</p>
+                <p>Saying all this. As much as I respect their individual side projects and undeniable talents, I prefer Blur to just be Blur. I don't want cartoon based music from Damon. I don't want artisanal cheese or champagne lifestyles from Alex. And as much as I respect Graham's solo artistry, I prefer his guitar work. They are at their absolute best when the four of them are in a room together, making proper, brilliant guitar music.</p>
+                <p>And if I ever see him in the corner shop again, I will definitely continue to just let him buy his milk in peace.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Graham_Coxon">Graham Coxon</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Stella_Street">Stella Street</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article><article class="post-article" id="dead-or-alive" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#dead-or-alive">Dead or Alive</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">13 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('dead-or-alive', this)" title="Copy link to this article">ID: #dead-or-alive</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Dead+or+Alive" class="artist-tag" target="_blank" title="View Dead or Alive on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Dead or Alive
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Here is my first out-and-out pop band for the 1000 Songs archive.</p>
+                <p>Growing up, Stock Aitken Waterman (SAW) dominated chart music.</p>
+                <p>I think it made me literally hate music as a child. 80s pop was oppressive weird and scary for me.</p>
+                <p>In hindsight, though, I think that childhood hatred ended up being a good thing. You need to know what’s bad to find out what’s good. I am thankful now that SAW were such great and prolific purveyors of garbage (and yes, I’ve deliberately used the Americanism there).</p>
+                <p>The catalyst that turned their fabricated sewer system on, however, was actually just a good song.</p>
+                <p>It came from Dead or Alive. "You Spin Me Round (Like a Record)".</p>
+                <p><button class="blog-play-btn" data-artist="Dead or Alive" data-track="You Spin Me Round" onclick="playInline(this)" title="Play Preview"></button> <em>You Spin Me Round</em> by <a href="https://www.1000songs.co.uk/?artist=Dead+or+Alive" class="artist-link" target="_blank">Dead or Alive</a></p>
+                <p>You know when you spin round like a record? Yeah that. Spinning round like a record. Right round. Not half way round. Right round.</p>
+                <p>Anyway...</p>
+                <p>It was SAW’s first UK Number 1, arguably kicking off their entire chart deluge.</p>
+                <p>Frontman Pete Burns was unique. Back when he worked at Probe Records in Liverpool, he used to terrify customers from behind the counter, famously refusing to sell records to shoppers if he didn't like their clothes or deemed them unworthy of the music.</p>
+                <p>Burns was never going to let the machine control him.</p>
+                <p>His authenticity directly countered their clean production. The result is high-energy synth-pop perfection. From the dramatic, operatic synth intro to the galloping hi-hats and Pete’s booming, theatrical vocal delivery, it bridges the fierce, menacing edge of post-punk with unadulterated joy.</p>
+                <p>More importantly, it has an edge that SAW simply couldn't polish away.</p>
+                <p>So, it’s included in 1000 Songs because it proves that even within the ultra-manufactured pop machine of the 1980s, genuine eccentricity and an undeniable hook is all you need.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Dead_or_Alive_(band)">Dead or Alive</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article><article class="post-article" id="opus-kink" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#opus-kink">Opus Kink</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">11 August 2026</span>
+                    <span class="blog-category-tag">Discovery</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('opus-kink', this)" title="Copy link to this article">ID: #opus-kink</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Forget politely knocking on the door of the 2026 selections for 1000 Songs. Opus Kink has just blown it off its hinges.</p>
+                <p>Not with dynamite, but with horns... dynamic, door-disrespecting horns.</p>
+                <p>I have absolutely loved hearing the single "Come Over, Do Me Wrong" pop up on the radio this year. Driven relentlessly by its brass section, the track doesn't let you off the hook, while Angus Rogers' vocals keep you locked in. It doesn't pause. It gnaws away at you, like they are determined to demonstrate this is a band doing something genuinely different.</p>
+                <p>Frontman Angus Rogers noted that the song explores the hallucinogenic qualities and toxic allure of a doomed love affair, a wild dive into the mad philosophical leap of not caring what someone does, as long as they do it to you.</p>
+                <p>For me, it feels as though the spirit of <a href="https://www.1000songs.co.uk/?artist=Jimmie+Lunceford" class="artist-link" target="_blank">Jimmie Lunceford</a> has rocked up in Brighton, nursing a hangover but ready to take on the world with his Jazznocracy. (I have said it before and will say it again: the best kind of 'nocracy.)</p>
+                <p>The sextet originally formed back in 2017. Like the finest album growers of ancient Greece, they correctly decided to wait nearly ten years to release their debut full-length. I think it has something to do with fermentation. Distillation. Brassmentation.</p>
+                <p>Produced alongside Grammy Award winner Craig Silvey, their debut 10-track LP, The Sweet Goodbye, arrived on 31 July 2026 via SO Recordings, and it is well worth the wait.</p>
+                <p>This is easily one of my top picks for 2026. The Sweet Goodbye is out now and they are touring!</p>
+                <p><button class="blog-play-btn" data-artist="Opus Kink" data-track="Come Over, Do Me Wrong" onclick="playInline(this)" title="Play Preview"></button> <em>Come Over, Do Me Wrong</em> by <a href="https://opuskink.os.fan/" class="artist-link" target="_blank">Opus Kink</a></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://opuskink.os.fan/sweetgoodbyelinks?step=finish">The Sweet Goodbye</a></li>
+                        <li><a href="https://opuskink.os.fan/">Opus Kink</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article><article class="post-article" id="p-t-pot" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#p-t-pot">pôt-pot</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">9 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('p-t-pot', this)" title="Copy link to this article">ID: #p-t-pot</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=p%C3%B4t-pot" class="artist-tag" target="_blank" title="View pôt-pot on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        pôt-pot
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>On 1000songs.co.uk, I occasionally come across a band in the archive that doesn't yet have a Wikipedia page.</p>
+                <p>pôt-pot were one such band.</p>
+                <p>so I created a page for them.</p>
+                <p>The quintet features musicians from the Cork DIY music scene, though they are currently based out of Lisbon, Portugal. They craft an expansive space-rock sound. As a massive fan of Can, Neu!, Faust, and the Krautrock motorik rhythm, it was fantastic to find a band doing this in 2025 and doing it so well!</p>
+                <p>It's often tricky to source enough material for a new band's Wikipedia page, but pôt-pot were well worth digging into (helped along by the fact that they were nominated for the Choice Music Prize Irish Album of the Year in 2025!).</p>
+                <p>I was initially turned on to them by BBC Radio 6 Music's Deb Grant (who I also created the Wikipedia page for!). Their debut, Warsaw 480km, was released on the LA-based label Felte Records (guess who wrote <em>their</em> Wikipedia page!).</p>
+                <p>I went with "22° Halo" for the archive.</p>
+                <p><button class="blog-play-btn" data-artist="pôt-pot" data-track="22° Halo" onclick="playInline(this)" title="Play Preview"></button> <em>22° Halo</em> by <a href="https://www.1000songs.co.uk/?artist=p%C3%B4t-pot" class="artist-link" target="_blank">pôt-pot</a></p>
+                <p>Near the opening of the album, the track has a hypnotic momentum, perfectly blending that relentless, driving motorik rhythm with swirling harmonium drones and dark, male-female vocal harmonies.</p>
+                <p>If Warsaw 480km is what they can achieve on a debut record, they are a band you absolutely need to keep on your radar. I'll definitely keep my ears out for more for the archive as we near 2030!</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/P%C3%B4t-pot">Wikipedia: pôt-pot</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article><article class="post-article" id="geoffrey-lewis" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#geoffrey-lewis">Geoffrey Lewis</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">8 August 2026</span>
+                    <span class="blog-category-tag">Discovery</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('geoffrey-lewis', this)" title="Copy link to this article">ID: #geoffrey-lewis</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>It's great when I hear a song, enjoy it for its atmosphere, and then read how the artist came to it from a different angle.</p>
+                <p>"Paranoid" by Geoffrey Lewis is just that. It grabbed me this week. Although I can certainly hear the DNA of Sunny Day Real Estate or American Football in the song, the feel of the track is what drew me in.</p>
+                <p>"Paranoid" tackles heavy subject matter, it is inspired by the anxiety of growing up in a world where public violence has become normalised.</p>
+                <p>That rawness, directness and authenticity of the song are reflected in how the track was made. Entirely written, performed, recorded, and produced in his Nashville home studio, the song is built around an analog set up, a Korg drum machine, tube amplifiers, and live instruments. I think for me, this is where the feel comes from. Because of this direct artist led production style, the track reminds me of the proto-electronic acts like Suicide or Silver Apples. Similarly, although sonically different, it has the same kind of clash between guitars and electronics of Liars.</p>
+                <p>Geoffrey's college friends provide the bass and backing vocals, and I really love how the song builds from the initial guitar riff, layered with those understated but highly effective vocal backings. The custom Korg beat drives the song, while the guitar motif responds with a rhythmic edge.</p>
+                <p>Lewis sings with a measured, understated, quality that makes the paranoia feel even more intense. He keeps the emotion just below the surface, and that restraint is exactly what makes it engaging.</p>
+                <p>This song sounds exactly like its title. The song does, indeed, sound paranoid, in a good way!</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://geoffreylewisofficial.com/">Geoffrey Lewis Website</a></li>
+                        <li><a href="https://geoffreylewis.bandcamp.com/">Geoffrey Lewis - Bandcamp</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+        <!-- ARTICLE -->
+        <article class="post-article" id="liars" data-tags="I'll Be Your Mirror,">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#liars">Liars</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">8 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('liars', this)" title="Copy link to this article">ID: #liars</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Liars" class="artist-tag" target="_blank" title="View Liars on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Liars
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>They Threw Us All in a Trench and Stuck a Monument on Top has still got to be one of the greatest album titles of all time.</p>
+                <p>It was by Liars, I am not sure about their propensity for the truth but they were an amazing band.</p>
+                <p>Formed in Brooklyn at the turn of the millennium but fronted by Australian lead singer Angus Andrew, they were a vital band of that era. They were part of a set of bands to bring post punk back but mix it with electronic production to create a dance punk sound. Which was a much needed antidote to the polished sounds of the late 90's.</p>
+                <p>My first pick for the archive is the equally brilliantly named "Mr You're On Fire Mr".</p>
+                <p><button class="blog-play-btn" data-artist="Liars" data-track="Mr You're On Fire Mr" onclick="playInline(this)" title="Play Preview"></button> <em>Mr You're On Fire Mr</em> by <a href="https://www.1000songs.co.uk/?artist=Liars" class="artist-link" target="_blank">Liars</a></p>
+                <p>Nine years later, and my second pick is "Scissor", a completely different beast of a track and the opener to their 2010 album, Sisterworld.</p>
+                <p><button class="blog-play-btn" data-artist="Liars" data-track="Scissor" onclick="playInline(this)" title="Play Preview"></button> <em>Scissor</em> by <a href="https://www.1000songs.co.uk/?artist=Liars" class="artist-link" target="_blank">Liars</a></p>
+                <p>A year after that release, I saw them play an unbelievable set at the "I'll Be Your Mirror" festival at London's Alexandra Palace. Curated by Portishead and put together by All Tomorrow's Parties, it was a legendary gig. ATP might have eventually gone bust amid accusations of profiteering, but the line-ups they pulled together were outstanding. I'll likely keep referring back to that festival on this blog, but Liars were absolutely a highlight of the weekend!</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Liars_(band)">Liars</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="the-cuts" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#the-cuts">The Cuts</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">6 August 2026</span>
+                    <span class="blog-category-tag">Discovery</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('the-cuts', this)" title="Copy link to this article">ID: #the-cuts</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>I have been very lucky to attend some memorable gigs over the years. One surreal, brilliant experience was watching The Strokes while stood right in front of a massive dinosaur skeleton at the Natural History Museum in London.</p>
+                <p>Now, I don't have The Strokes in the 1000 Songs archive, but they were undeniably pivotal. They heralded a massive explosion of brilliant guitar music throughout the early to mid 2000s, freeing bands just to be bands and make catchy, guitar driven tunes without overthinking it.</p>
+                <p>So, in that tradition of simply making joyful, infectious guitar music, I was delighted to receive the latest single from The Cuts, titled "Fire with Fire".</p>
+                <p>The Cuts hail from Paisley, Scotland. The core trio of Neil Walker, Kieran Docherty, and James Robertson first joined forces years ago before drifting down separate paths, only to reunite in 2025 and enlist drummer Craig Brown to complete the lineup. Refreshingly, the band embraces a playful, tongue-in-cheek irreverence while keeping their songwriting genuinely sharp.</p>
+                <p>"Fire with Fire" was written by Neil Walker late last year and recorded on analogue equipment at Glasgow’s intimate Green Door Studio. That was a fantastic call. It captures all the raw excitement and energy of seeing a band live in a small room, so you aren't left trying to pick out a brilliant song through dense layers of over production.</p>
+                <p>Musically, the song rolls along with effortless momentum. For me, it kicks off with a sharp, punchy Buzzcocks type vibe to begin with, but quickly builds with the energy and attitude of Bloc Party before launching into a brilliant, peak Franz Ferdinand strength of a chorus.</p>
+                <p>That chorus is so relentlessly catchy it will lodge itself in your brain until you can't help singing it aloud. In fact, I wager, you’ll find yourself standing in a queue, singing, "I've got to fight fire with fire." A stranger will look at you confused and say, "Excuse me?" To which you'll have to reply deadpan, "Oh, sorry, it's just a song stuck in my head. You should check it out, it's by a band called The Cuts."</p>
+                <p><em><strong>Fire with Fire</strong> by The Cuts is out on 28th August 2026.</em></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://open.spotify.com/artist/223yN4BBtXT10lnrCnHSNA?si=PT_7jVC7SpOEcCJdY7LVVA&amp;utm_source=copy-link&amp;nd=1&amp;dlsi=56c7d6bccd5143a5">The Cuts on Spotify</a></li>
+                        <li><a href="https://www.instagram.com/thecutsmusic?igsh=MTd2NW00czZzeTlnbQ%3D%3D">The Cuts on Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="bessie-smith" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#bessie-smith">Bessie Smith</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">5 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('bessie-smith', this)" title="Copy link to this article">ID: #bessie-smith</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Bessie+Smith" class="artist-tag" target="_blank" title="View Bessie Smith on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Bessie Smith
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Bessie Smith was Blues. Bessie Smith was folk. Bessie Smith was Jazz. Bessie Smith was Punk.</p>
+                <p>She also released a lot of records prior to 1930. Which is not particularly useful when your archive starts in 1930.</p>
+                <p>She was born in Chattanooga, Tennessee, she survived her childhood by busking on street corners.</p>
+                <p>She eventually rose to become the highest-paid Black entertainer of her day. She even had her own custom rail carriage.</p>
+                <p>She championed the African-American working class. She was a true pioneer who helped invent the market for "race records" and female blues singers in the 1920s.</p>
+                <p>She incorporated biting commentary on poverty, the convict lease system, capital punishment, and female empowerment into her songs.</p>
+                <p>To represent her in the archive, I’ve chosen "Blue Blue." from 1931.</p>
+                <p><button class="blog-play-btn" data-artist="Bessie Smith" data-track="Blue Blue" onclick="playInline(this)" title="Play Preview"></button> <em>Blue Blue</em> by <a href="https://www.1000songs.co.uk/?artist=Bessie+Smith" class="artist-link" target="_blank">Bessie Smith</a></p>
+                <p>But I'd also recommend reading about her amazing life and listening to some of those brilliant 1920s records. Just proving to me genre never really existed!</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Bessie_Smith">Bessie Smith</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="gomez" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#gomez">Gomez</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">3 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('gomez', this)" title="Copy link to this article">ID: #gomez</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Gomez" class="artist-tag" target="_blank" title="View Gomez on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Gomez
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Hans Zimmer (he of the Going for Gold theme fame) is taking over the BBC Maida Vale studios. It's the end of an era. One of my favourite albums, Hatful of Hollow by The Smiths, features tracks recorded there, and it's the site of Delia Derbyshire's electronic triumphs. It's also famously where Bing Crosby made his last ever recording in 1977, just days before he died. Fontaines DCs final session there was broadcast today on 6 Music.</p>
+                <p>However, for me, it was where I saw Gomez (with Chilly Gonzales playing, and Colin Murray booking us in on the door). Gomez were such an important band for me. In this 1000 Songs project, I have engaged in a bit of late-1990s revisionism. For me, as someone who likes British guitar music, the era at the time wasn't particularly good for it, especially just after <a href="https://www.1000songs.co.uk/?year=1997" class="sonic-link" target="_blank">1997</a>.</p>
+                <p>Gomez were important because they decided to look way back and do something different with it when others tried to let Britpop limp on. Hailing from Southport, Merseyside, they were a unique outfit comprising Ian Ball, Paul Blackburn, Tom Gray, Ben Ottewell, and Olly Peacock. They brilliantly juggled three different singers and four songwriters. Their sound was a complete anomaly at the time, effortlessly blending blues, folk, and psychedelic experimental rock.</p>
+                <p>Bring It On felt very different. Looking back on it nearly 30 years later, for me personally, it hasn't dated too well. But it was authentic, raw, and much-needed, especially compared to what was on TV. It was actually won the Mercury Music Prize in 1998.</p>
+                <p>For the archive, I had a choice to make. I was considering "Whippin' Piccadilly" or even the later "Shot Shot".</p>
+                <p><button class="blog-play-btn" data-artist="Gomez" data-track="Shot Shot" onclick="playInline(this)" title="Play Preview"></button> <em>Shot Shot</em> by <a href="https://www.1000songs.co.uk/?artist=Gomez" class="artist-link" target="_blank">Gomez</a></p>
+                <p>But for me, it was the opening track to Bring It On,"Get Miles", which told me they were trying to do something that others just weren't doing at the time.</p>
+                <p><button class="blog-play-btn" data-artist="Gomez" data-track="Get Miles" onclick="playInline(this)" title="Play Preview"></button> <em>Get Miles</em> by <a href="https://www.1000songs.co.uk/?artist=Gomez" class="artist-link" target="_blank">Gomez</a></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Going_for_Gold">Going for Gold</a></li>
+                        <li><a href="https://www.musicradar.com/music-tech/hans-zimmers-plans-to-transform-former-bbc-maida-vale-studios-into-world-leading-music-centre-take-one-step-closer-to-completion">Music Radar Story</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Gomez_(band)">Gomez</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="walt-disco" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#walt-disco">Walt Disco</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">3 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('walt-disco', this)" title="Copy link to this article">ID: #walt-disco</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Up next is Walt Disco. Firstly, the name is great. Secondly, they sound great. Thirdly, they put on a great live show, and that's enough for me!</p>
+                <p>Walt Disco are an art-pop-alt-rock band based in Glasgow. They are releasing their new self-titled album, Walt Disco (as I said, great name!), on 2nd October 2026. Apparently, the band recorded the album live together as a full unit for the first time.</p>
+                <p>But I am looking back. I first came across them during lockdown as part of the SXSW British Council showcase. We had just seen Porridge Radio right before lockdown hit, and it was still a possibility that that group of bands were going to make it across the pond, but alas, no. But all that crop made up for lost time.</p>
+                <p>Anyway, when I heard Walt Disco's "Cut Your Hair," a standout track from their 2022 debut album Unlearning, it completely grabbed my attention. It’s tongue-in-cheek and perfectly blends glam-rock with new-wave. Its message rallies against passing judgment on people for how they look or who they are, and who can argue with that? Unless you
+<em>like</em> passing judgment on how people look or who they are. But that wouldn't make you very nice, would it?</p>
+                <p><button class="blog-play-btn" data-artist="Walt Disco" data-track="Cut Your Hair" onclick="playInline(this)" title="Play Preview"></button> <em>Cut Your Hair</em> by <a href="https://www.1000songs.co.uk/?artist=Walt+Disco" class="artist-link" target="_blank">Walt Disco</a></p>
+                <p>I hope the new album continues their excellent start, the single "Lies" precedes it, and I am sure they will be touring it.</p>
+                <p>But for 1000 Songs, "Cut Your Hair" is in at the moment. Let's see if there is another one by 2030!</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://www.waltdisco.com">Their site</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="electric-six" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#electric-six">Electric Six</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">2 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('electric-six', this)" title="Copy link to this article">ID: #electric-six</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Electric+Six" class="artist-tag" target="_blank" title="View Electric Six on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Electric Six
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>An actual couple of decades ago, I bore witness to the wonderful Electric Six. Dick Valentine, co-founder, frontman, and singular survivor of the band (formerly known as The Wildbunch), is perhaps the nicest man...ever? Post-show, he did not merely pose he conducted a bespoke wave for our camera (one with film in it!). Prior to this he had been executing choreography I had not seen the likes of before...or since!</p>
+                <p>The songs that have endured for me seem to be the ones I first heard when they achieved widespread recognition in 2003. Again, like a few of my other picks, they sit just on the right side of novelty, combining elements of rock, disco, garage rock, metal, new wave, and punk rock.</p>
+                <p>Dick just seems to be someone who loves being in a band who have now released 20 albums. The current lineup features incredible monikers like Johnny Na$hinal, Tait Nucleus?, Herb S. Flavourings, Dr. Jay, and Mr. Poison.</p>
+                <p>When I first heard "Danger! High Voltage" I could hardly believe Jack White got in board with absurdity. But he did. "Gay Bar" endures too, but a favourite at the time was "Dance Commander."</p>
+                <p><button class="blog-play-btn" data-artist="Electric Six" data-track="Dance Commander" onclick="playInline(this)" title="Play Preview"></button> <em>Dance Commander</em> by <a href="https://www.1000songs.co.uk/?artist=Electric+Six" class="artist-link" target="_blank">Electric Six</a></p>
+                <p>I have gone with the classic though remembering first time I heard it</p>
+                <p><button class="blog-play-btn" data-artist="Electric Six" data-track="Danger! High Voltage!" onclick="playInline(this)" title="Play Preview"></button> <em>Danger! High Voltage!</em> by <a href="https://www.1000songs.co.uk/?artist=Electric+Six" class="artist-link" target="_blank">Electric Six</a></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Electric_Six">Wikipedia: Electric Six</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="metronomy" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#metronomy">Metronomy</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">2 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('metronomy', this)" title="Copy link to this article">ID: #metronomy</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Back around 2008, I was at The Windmill in Brixton waiting to see The Brakes.</p>
+                <p>The support act wandered to the front, Joseph Mount. He had originally started Metronomy as a bedroom project down in Devon.</p>
+                <p>Now some would say a guy standing alone in a South London pub could look like a bloke desperately trying to steal the pub's Wi-Fi. Not for me. This is exactly where I want to be. The amplification of happiness in large venues is too much for me.</p>
+                <p>Anyway, Metronomy did eventually evolve into a brilliant live act featuring synchronized dance routines and wearing pound-shop push lights, which made a lot of people happy en-masse at the same time.</p>
+                <p>If we are talking about songs that capture a specific indie-electronic crossover moment, "The Bay" is a mandatory addition to the 1000 Songs archive. It's got that perfect, infectious rhythm that immediately locks you in.</p>
+                <p><button class="blog-play-btn" data-artist="Metronomy" data-track="The Bay" onclick="playInline(this)" title="Play Preview"></button> <em>The Bay</em> by <a href="https://www.1000songs.co.uk/?artist=Metronomy" class="artist-link" target="_blank">Metronomy</a></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Metronomy">Wikipedia: Metronomy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="the-fireballs" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#the-fireballs">The Fireballs</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">1 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('the-fireballs', this)" title="Copy link to this article">ID: #the-fireballs</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=The+Fireballs" class="artist-tag" target="_blank" title="View The Fireballs on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        The Fireballs
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>The Fireballs embody a bit of raw 1950s for me. Formed in Raton, New Mexico in 1957, they started as an instrumental group driven by George Tomsco's lead guitar.</p>
+                <p>They had some great early instrumental releases, most notably 1959's "Torquay".</p>
+                <p><button class="blog-play-btn" data-artist="The Fireballs" data-track="Torquay" onclick="playInline(this)" title="Play Preview"></button> <em>Torquay</em> by <a href="https://www.1000songs.co.uk/?artist=The+Fireballs" class="artist-link" target="_blank">The Fireballs</a></p>
+                <p>I also find it highly amusing that that Torquay is also a town in Devon.</p>
+                <p>A view...you say madam how about ...a bunch of New Mexico teenagers playing some twang!</p>
+                <p>Yes, absolutely nothing screams rock and roll rebellion quite like the English Riviera! (Although it didn't stop <a href="https://www.1000songs.co.uk/?artist=Metronomy" class="artist-link" target="_blank">Metronomy</a> literally calling an album that.)</p>
+                <p>Anyway...Norman Petty, who ran the Clovis studio where The Fireballs recorded, was also Buddy Holly’s producer. After Holly died, Petty obtained the rights to Holly's early acoustic demos and had The Fireballs overdub them throughout the 1960s. 1960s DIY remix culture at its finest!</p>
+                <p>Now, you might notice Buddy Holly himself isn't in the 1000 Songs archive. The Fireballs are. For me they kind of represent the pioneers who actually built a sound, and that is why they fully deserve this spot.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/The_Fireballs">The Fireballs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="the-greenhorns" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#the-greenhorns">The Greenhorns</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">1 August 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('the-greenhorns', this)" title="Copy link to this article">ID: #the-greenhorns</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=The+Greenhorns" class="artist-tag" target="_blank" title="View The Greenhorns on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        The Greenhorns
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>The date was 17 September 2002, a night "etched in my memory" as the debut gig of Razorlight (I googled it). I was at Dingwalls in Camden, watching them get introduced simply as "Johnny Borrell and the somethings." At London venues back then you kind of stood at least two meters back from the stage for the earlier bands (you'd basically paid good money to pretend you weren't interested). So I was "at the front".</p>
+                <p>However, this is about The Greenhornes. Hailing from Cincinnati, Ohio, the garage-rock outfit was heavily championed by Jack White (who would later go on to form The Dead Weather with their bassist, Jack Lawrence).</p>
+                <p>As The Greenhornes took the stage, the crowd grew, and suddenly I found myself shoulder-to-shoulder with Jack White himself, alongside his then-girlfriend, Marcie Bolen of The Von Bondies. Over by the side of the stage, Meg White stood quietly, facing out toward the crowd, soaking in the atmosphere.</p>
+                <p>Once The Greenhornes got going me and my illustrious company were just enjoying the gig. I was already heavily invested in their 2002 album Dual Mono, so to see it live was brilliant. It is well worth a listen if you have any affection for gritty, blues-rock revivalism. The first four tracks alone are great.</p>
+                <p>For today's pick, however, I have to go with their collaboration with British singer-songwriter Holly Golightly. The track later found wider fame on the soundtrack for Jim Jarmusch’s film Broken Flowers, giving it a well-deserved cultural longevity. Beyond being a brilliant tune, it serves as a perfect time capsule of an era when bands would seamlessly cross-pollinate, casually name-drop each other, and still retain an aura of untouchable mystique.</p>
+                <p>So, here it is:</p>
+                <p><button class="blog-play-btn" data-artist="The Greenhorns" data-track="There is an End" onclick="playInline(this)" title="Play Preview"></button> <em>There is an End</em> by <a href="https://www.1000songs.co.uk/?artist=The+Greenhorns" class="artist-link" target="_blank">The Greenhorns</a></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/The_Greenhornes">Wikipedia: The Greenhorns</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="massey-s-cross" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#massey-s-cross">Massey's Cross</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">31 July 2026</span>
+                    <span class="blog-category-tag">Discovery</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('massey-s-cross', this)" title="Copy link to this article">ID: #massey-s-cross</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>As part of the 1000 Songs project, I'm doing one review a week of new releases from emerging artists. Following up on my recent piece about the band untitled, this week I am spotlighting Massey's Cross.</p>
+                <p>Hailing from Calgary, Alberta, this duo brews a potent blend of classic rock and blues, laced with jazz and folk sensibilities. Their upcoming EP, "Unbroken After the Storm" (dropping this September), delivers absolutely everything you crave from a classic rock record: heavy grooves, brilliant guitar work, and deeply personal storytelling.</p>
+                <p>1000 Songs is all about tracks that immediately grab you by the collar, and their opener, "Donner Party and Sadly Forgotten," does exactly that. What I love most is how it captures a massive, Zeppelin-esque swagger while maintaining the gritty, authentic production I obsessed over during my early-2000s blues-rock phase. The energy channels the early days of The Black Keys, that raw, unpolished magic where a duo locks in and conjures an absolute wall of sound.</p>
+                <p>While the opener might be my personal favorite, you need to stick around for the whole ride. The EP naturally swells into the kind of epic, sprawling soundscapes found on the very best classic rock records, so look no further than the track "Never Odd or Even" for proof.</p>
+                <p>Whenever I listen to a new release, I want to understand the engine driving it. The band explained to me that, at its core, the EP explores the psychological terrain that follows a life-altering event. It’s not about the event itself, it’s about the aftermath, the trauma, the upheaval, the loss, the reinvention, and the brutal confrontation with the truth, events that, unfortunately, seem to happen more frequently as we get older. The main idea behind the record is that you emerge from the storm neither triumphant nor defeated, but simply changed.</p>
+                <p>The EP traces this slow, cinematic process of coming to terms with that change. Massey's Cross describes the project not just as a collection of songs, but as a single, dramatic gesture. After listening to it, I wholeheartedly agree.</p>
+                <p>A great addition to the 1000 Songs radar.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://epkbuilder.com/site/masseys-cross">Massey's Cross Website</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="lord-kitchener" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#lord-kitchener">Lord Kitchener</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">31 July 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('lord-kitchener', this)" title="Copy link to this article">ID: #lord-kitchener</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Lord+Kitchener" class="artist-tag" target="_blank" title="View Lord Kitchener on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Lord Kitchener
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>If we are talking about songs that capture a specific moment in time, which is basically the entire point of this 1000 Songs project, it is genuinely impossible to ignore Aldwyn Roberts, better known to the world as Lord Kitchener, or simply "Kitch."</p>
+                <p>He wasn't just a musician; he was the undisputed Grand Master of Calypso.</p>
+                <p>There are three key things you really need to understand about him to get why he's so vital to this archive.</p>
+                <p>Firstly, the man literally soundtracked history. In 1948, he bought a ticket on the HMT Empire Windrush. When the ship pulled into Tilbury Docks, bringing some of the first post-war West Indian immigrants to the UK, a reporter for Pathé News shoved a microphone in his face. Right there, on the spot, Kitchener sang a specially written song into the camera. No studio, no auto-tune, just a man and a heavy dose of optimism stepping into the freezing English breeze. That song was "London Is the Place for Me."</p>
+                <p>Secondly, he became the absolute voice of those first 5,000 West Indian migrants. Imagine leaving the Caribbean for a grey, post-war Britain. His music was a vital lifeline. It spoke of a home they desperately missed, but also documented the reality of the life they were trying to build.</p>
+                <p>Thirdly, he was a relentless innovator. He didn't just have a brief stint in the UK and fade away. He eventually moved back to Trinidad and completely dominated the calypso scene. We're talking winning the Road March competition 10 times. He ran his own calypso tent, nurtured a whole new generation of artists, and basically helped pioneer the transition into Soca music in the 70s.</p>
+                <p>And of course I put in...</p>
+                <p><button class="blog-play-btn" data-artist="Lord Kitchener" data-track="London is the Place for Me" onclick="playInline(this)" title="Play Preview"></button> <em>London is the Place for Me</em> by <a href="https://www.1000songs.co.uk/?artist=Lord+Kitchener" class="artist-link" target="_blank">Lord Kitchener</a></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://www.britishpathe.com/asset/84440/">Pathe News Clip</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="jane-s-addiction" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#jane-s-addiction">Jane's Addiction</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">29 July 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('jane-s-addiction', this)" title="Copy link to this article">ID: #jane-s-addiction</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Jane's+Addiction" class="artist-tag" target="_blank" title="View Jane's Addiction on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Jane's Addiction
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Many of the artists featured in this archive have appeared on the BBC TV show Later... with Jools Holland. Like everything, it has its critics, but I have very much enjoyed the show over the years, and most series it either uncovers or highlights a band I love.</p>
+                <p>I have been lucky enough to be at a couple of recordings of the show. The first of which was in 2003 and featured Jane's Addiction. (Also on the bill that night was John Cale, who performed a tremendous version of "Venus in Furs.")</p>
+                <p>Jane's Addiction are, of course, from Los Angeles, pioneering that distinct collision of heavy alternative rock, punk, and funk. On the show, they performed newly released "Just Because" alongside "Been Caught Stealing," a track released 13 years earlier. Now, 36 years after its original release, I have added it to the 1000 Songs archive.</p>
+                <p>I know others will say they prefer Three Days or Jane Says or specific deep cuts, and "Been Caught Stealing", especially coupled with its iconic music video, could be considered a bit of a novelty. But it grabs your attention immediately. It tells you they are a great band and are well worth listening to and exploring their back catalogue! So it's in...and.. live it was amazing!</p>
+                <p><button class="blog-play-btn" data-artist="Jane's Addiction" data-track="Been Caught Stealing" onclick="playInline(this)" title="Play Preview"></button> <em>Been Caught Stealing</em> by <a href="https://www.1000songs.co.uk/?artist=Jane's+Addiction" class="artist-link" target="_blank">Jane's Addiction</a></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/List_of_Later..._with_Jools_Holland_episodes">Jools Holland</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Jane's_Addiction">Jane's Addiction</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="moondog" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#moondog">Moondog</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">29 July 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('moondog', this)" title="Copy link to this article">ID: #moondog</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Moondog" class="artist-tag" target="_blank" title="View Moondog on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Moondog
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Moondog was one of the artists I only found out about after starting 1000 Songs.</p>
+                <p>Firstly, you can't go wrong with referencing the moon. Surely. It's like the cooler sun. While we are all projecting our happy vibes onto the sun, I swear it is instead looking at itself in the moon, thinking it's fronting Echo and the Bunnymen.</p>
+                <p>Anyway...</p>
+                <p>Moondog (born Louis Thomas Hardin) was a blind composer and musician who famously "lived" on the streets of New York dressed as a Viking! I think this is a bit of lore. But he wasn't just an eccentric street performer. He made brilliant, complex music, and not only that, he was the inventor of his own instruments, most notably a triangular percussion instrument called the "trimba."</p>
+                <p>Truly innovative, he was the inspiration for legendary minimalist artists such as Philip Glass and Steve Reich, who actually championed his work and viewed him as a peer.</p>
+                <p>I absolutely love the looping, repetitive phrases in his work, and the production quality is just unbelievable for the 1950s. It sounds so far ahead of its time.</p>
+                <p>For the archive, I have gone with "Theme", "Dog Trot", and "Oboe Round".</p>
+                <p><button class="blog-play-btn" data-artist="Moondog" data-track="Oboe Round" onclick="playInline(this)" title="Play Preview"></button> <em>Oboe Round</em> by <a href="https://www.1000songs.co.uk/?artist=Moondog" class="artist-link" target="_blank">Moondog</a></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Moondog">Wikipedia: Moondog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="big-joanie" data-tags="DIY Space">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#big-joanie">Big Joanie</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">28 July 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('big-joanie', this)" title="Copy link to this article">ID: #big-joanie</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Big+Joanie" class="artist-tag" target="_blank" title="View Big Joanie on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Big Joanie
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>I loved Ormside Street. It had this brilliant industrial estate aesthetic. The buildings literally went: church, church, food warehouse, property management company, church.... amazing creative space. That amazing creative space was DIY Space for London. It was the site of the first Decolonise Fest, which was put on by the next band on my list: Big Joanie. Big Joanie were formed by singer and guitarist Stephanie Phillips. She posted online looking for bandmates to start a Black feminist punk band, eventually joining forces with drummer Chardine Taylor-Stone and original bassist Kiera Coward-Deyell.</p>
+                <p>They actually played their very first set at First Timers. First Timers also happened to feature at one of my other favourite venues, Power Lunches. But that is another story for another day.</p>
+                <p>Their music is wonderfully stripped back,a brilliant mix of DIY post-punk and riot grrrl energy. I went with tracks like "Used to Be Friends" and "Fall Asleep".</p>
+                <p><button class="blog-play-btn" data-artist="Big Joanie" data-track="Used to be Friends" onclick="playInline(this)" title="Play Preview"></button> <em>Used to be Friends</em> by <a href="https://www.1000songs.co.uk/?artist=Big+Joanie" class="artist-link" target="_blank">Big Joanie</a></p>
+                <p>I didn't actually see Big Joanie back then, but I did see Charmpit and Witching Waves, who shared members (like Estella Adeyeri, who would later join Big Joanie on bass), as was the way in the scene at the time.</p>
+                <p>Stephanie Phillips also soon has a book out called We Were Here, which is all about reclaiming the history of Black artists in alternative music and rock 'n' roll. It's out in August, but can be pre-ordered.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Big_Joanie">Wikipedia: Big Joanie</a></li>
+                        <li><a href="https://www.faber.co.uk/product/9780571381104-we-were-here/">We Were Here</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="untitled" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#untitled">untitled</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">26 July 2026</span>
+                    <span class="blog-category-tag">Discovery</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('untitled', this)" title="Copy link to this article">ID: #untitled</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>My first thought. Brave. To call a band untitled. A search nightmare. But then they have 40 million streams so what do I know.</p>
+                <p>I recently came across the LA-based four-piece called... untitled ...on BBC news music fix.</p>
+                <p>Apparently towards the end of 2025, their debut single "Restless" basically became the fastest streaming rock song on the planet.</p>
+                <p><button class="blog-play-btn" data-artist="untitled" data-track="Restless" onclick="playInline(this)" title="Play Preview"></button> <em>Restless</em> by untitled.</p>
+                <p>They grew up listening to the grunge. Didn't a lot of us? So why can't I write "restless" or their 2026 release "Say It Again".</p>
+                <p>Like with brilliance in any field. I think they are just doing the basics really really well. They want to make garage rock. So they made rock in their garage. They are good at it. They get streamed. Easy?!</p>
+                <p>We're midway through the year so still a long way to go for the 10 again the end of the year. But I missed out last year so thinking they have got to be in contention this year.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://untitledrockband.com/">Untitled Website</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="man-woman-chainsaw" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#man-woman-chainsaw">Man/Woman/Chainsaw</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">26 July 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('man-woman-chainsaw', this)" title="Copy link to this article">ID: #man-woman-chainsaw</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Man%2FWoman%2FChainsaw" class="artist-tag" target="_blank" title="View Man/Woman/Chainsaw on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Man/Woman/Chainsaw
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>I caught Man/Woman/Chainsaw live at MOTH the end of 2023, and I am writing this just before the release of their debut album, Cannonball.</p>
+                <p>Man/Woman/Chainsaw are a six-piece art-punk collective from London., they have a highly collaborative, orchestral approach to their songwriting, allowing them to cram elements of avant-garde noise, punk, and classical instrumentation into a single track.</p>
+                <p>I hadn't seen a band before be able to create a pop song, absolutely destroy it, and then build it back up again within the same song. I think they are able to do this because they have grown up together and genuinely appreciate and play to all the distinct strengths within the band.</p>
+                <p>They are a truly brilliant live act. I think inevitably, the songs they have been putting out to promote the album lean slightly more into their pop tendencies. These tracks are brilliant in their own right, but to truly appreciate them, you need to see how they blend it all together on stage.</p>
+                <p>For the archive, I have gone with "The Boss" and "What Lucy Found There." When I first heard "What Lucy Found There," I was thinking they were leaning more toward a Black Country, New Road style. However, I think they are a more cohesive band and collectively know exactly where they want to go.</p>
+                <p><button class="blog-play-btn" data-artist="Man/Woman/Chainsaw" data-track="What Lucy Found There" onclick="playInline(this)" title="Play Preview"></button> <em>What Lucy Found There</em> by <a href="https://www.1000songs.co.uk/?artist=Man%2FWoman%2FChainsaw" class="artist-link" target="_blank">Man/Woman/Chainsaw</a></p>
+                <p>Their music is equally chaotic and reassuring. It's like you know your breaks have failed but it didn't matter because you were driving a marshmallow.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                    
+
+<li><a href="https://en.wikipedia.org/wiki/Man%2FWoman%2FChainsaw" target="_blank">Wikipedia: Man/Woman/Chainsaw</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="eurythmics" data-tags="Synths">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#eurythmics">Eurythmics</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">25 July 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('eurythmics', this)" title="Copy link to this article">ID: #eurythmics</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Eurythmics" class="artist-tag" target="_blank" title="View Eurythmics on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Eurythmics
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>So, I set an "Elbow rule" and how if a track is soundtracking a shopping trip, I won't put it on the list.</p>
+                <p>Well, it doesn't apply all the time.</p>
+                <p>I included "Sweet Dreams (Are Made of This)". Yes, it is played absolutely everywhere. Yes, it will follow me around for the rest of my life. But I don't get bored of it. It's catchy. I try and avoid it. It's in.</p>
+                <p><button class="blog-play-btn" data-artist="Eurythmics" data-track="Sweet Dreams" onclick="playInline(this)" title="Play Preview"></button> <em>Sweet Dreams</em> by <a href="https://www.1000songs.co.uk/?artist=Eurythmics" class="artist-link" target="_blank">Eurythmics</a></p>
+                <p>But the main reason I am writing about them today  is because of "Never Gonna Cry Again".</p>
+                <p><button class="blog-play-btn" data-artist="Eurythmics" data-track="Never Gonna Cry Again" onclick="playInline(this)" title="Play Preview"></button> <em>Never Gonna Cry Again</em> by <a href="https://www.1000songs.co.uk/?artist=Eurythmics" class="artist-link" target="_blank">Eurythmics</a></p>
+                <p>I caught this on a clip from The Old Grey Whistle Test. It was right at the beginning of their career, after The Tourists had split.</p>
+                <p>It's got a hypnotic, almost Krautrocky feel. Then Annie Lennox whips out a flute.</p>
+                <p>It's a slightly fragile tune from two people trying something different. Who kept trying to do things different.</p>
+                <p>So I reserve the right to break my own supermarket rules, especially if you have a flute. Flutes rule.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li></li>
+
+<li><a href="https://en.wikipedia.org/wiki/Eurythmics" target="_blank">Wikipedia: Eurythmics</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="why-you-won-t-find-elbow-here-except-well-here" data-tags="">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#why-you-won-t-find-elbow-here-except-well-here">Why You Won't Find Elbow Here - Except..Well...Here</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">25 July 2026</span>
+                    <span class="blog-category-tag">Methodology</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('why-you-won-t-find-elbow-here-except-well-here', this)" title="Copy link to this article">ID: #why-you-won-t-find-elbow-here-except-well-here</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>When I hear a piece of recorded music, I always think of the effort it must have taken to reach my ears. To think that someone, or a group of people, had to learn how to do it, record it, not be self-conscious about sharing it with other people, and those people then investing a degree of marketing and plugging. I think my main point is that there has to be a degree of skill involved in making it. The rest of the stuff probably has a set of mechanisms that can be enacted. So, taking the skill of making something away in the first place removes the quality control, which means my neighbour's music makes my ears bleed.</p>
+                <p>Elbow aren't that. So, Elbow. Elbow. Elbow. There is skill in what they do. Every week I used to go to Koko in Camden (formerly Camden Palace) to watch bands being filmed for a TV show (I can't remember what it was called), and to my great pleasure, there was Guy Garvey and the lads. To my greater pleasure, this was the first time I heard "One Day Like This" and "Grounds for Divorce". Both good songs. Both songs I liked. I thought to myself oh Elbow. I like them.</p>
+                <p>But I won't put them on the list.</p>
+                <p>I have heard the songs too many times.</p>
+                <p>The songs will follow me around.</p>
+                <p>Their lead singer has a radio show. He plays music I don't like.</p>
+                <p>They are also a bit calculated, formulaic, and predictable.</p>
+                <p>But I think, most importantly, it is because everyone else likes them and that is enough.</p>
+                <p>This list is about personal discovery, not public consensus. If a track is already soundtracking every stadium montage and weekend supermarket trip in the country, it certainly doesn't need my help. I want music that still feels like it belongs to me, rather than just serving as the polite background noise to everyone else's lives.</p>
+                <p>I think the moral of this story is that supermarkets need to play more Radiohead.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li>Not this time</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="drenge" data-tags="Drenge">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#drenge">Drenge</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">25 July 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('drenge', this)" title="Copy link to this article">ID: #drenge</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Drenge" class="artist-tag" target="_blank" title="View Drenge on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Drenge
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Drenge are one of the best live bands I have ever seen. They are two brothers, Eoin and Rory Loveless. Their name literally means "boys" in Danish. I saw them at an XFM gig that DJ John Kennedy put on at the Camden Barfly. They were on the same bill as Nadine Shah and Wolf Alice (who!?).</p>
+                <p>They were originally from Castleton, Derbyshire, and they play a kind of raw, grunge-infused garage rock.</p>
+                <p>They wrote brilliant tunes, and what made them so great was that they seemed like they genuinely didn't care. They always seemed to be trying to outdo each other, so those brilliant songs rattled along live seamlessly.</p>
+                <p>I saw them around the same time Tom Watson stepped down from the Labour Party's Shadow Cabinet and told the leader at the time, Ed Miliband, that they were a great band.</p>
+                <p>Watson widely received ridicule for this; however, I totally got it! I would have done the exact same had I been in his position, having watched Drenge!</p>
+                <p>Unfortunately, although this got them a lot of attention, it kind of took away the edge from them, and their stuff immediately after wasn't quite as good.</p>
+                <p>But they were a truly great band at their peak.</p>
+                <p>I have gone with a couple of their more friendly-on-the-ear, work-friendly songs for the archive, but that first self-titled album was a masterpiece.</p>
+                <p><button class="blog-play-btn" data-artist="Drenge" data-track="Bloodsports" onclick="playInline(this)" title="Play Preview"></button> <em>Bloodsports</em> by <a href="https://www.1000songs.co.uk/?artist=Drenge" class="artist-link" target="_blank">Drenge</a></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li></li>
+
+<li><a href="https://www.bbc.co.uk/news/newsbeat-23212932" target="_blank">BBC Article re Tom Watson</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="foals" data-tags="Foals">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#foals">Foals</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">25 July 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('foals', this)" title="Copy link to this article">ID: #foals</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Foals" class="artist-tag" target="_blank" title="View Foals on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Foals
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>On 1000songs.co.uk I am going to have well over 600 artists. So I have said to myself I will write the blogs as and when.</p>
+                <p>Today it is Foals. Foals are an indie rock band from Oxford, England.</p>
+                <p>They actually met at the same school that <a href="https://www.1000songs.co.uk/?artist=Radiohead" class="artist-link" target="_blank">Radiohead</a> met.</p>
+                <p>When I first came across them, I think it was on Later... with Jools Holland. I really didn't get them at first. However, once I started hearing "Cassius", and I think seeing it in terms of the video, it began to make a bit more sense.</p>
+                <p><button class="blog-play-btn" data-artist="Foals" data-track="Cassius" onclick="playInline(this)" title="Play Preview"></button> <em>Cassius</em> by <a href="https://www.1000songs.co.uk/?artist=Foals" class="artist-link" target="_blank">Foals</a></p>
+                <p>Then again, I saw them again on Jools Holland and felt they took it up a level later with "Mountain at My Gates" and the one that goes "When I see a man, I see a lion" ("What Went Down").</p>
+                <p><button class="blog-play-btn" data-artist="Foals" data-track="What Went Down" onclick="playInline(this)" title="Play Preview"></button> <em>What Went Down</em> by <a href="https://www.1000songs.co.uk/?artist=Foals" class="artist-link" target="_blank">Foals</a></p>
+                <p>I was lucky enough to see them live much later into their career at a big festival show. It ended with "Two Steps, Twice". Just a brilliant ending to a festival set.</p>
+                <p><button class="blog-play-btn" data-artist="Foals" data-track="Two Steps, Twice" onclick="playInline(this)" title="Play Preview"></button> <em>Two Steps, Twice</em> by <a href="https://www.1000songs.co.uk/?artist=Foals" class="artist-link" target="_blank">Foals</a></p>
+                <p>The reason why I am writing about them today is because every time I have to do a two-step verification for a website, I sing that song in my head. Makes it a much less frustrating process!</p>
+                <p>On 1000songs I also included "Spanish Sahara", again, I think with this I am more kind of trying to sketch my mood out at the time. I was losing connection with what I enjoyed about music around then. What I was hearing was not what I liked, and I couldn't particularly find what I liked, but Foals were there as a constant seeing me through.</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Foals_(band)" target="_blank">Wikipedia: Foals</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="howlin-wolf" data-tags="Howlin' Wolf">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#howlin-wolf">Howlin' Wolf</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">24 July 2026</span>
+                    <span class="blog-category-tag">Artist</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('howlin-wolf', this)" title="Copy link to this article">ID: #howlin-wolf</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=Howlin'+Wolf" class="artist-tag" target="_blank" title="View Howlin' Wolf on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Howlin' Wolf
+                    </a>
+                    <a href="https://www.1000songs.co.uk/?artist=Charley+Patton" class="artist-tag" target="_blank" title="View Charley Patton on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Charley Patton
+                    </a>
+                    <a href="https://www.1000songs.co.uk/?artist=Elvis+Presley" class="artist-tag" target="_blank" title="View Elvis Presley on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Elvis
+                    </a>
+                    <a href="https://www.1000songs.co.uk/?artist=Ike+Turner" class="artist-tag" target="_blank" title="View Ike Turner on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Ike Turner
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>So, these 1000 songs are mainly just what I have heard over the years. However, I think there was a natural starting point for my taste prior to embarking on this project. I think that starting point was Howlin' Wolf. Specifically, "Smokestack Lightnin'" <a href="https://www.1000songs.co.uk/?year=1956" class="sonic-link" target="_blank">1956</a>. </p>
+
+<p>When I had gone backwards through my 90s bands to the 60s, and then forward to the 70s, "Smokestack Lightnin'" was where it started.</p>
+                <p><button class="blog-play-btn" data-artist="Howlin' Wolf" data-track="Smokestack Lightnin'" onclick="playInline(this)" title="Play Preview"></button> <em>Smokestack Lightnin'</em> by <a href="https://www.1000songs.co.uk/?artist=Howlin'+Wolf" class="artist-link" target="_blank">Howlin' Wolf</a></p>
+                <p>Now... little did I know that Mr. Wolf, born Chester Arthur Burnett, cut his teeth with a certain <a href="https://www.1000songs.co.uk/?artist=Charley+Patton" class="artist-link" target="_blank">Charley Patton</a> and was discovered by Ike Turner (yes, Tina's husband, who turned out not to be such a nice man).</p>
+                <p>Howlin' Wolf was also came to the attention of Sam Phillips, who then went on to launch Elvis's career.</p>
+                <p>He was a pioneer of turning Delta blues into Chicago blues, of course, with the help of electrification. Add to that the fact that he stood at an imposing 6 foot 3 and weighed close to 300 pounds; his massive physical presence perfectly matched his booming, gravelly voice.</p>
+                <p>But I am picking these on sound. And "Wang Dang Doodle" is right up there, and of course,</p>
+                <p><button class="blog-play-btn" data-artist="Howlin' Wolf" data-track="Wang Dang Doodle" onclick="playInline(this)" title="Play Preview"></button> <em>Wang Dang Doodle</em> by <a href="https://www.1000songs.co.uk/?artist=Howlin'+Wolf" class="artist-link" target="_blank">Howlin' Wolf</a></p>
+                <p>I could not include Howlin' Wolf without including something from 1951, when the records started: "Crying at Daybreak".</p>
+                
+                <p>To wrap it all off, I included "All Night Boogie" from 1953.</p>
+                <p><button class="blog-play-btn" data-artist="Howlin' Wolf" data-track="All Night Boogie" onclick="playInline(this)" title="Play Preview"></button> <em>All Night Boogie</em> by <a href="https://www.1000songs.co.uk/?artist=Howlin'+Wolf" class="artist-link" target="_blank">Howlin' Wolf</a></p>
+                <p>But yes, Howlin' Wolf is someone who I'll keep returning to while I keep stitching all these together!</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Howlin'_Wolf" target="_blank">Wikipedia: Howlin' Wolf</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="time-is-songs-songs-are-time" data-tags="Time">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#time-is-songs-songs-are-time">Time is songs. Songs are time</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">22 July 2026</span>
+                    <span class="blog-category-tag">Deep Dive</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('time-is-songs-songs-are-time', this)" title="Copy link to this article">ID: #time-is-songs-songs-are-time</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>The great Sydney Bertram Carter poetically wrote, </p><blockquote>"Time is a thing like a bird on a wing, coming or going away."</blockquote><p></p>
+                <p>I have gone with: time = songs.</p>
+                <p>Time has always been measured in different ways, whether it was the ancient Egyptians who measured time by tracking the stars and inventing the first sundials, or the French revolutionaries who completely changed the calendar and tried to force everyone to use ten-hour decimal clocks.</p>
+                <p>Speaking of clocks, we have Chris Martin's great-great-grandfather, William Willett, who decided to mess up our sleep patterns forever more with daylight saving time. (Which is ironic, considering how many hours of sleep we've all lost just trying to figure out how to change the time on the oven.) And yes, no Coldplay in my thousand, by the way, but I did like it when they used to completely rip Radiohead off—they were good then.</p>
+                <p><button class="blog-play-btn" data-artist="Coldplay" data-track="Bigger Stronger" onclick="playInline(this)" title="Play Preview"></button> <em>Bigger Stronger</em> by <a href="https://www.1000songs.co.uk/?artist=Coldplay" class="artist-link" target="_blank">Coldplay</a></p>
+                <p>(I actually bought this . Then sold it. Last time I checked it was worth a bit!)</p>
+                <p>But yes, I have gone with the idea that time is 10 songs a year. If you are 1, you are 10 songs; if you are 10, you are 100 songs. It's a nice way of recording the years. A bit like an audio journal. You could think of those songs as a way of conjuring up a special memory of a special time, or you might just want to spin around. I think spinning around can happen at all ages. You might need a padded room, but it's possible.</p>
+                <p>I don't like genrefying things for this reason, because like all art or communication, you have what is spoken and what is received. Art is created, and art is interpreted.</p>
+                <p>So the feeling you may associate with a song is potentially completely separate from the intention and inspiration of the original artist.</p>
+                <p>So this is not about an algorithm feeding you something because a bunch of artists were inspired by a similar set of ideas or used a similar set of technology.</p>
+                <p>This is about how you or I feel and experience music, and therefore those 10 songs can mean anything. The fact that they are collected together and selected by an individual is what makes that collection meaningful to them. (Even if it just is Monkey Magic)</p>
+                <p><button class="blog-play-btn" data-artist="Godiego" data-track="Monkey Magic" onclick="playInline(this)" title="Play Preview"></button> <em>Monkey Magic</em> by <a href="https://www.1000songs.co.uk/?artist=Godiego" class="artist-link" target="_blank">Godiego</a></p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/William_Willett" target="_blank">Wikipedia: William Willett</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE -->
+        <article class="post-article" id="so-i-ve-decided-to-take-my-work-back-underground-to-stop-it-falling-into-the-wrong-hands" data-tags="The Prodigy">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#so-i-ve-decided-to-take-my-work-back-underground-to-stop-it-falling-into-the-wrong-hands">So, I've Decided To Take My Work Back Underground To Stop It Falling Into The Wrong Hands</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">18, July, 2026</span>
+                    <span class="blog-category-tag">Deep Dive</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('so-i-ve-decided-to-take-my-work-back-underground-to-stop-it-falling-into-the-wrong-hands', this)" title="Copy link to this article">ID: #so-i-ve-decided-to-take-my-work-back-underground-to-stop-it-falling-into-the-wrong-hands</button>
+                </div>
+                <!-- Artist Mentions Strip -->
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=The+Prodigy" class="artist-tag" target="_blank" title="View The Prodigy on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        The Prodigy
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <button class="blog-play-btn" data-artist="The Prodigy" data-track="Intro" onclick="playInline(this)" title="Play Preview"></button> <em>Intro</em> by <a href="https://www.1000songs.co.uk/?artist=The+Prodigy" class="artist-link" target="_blank">The Prodigy</a>
+
+<blockquote>"So, I've decided to take my work back underground to stop it falling into the wrong hands"</blockquote>
+
+Actually quite the opposite. I am making it very publicly available. The idea is to try and not have everything behind logins and paywalls. By making a list and being to just able to download that list easily feels like you are in control. Like sharing a mixtape. Without having to sign your life away to a subscription!
+
+<h3>The Prodigy</h3>
+
+While we're on the subject. Weren't the Prodigy great. I have only included one track in my list but they were a formative band. I think music for the jilted generation has to be my favourite album. Fat of the land then came along and was much more polished and chart hit ensued. But gilted generation felt like something genuinely new and exciting. This is again something I want to try and get this list to represent the songs have to excite someone somewhere at sometime! <p>Something...dangerous?!</p>
+
+<p><button class="blog-play-btn" data-artist="The Prodigy" data-track="Mindfields" onclick="playInline(this)" title="Play Preview"></button> <em>Mindfields</em> by <a href="https://www.1000songs.co.uk/?artist=The+Prodigy" class="artist-link" target="_blank">The Prodigy</a></p>
+
+<p>Was the rest of <a href="https://www.1000songs.co.uk/?year=1997" class="sonic-link" target="_blank">1997</a> this dangerous?</p>
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Music_for_the_Jilted_Generation" target="_blank">Music For The Jilted Generation</a> on Wikipedia - what an album</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        
+        <!-- ARTICLE 1: Finished Philosophy Article -->
+        <article class="post-article" id="philosophy-of-ten" data-tags="methodology philosophy curation constraints">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#philosophy-of-ten">Ten Songs: Why things actually matter</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">July 13, 2026</span>
+                    <span class="blog-category-tag">Methodology</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('philosophy-of-ten', this)" title="Copy link to this article">ID: #philosophy-of-ten</button>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>Ten songs is a harsh constraint, but a necessary one. Depending on the year you're looking at, hitting that exact number was either easy or a brutal exercise in "kill your darlings." Some years I genuinely struggled to find ten tracks, while others there were far too many! </p>
+                
+                <p>The mid-to-late 1960s were particularly difficult for me to narrow down. This was the music I listened to growing up. Furthermore, it's the specific era that a lot of the bands I subsequently listened to during the 1990s were referencing, sampling, and pulling inspiration from. Whittling a momentous year like 1966 down was just rude. anyway!</p>
+                
+                <p>But yeah, without the limit, an archive just becomes a playlist. It becomes passive. Forcing a ten-song cap means you have to make hard decisions about the narrative of that specific year. I have also tried to mold the 1000 songs as a narrative as a whole, so adding blue boy in 1997 looks back to Marlena Shaw's "Woman of the Ghetto" and that's on purpose!</p>
+                
+                <h3>10 Songs a Year</h3>
+                <p>So yeah, I am trying to create an interesting, cohesive audio story spanning exactly 100 years, from 1930 to 2030. With heaters. That are a bit catchy.</p>
+                <ul>
+                    <li><strong>Resonance:</strong> Does it actually  mean something. Does it bring to mind physical spaces, late-night radios, and specific human context over simple passive background listening?</li>
+                    <li><strong>Me:</strong> Is the catalog a true reflection of personal, ear-crafted taste rather than an algorithmically optimized collection?</li>
+                </ul>
+                
+                
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://www.1000songs.co.uk/about" target="_blank">1000 Songs Methodology</a> - The core founding principles of our archive.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE 2: New Lineage/1996 Article -->
+        <article class="post-article" id="anchor-years-1996" data-tags="1996 methodology lineage history sampling">
+            <header class="post-header">
+                <h2 class="post-title"><a href="#anchor-years-1996">Anchor Years: Why 1996 is the Center of the Archive</a></h2>
+                <div class="post-meta-strip">
+                    <span class="blog-date">July 17, 2026</span>
+                    <span class="blog-category-tag">Methodology</span>
+                    <span style="font-size: 0.8rem; color: var(--subtle); font-weight: bold;">By Josh</span>
+                    <button class="article-id-badge" onclick="copyArticleLink('anchor-years-1996', this)" title="Copy link to this article">ID: #anchor-years-1996</button>
+                </div>
+                
+                <div class="artist-mentions-strip">
+                    <span class="artist-mentions-label">Featured Artists:</span>
+                    <a href="https://www.1000songs.co.uk/?artist=White+Town" class="artist-tag" target="_blank" title="View White Town on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        White Town
+                    </a>
+                    <a href="https://www.1000songs.co.uk/?artist=Lew+Stone" class="artist-tag" target="_blank" title="View Lew Stone on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Lew Stone
+                    </a>
+                    <a href="https://www.1000songs.co.uk/?artist=Bronski+Beat" class="artist-tag" target="_blank" title="View Bronski Beat on 1000 Songs">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        Bronski Beat
+                    </a>
+                </div>
+            </header>
+            <div class="post-body">
+                <p>When building a 100-year archive, you need a place to stand. A vantage point. It came about by trying to truly reconnect with music, searching for historical connection points. This is why I often suggest people start their journey through the archive in <a href="https://www.1000songs.co.uk/?year=1996" class="sonic-link" target="_blank">1996</a>.</p>
+                
+                <p>1996 was a pivotal year for me personally, but more importantly, it serves as the perfect starting point for the entire project. Standing in the mid-90s allows you to look deep into the past, while simultaneously casting an eye forward into the digital future. Well, a little forward, anyway. Then we stop. We stop at 2030 because this archive is not an open-ended projection of the future; it is about encapsulating a highly specific, relatively short era: 1930 to 2030.</p>
+
+            
+                <p>The anchor year is 1996. Consider how <button class="blog-play-btn" data-artist="White Town" data-track="Your Woman" onclick="playInline(this)" title="Play Preview"></button> <em>Your Woman</em> by <a href="https://www.1000songs.co.uk/?artist=White+Town" class="artist-link" target="_blank">White Town</a> sounds so intrinsically of its era—a bedroom-produced electronic hit—yet it relies entirely on a muffled, crackling trumpet sample.</p>
+                
+                <p>That sample is ripped straight from the <a href="https://www.1000songs.co.uk/?year=1932" class="sonic-link" target="_blank">1932</a> track <button class="blog-play-btn" data-artist="Lew Stone" data-track="My Woman" onclick="playInline(this)" title="Play Preview"></button> <em>My Woman</em> by <a href="https://www.1000songs.co.uk/?artist=Lew+Stone" class="artist-link" target="_blank">Lew Stone</a> (featuring Al Bowlly). By placing these two tracks in the same overarching archive, suddenly 1996 and 1932 are inextricably linked. The archive isn't a straight, boring chronological line; it's a web of influences, much like how Bronski Beat laid the groundwork for the synth-pop that would follow them.</p>
+                
+                <p>This is why understanding the lineage matters. A hundred years is enough time to watch these cultural echoes bounce back and forth.</p>
+                
+                <div class="article-references">
+                    <h4>References &amp; Further Reading</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/1996_in_British_music" target="_blank">1996 in British Music</a> on Wikipedia - Details of the wider scene surrounding this pivotal year.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</main>
+
+<footer style="margin-top: 80px; padding: 40px 0; text-align: center; border-top: 1px solid var(--line);">
+    <a href="https://www.1000songs.co.uk/" style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">
+        1000 SONGS MAIN ARCHIVE
+    </a>
+    <span style="color: var(--subtle); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.05em; opacity: 0.5;">
+        <br> ©2026 Josh Farnham
+    </span>
+</footer>
+
+<script>
+    let currentAudio = null;
+    let currentButton = null;
+
+    // Vector Graphics markup definitions for inline state mapping
+    const PLAY_SVG = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
+    const PAUSE_SVG = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+    const SPIN_SVG = `<svg viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="5"><circle cx="25" cy="25" r="20" stroke-dasharray="80 150" stroke-dashoffset="0"></circle></svg>`;
+
+    window.onload = function() {
+        buildTitlesView();
+        initializePlayIcons();
+    }
+
+    // Instantiates initial SVG states for completely flush inline audio controls
+    function initializePlayIcons() {
+        const buttons = document.querySelectorAll('.blog-play-btn');
+        buttons.forEach(btn => {
+            btn.innerHTML = PLAY_SVG;
+        });
+    }
+
+    function showView(viewId) {
+        const feed = document.getElementById('posts-feed');
+        const hero = document.getElementById('hero-banner');
+        const titlesView = document.getElementById('titles-view');
+        const forumView = document.getElementById('forum-view');
+        const commentsView = document.getElementById('comments-view');
+
+        // Reset display states
+        feed.classList.add('hidden');
+        hero.classList.add('hidden');
+        titlesView.classList.remove('active');
+        forumView.classList.remove('active');
+        commentsView.classList.remove('active');
+
+        // Toggle selected view
+        if (viewId === 'feed') {
+            feed.classList.remove('hidden');
+            hero.classList.remove('hidden');
+        } else if (viewId === 'titles') {
+            titlesView.classList.add('active');
+        } else if (viewId === 'forum') {
+            forumView.classList.add('active');
+        } else if (viewId === 'comments') {
+            commentsView.classList.add('active');
+        }
+
+        window.scrollTo({top: 0, behavior: 'smooth'});
+
+        // Close navigation menu if on mobile
+        const actions = document.getElementById('nav-actions');
+        if (actions.classList.contains('open')) {
+            toggleNav();
+        }
+    }
+
+    function resetToFeed() {
+        showView('feed');
+    }
+
+    function toggleSearch() {
+        const overlay = document.getElementById('search-overlay');
+        const input = document.getElementById('global-search');
+        overlay.classList.toggle('open');
+        if (overlay.classList.contains('open')) {
+            input.focus();
+        } else {
+            input.value = '';
+            handleSearch('');
+        }
+    }
+
+    function handleSearch(q) {
+        const articles = document.querySelectorAll('.post-article');
+        const query = q.toLowerCase();
+
+        // Make sure we are in the feed view when typing to search
+        showView('feed');
+
+        articles.forEach(article => {
+            const text = article.textContent.toLowerCase();
+            const tags = article.getAttribute('data-tags') || '';
+            if (text.includes(query) || tags.includes(query)) {
+                article.style.display = 'block';
+            } else {
+                article.style.display = 'none';
+            }
+        });
+    }
+
+    async function playInline(el) {
+        const artist = el.getAttribute('data-artist');
+        const track = el.getAttribute('data-track');
+
+        // Check if user is clicking on currently active song element
+        if (currentAudio && currentButton === el) {
+            if (!currentAudio.paused) {
+                currentAudio.pause();
+                el.classList.remove('playing');
+                el.innerHTML = PLAY_SVG;
+            } else {
+                currentAudio.play();
+                el.classList.add('playing');
+                el.innerHTML = PAUSE_SVG;
+            }
+            return;
+        }
+
+        stopPreview();
+
+        el.classList.add('loading');
+        el.innerHTML = SPIN_SVG;
+        currentButton = el;
+
+        const query = encodeURIComponent(`${artist} ${track}`);
+        try {
+            const response = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
+            const data = await response.json();
+
+            // Safeguard against layout state collisions
+            if (currentButton !== el) return;
+
+            el.classList.remove('loading');
+
+            if (data.results && data.results.length > 0 && data.results[0].previewUrl) {
+                currentAudio = new Audio(data.results[0].previewUrl);
+                currentAudio.play();
+                el.classList.add('playing');
+                el.innerHTML = PAUSE_SVG;
+
+                currentAudio.onended = () => {
+                    el.classList.remove('playing');
+                    el.innerHTML = PLAY_SVG;
+                    currentAudio = null;
+                    currentButton = null;
+                };
+            } else {
+                el.style.backgroundColor = "rgba(239, 68, 68, 0.2)";
+                el.style.borderColor = "rgb(239, 68, 68)";
+                el.style.color = "rgb(239, 68, 68)";
+                el.innerHTML = PLAY_SVG;
+                setTimeout(() => {
+                    el.style.backgroundColor = "";
+                    el.style.borderColor = "";
+                    el.style.color = "";
+                }, 1000);
+                currentButton = null;
+            }
+        } catch (error) {
+            console.error("iTunes lookup error: ", error);
+            el.classList.remove('loading');
+            el.innerHTML = PLAY_SVG;
+            currentButton = null;
+        }
+    }
+
+    function stopPreview() {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio = null;
+        }
+        if (currentButton) {
+            currentButton.classList.remove('playing', 'loading');
+            currentButton.innerHTML = PLAY_SVG;
+            currentButton = null;
+        }
+    }
+
+    function toggleTheme() {
+        const current = document.body.getAttribute('data-theme');
+        const newTheme = current === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+
+        // Update Giscus theme configuration natively inside active thread contexts
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (iframe) {
+            iframe.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: newTheme === 'dark' ? 'noborder_dark' : 'noborder_light' } } },
+                'https://giscus.app'
+            );
+        }
+    }
+
+    function toggleNav() {
+        const actions = document.getElementById('nav-actions');
+        const toggleBtn = document.querySelector('.mobile-menu-toggle');
+        
+        actions.classList.toggle('open');
+        
+        if (actions.classList.contains('open')) {
+            toggleBtn.innerText = 'CLOSE';
+        } else {
+            toggleBtn.innerText = 'MENU';
+        }
+    }
+
+    function toggleTitlesView() {
+        const titlesView = document.getElementById('titles-view');
+        if (titlesView.classList.contains('active')) {
+            showView('feed');
+        } else {
+            showView('titles');
+        }
+    }
+
+    function buildTitlesView() {
+        const articles = document.querySelectorAll('.post-article');
+        const titlesList = document.getElementById('titles-list');
+        titlesList.innerHTML = '';
+
+        articles.forEach(article => {
+            const titleEl = article.querySelector('.post-title a');
+            const dateEl = article.querySelector('.blog-date');
+            const categoryEl = article.querySelector('.blog-category-tag');
+            const id = article.id;
+
+            if (titleEl && dateEl) {
+                const item = document.createElement('a');
+                item.href = `#${id}`;
+                item.className = 'title-list-item';
+                item.onclick = (e) => {
+                    e.preventDefault();
+                    showView('feed');
+                    setTimeout(() => {
+                        const target = document.getElementById(id);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 50);
+                };
+
+                item.innerHTML = `
+                    <h3>${titleEl.textContent}</h3>
+                    <div style="font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; color: var(--subtle); display: flex; gap: 1rem;">
+                        <span>${dateEl.textContent}</span>
+                        <span>•</span>
+                        <span>${categoryEl ? categoryEl.textContent : 'Article'}</span>
+                    </div>
+                `;
+                titlesList.appendChild(item);
+            }
+        });
+    }
+
+    // Automatically close active mobile menus upon navigation selection
+    document.getElementById('nav-actions').addEventListener('click', function(e) {
+        if (e.target.tagName === 'BUTTON' && this.classList.contains('open') && e.target.innerText !== 'Theme') {
+            toggleNav(); 
+        }
+    });
+
+    function copyArticleLink(id, btn) {
+        const url = window.location.origin + window.location.pathname + '#' + id;
+        
+        const tempInput = document.createElement("input");
+        tempInput.value = url;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "COPIED!";
+        btn.style.backgroundColor = "var(--accent)";
+        btn.style.color = "#ffffff";
+        
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.backgroundColor = "";
+            btn.style.color = "";
+        }, 2000);
+    }
+</script>
+
+<script src="https://giscus.app/client.js" data-repo="farnhamancestry-ux/1000songs" data-repo-id="R_kgDORY9bFQ" data-category="General" data-category-id="DIC_kwDORY9bFc4C9sFa" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="noborder_light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+
+
+
+</body></html>
