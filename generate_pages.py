@@ -1,28 +1,41 @@
 import os
-import re
+from bs4 import BeautifulSoup
 
 # Read master blog file
 with open("blog.html", "r", encoding="utf-8") as f:
-    content = f.read()
+    soup = BeautifulSoup(f, "html.parser")
 
-# Split entries by article or ID tags (adjust regex to match your HTML structure)
-articles = re.findall(
-    r'<article id="(.*?)">(.*?)</article>', content, re.DOTALL
-)
+# Isolate the style and header tags
+style_element = soup.find("style")
+header_element = soup.find("header")
+
+# Convert to strings, defaulting to empty strings if missing
+style_html = str(style_element) if style_element else ""
+header_html = str(header_element) if header_element else ""
 
 os.makedirs("journal", exist_ok=True)
 
-# Generate individual HTML files
-for art_id, art_content in articles:
+# Find all <article> tags that have an 'id' attribute
+for article in soup.find_all("article", id=True):
+    art_id = article.get("id")
+    
+    # Extract the inner HTML of the article
+    art_content = article.decode_contents()
+
     html = f"""<!DOCTYPE html>
 <html>
 <head>
     <title>{art_id.replace('-', ' ').title()} - 1000 Songs</title>
+    {style_html}
 </head>
 <body>
-    <article>{art_content}</article>
+    {header_html}
+    <article>
+        {art_content}
+    </article>
 </body>
 </html>"""
 
+    # Generate individual HTML files
     with open(f"journal/{art_id}.html", "w", encoding="utf-8") as f:
         f.write(html)
