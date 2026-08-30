@@ -19,8 +19,8 @@ os.makedirs("journal", exist_ok=True)
 for article in soup.find_all("article", id=True):
     art_id = article.get("id")
     
-    # Extract the inner HTML of the article
-    art_content = article.decode_contents()
+    # Extract the ENTIRE article tag to preserve classes and IDs
+    art_html = str(article)
 
     html = f"""<!DOCTYPE html>
 <html>
@@ -30,9 +30,7 @@ for article in soup.find_all("article", id=True):
 </head>
 <body>
     {header_html}
-    <article>
-        {art_content}
-    </article>
+    {art_html}
 </body>
 </html>"""
 
