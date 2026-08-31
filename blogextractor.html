@@ -246,8 +246,11 @@
                 const badge = clone.querySelector('.article-id-badge');
                 if (badge) badge.remove();
                 // Fix internal anchor links
-                const titleLink = clone.querySelector('.post-title a');
-                if (titleLink) titleLink.href = canonicalURL;
+               // Remove hyperlink from the title
+const titleLink = clone.querySelector('.post-title a');
+if (titleLink) {
+    titleLink.outerHTML = titleLink.innerHTML;
+}
 
                 // Build Schema.org
                 const schemaGraph = {
