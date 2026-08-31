@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Sitemap Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        /* Custom scrollbar for textareas */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        
+        /* Drag and drop active state */
+        .dragover {
+            border-color: #3b82f6 !important;
+            background-color: #eff6ff !important;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8">
+
+    <div class="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+        <div class="bg-blue-600 px-8 py-6 text-white flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                    Blog Sitemap Generator
+                </h1>
+                <p class="text-blue-100 text-sm mt-1">Upload your blog HTML to automatically extract posts and generate a sitemap.xml</p>
+            </div>
+        </div>
+
+        <div class="p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                
+                <!-- Settings Panel -->
+                <div class="space-y-5">
+                    <h2 class="text-lg font-semibold text-slate-700 border-b pb-2">Configuration</h2>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-600 mb-1">Base Blog URL / Path</label>
+                        <input type="text" id="baseUrl" value="https://www.1000songs.co.uk/blog" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm">
+                        <p class="text-xs text-slate-400 mt-1">The base path before the post ID (e.g., https://www.1000songs.co.uk/blog).</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-600 mb-1">Post Link Format</label>
+                        <select id="linkFormat" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm bg-white">
+                            <option value="/{id}.html" selected>Individual Pages (/{id}.html)</option>
+                            <option value=".html?post={id}">Query Parameter (.html?post={id})</option>
+                            <option value=".html#{id}">Fragment Anchor (.html#{id})</option>
+                        </select>
+                        <p class="text-xs text-slate-400 mt-1">How individual posts are appended to the base URL.</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-600 mb-1">Default Priority</label>
+                        <input type="number" id="priority" value="0.70" step="0.1" min="0.1" max="1.0" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm">
+                    </div>
+                </div>
+
+                <!-- File Upload Panel -->
+                <div class="space-y-5">
+                    <h2 class="text-lg font-semibold text-slate-700 border-b pb-2">Upload Blog HTML</h2>
+                    
+                    <div id="dropzone" class="w-full h-40 border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center bg-slate-50 cursor-pointer transition-all hover:bg-slate-100 hover:border-blue-400">
+                        <svg class="w-10 h-10 text-slate-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                        <p class="text-sm text-slate-600 font-medium text-center px-4">Click to select <code class="bg-slate-200 px-1 rounded text-blue-600">blog.html</code><br>or drag and drop it here.</p>
+                        <input type="file" id="fileInput" accept=".html,.htm" class="hidden">
+                    </div>
+                    
+                    <div id="statusMessage" class="hidden rounded-lg p-3 text-sm font-medium"></div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-lg font-semibold text-slate-700 border-b pb-2 mb-4">Base Sitemap (Static URLs)</h2>
+                <p class="text-xs text-slate-500 mb-2">These URLs will be included before your dynamically extracted blog posts. Feel free to edit.</p>
+                <textarea id="baseSitemap" class="w-full h-40 p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none font-mono text-xs text-slate-600 resize-y whitespace-pre">&lt;url&gt;
+  &lt;loc&gt;https://www.1000songs.co.uk/&lt;/loc&gt;
+  &lt;lastmod&gt;2026-03-19T22:41:36+00:00&lt;/lastmod&gt;
+  &lt;priority&gt;1.00&lt;/priority&gt;
+&lt;/url&gt;
+&lt;url&gt;
+  &lt;loc&gt;https://www.1000songs.co.uk/blog.html&lt;/loc&gt;
+  &lt;lastmod&gt;2026-03-19T22:41:36+00:00&lt;/lastmod&gt;
+  &lt;priority&gt;1.00&lt;/priority&gt;
+&lt;/url&gt;
+&lt;url&gt;
+  &lt;loc&gt;https://www.1000songs.co.uk/all-songs.html&lt;/loc&gt;
+  &lt;lastmod&gt;2026-03-19T22:41:37+00:00&lt;/lastmod&gt;
+  &lt;priority&gt;0.80&lt;/priority&gt;
+&lt;/url&gt;</textarea>
+            </div>
+
+            <div>
+                <div class="flex justify-between items-end border-b pb-2 mb-4">
+                    <h2 class="text-lg font-semibold text-slate-700">Generated sitemap.xml</h2>
+                    <div class="flex gap-2">
+                        <button id="copyBtn" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 disabled:opacity-50" disabled>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            Copy XML
+                        </button>
+                        <button id="downloadBtn" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-1 disabled:opacity-50" disabled>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                
+                <textarea id="outputXml" class="w-full h-80 p-4 border border-slate-300 rounded-lg bg-slate-50 focus:ring-2 focus:ring-blue-500 outline-none font-mono text-sm text-slate-800 resize-y whitespace-pre" placeholder="Your generated sitemap will appear here..." readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Box Overlay -->
+    <div id="messageBox" class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-800 text-white px-6 py-3 rounded-lg shadow-xl font-medium text-sm z-50">
+        Message goes here
+    </div>
+
+    <script>
+        // DOM Elements
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+        const baseUrlInput = document.getElementById('baseUrl');
+        const linkFormatSelect = document.getElementById('linkFormat');
+        const priorityInput = document.getElementById('priority');
+        const baseSitemapInput = document.getElementById('baseSitemap');
+        const outputXml = document.getElementById('outputXml');
+        const statusMessage = document.getElementById('statusMessage');
+        const copyBtn = document.getElementById('copyBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const messageBox = document.getElementById('messageBox');
+
+        // Month mapping for parsing dates like "29 August 2026"
+        const monthMap = {
+            "January": "01", "February": "02", "March": "03", "April": "04",
+            "May": "05", "June": "06", "July": "07", "August": "08",
+            "September": "09", "October": "10", "November": "11", "December": "12"
+        };
+
+        // UI Feedback Helpers
+        function showMessage(text, isError = false) {
+            statusMessage.textContent = text;
+            statusMessage.className = `mt-3 p-3 text-sm font-medium rounded-lg ${isError ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-green-50 text-green-700 border border-green-200'}`;
+            statusMessage.classList.remove('hidden');
+        }
+
+        function showToast(text) {
+            messageBox.textContent = text;
+            messageBox.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                messageBox.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Parse Date String into W3C Format (YYYY-MM-DDThh:mm:ssTZD)
+        function formatW3CDate(dateString) {
+            const defaultDate = new Date().toISOString().split('T')[0] + 'T00:00:00+00:00';
+            if (!dateString) return defaultDate;
+
+            try {
+                // Try to parse "29 August 2026"
+                const parts = dateString.trim().split(" ");
+                if (parts.length >= 3) {
+                    const day = parts[0].padStart(2, '0');
+                    const month = monthMap[parts[1]] || "01";
+                    const year = parts[2];
+                    return `${year}-${month}-${day}T00:00:00+00:00`;
+                }
+                
+                // Fallback to JS Date parser if format is different
+                const d = new Date(dateString);
+                if (!isNaN(d.getTime())) {
+                    return d.toISOString().split('T')[0] + 'T00:00:00+00:00';
+                }
+                return defaultDate;
+            } catch (e) {
+                return defaultDate;
+            }
+        }
+
+        function processHTML(htmlContent) {
+            try {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlContent, 'text/html');
+                
+                // Find all articles with class post-article
+                const articles = doc.querySelectorAll('article.post-article');
+                
+                if (articles.length === 0) {
+                    showMessage("No posts found. Make sure articles have the class 'post-article' and an 'id'.", true);
+                    return;
+                }
+
+                // Get dynamic template settings
+                const baseUrl = baseUrlInput.value.replace(/\/$/, ""); // Remove trailing slash if any
+                const linkFormatTemplate = linkFormatSelect.value;
+                const priority = priorityInput.value;
+                const baseSitemap = baseSitemapInput.value.trim();
+
+                let xmlHeader = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset\n      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9\n            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n`;
+                let xmlContent = baseSitemap ? `\n${baseSitemap}\n` : "\n";
+                let xmlFooter = `</urlset>`;
+
+                let extractedCount = 0;
+
+                articles.forEach(article => {
+                    const id = article.id;
+                    if (!id) return; // Skip if no ID
+
+                    // Get Date
+                    const dateElement = article.querySelector('.blog-date');
+                    const dateText = dateElement ? dateElement.textContent : "";
+                    const isoDate = formatW3CDate(dateText);
+
+                    // Construct URL by replacing {id} in the selected template
+                    const urlPath = linkFormatTemplate.replace('{id}', id);
+                    const url = `${baseUrl}${urlPath}`;
+
+                    // Append to XML
+                    xmlContent += `\n<url>\n  <loc>${url}</loc>\n  <lastmod>${isoDate}</lastmod>\n  <priority>${priority}</priority>\n</url>`;
+                    extractedCount++;
+                });
+
+                if (extractedCount === 0) {
+                    showMessage("Found articles, but none had an 'id' attribute.", true);
+                    return;
+                }
+
+                const finalXML = xmlHeader + xmlContent + '\n' + xmlFooter;
+                outputXml.value = finalXML;
+                
+                showMessage(`Successfully parsed ${extractedCount} blog posts!`);
+                copyBtn.disabled = false;
+                downloadBtn.disabled = false;
+
+            } catch (error) {
+                showMessage(`Error parsing file: ${error.message}`, true);
+            }
+        }
+
+        function handleFile(file) {
+            if (!file) return;
+            
+            // Validate file type slightly
+            if (!file.name.endsWith('.html') && !file.name.endsWith('.htm')) {
+                showMessage("Please upload a valid HTML file.", true);
+                return;
+            }
+
+            showMessage("Reading file...", false);
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const htmlContent = e.target.result;
+                processHTML(htmlContent);
+            };
+            reader.onerror = function() {
+                showMessage("Failed to read the file.", true);
+            };
+            reader.readAsText(file);
+        }
+
+        // Click to upload
+        dropzone.addEventListener('click', () => fileInput.click());
+        
+        // File input change
+        fileInput.addEventListener('change', (e) => {
+            handleFile(e.target.files[0]);
+            // Reset input so same file can be selected again if needed
+            fileInput.value = '';
+        });
+
+        // Drag and drop events
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('dragover');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        // Copy XML
+        copyBtn.addEventListener('click', () => {
+            outputXml.select();
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            showToast("XML copied to clipboard!");
+        });
+
+        // Download XML
+        downloadBtn.addEventListener('click', () => {
+            const xmlContent = outputXml.value;
+            if (!xmlContent) return;
+
+            const blob = new Blob([xmlContent], { type: 'application/xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'sitemap.xml';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast("Downloading sitemap.xml");
+        });
+    </script>
+</body>
+</html>
