@@ -3,6 +3,14 @@
 
 {
   "type": "news",
+  "date": "5th Seotember 2026",
+  "title": "Sonic Journal",
+  "author": "Josh",
+  "content": "Recent additions to the blog: English Teacher, Garfield Akers, Pilooski, Cake, Clinic and The Cardinals.<a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
+  },
+  
+{
+  "type": "news",
   "date": "29th August 2026",
   "title": "Sonic Journal",
   "author": "Josh",
