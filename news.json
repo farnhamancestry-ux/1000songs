@@ -2,6 +2,14 @@
 
 {
   "type": "news",
+  "date": "20th September 2026",
+  "title": "Blog updates",
+  "author": "Josh",
+  "content": "Recent additions to the blog: L'Rain, The Groundhogs, The Horrors, Electrelane, Flywheel, Conor Bond and Odelet.<a href=\"https://1000songs.co.uk/blog.html\"> See here.</a>"
+  },
+  
+{
+  "type": "news",
   "date": "13th September 2026",
   "title": "Toppermost",
   "author": "Josh",
