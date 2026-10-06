@@ -2,6 +2,14 @@
 
   {
   "type": "news",
+  "date": "6th October 2026",
+  "title": "Sonic Journal",
+  "author": "Josh",
+  "content": "Recent additions to the blog: Kings of Leon, Johnny Hates Jazz, Fernando's Eyes, Editors, Arcade Fire, Anna Ehard and George Formby.<a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
+  },
+
+  {
+  "type": "news",
   "date": "30th September 2026",
   "title": "Toppermost",
   "author": "Josh",
