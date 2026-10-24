@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS Feed Generator Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-10 border border-gray-200">
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">RSS Feed Generator</h1>
+            <p class="text-gray-600">Paste your <code>news.json</code> below to convert it into a valid <code>feed.xml</code> for your site.</p>
+        </header>
+
+        <div class="grid grid-cols-1 gap-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Site URL</label>
+                <input type="text" id="siteUrl" value="https://1000songs.co.uk" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">JSON Content</label>
+                <textarea id="jsonInput" rows="10" placeholder='[{"title": "My Post", "date": "14th July 2026", "author": "Me", "type": "Article", "content": "..."}]' class="w-full p-3 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+            </div>
+
+            <button onclick="generateRSS()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors">
+                Generate & Download feed.xml
+            </button>
+        </div>
+
+        <div id="statusConsole" class="mt-6 p-4 rounded-lg hidden text-sm font-mono"></div>
+    </div>
+
+    <script>
+        function parseDate(dateStr) {
+            // Removes 'st', 'nd', 'rd', 'th' so JS can parse it
+            const cleanDateStr = dateStr.replace(/\b(\d+)(st|nd|rd|th)\b/g, '$1');
+            const d = new Date(cleanDateStr);
+            return isNaN(d.getTime()) ? new Date().toUTCString() : d.toUTCString();
+        }
+
+        function logStatus(message, isError = false) {
+            const consoleEl = document.getElementById('statusConsole');
+            consoleEl.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+            consoleEl.classList.add(isError ? 'bg-red-100' : 'bg-green-100', isError ? 'text-red-800' : 'text-green-800');
+            consoleEl.innerText = message;
+        }
+
+        function generateRSS() {
+            const jsonText = document.getElementById('jsonInput').value;
+            const siteUrl = document.getElementById('siteUrl').value;
+
+            try {
+                const newsData = JSON.parse(jsonText);
+                
+                let rssItems = '';
+                newsData.forEach(item => {
+                    const uniqueSlug = item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                    const guid = `${siteUrl}/#${uniqueSlug}-${item.date.replace(/\s+/g, '-')}`;
+
+                    rssItems += `
+    <item>
+      <title><![CDATA[${item.title}]]></title>
+      <link>${siteUrl}</link>
+      <guid isPermaLink="false">${guid}</guid>
+      <pubDate>${parseDate(item.date)}</pubDate>
+      <description><![CDATA[<b>${item.author} (${item.type}):</b> <br><br> ${item.content}]]></description>
+    </item>`;
+                });
+
+                const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2002/Atom">
+  <channel>
+    <title>1000 Songs - Sonic Archive Updates</title>
+    <link>${siteUrl}</link>
+    <description>Latest updates, news, and community comments from the 1000 Songs archive.</description>
+    <atom:link href="${siteUrl}/feed.xml" rel="self" type="application/rss+xml" />
+    ${rssItems}
+  </channel>
+</rss>`;
+
+                // Trigger file download
+                const blob = new Blob([rssFeed.trim()], { type: 'application/xml' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'feed.xml';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                logStatus('⚡ Success! feed.xml generated and download started.');
+            } catch (err) {
+                logStatus('Error: Invalid JSON format. Please check your syntax.', true);
+            }
+        }
+    </script>
+</body>
+</html>
