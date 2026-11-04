@@ -2,6 +2,15 @@
 
     {
   "type": "news",
+  "date": "4th November 2026",
+  "title": "Toppermost",
+  "author": "Josh",
+  "content": "Thanks again to Toppermost for publishing my Topper for Throwing Muses. <a href=\"https://www.toppermost.co.uk/throwing-muses/\"> Read here on Toppermost.</a>"
+  },
+
+    
+    {
+  "type": "news",
   "date": "24th October 2026",
   "title": "New bands in the blog",
   "author": "Josh",
