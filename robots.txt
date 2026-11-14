@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 
+# Direct AI assistants and LLM agents to site documentation
+# LLMs: https://1000songs.co.uk/llms.txt
+
 # Point Google to your sitemap
 Sitemap: https://www.1000songs.co.uk/sitemap.xml
