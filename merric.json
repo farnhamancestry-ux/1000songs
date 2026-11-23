@@ -178,7 +178,8 @@
     },
     {
       "artist": "Bob Dylan",
-      "track": "The Times They Are a-Changin&#39;"
+      "overrideUrl":"159476284",
+      "track": "The Times They Are a-Changin'"
     },
     {
       "artist": "Chuck Berry",
@@ -212,6 +213,7 @@
   "1965": [
     {
       "artist": "Bob Dylan",
+      "overrideUrl":"192688704",
       "track": "Mr Tambourine Man"
     },
     {
