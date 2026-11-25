@@ -1,228 +1,179 @@
 [
-
-   {   "type": "news",
-  "date": "25h November 2026",
-  "title": "Guest Curator",
-  "author": "Josh",
-  "content": "Delighted to announce ten defining tracks a year from 1960–1969 chosen by the founder of the Toppermost music site, Merric Davidson. <a href=\"https://1000songs.co.uk/?data=merric.json\"> load here.</a>"
-  },
-    
-
-    {
-  "type": "news",
-  "date": "20th November 2026",
-  "title": "Toppermost",
-  "author": "Josh",
-  "content": "New Toppermost post for Sister Rosetta Tharpe!<a href=\"https://www.toppermost.co.uk/tharpe-sister-rosetta/\"> Read here on Toppermost.</a>"
-  },
-    
-    {
-  "type": "news",
-  "date": "14th November 2026",
-  "title": "Sonic Journal Update",
-  "author": "Josh",
-  "content": "Sonic Journal updates with deeper dives on: Link Wray, Iri Antler, My Bloody Valentine, Sam Fender and Freddy Cannon<a href=\"https://1000songs.co.uk/blog.html\"> See here.</a>"
-  },
-    
-    {
-  "type": "news",
-  "date": "4th November 2026",
-  "title": "Toppermost",
-  "author": "Josh",
-  "content": "Thanks again to Toppermost for publishing my Topper for Throwing Muses. <a href=\"https://www.toppermost.co.uk/throwing-muses/\"> Read here on Toppermost.</a>"
-  },
-
-    
-    {
-  "type": "news",
-  "date": "24th October 2026",
-  "title": "New bands in the blog",
-  "author": "Josh",
-  "content": "Recent additions to the blog: Venn Echo, Robert Petway, Madra Salach, Dynasty Four, Winifred Atwell, Sylvester and Radio Drive.<a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
-  },
-
-
   {
-  "type": "news",
-  "date": "17th October 2026",
-  "title": "Toppermost",
-  "author": "Josh",
-  "content": "Thanks very much to Toppermost for publishing my Topper for Radiohead. <a href=\"https://www.toppermost.co.uk/radiohead/\"> Read here on Toppermost.</a>"
+    "type": "news",
+    "date": "25th November 2026",
+    "title": "Guest Curator",
+    "author": "Josh",
+    "content": "Delighted to announce ten defining tracks a year from 1960–1969 chosen by the founder of the Toppermost music site, Merric Davidson. <a href=\"https://1000songs.co.uk/?data=merric.json\">Load here.</a>"
   },
-
   {
-  "type": "news",
-  "date": "6th October 2026",
-  "title": "Sonic Journal",
-  "author": "Josh",
-  "content": "Recent additions to the blog: Kings of Leon, Johnny Hates Jazz, Fernando's Eyes, Editors, Arcade Fire, Anna Ehard and George Formby.<a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
+    "type": "news",
+    "date": "20th November 2026",
+    "title": "Toppermost",
+    "author": "Josh",
+    "content": "New Toppermost post for Sister Rosetta Tharpe! <a href=\"https://www.toppermost.co.uk/tharpe-sister-rosetta/\">Read here on Toppermost.</a>"
   },
-
   {
-  "type": "news",
-  "date": "30th September 2026",
-  "title": "Toppermost",
-  "author": "Josh",
-  "content": "Thanks very much to Toppermost for publishing my Topper for Franz Ferdinand. <a href=\"https://www.toppermost.co.uk/franz-ferdinand/\"> Read here on Toppermost.</a>"
+    "type": "news",
+    "date": "14th November 2026",
+    "title": "Sonic Journal Update",
+    "author": "Josh",
+    "content": "Sonic Journal updates with deeper dives on: Link Wray, Iri Antler, My Bloody Valentine, Sam Fender and Freddy Cannon. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
   },
-  
   {
-  "type": "news",
-  "date": "25th September 2026",
-  "title": "Toppermost",
-  "author": "Josh",
-  "content": "Thanks very much to Toppermost for publishing my Topper for Portishead. <a href=\"https://www.toppermost.co.uk/portishead\"> Read here on Toppermost.</a>"
+    "type": "news",
+    "date": "4th November 2026",
+    "title": "Toppermost",
+    "author": "Josh",
+    "content": "Thanks again to Toppermost for publishing my Topper for Throwing Muses. <a href=\"https://www.toppermost.co.uk/throwing-muses/\">Read here on Toppermost.</a>"
   },
-
-  
-  
-
-{
-  "type": "news",
-  "date": "20th September 2026",
-  "title": "Blog updates",
-  "author": "Josh",
-  "content": "Recent additions to the blog: L'Rain, The Groundhogs, The Horrors, Electrelane, Flywheel, Conor Bond and Odelet.<a href=\"https://1000songs.co.uk/blog.html\"> See here.</a>"
-  },
-  
-{
-  "type": "news",
-  "date": "13th September 2026",
-  "title": "Toppermost",
-  "author": "Josh",
-  "content": "Thanks very much to Toppermost for publishing my top 10 selections and review of Savages. It's a great site with loads of different fan profiles of bands. <a href=\"https://www.toppermost.co.uk/savages\"> Read here on Toppermost.</a>"
-  },
-  
-
-{
-  "type": "news",
-  "date": "5th September 2026",
-  "title": "Sonic Journal",
-  "author": "Josh",
-  "content": "Recent additions to the blog: English Teacher, Garfield Akers, Pilooski, Cake, Clinic and The Cardinals.<a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
-  },
-  
-{
-  "type": "news",
-  "date": "29th August 2026",
-  "title": "Sonic Journal",
-  "author": "Josh",
-  "content": "Recent additions to the blog: The Auteurs, Dodgy, Washboard Sam, Les Paul, Lime Garden, Shopping, Dolly Parton, Shocking Blue and Altın Gün. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
-  },
-  
-  
-{
-  "type": "news",
-  "date": "22nd August 2026",
-  "title": "Reviews",
-  "author": "Josh",
-  "content": "Recent additions to the blog: Zora Kirin, Martyrs, Talk Talk, DEADLETTER, The Communards and John Leyton. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
-  },
-
-  
-{
-  "type": "news",
-  "date": "17th August 2026",
-  "title": "Reviews",
-  "author": "Josh",
-  "content": "Recent additions to the blog: Geoffrey Lewis,pôt-pot, Opus Kink, Graham Coxon, Dead or Alive and Odetta. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
-  },
-  
-  
-{
-  "type": "news",
-  "date": "6th August 2026",
-  "title": "Reviews",
-  "author": "Josh",
-  "content": "This week: the Electric Six, Bessie Smith, Gomez, Walt Disco and a discovery review of The Cuts : <a href=\"https://1000songs.co.uk/blog.html\">Check out the blog.</a>"
-  },
-  
-  
-{
-  "type": "news",
-  "date": "3rd August 2026",
-  "title": "Review",
-  "author": "Josh",
-  "content": "1000songs.co.uk has reveived a review: <a href=\"https://nameocean.net/article/why-building-your-own-sonic-time-capsule-is-the-ultimate-side-project/\">Why Building Your Own Sonic Time Capsule Is the Ultimate Side Project</a>."
-  },
-
-  
-
-  
-{
-  "type": "news",
-  "date": "27th July 2026",
-  "title": "MusoSoup",
-  "author": "Josh",
-  "content": "1000 songs is now on: <a href=\"https://app.musosoup.com/publication?id=115067\">MusoSoup</a>! Send in your songs for review in the blog."
-  },
-  
-
-
-
-  
   {
-  "type": "news",
-  "date": "20th July 2026",
-  "title": "researchbuzz.me",
-  "author": "Josh",
-  "content": "Thanks very much to Tara Calishain for the mention on : <a href=\"https://researchbuzz.me/2026/06/27/1000-songs-massachusetts-housing-windows-10-more-saturday-afternoon-researchbuzz-june-27-2026/\">researchbuzz.me</a>!"
+    "type": "news",
+    "date": "24th October 2026",
+    "title": "New bands in the blog",
+    "author": "Josh",
+    "content": "Recent additions to the blog: Venn Echo, Robert Petway, Madra Salach, Dynasty Four, Winifred Atwell, Sylvester and Radio Drive. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
   },
-
-  
-  
   {
-  "type": "news",
-  "date": "19th July 2026",
-  "title": "Sonic Journal Blog",
-  "author": "Josh",
-  "content": "I have created a blog: <a href=\"https://1000songs.co.uk/blog.html\">Sonic Journal</a>!"
+    "type": "news",
+    "date": "17th October 2026",
+    "title": "Toppermost",
+    "author": "Josh",
+    "content": "Thanks very much to Toppermost for publishing my Topper for Radiohead. <a href=\"https://www.toppermost.co.uk/radiohead/\">Read here on Toppermost.</a>"
   },
-  
-
   {
-  "type": "comment",
-  "date": "14th July 2026",
-  "title": "We Were Here",
-  "author": "Josh",
-  "content": "Shout out to <a href=\"https://www.faber.co.uk/product/9780571381104-we-were-here/\">We Were Here: A History of Black People and Alternative Music</a> by Stephanie Phillips. Can't wait to dive in!"
+    "type": "news",
+    "date": "6th October 2026",
+    "title": "Sonic Journal",
+    "author": "Josh",
+    "content": "Recent additions to the blog: Kings of Leon, Johnny Hates Jazz, Fernando's Eyes, Editors, Arcade Fire, Anna Ehard and George Formby. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
   },
-
-                {
+  {
+    "type": "news",
+    "date": "30th September 2026",
+    "title": "Toppermost",
+    "author": "Josh",
+    "content": "Thanks very much to Toppermost for publishing my Topper for Franz Ferdinand. <a href=\"https://www.toppermost.co.uk/franz-ferdinand/\">Read here on Toppermost.</a>"
+  },
+  {
+    "type": "news",
+    "date": "25th September 2026",
+    "title": "Toppermost",
+    "author": "Josh",
+    "content": "Thanks very much to Toppermost for publishing my Topper for Portishead. <a href=\"https://www.toppermost.co.uk/portishead\">Read here on Toppermost.</a>"
+  },
+  {
+    "type": "news",
+    "date": "20th September 2026",
+    "title": "Blog updates",
+    "author": "Josh",
+    "content": "Recent additions to the blog: L'Rain, The Groundhogs, The Horrors, Electrelane, Flywheel, Conor Bond and Odelet. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
+  },
+  {
+    "type": "news",
+    "date": "13th September 2026",
+    "title": "Toppermost",
+    "author": "Josh",
+    "content": "Thanks very much to Toppermost for publishing my top 10 selections and review of Savages. It's a great site with loads of different fan profiles of bands. <a href=\"https://www.toppermost.co.uk/savages\">Read here on Toppermost.</a>"
+  },
+  {
+    "type": "news",
+    "date": "5th September 2026",
+    "title": "Sonic Journal",
+    "author": "Josh",
+    "content": "Recent additions to the blog: English Teacher, Garfield Akers, Pilooski, Cake, Clinic and The Cardinals. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
+  },
+  {
+    "type": "news",
+    "date": "29th August 2026",
+    "title": "Sonic Journal",
+    "author": "Josh",
+    "content": "Recent additions to the blog: The Auteurs, Dodgy, Washboard Sam, Les Paul, Lime Garden, Shopping, Dolly Parton, Shocking Blue and Altın Gün. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
+  },
+  {
+    "type": "news",
+    "date": "22nd August 2026",
+    "title": "Reviews",
+    "author": "Josh",
+    "content": "Recent additions to the blog: Zora Kirin, Martyrs, Talk Talk, DEADLETTER, The Communards and John Leyton. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
+  },
+  {
+    "type": "news",
+    "date": "17th August 2026",
+    "title": "Reviews",
+    "author": "Josh",
+    "content": "Recent additions to the blog: Geoffrey Lewis, pôt-pot, Opus Kink, Graham Coxon, Dead or Alive and Odetta. <a href=\"https://1000songs.co.uk/blog.html\">See here.</a>"
+  },
+  {
+    "type": "news",
+    "date": "6th August 2026",
+    "title": "Reviews",
+    "author": "Josh",
+    "content": "This week: the Electric Six, Bessie Smith, Gomez, Walt Disco and a discovery review of The Cuts: <a href=\"https://1000songs.co.uk/blog.html\">Check out the blog.</a>"
+  },
+  {
+    "type": "news",
+    "date": "3rd August 2026",
+    "title": "Review",
+    "author": "Josh",
+    "content": "1000songs.co.uk has received a review: <a href=\"https://nameocean.net/article/why-building-your-own-sonic-time-capsule-is-the-ultimate-side-project/\">Why Building Your Own Sonic Time Capsule Is the Ultimate Side Project</a>."
+  },
+  {
+    "type": "news",
+    "date": "27th July 2026",
+    "title": "MusoSoup",
+    "author": "Josh",
+    "content": "1000 songs is now on: <a href=\"https://app.musosoup.com/publication?id=115067\">MusoSoup</a>! Send in your songs for review in the blog."
+  },
+  {
+    "type": "news",
+    "date": "20th July 2026",
+    "title": "researchbuzz.me",
+    "author": "Josh",
+    "content": "Thanks very much to Tara Calishain for the mention on: <a href=\"https://researchbuzz.me/2026/06/27/1000-songs-massachusetts-housing-windows-10-more-saturday-afternoon-researchbuzz-june-27-2026/\">researchbuzz.me</a>!"
+  },
+  {
+    "type": "news",
+    "date": "19th July 2026",
+    "title": "Sonic Journal Blog",
+    "author": "Josh",
+    "content": "I have created a blog: <a href=\"https://1000songs.co.uk/blog.html\">Sonic Journal</a>!"
+  },
+  {
+    "type": "comment",
+    "date": "14th July 2026",
+    "title": "We Were Here",
+    "author": "Josh",
+    "content": "Shout out to <a href=\"https://www.faber.co.uk/product/9780571381104-we-were-here/\">We Were Here: A History of Black People and Alternative Music</a> by Stephanie Phillips. Can't wait to dive in!"
+  },
+  {
     "type": "comment",
     "date": "1st July 2026",
     "title": "Every Noise at Once",
     "author": "Josh",
-    "content": "Reached out to Glenn McDonald at  <a href=\"https://everynoise.com/\">Every Noise at Once</a>and got some feedback! Very grateful!"
+    "content": "Reached out to Glenn McDonald at <a href=\"https://everynoise.com/\">Every Noise at Once</a> and got some feedback! Very grateful!"
   },
-        
-
-        
-        {
+  {
     "type": "news",
     "date": "25th June 2026",
     "title": "Welcome from Hacker News",
     "author": "Josh",
-    "content": "Hello Hacker News people! Very much would welcome messages or suggestions! https://news.ycombinator.com/item?id=48678717"
+    "content": "Hello Hacker News people! Very much would welcome messages or suggestions! <a href=\"https://news.ycombinator.com/item?id=48678717\">View thread on Hacker News.</a>"
   },
-
-    
-    {
+  {
     "type": "news",
     "date": "18th June 2026",
     "title": "923 Songs",
     "author": "Josh",
     "content": "I'm up to 923 songs now. Mainly struggling with 1930s and 1940s. Any suggestions send them my way!"
   },
-{
+  {
     "type": "news",
     "date": "8th June 2026",
     "title": "Albums",
     "author": "Josh",
     "content": "I've added an albums section now. I have started this one at 1960. So only 700 albums."
   },
-
-  
   {
     "type": "news",
     "date": "31st May 2026",
@@ -230,7 +181,6 @@
     "author": "Josh",
     "content": "I've added a sister project where you can add memories of venues, places and scenes. Click on the Sonic Stories section."
   },
-
   {
     "type": "news",
     "date": "23rd May 2026",
@@ -238,7 +188,6 @@
     "author": "Josh",
     "content": "I've added forum. Post on there and I can add the info to the site."
   },
-  
   {
     "type": "news",
     "date": "19th May 2026",
@@ -255,16 +204,16 @@
   },
   {
     "type": "comment",
-    "date": "2026-05-15",
+    "date": "15th May 2026",
     "title": "Radio Time Machine",
     "author": "Sarah_T",
     "content": "The static effect between stations on the radio dial is such a great touch. It really feels like tuning an old AM radio."
   },
   {
     "type": "news",
-    "date": "2026-05-10",
+    "date": "10th May 2026",
     "title": "Lewisham Archive Added",
     "author": "Josh",
     "content": "Just uploaded the new Lewisham community archive to the community search page. Check it out to see the latest additions."
   }
-]
+     ]
